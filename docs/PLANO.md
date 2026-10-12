@@ -4,8 +4,11 @@
 - Isto é um projeto de **meses a anos**, mesmo com ajuda de IA. Os projetos de referência
   assentam em mais de uma década de trabalho do Wine, FEX-Emu e DXVK/DXMT.
 - GTA V a 60–80 fps não é um objetivo da fase 1. O objetivo inicial é **um .exe a abrir**.
-- Para iOS é **obrigatório** ter um Mac com Xcode, um iPhone recente (A17 Pro/M-series ou
-  superior, ≥8 GB RAM) e, idealmente, conta Apple Developer (99 €/ano).
+- **Alvo: só iOS/iPadOS.** Android e Apple TV ficam fora do plano por agora.
+- **Sem Mac:** a app é compilada no GitHub Actions (runners macOS), instalada com o SideStore e o
+  JIT é ativado com o StikDebug. Só é preciso um PC Windows/Linux uma vez (emparelhamento).
+  Ver [INSTALAR-IOS.md](INSTALAR-IOS.md).
+- iPhone recente ajuda muito (≥8 GB RAM para jogos grandes).
 
 ## Decisão de arquitetura
 Não escrever um tradutor de CPU nem uma camada DirectX de raiz. **Integrar** projetos existentes:
@@ -29,15 +32,12 @@ Núcleo partilhado: a pilha Wine+FEX+DX é a mesma; só muda o "host" (Darwin/Me
 - [ ] Ver se o Madeira/Vapor publicam código ou se há forks úteis (respeitar licenças).
 - [ ] Montar Mac + Xcode + toolchain cruzada (LLVM-MinGW para as DLLs PE ARM64EC).
 
-### Fase 1 — Android primeiro (vitória rápida, 3–6 semanas)
-Valida a pilha comum num ambiente onde o JIT é livre.
-- [ ] Fork do Winlator; build reprodutível em CI.
-- [ ] Interface própria + gestão de "contentores" por jogo.
-- [ ] Testar jogos GOG leves (ex.: Hollow Knight, Portal 2) → depois GTA V modo história.
-- [ ] Métricas: fps, tempo de frame, temperatura.
-
 ### Fase 2 — Prova de conceito iOS (2–4 meses) ← a parte difícil
-1. [ ] App iOS mínima que aloca memória executável com JIT ativo (teste "hello JIT").
+1. [x] App iOS mínima (`ios/`) que obtém JIT via StikDebug — incluindo o protocolo
+   `JIT26PrepareRegion`/`JIT26Detach` para dispositivos com TXM (iOS 26+) — e executa código
+   ARM64 gerado em runtime. Compilada no CI. **Falta testar no teu iPhone.**
+   Nota: com TXM, toda a memória executável tem de ser reservada antes do detach → a cache de
+   código do FEX tem de usar a região pré-alocada (64 MB por agora).
 2. [ ] Compilar FEX-Emu para iOS (Darwin): substituir syscalls Linux por equivalentes, páginas de 16 KB.
 3. [ ] Correr um binário x86-64 trivial dentro da app (sem Wine).
 4. [ ] Wine num só processo: wineserver em thread, sem fork/exec, ntdll unix portado para Darwin/iOS.
@@ -64,7 +64,4 @@ Valida a pilha comum num ambiente onde o JIT é livre.
 4. Licenças (LGPL) obrigam a publicar alterações ao Wine/DXMT.
 
 ## O que posso fazer já contigo
-- Configurar o repositório (estrutura, CI no GitHub Actions com runners macOS e Linux).
-- Começar a **Fase 1** (fork/integração Winlator para Android) — dá para compilar em CI.
-- Escrever a app iOS base em Swift e o teste "hello JIT" (Fase 2.1) — tu compilas no teu Mac.
-- Analisar e portar partes do FEX-Emu para Darwin.
+- Fase 2.2: portar o FEX-Emu para iOS e pô-lo a usar a região JIT pré-alocada.

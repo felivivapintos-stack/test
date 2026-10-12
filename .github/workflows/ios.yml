@@ -1,0 +1,46 @@
+name: iOS build
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    defaults:
+      run:
+        working-directory: ios
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build
+        run: |
+          xcodebuild \
+            -project PCEmu.xcodeproj \
+            -scheme PCEmu \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Package IPA
+        run: |
+          mkdir -p build/ipa/Payload
+          cp -R build/Build/Products/Release-iphoneos/PCEmu.app build/ipa/Payload/
+          # Ad-hoc signature so the entitlements (get-task-allow) travel with the app;
+          # SideStore/AltStore re-sign it with the user's certificate.
+          codesign --force --sign - --entitlements App/PCEmu.entitlements build/ipa/Payload/PCEmu.app
+          cd build/ipa && zip -qry ../PCEmu.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PCEmu-ipa
+          path: ios/build/PCEmu.ipa

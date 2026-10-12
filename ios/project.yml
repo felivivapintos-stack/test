@@ -1,0 +1,40 @@
+name: PCEmu
+options:
+  bundleIdPrefix: com.felivivapintos
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+targets:
+  PCEmu:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: PCEmu
+        UILaunchScreen: {}
+        LSApplicationQueriesSchemes: [stikdebug]
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    entitlements:
+      path: App/PCEmu.entitlements
+      properties:
+        get-task-allow: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.felivivapintos.pcemu
+        SWIFT_OBJC_BRIDGING_HEADER: App/JIT/BridgingHeader.h
+        ARCHS: arm64
+        TARGETED_DEVICE_FAMILY: "1,2"
+    dependencies:
+      - sdk: Security.framework

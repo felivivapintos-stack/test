@@ -1,0 +1,4 @@
+*.xcodeproj
+build/
+App/Info.plist
+App/PCEmu.entitlements
