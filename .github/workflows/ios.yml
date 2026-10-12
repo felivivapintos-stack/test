@@ -66,6 +66,9 @@ jobs:
 
   wine-macos:
     name: Wine (macOS ARM64 testbed)
+    # Paused: upstream Wine is killed on macOS ARM when it runs PE code (no MAP_JIT
+    # support); see docs/INVESTIGACAO.md. Run manually from the Actions tab.
+    if: github.event_name == 'workflow_dispatch'
     needs: fex
     runs-on: macos-15
     timeout-minutes: 300
