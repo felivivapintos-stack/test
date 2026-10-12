@@ -30,7 +30,7 @@ Núcleo partilhado: a pilha Wine+FEX+DX é a mesma; só muda o "host" (Darwin/Me
 - [ ] Confirmar estado do JIT no iOS 27 (que ferramentas de sideload/JIT funcionam).
 - [ ] Estudar o código: FEX-Emu (`External/`, `Source/Tools/`), DXMT, Wine `dlls/ntdll/unix`.
 - [ ] Ver se o Madeira/Vapor publicam código ou se há forks úteis (respeitar licenças).
-- [ ] Montar Mac + Xcode + toolchain cruzada (LLVM-MinGW para as DLLs PE ARM64EC).
+- [ ] CI macOS no GitHub Actions + toolchain cruzada (LLVM-MinGW para as DLLs PE ARM64EC).
 
 ### Fase 2 — Prova de conceito iOS (2–4 meses) ← a parte difícil
 1. [x] App iOS mínima (`ios/`) que obtém JIT via StikDebug — incluindo o protocolo
@@ -54,7 +54,7 @@ Núcleo partilhado: a pilha Wine+FEX+DX é a mesma; só muda o "host" (Darwin/Me
 - [ ] Otimização: resolução dinâmica/MetalFX upscaling, limite de fps, gestão térmica.
 - [ ] GTA V e jogos pesados.
 
-### Fase 5 — Apple TV (opcional)
+### Fase 5 — Apple TV (fora do âmbito por agora)
 - [ ] Avaliar se há forma de ter JIT no tvOS; senão, oferecer modo streaming (Moonlight).
 
 ## Riscos principais
