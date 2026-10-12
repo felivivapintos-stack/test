@@ -28,6 +28,8 @@ button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
   font-size: 16px; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(4px);
 }
 #hud-deaths { margin: 0 auto; }
+#hud-deaths.bump { animation: bump 0.35s ease-out; }
+@keyframes bump { 0% { transform: scale(1); } 30% { transform: scale(1.25) rotate(-4deg); } 100% { transform: scale(1); } }
 #hud-deaths b { font-size: 18px; min-width: 1.2em; text-align: center; }
 .par { color: var(--muted); font-size: 13px; font-weight: 700; }
 .skull {
@@ -120,6 +122,11 @@ button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
   .panel { padding: 14px 16px; }
   .star { width: 40px; height: 40px; }
   .btn { padding: 9px 16px; font-size: 15px; }
+  .levels { grid-template-columns: repeat(12, 1fr); gap: 5px; }
+  .lvl { font-size: 15px; border-radius: 9px; }
+  .lvl small { font-size: 8px; }
+  .panel h2 { margin: 8px 0 5px; font-size: 13px; }
+  .panel h1 { font-size: 24px; }
   .tbtn { width: 62px; height: 62px; border-radius: 18px; }
   .tjump { width: 70px; height: 70px; border-radius: 50%; }
 }

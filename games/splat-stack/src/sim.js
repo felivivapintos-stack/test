@@ -81,6 +81,8 @@ export function createState(L) {
   return {
     t: 0, deaths: 0, won: false, doorMoved: false,
     p: newPlayer(L),
+    sawT: L.saws.map(() => 0), // each saw's own clock; it stops while a splat jams it
+    jam: L.saws.map(() => false),
     splats: [],
     crumble: L.crumbles.map(() => -1), // -1 intact, >0 counting down, 0 gone
     pop: L.pops.map(() => 0), // 0 hidden, 1 out
@@ -93,6 +95,8 @@ export function cloneState(S) {
   return {
     t: S.t, deaths: S.deaths, won: S.won, doorMoved: S.doorMoved,
     p: { ...S.p },
+    sawT: S.sawT.slice(),
+    jam: S.jam.slice(),
     splats: S.splats.map((s) => ({ ...s })),
     crumble: S.crumble.slice(),
     pop: S.pop.slice(),
@@ -166,8 +170,8 @@ function killedBy(L, S, p) {
     const b = L.drops[i];
     if (overlap(p.x, p.y, PW, PH, b.x + 8, b.y + d.y + 2, 16, 24)) return 'drop';
   }
-  for (const s of L.saws) {
-    const q = sawPos(s, S.t);
+  for (let i = 0; i < L.saws.length; i++) {
+    const s = L.saws[i], q = sawPos(s, S.sawT[i]);
     const nx = Math.max(p.x, Math.min(q.x, p.x + PW)), ny = Math.max(p.y, Math.min(q.y, p.y + PH));
     const dx = q.x - nx, dy = q.y - ny, r = s.r - 3;
     if (dx * dx + dy * dy < r * r) return 'saw';
@@ -252,10 +256,29 @@ function updateTraps(L, S) {
   }
 }
 
+function circleHitsBox(cx, cy, r, x, y, w, h) {
+  const nx = Math.max(x, Math.min(cx, x + w)), ny = Math.max(y, Math.min(cy, y + h));
+  const dx = cx - nx, dy = cy - ny;
+  return dx * dx + dy * dy < r * r;
+}
+
+// A saw advances along its path unless a splat sits in the blade: corpses jam saws.
+function updateSaws(L, S) {
+  for (let i = 0; i < L.saws.length; i++) {
+    const s = L.saws[i], q = sawPos(s, S.sawT[i] + 1);
+    let jammed = false;
+    for (const sp of S.splats) if (sp.vy === 0 && circleHitsBox(q.x, q.y, s.r - 2, sp.x, sp.y, PW, PH)) { jammed = true; break; }
+    if (jammed && !S.jam[i]) S.events.push({ type: 'jam', x: q.x, y: q.y });
+    if (!jammed) S.sawT[i]++;
+    S.jam[i] = jammed;
+  }
+}
+
 export function step(L, S, input) {
   S.events.length = 0;
   if (S.won) return S;
   S.t++;
+  updateSaws(L, S);
   const p = S.p;
   if (p.dead) {
     updateSplats(L, S);

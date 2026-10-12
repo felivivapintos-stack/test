@@ -37,7 +37,8 @@ constrói o caminho. O par (o mínimo de mortes necessário) faz de cada nível 
 - 24 níveis em 4 mundos: Jelly Meadow, Saw Factory, Lava Works e Devil's Den.
 - Espinhos e lava matam, e o bloco que deixas fica pousado por cima deles.
 - Os espinhos escondidos saltam quando te aproximas. Os espinhos do teto caem quando passas por baixo.
-- Os blocos rachados desabam depois de os pisares. As serras andam num percurso. As molas lançam-te alto.
+- Os blocos rachados desabam depois de os pisares. As molas lançam-te alto.
+- As serras andam num percurso e **encravam num cadáver**: rápidas demais para desviar, morres à frente delas e elas param.
 - A porta tímida foge para um sítio mais difícil da primeira vez que te aproximas.
 - Estrelas: ★★★ se as tuas mortes forem iguais ou inferiores ao par, ★★ até par + 3, senão ★.
 
@@ -46,6 +47,9 @@ constrói o caminho. O par (o mínimo de mortes necessário) faz de cada nível 
 `node tools/solve.mjs` faz uma pesquisa sobre a simulação do próprio jogo (`src/sim.js` é
 determinística e não usa o DOM). Acaba todos os níveis e encontra o mínimo de mortes de cada um.
 O `par` em `src/levels.js` é comparado com esse resultado. Corre-o depois de mudares qualquer nível.
+Além disso, verifica que:
+- quando o par é maior do que o mínimo, existe mesmo uma rota com exatamente esse número de mortes;
+- nenhum nível se ganha só a segurar uma tecla (→, → + salto ou saltos ritmados).
 
 ## Integração com o CrazyGames (`src/platform.js`)
 

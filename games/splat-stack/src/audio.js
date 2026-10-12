@@ -85,6 +85,9 @@ export class Audio {
         break;
       case 'star': this.tone('triangle', 1047, 1568, 0.18, 0.25); break;
       case 'click': this.tone('triangle', 660, 880, 0.05, 0.15); break;
+      case 'thud': this.tone('sine', 140 * r, 70, 0.12, 0.35); this.hiss(0.06, 0.2, 700); break;
+      case 'respawn': this.tone('sine', 500, 900, 0.1, 0.12); break;
+      case 'jam': this.tone('sawtooth', 320, 90, 0.35, 0.18); this.hiss(0.2, 0.3, 3000); break;
       case 'bonk': this.tone('square', 160, 120, 0.06, 0.08); break;
     }
   }

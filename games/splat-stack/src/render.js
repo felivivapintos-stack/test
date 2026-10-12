@@ -60,8 +60,8 @@ export class Renderer {
   }
 
   // reserveBottom keeps the world clear of on-screen touch buttons.
-  resize(cssW, cssH, dpr, reserveBottom = 0) {
-    const scale = Math.min(cssW / W, (cssH - reserveBottom) / H);
+  resize(cssW, cssH, dpr, reserveBottom = 0, reserveTop = 0) {
+    const scale = Math.min(cssW / W, (cssH - reserveBottom - reserveTop) / H);
     this.scale = scale;
     this.canvas.width = Math.round(cssW * dpr);
     this.canvas.height = Math.round(cssH * dpr);
@@ -69,7 +69,7 @@ export class Renderer {
     this.canvas.style.height = cssH + 'px';
     this.dpr = dpr;
     this.ox = (cssW - W * scale) / 2;
-    this.oy = (cssH - reserveBottom - H * scale) / 2;
+    this.oy = reserveTop + (cssH - reserveTop - reserveBottom - H * scale) / 2;
   }
 
   setLevel(L, worldIndex) {
@@ -85,7 +85,8 @@ export class Renderer {
         const t = tileAt(L, c, r), x = c * TILE, y = r * TILE;
         if (t === SOLID) {
           const open = tileAt(L, c, r - 1) !== SOLID && r > 0;
-          g.fillStyle = w.tile; g.fillRect(x, y, TILE, TILE);
+          const inner = [[0, -1], [0, 1], [-1, 0], [1, 0]].every(([dc, dr]) => { const n = tileAt(L, c + dc, r + dr); return n === SOLID || r + dr >= ROWS; });
+          g.fillStyle = inner ? shade(w.tile, -0.28) : w.tile; g.fillRect(x, y, TILE, TILE);
           g.fillStyle = w.edge;
           if ((c + r) % 2 === 0) g.fillRect(x + 6, y + 14, 4, 4);
           if ((c * 7 + r * 3) % 5 === 0) g.fillRect(x + 20, y + 22, 5, 3);
@@ -108,6 +109,8 @@ export class Renderer {
       g.beginPath(); g.moveTo(sx, y + TILE); g.lineTo(sx + 5, y + TILE - h); g.lineTo(sx + 10, y + TILE); g.closePath(); g.fill();
       g.fillStyle = '#9aa0c3';
       g.beginPath(); g.moveTo(sx + 5, y + TILE); g.lineTo(sx + 5, y + TILE - h); g.lineTo(sx + 10, y + TILE); g.closePath(); g.fill();
+      g.fillStyle = '#ff4d5e';
+      g.beginPath(); g.moveTo(sx + 3.3, y + TILE - h + 8 * k); g.lineTo(sx + 5, y + TILE - h); g.lineTo(sx + 6.7, y + TILE - h + 8 * k); g.closePath(); g.fill();
     }
   }
 
@@ -138,6 +141,7 @@ export class Renderer {
         case 'crumble': this.fallingCrumbles.push({ x: e.x, y: e.y, vy: 0, life: 60 }); this.burst(e.x + 16, e.y + 16, this.world.tile, 8, 2, 0.3, 4); break;
         case 'shatter': this.burst(e.x + 16, e.y + 28, '#d9dcef', 10, 3, 0.35, 3); break;
         case 'door': this.doorAnim = 0; this.burst(e.x + 16, e.y + 10, '#ffffff', 16, 3, 0.05, 3); break;
+        case 'jam': this.burst(e.x, e.y, '#ffe066', 14, 3, 0.25, 3); this.shake = Math.max(this.shake, 4); break;
         case 'thud': this.burst(e.x + PW / 2, e.y, 'rgba(255,255,255,0.35)', 4, 1.2, 0.05, 3); break;
         case 'win': this.burst(e.x + 16, e.y + 8, '#ffe066', 40, 6, 0.2, 5); this.burst(e.x + 16, e.y + 8, col, 30, 5, 0.2, 5); break;
       }
@@ -150,7 +154,7 @@ export class Renderer {
     ctx.fillStyle = w.bg2;
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     let sx = 0, sy = 0;
-    if (this.shake > 0.3) { sx = (Math.random() - 0.5) * this.shake; sy = (Math.random() - 0.5) * this.shake; this.shake *= 0.86; } else this.shake = 0;
+    if (this.shake > 0.3) { sx = (Math.random() - 0.5) * this.shake; sy = (Math.random() - 0.5) * this.shake; }
     const s = this.scale * this.dpr;
     ctx.setTransform(s, 0, 0, s, (this.ox + sx) * this.dpr, (this.oy + sy) * this.dpr);
 
@@ -199,12 +203,10 @@ export class Renderer {
       this.drawCrumble(ctx, b.x + j, b.y, st > 0);
     }
     for (const fc of this.fallingCrumbles) {
-      fc.vy += 0.6; fc.y += fc.vy; fc.life--;
       ctx.globalAlpha = Math.max(0, fc.life / 60);
       this.drawCrumble(ctx, fc.x, fc.y, true);
       ctx.globalAlpha = 1;
     }
-    this.fallingCrumbles = this.fallingCrumbles.filter((c) => c.life > 0);
 
     // Pop spikes
     for (let i = 0; i < L.pops.length; i++) {
@@ -229,20 +231,24 @@ export class Renderer {
       ctx.beginPath(); ctx.moveTo(b.x + 6 + wob, y); ctx.lineTo(b.x + 26 + wob, y); ctx.lineTo(b.x + 16 + wob, y + 28); ctx.closePath(); ctx.fill();
       ctx.fillStyle = '#9aa0c3';
       ctx.beginPath(); ctx.moveTo(b.x + 16, y); ctx.lineTo(b.x + 26, y); ctx.lineTo(b.x + 16, y + 28); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#ff4d5e';
+      ctx.beginPath(); ctx.moveTo(b.x + 13, y + 20); ctx.lineTo(b.x + 19, y + 20); ctx.lineTo(b.x + 16, y + 28); ctx.closePath(); ctx.fill();
       ctx.fillStyle = '#5a5f7a'; ctx.fillRect(b.x + 4, y - 2, 24, 4);
     }
     // Saws
-    for (const saw of L.saws) {
-      const q = sawPos(saw, S.t);
+    for (let si = 0; si < L.saws.length; si++) {
+      const saw = L.saws[si], q = sawPos(saw, S.sawT[si]);
       ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.moveTo(saw.ax, saw.ay); ctx.lineTo(saw.bx, saw.by); ctx.stroke();
-      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(S.t * 0.25);
+      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(S.jam[si] ? S.sawT[si] * 0.25 + Math.sin(S.t) * 0.08 : S.sawT[si] * 0.25);
       ctx.fillStyle = '#c9cde6'; ctx.beginPath();
       for (let i = 0; i < 16; i++) {
         const a = (i / 16) * Math.PI * 2, rad = i % 2 ? saw.r - 4 : saw.r + 2;
         ctx.lineTo(Math.cos(a) * rad, Math.sin(a) * rad);
       }
       ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = S.jam[si] ? '#5ee6d2' : '#ff4d5e'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(0, 0, saw.r - 7, 0, Math.PI * 2); ctx.stroke();
       ctx.fillStyle = '#7d839f'; ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = '#2b2e44'; ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
@@ -250,7 +256,6 @@ export class Renderer {
 
     // Door
     const d = doorPos(L, S);
-    this.doorAnim = Math.min(1, this.doorAnim + 0.06);
     const shy = L.doorAlt && !S.doorMoved;
     this.drawDoor(ctx, d.x, d.y, f, this.doorAnim, shy);
 
@@ -269,18 +274,14 @@ export class Renderer {
 
     // Particles
     for (const pt of this.particles) {
-      pt.vy += pt.grav; pt.x += pt.vx; pt.y += pt.vy; pt.vx *= 0.98; pt.life -= pt.decay;
       ctx.globalAlpha = Math.max(0, pt.life);
       ctx.fillStyle = pt.color;
       ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.size * pt.life + 0.5, 0, Math.PI * 2); ctx.fill();
     }
     ctx.globalAlpha = 1;
-    this.particles = this.particles.filter((pt) => pt.life > 0);
-    if (this.particles.length > 400) this.particles.splice(0, this.particles.length - 400);
 
     // Floating texts
     for (const tx of this.texts) {
-      tx.life -= 0.012; tx.y -= 0.35;
       ctx.globalAlpha = Math.min(1, tx.life * 3);
       ctx.font = `800 ${tx.big ? 26 : 17}px "Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif`;
       ctx.textAlign = 'center';
@@ -288,12 +289,26 @@ export class Renderer {
       ctx.fillStyle = tx.color; ctx.fillText(tx.text, tx.x, tx.y);
     }
     ctx.globalAlpha = 1;
-    this.texts = this.texts.filter((tx) => tx.life > 0);
 
     if (this.flash > 0.01) {
-      ctx.fillStyle = `rgba(255,80,80,${this.flash})`; ctx.fillRect(0, 0, W, H); this.flash *= 0.8;
+      ctx.fillStyle = `rgba(255,80,80,${this.flash})`; ctx.fillRect(0, 0, W, H);
     }
+  }
+
+  // Advances visual effects at a fixed 60 Hz, so they look the same on 60 and 144 Hz screens.
+  tick() {
+    this.shake = this.shake > 0.3 ? this.shake * 0.86 : 0;
+    this.flash *= 0.8;
     this.squash += (1 - this.squash) * 0.18;
+    this.doorAnim = Math.min(1, this.doorAnim + 0.06);
+    this.blink = this.blink > 0 ? this.blink - 1 : Math.random() < 0.006 ? 8 : 0;
+    for (const fc of this.fallingCrumbles) { fc.vy += 0.6; fc.y += fc.vy; fc.life--; }
+    this.fallingCrumbles = this.fallingCrumbles.filter((c) => c.life > 0);
+    for (const pt of this.particles) { pt.vy += pt.grav; pt.x += pt.vx; pt.y += pt.vy; pt.vx *= 0.98; pt.life -= pt.decay; }
+    this.particles = this.particles.filter((pt) => pt.life > 0);
+    if (this.particles.length > 400) this.particles.splice(0, this.particles.length - 400);
+    for (const tx of this.texts) { tx.life -= 0.012; tx.y -= 0.35; }
+    this.texts = this.texts.filter((tx) => tx.life > 0);
   }
 
   drawCrumble(ctx, x, y, shaking) {
@@ -346,7 +361,6 @@ export class Renderer {
       ctx.fillRect(cx + ws / 2 - 6, by - hs + 4, 2, 6);
     }
     // Eyes
-    this.blink = this.blink > 0 ? this.blink - 1 : Math.random() < 0.006 ? 8 : 0;
     const look = p.face * 2.5, ey = by - hs * 0.62 + wob;
     ctx.fillStyle = '#ffffff';
     ctx.beginPath(); ctx.ellipse(cx - 5 + look, ey, 4, this.blink ? 0.8 : 4.5, 0, 0, Math.PI * 2);

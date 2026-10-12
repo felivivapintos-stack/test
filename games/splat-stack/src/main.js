@@ -21,13 +21,14 @@ const QUIPS = {
 };
 const WIN_QUIPS = ['Nailed it.', 'Smooth jelly.', 'The door has accepted you.', 'Look at you, alive!', 'Stacked and cracked.'];
 
-let save = { unlocked: 1, stars: [], best: [], skin: 'lime', sfx: true, music: true, totalDeaths: 0 };
+let save = { unlocked: 1, stars: [], best: [], bestTime: [], skin: 'lime', sfx: true, music: true, totalDeaths: 0 };
 let levelIndex = 0, L = null, S = null;
 let mode = 'boot'; // play | paused | complete | menu | ad
-let acc = 0, last = 0;
+let acc = 0, last = 0, fxAcc = 0;
 let completions = 0, lastAdAt = 0;
 let bannerTimer = null;
 let overlayShownAt = 0, advancing = false;
+let completeTimer = null, newRecord = false;
 const input = { l: false, r: false, j: false };
 const keys = { l: new Set(), r: new Set(), j: new Set() };
 
@@ -39,6 +40,8 @@ function starsFor(deaths, par) { return deaths <= par ? 3 : deaths <= par + 3 ? 
 
 // ---------- Level flow ----------
 function startLevel(i, { banner = true } = {}) {
+  clearTimeout(completeTimer);
+  lastComplete = null;
   levelIndex = Math.max(0, Math.min(LEVELS.length - 1, i));
   L = parseLevel(LEVELS[levelIndex]);
   S = createState(L);
@@ -48,12 +51,15 @@ function startLevel(i, { banner = true } = {}) {
   mode = 'play';
   platform.gameplayStart();
   updateHud();
-  const hint = touchMode && levelIndex === 0 ? 'Use the arrow buttons to move and the big button to jump.' : L.hint;
+  const controls = touchMode ? 'Arrows move, the big button jumps.' : '← → move, ↑ or Space jumps.';
+  const hint = levelIndex === 0 ? `${controls} ${L.hint}` : L.hint;
   if (banner) showBanner(`${levelIndex + 1}. ${L.name}`, hint);
 }
 
 function restart() {
   if (!L) return;
+  clearTimeout(completeTimer);
+  if (mode === 'complete') { startLevel(levelIndex, { banner: false }); return; }
   S = createState(L);
   R.setLevel(L, Math.floor(levelIndex / LEVELS_PER_WORLD));
   acc = 0;
@@ -81,18 +87,34 @@ function updateHud() {
   $('btn-skip').classList.toggle('hidden', !stuck);
 }
 
+function bumpDeaths() {
+  const el = $('hud-deaths');
+  el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
+}
+
 function handleEvents(events) {
   for (const e of events) {
     switch (e.type) {
       case 'die':
         audio.play(e.cause === 'lava' ? 'lava' : 'die');
         save.totalDeaths++;
+        persist();
+        bumpDeaths();
         R.say(pick(Math.random() < 0.5 ? QUIPS[e.cause] || QUIPS.any : QUIPS.any), e.x + 11, Math.max(40, e.y - 12));
         updateHud();
         break;
-      case 'jump': case 'land': case 'pop': case 'spring': case 'crumble': case 'shake': case 'drop': case 'shatter': case 'door': case 'bonk':
+      case 'jump': case 'land': case 'pop': case 'spring': case 'crumble': case 'shake': case 'drop': case 'shatter': case 'bonk': case 'thud': case 'respawn':
         audio.play(e.type);
-        if (e.type === 'door') R.say('Nope!', e.x + 16, e.y - 24, '#ffe58a', true);
+        break;
+      case 'door': {
+        audio.play('door');
+        const d = L.doorAlt || L.door;
+        R.say('Nope!', d.x + 16, d.y - 30, '#ffe58a', true);
+        break;
+      }
+      case 'jam':
+        audio.play('jam');
+        R.say('Jammed!', e.x, e.y - 28, '#9ff7ea', true);
         break;
       case 'win':
         audio.play('win');
@@ -109,11 +131,17 @@ function onWin() {
   const prev = save.stars[levelIndex] || 0;
   save.stars[levelIndex] = Math.max(prev, stars);
   save.best[levelIndex] = save.best[levelIndex] == null ? S.deaths : Math.min(save.best[levelIndex], S.deaths);
+  const secs = S.t / 60;
+  const prevTime = save.bestTime[levelIndex];
+  newRecord = prevTime != null && secs < prevTime;
+  save.bestTime[levelIndex] = prevTime == null ? secs : Math.min(prevTime, secs);
+  const starsBefore = totalStars() - save.stars[levelIndex] + prev;
+  const skinUnlocked = SKINS.some((k) => k.need > starsBefore && k.need <= totalStars());
   save.unlocked = Math.max(save.unlocked, Math.min(LEVELS.length, levelIndex + 2));
   persist();
   completions++;
-  if (stars === 3 || (levelIndex + 1) % LEVELS_PER_WORLD === 0) platform.happytime();
-  setTimeout(() => showComplete(stars, prev), 650);
+  if (skinUnlocked || (levelIndex + 1) % LEVELS_PER_WORLD === 0) platform.happytime();
+  completeTimer = setTimeout(() => { if (mode === 'complete') showComplete(stars, prev); }, 650);
 }
 
 async function goNext() {
@@ -138,10 +166,12 @@ async function runAd(kind) {
   mode = 'ad';
   const ok = await platform.ad(kind, {
     onStart: () => { audio.forcedMute = true; audio.apply(); },
-    onEnd: () => { audio.forcedMute = platform.muteSetting; audio.apply(); },
+    onEnd: () => {},
   });
-  audio.forcedMute = platform.muteSetting; audio.apply();
   lastAdAt = Date.now();
+  mode = 'resuming';
+  applyAudio();
+  if (audio.ctx && !document.hidden) audio.ctx.resume();
   mode = prevMode === 'ad' ? 'menu' : prevMode;
   return ok;
 }
@@ -176,20 +206,24 @@ function bind(panel, sel, fn) {
   panel.querySelectorAll(sel).forEach((el) => el.addEventListener('click', (ev) => { audio.play('click'); fn(ev, el); }));
 }
 
+let lastComplete = null;
 function showComplete(stars, prevStars) {
+  lastComplete = [stars, prevStars];
   const last = levelIndex === LEVELS.length - 1;
   const better = S.deaths > L.par ? `Finish with ${L.par} or fewer deaths for ★★★` : 'Perfect run!';
   showOverlay(`
     <h1>Level ${levelIndex + 1} done!</h1>
     <p class="quip">${pick(WIN_QUIPS)}</p>
     <div class="stars">${[0, 1, 2].map(() => `<div class="star">${STAR_SVG}</div>`).join('')}</div>
-    <div class="stat-row"><div>${S.deaths}<span>deaths</span></div><div>${L.par}<span>par</span></div><div>${save.best[levelIndex]}<span>best</span></div></div>
+    <div class="stat-row"><div>${S.deaths}<span>deaths</span></div><div>${L.par}<span>par</span></div><div>${save.best[levelIndex]}<span>fewest</span></div><div>${(S.t / 60).toFixed(1)}s<span>${newRecord ? 'new record!' : `best ${save.bestTime[levelIndex].toFixed(1)}s`}</span></div></div>
     <p>${better}</p>
     <div class="btns">
+      <button class="btn" data-a="levels">Levels</button>
       <button class="btn" data-a="retry">Retry</button>
       <button class="btn primary" data-a="next">${last ? 'Finish' : 'Next ▸'}</button>
     </div>`, (panel) => {
     bind(panel, '[data-a=retry]', () => startLevel(levelIndex, { banner: false }));
+    bind(panel, '[data-a=levels]', () => showLevels());
     bind(panel, '[data-a=next]', () => goNext());
     panel.querySelectorAll('.star').forEach((el, i) => {
       if (i < stars) setTimeout(() => { el.classList.add('on'); audio.play('star'); }, 250 + i * 220);
@@ -260,7 +294,7 @@ function showLevels() {
 }
 
 function showPauseFromMenu() {
-  if (S && !S.won) { mode = 'play'; showPause(); } else showLevels();
+  if (S && !S.won) { mode = 'play'; showPause(); } else if (lastComplete) { mode = 'complete'; showComplete(...lastComplete); }
 }
 
 function showSkins() {
@@ -320,6 +354,8 @@ window.addEventListener('keydown', (e) => {
     if (!$('overlay').classList.contains('hidden') && performance.now() - overlayShownAt > 400) goNext();
   } else if (mode === 'complete' && e.code === 'KeyR' && !e.repeat) {
     startLevel(levelIndex, { banner: false });
+  } else if (mode === 'menu' && e.code === 'Escape' && !e.repeat) {
+    showPauseFromMenu();
   }
 });
 window.addEventListener('keyup', (e) => {
@@ -349,7 +385,10 @@ function pollGamepad() {
   const pads = navigator.getGamepads ? navigator.getGamepads() : [];
   const gp = pads && [...pads].find(Boolean);
   const set = (k, on) => { if (on) keys[k].add('pad'); else keys[k].delete('pad'); };
-  if (!gp) return;
+  if (!gp) {
+    if (keys.l.has('pad') || keys.r.has('pad') || keys.j.has('pad')) { set('l', false); set('r', false); set('j', false); syncInput(); }
+    return;
+  }
   const ax = gp.axes[0] || 0, b = gp.buttons;
   set('l', ax < -0.4 || (b[14] && b[14].pressed));
   set('r', ax > 0.4 || (b[15] && b[15].pressed));
@@ -362,7 +401,7 @@ function pollGamepad() {
 function applyAudio() {
   audio.sfxOn = save.sfx;
   audio.musicOn = save.music;
-  audio.forcedMute = platform.muteSetting;
+  audio.forcedMute = mode === 'ad' || platform.muteSetting;
   audio.apply();
 }
 
@@ -370,7 +409,9 @@ function applyAudio() {
 function resize() {
   const w = window.innerWidth, h = window.innerHeight;
   const reserve = touchMode ? Math.max(56, Math.min(96, h * 0.17)) : 0;
-  R.resize(w, h, Math.min(2, window.devicePixelRatio || 1), reserve);
+  // Keep the HUD pills off the top rows of the level.
+  const top = Math.min(48, h * 0.09);
+  R.resize(w, h, Math.min(2, window.devicePixelRatio || 1), reserve, top);
   $('rotate').classList.toggle('hidden', !(h > w * 1.15 && window.matchMedia('(pointer: coarse)').matches));
 }
 
@@ -390,6 +431,8 @@ function frame(now) {
       if (S.won) { onWin(); break; }
     }
   }
+  fxAcc += dt;
+  while (fxAcc >= DT) { R.tick(); fxAcc -= DT; }
   if (L) R.draw(L, S, skin(), Math.min(1, acc / DT), now);
 }
 
@@ -413,7 +456,9 @@ async function boot() {
   applyAudio();
   platform.onSettings(() => applyAudio());
   // Land straight in gameplay: the first level not yet finished.
-  const firstOpen = Math.min(save.unlocked - 1, LEVELS.length - 1);
+  const unfinished = LEVELS.findIndex((_, i) => i < save.unlocked && !save.stars[i]);
+  const notPerfect = LEVELS.findIndex((_, i) => (save.stars[i] || 0) < 3);
+  const firstOpen = unfinished >= 0 ? unfinished : notPerfect >= 0 ? notPerfect : 0;
   platform.loadingStop();
   startLevel(firstOpen);
   requestAnimationFrame(frame);
