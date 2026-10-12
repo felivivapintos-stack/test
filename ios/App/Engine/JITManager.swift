@@ -38,19 +38,38 @@ final class JITManager: ObservableObject {
     private(set) var region = jit_region()
 
     init() {
-        if ProcessInfo.processInfo.operatingSystemVersion.majorVersion < 26 {
-            txm = .notPresent
-        } else {
-            switch jit_txm_status() {
-            case 1: txm = .present
-            case 0: txm = .notPresent
-            default: txm = .unknown
-            }
-        }
+        txm = Self.detectTXM()
         append("iOS \(UIDevice.current.systemVersion), TXM: \(txm.rawValue), get-task-allow: \(hasGetTaskAllow ? "sim" : "não")")
         if jit_is_debugged() {
             append("Depurador já ligado no arranque.")
             startWaiting()
+        }
+    }
+
+    /// Same rule StikDebug uses: TXM gates JIT from iOS 26 on A15/M2 and newer (iPhone14,2+),
+    /// and on every device iOS 27 supports except two iPad Pro models.
+    private static func detectTXM() -> TXMStatus {
+        let major = ProcessInfo.processInfo.operatingSystemVersion.majorVersion
+        guard major >= 26 else { return .notPresent }
+        let model = deviceModel
+        if major >= 27 {
+            return model == "iPad8,11" || model == "iPad8,12" ? .notPresent : .present
+        }
+        let pattern = #/^(iPhone|iPad)(\d+),(\d+)$/#
+        guard let match = model.wholeMatch(of: pattern),
+              let generation = Int(match.2), let variant = Int(match.3) else {
+            return .unknown
+        }
+        // StikDebug compares "major.minor" as a decimal: iPhone14,2 → 14.2, iPad14,5 → 14.5.
+        let version = Double(generation) + Double(variant) / pow(10, Double(String(variant).count))
+        return version >= (match.1 == "iPad" ? 14.5 : 14.2) ? .present : .notPresent
+    }
+
+    static var deviceModel: String {
+        var info = utsname()
+        uname(&info)
+        return withUnsafeBytes(of: &info.machine) { bytes in
+            String(decoding: bytes.prefix { $0 != 0 }, as: UTF8.self)
         }
     }
 

@@ -126,23 +126,32 @@ jobs:
           aarch64-w64-mingw32-clang -O2 wine/tests/hello.c -o hello-arm64.exe
           x86_64-w64-mingw32-clang -O2 wine/tests/hello.c -o hello-x64.exe
 
+      - name: Diagnostics
+        if: ${{ !cancelled() }}
+        run: |
+          ls -la "$WINE_INSTALL/bin" "$WINE_INSTALL/lib/wine" || true
+          file "$WINE_INSTALL"/bin/* || true
+          set +e
+          "$WINE_INSTALL/bin/wine" --version; echo "wine --version exit=$?"
+          WINEDEBUG=+loaddll,+process,err+all WINEPREFIX="$RUNNER_TEMP/diag" "$WINE_INSTALL/bin/wine" cmd /c echo hi 2>&1 | head -80
+          echo "exit=${PIPESTATUS[0]}"
+
       - name: "Test: wineboot"
-        id: wineboot
-        continue-on-error: true
+        if: ${{ !cancelled() }}
         run: |
           export WINEPREFIX="$RUNNER_TEMP/prefix" WINEDLLOVERRIDES="mscoree,mshtml="
           gtimeout 600 "$WINE_INSTALL/bin/wine" wineboot -i 2>&1 | tail -60
           test -d "$WINEPREFIX/drive_c/windows/system32"
 
       - name: "Test: native ARM64 exe"
-        continue-on-error: true
+        if: ${{ !cancelled() }}
         run: |
           export WINEPREFIX="$RUNNER_TEMP/prefix" WINEDEBUG=err+all
           gtimeout 300 "$WINE_INSTALL/bin/wine" ./hello-arm64.exe 2>&1 | tee arm64.log | tail -60
           grep -q "PCEmu bench" arm64.log
 
       - name: "Test: x86_64 exe through FEX"
-        continue-on-error: true
+        if: ${{ !cancelled() }}
         run: |
           export WINEPREFIX="$RUNNER_TEMP/prefix" WINEDEBUG=err+all
           cp fex/*.dll "$WINEPREFIX/drive_c/windows/system32/"

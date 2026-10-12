@@ -9,7 +9,7 @@ struct SystemView: View {
         NavigationStack {
             List {
                 Section("Dispositivo") {
-                    LabeledContent("Modelo", value: Self.modelIdentifier)
+                    LabeledContent("Modelo", value: JITManager.deviceModel)
                     LabeledContent("iOS", value: UIDevice.current.systemVersion)
                     LabeledContent("RAM total", value: Self.format(ProcessInfo.processInfo.physicalMemory))
                     LabeledContent("Memória disponível para a app", value: Self.format(UInt64(availableMemory)))
@@ -36,14 +36,6 @@ struct SystemView: View {
             }
             .navigationTitle("Sistema")
             .refreshable { availableMemory = os_proc_available_memory() }
-        }
-    }
-
-    private static var modelIdentifier: String {
-        var info = utsname()
-        uname(&info)
-        return withUnsafeBytes(of: &info.machine) { bytes in
-            String(decoding: bytes.prefix { $0 != 0 }, as: UTF8.self)
         }
     }
 

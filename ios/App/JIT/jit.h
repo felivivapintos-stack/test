@@ -18,9 +18,6 @@ bool jit_has_get_task_allow(void);
 /// True once a debugger (StikDebug, Xcode…) has attached: CS_DEBUGGED is set.
 bool jit_is_debugged(void);
 
-/// TXM/SPTM presence: 1 present, 0 absent, -1 unknown. Only meaningful on iOS 26+.
-int jit_txm_status(void);
-
 /// Allocates an RX region and its RW alias. With `txm`, uses the StikJIT
 /// universal breakpoint protocol; must only be called once CS_DEBUGGED is set.
 bool jit_region_create(jit_region *out, size_t size, bool txm);

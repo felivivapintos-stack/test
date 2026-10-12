@@ -1,7 +1,6 @@
 #include "jit.h"
 
 #include <CoreFoundation/CoreFoundation.h>
-#include <dirent.h>
 #include <errno.h>
 #include <libkern/OSCacheControl.h>
 #include <mach/mach.h>
@@ -67,33 +66,6 @@ bool jit_is_debugged(void) {
         return false;
     }
     return (flags & CS_DEBUGGED) != 0;
-}
-
-int jit_txm_status(void) {
-    // TXM firmware lives in the preboot volume under a per-install hash directory.
-    DIR *preboot = opendir("/private/preboot");
-    if (preboot == NULL) {
-        return -1;
-    }
-    bool saw_hash_dir = false;
-    int result = 0;
-    struct dirent *entry;
-    while ((entry = readdir(preboot)) != NULL) {
-        if (entry->d_name[0] == '.' || strlen(entry->d_name) < 32) {
-            continue;
-        }
-        saw_hash_dir = true;
-        char path[512];
-        snprintf(path, sizeof path,
-                 "/private/preboot/%s/usr/standalone/firmware/FUD/Ap,TrustedExecutionMonitor.img4",
-                 entry->d_name);
-        if (access(path, F_OK) == 0) {
-            result = 1;
-            break;
-        }
-    }
-    closedir(preboot);
-    return saw_hash_dir ? result : -1;
 }
 
 bool jit_region_create(jit_region *out, size_t size, bool txm) {
