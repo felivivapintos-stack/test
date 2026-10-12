@@ -74,7 +74,7 @@ export function solve(def, { maxDeaths = 6, layerNodes = 2_000_000, maxConfigs =
         }
         if (died) {
           while (N.p.dead) step(L, N, IDLE);
-          const k = splatKey(N, 16) + '|' + (L.saws.length ? N.t % L.sawCycle : 0) + (N.doorMoved ? 'm' : '');
+          const k = splatKey(N, 16) + '|' + (L.saws.length ? Math.floor((N.t % L.sawCycle) / 30) : 0) + (N.doorMoved ? 'm' : '');
           if (!next.has(k) && next.size < maxConfigs) next.set(k, N);
           continue;
         }

@@ -59,8 +59,9 @@ export class Renderer {
     this.stars = Array.from({ length: 40 }, (_, i) => ({ x: (i * 197) % W, y: (i * 89) % (H - 120), s: 1 + (i % 3), tw: i * 0.7 }));
   }
 
-  resize(cssW, cssH, dpr) {
-    const scale = Math.min(cssW / W, cssH / H);
+  // reserveBottom keeps the world clear of on-screen touch buttons.
+  resize(cssW, cssH, dpr, reserveBottom = 0) {
+    const scale = Math.min(cssW / W, (cssH - reserveBottom) / H);
     this.scale = scale;
     this.canvas.width = Math.round(cssW * dpr);
     this.canvas.height = Math.round(cssH * dpr);
@@ -68,7 +69,7 @@ export class Renderer {
     this.canvas.style.height = cssH + 'px';
     this.dpr = dpr;
     this.ox = (cssW - W * scale) / 2;
-    this.oy = (cssH - H * scale) / 2;
+    this.oy = (cssH - reserveBottom - H * scale) / 2;
   }
 
   setLevel(L, worldIndex) {
@@ -281,7 +282,7 @@ export class Renderer {
     for (const tx of this.texts) {
       tx.life -= 0.012; tx.y -= 0.35;
       ctx.globalAlpha = Math.min(1, tx.life * 3);
-      ctx.font = `800 ${tx.big ? 26 : 17}px "Baloo 2", system-ui, sans-serif`;
+      ctx.font = `800 ${tx.big ? 26 : 17}px "Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineWidth = 5; ctx.strokeStyle = 'rgba(0,0,0,0.55)'; ctx.strokeText(tx.text, tx.x, tx.y);
       ctx.fillStyle = tx.color; ctx.fillText(tx.text, tx.x, tx.y);
