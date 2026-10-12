@@ -27,6 +27,19 @@ Não escrever um tradutor de CPU nem uma camada DirectX de raiz. **Integrar** pr
 
 Núcleo partilhado: a pilha Wine+FEX+DX é a mesma; só muda o "host" (Darwin/Metal vs Linux/Vulkan).
 
+## Estado atual da app (`ios/`)
+| Função | Estado |
+|---|---|
+| JIT via StikDebug (incl. protocolo TXM) | ✅ feito, falta testar no iPhone |
+| Biblioteca: importar pasta/.exe da app Ficheiros | ✅ |
+| Análise do .exe (x86/x64, DirectX, XInput, Steam) | ✅ |
+| Definições por jogo (resolução, FPS, HUD, gráficos, Windows, argumentos) | ✅ guardadas; aplicadas quando o motor existir |
+| Comandos físicos (Xbox/PS/MFi) + controlos táteis no formato XInput | ✅ |
+| Sessão Metal com HUD (FPS, memória, input) | ✅ em modo de teste |
+| FEX-Emu ARM64EC/WOW64 compilado no CI e incluído na app | ✅ (ainda sem Wine para o carregar) |
+| **Wine para iOS** | ❌ o trabalho principal que falta |
+| **DXMT para iOS** | ❌ |
+
 ## Fases
 
 ### Fase 0 — Preparação (1–2 semanas)
@@ -41,10 +54,12 @@ Núcleo partilhado: a pilha Wine+FEX+DX é a mesma; só muda o "host" (Darwin/Me
    ARM64 gerado em runtime. Compilada no CI. **Falta testar no teu iPhone.**
    Nota: com TXM, toda a memória executável tem de ser reservada antes do detach → a cache de
    código do FEX tem de usar a região pré-alocada (64 MB por agora).
-2. [ ] Compilar FEX-Emu para iOS (Darwin): substituir syscalls Linux por equivalentes, páginas de 16 KB.
-3. [ ] Correr um binário x86-64 trivial dentro da app (sem Wine).
-4. [ ] Wine num só processo: wineserver em thread, sem fork/exec, ntdll unix portado para Darwin/iOS.
-5. [ ] `notepad.exe`/um `.exe` de consola a correr → **marco da PoC**.
+2. [x] FEX-Emu como DLL ARM64EC/WOW64 (corre *dentro* do Wine, por isso não precisa de ser
+   portado para Darwin) — compilado no CI com llvm-mingw.
+3. [ ] Wine para iOS (ARM64EC): lado unix compilado para arm64-apple-ios, wineserver numa
+   thread em vez de processo, sem fork/exec, páginas de 16 KB, alocador JIT do FEX ligado à
+   região pré-reservada pelo protocolo TXM.
+4. [ ] Um `.exe` de consola x64 a correr → **marco da PoC**.
 
 ### Fase 3 — Gráficos (2–3 meses)
 - [ ] Integrar DXMT; ligar o swapchain a um `CAMetalLayer` da app.

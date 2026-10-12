@@ -6,4 +6,4 @@ em dispositivos ARM64 (iPhone, iPad, Android e, mais tarde, Apple TV).
 - [`docs/INVESTIGACAO.md`](docs/INVESTIGACAO.md) — o que existe hoje (Vapor, Madeira, Winlator…) e como funciona por dentro.
 - [`docs/PLANO.md`](docs/PLANO.md) — arquitetura, fases, riscos e o que dá para fazer já.
 
-Alvo: **iOS/iPadOS**. Estado: Fase 2.1 — app de teste do JIT em [`ios/`](ios/). Instalação: [`docs/INSTALAR-IOS.md`](docs/INSTALAR-IOS.md).
+Alvo: **iOS/iPadOS**. App em [`ios/`](ios/) — biblioteca, controlos, sessão Metal e JIT feitos; o motor Windows (Wine para iOS) ainda falta. Estado detalhado em [`docs/PLANO.md`](docs/PLANO.md); instalação em [`docs/INSTALAR-IOS.md`](docs/INSTALAR-IOS.md).
