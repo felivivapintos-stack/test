@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct ContentView: View {
+struct JITView: View {
     @EnvironmentObject private var jit: JITManager
 
     var body: some View {
         NavigationStack {
             List {
                 Section("Estado") {
-                    LabeledContent("JIT", value: stateText)
+                    LabeledContent("JIT", value: jit.state.title)
                     LabeledContent("TXM", value: jit.txm.rawValue)
                     LabeledContent("get-task-allow", value: jit.hasGetTaskAllow ? "Sim" : "Não")
                 }
@@ -23,16 +23,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("PCEmu")
-        }
-    }
-
-    private var stateText: String {
-        switch jit.state {
-        case .idle: return "Inativo"
-        case .waiting: return "À espera…"
-        case .ready: return "Ativo"
-        case .failed: return "Falhou"
+            .navigationTitle("JIT")
         }
     }
 }

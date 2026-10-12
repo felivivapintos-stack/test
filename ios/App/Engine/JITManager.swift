@@ -12,6 +12,15 @@ enum JITState: Equatable {
     case waiting
     case ready
     case failed(String)
+
+    var title: String {
+        switch self {
+        case .idle: return "Inativo"
+        case .waiting: return "À espera…"
+        case .ready: return "Ativo"
+        case .failed: return "Falhou"
+        }
+    }
 }
 
 /// Acquires JIT through an external debugger (StikDebug) and verifies it by

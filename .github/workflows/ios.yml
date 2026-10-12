@@ -4,14 +4,78 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  # FEX-Emu revision built into the app. Bump to update.
+  FEX_REF: 14c92681f4d62cf84d901460e0358de09c8847a7
+
 jobs:
-  build:
+  fex:
+    name: FEX-Emu (ARM64EC/WOW64 DLLs)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Restore cached build
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: fex-out
+          key: fex-${{ env.FEX_REF }}-v1
+
+      - name: Install llvm-mingw
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ninja-build
+          gh release download -R mstorsjo/llvm-mingw -p '*-ucrt-ubuntu-*-x86_64.tar.xz' -O llvm-mingw.tar.xz
+          mkdir llvm-mingw && tar -xf llvm-mingw.tar.xz -C llvm-mingw --strip-components=1
+          echo "$PWD/llvm-mingw/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch FEX-Emu
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          git init -q FEX && cd FEX
+          git remote add origin https://github.com/FEX-Emu/FEX.git
+          git fetch -q --depth 1 origin "$FEX_REF" && git checkout -q FETCH_HEAD
+          git submodule update --init --depth 1 --recursive
+
+      - name: Build
+        if: steps.cache.outputs.cache-hit != 'true'
+        working-directory: FEX
+        run: |
+          for target in arm64ec wow64; do
+            case $target in arm64ec) triple=arm64ec ;; wow64) triple=aarch64 ;; esac
+            cmake -S . -B build_$target -G Ninja -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_TOOLCHAIN_FILE=Data/CMake/toolchain_mingw.cmake -DMINGW_TRIPLE=$triple-w64-mingw32 \
+              -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib/wine/aarch64-windows \
+              -DENABLE_LTO=False -DENABLE_ASSERTIONS=False -DENABLE_JEMALLOC_GLIBC_ALLOC=False \
+              -DBUILD_TESTING=False -DTUNE_ARCH=generic -DTUNE_CPU=none -DRANGES_NATIVE=OFF
+            cmake --build build_$target
+            DESTDIR="$PWD/../install" cmake --build build_$target -t install
+          done
+          mkdir -p ../fex-out
+          cp ../install/usr/lib/wine/aarch64-windows/lib*.dll ../fex-out/
+          echo "$FEX_REF" > ../fex-out/VERSION
+          ls -la ../fex-out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fex-dlls
+          path: fex-out
+
+  ios:
+    name: iOS app
+    needs: fex
     runs-on: macos-15
     defaults:
       run:
         working-directory: ios
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: fex-dlls
+          path: ios/Engine/fex
 
       - name: Install XcodeGen
         run: brew install xcodegen
