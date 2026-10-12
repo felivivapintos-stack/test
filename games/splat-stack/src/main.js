@@ -114,7 +114,7 @@ function handleEvents(events) {
       }
       case 'jam':
         audio.play('jam');
-        R.say('Jammed!', e.x, e.y - 28, '#9ff7ea', true);
+        R.say('Jammed!', e.x, e.y - 56, '#9ff7ea', true);
         break;
       case 'win':
         audio.play('win');
@@ -169,8 +169,7 @@ async function runAd(kind) {
     onEnd: () => {},
   });
   lastAdAt = Date.now();
-  mode = 'resuming';
-  applyAudio();
+  applyAudio({ adPlaying: false });
   if (audio.ctx && !document.hidden) audio.ctx.resume();
   mode = prevMode === 'ad' ? 'menu' : prevMode;
   return ok;
@@ -207,7 +206,7 @@ function bind(panel, sel, fn) {
 }
 
 let lastComplete = null;
-function showComplete(stars, prevStars) {
+function showComplete(stars, prevStars, again = false) {
   lastComplete = [stars, prevStars];
   const last = levelIndex === LEVELS.length - 1;
   const better = S.deaths > L.par ? `Finish with ${L.par} or fewer deaths for ★★★` : 'Perfect run!';
@@ -226,10 +225,11 @@ function showComplete(stars, prevStars) {
     bind(panel, '[data-a=levels]', () => showLevels());
     bind(panel, '[data-a=next]', () => goNext());
     panel.querySelectorAll('.star').forEach((el, i) => {
-      if (i < stars) setTimeout(() => { el.classList.add('on'); audio.play('star'); }, 250 + i * 220);
+      if (i < stars && again) el.classList.add('on');
+      else if (i < stars) setTimeout(() => { el.classList.add('on'); audio.play('star'); }, 250 + i * 220);
     });
     const unlockedSkin = SKINS.find((s) => s.need > 0 && totalStars() >= s.need && totalStars() - (stars - Math.min(stars, prevStars)) < s.need);
-    if (unlockedSkin) setTimeout(() => showBannerToast(`New skin unlocked: ${unlockedSkin.name}!`), 900);
+    if (unlockedSkin && !again) setTimeout(() => showBannerToast(`New skin unlocked: ${unlockedSkin.name}!`), 900);
   });
 }
 
@@ -273,35 +273,46 @@ function resume() {
   platform.gameplayStart();
 }
 
+// Where Back/Escape from Levels and Skins returns to.
+let menuReturn = null;
+function rememberReturn() {
+  if (mode === 'paused') menuReturn = () => { mode = 'play'; showPause(); };
+  else if (mode === 'complete') { const args = lastComplete; menuReturn = () => { mode = 'complete'; showComplete(args[0], args[1], true); }; }
+  else if (mode === 'end') menuReturn = showEnd;
+}
+
 function showLevels() {
+  if (mode !== 'menu') rememberReturn();
   mode = 'menu';
   platform.gameplayStop();
-  let html = '<h1>Levels</h1>';
+  let html = '<button class="close" data-a="back" aria-label="Back">×</button><h1>Levels</h1><div class="worlds">';
   WORLDS.forEach((w, wi) => {
-    html += `<h2>${w.name}</h2><div class="levels">`;
+    html += `<div class="world"><h2>${w.name}</h2><div class="levels">`;
     for (let i = wi * LEVELS_PER_WORLD; i < Math.min(LEVELS.length, (wi + 1) * LEVELS_PER_WORLD); i++) {
       const locked = i >= save.unlocked, st = save.stars[i] || 0;
       html += `<button class="lvl ${locked ? 'locked' : ''} ${i === levelIndex ? 'current' : ''}" data-i="${i}" ${locked ? 'disabled' : ''} aria-label="Level ${i + 1}">${i + 1}<small>${locked ? '' : '★'.repeat(st) + '☆'.repeat(3 - st)}</small></button>`;
     }
-    html += '</div>';
+    html += '</div></div>';
   });
-  html += `<p class="total">★ ${totalStars()} / ${LEVELS.length * 3}</p><div class="btns"><button class="btn" data-a="back">Back</button><button class="btn primary" data-a="skins">Skins</button></div>`;
+  html += `</div><p class="total">★ ${totalStars()} / ${LEVELS.length * 3}</p><div class="btns"><button class="btn" data-a="back">Back</button><button class="btn primary" data-a="skins">Skins</button></div>`;
   showOverlay(html, (panel) => {
     bind(panel, '.lvl:not(.locked)', (e, el) => startLevel(+el.dataset.i));
-    bind(panel, '[data-a=back]', () => { mode = 'play'; showPauseFromMenu(); });
+    bind(panel, '[data-a=back]', () => showPauseFromMenu());
     bind(panel, '[data-a=skins]', () => showSkins());
   });
 }
 
 function showPauseFromMenu() {
-  if (S && !S.won) { mode = 'play'; showPause(); } else if (lastComplete) { mode = 'complete'; showComplete(...lastComplete); }
+  if (menuReturn) menuReturn();
+  else { mode = 'play'; showPause(); }
 }
 
 function showSkins() {
+  if (mode !== 'menu') rememberReturn();
   mode = 'menu';
   platform.gameplayStop();
   const stars = totalStars();
-  let html = `<h1>Skins</h1><p class="quip">Earn stars to unlock. You have ★ ${stars}.</p><div class="skins">`;
+  let html = `<button class="close" data-a="back" aria-label="Back">×</button><h1>Skins</h1><p class="quip">Earn stars to unlock. You have ★ ${stars}.</p><div class="skins">`;
   SKINS.forEach((s) => {
     const locked = stars < s.need;
     html += `<button class="skin ${locked ? 'locked' : ''} ${s.id === save.skin ? 'sel' : ''}" data-id="${s.id}" ${locked ? 'disabled' : ''}><canvas width="112" height="112"></canvas>${locked ? `★ ${s.need}` : s.name}</button>`;
@@ -318,7 +329,7 @@ function showSkins() {
 }
 
 function showEnd() {
-  mode = 'menu';
+  mode = 'end';
   platform.happytime();
   showOverlay(`
     <h1>You beat Splat Stack!</h1>
@@ -354,7 +365,7 @@ window.addEventListener('keydown', (e) => {
     if (!$('overlay').classList.contains('hidden') && performance.now() - overlayShownAt > 400) goNext();
   } else if (mode === 'complete' && e.code === 'KeyR' && !e.repeat) {
     startLevel(levelIndex, { banner: false });
-  } else if (mode === 'menu' && e.code === 'Escape' && !e.repeat) {
+  } else if (mode === 'menu' && (e.code === 'Escape' || e.code === 'Backspace') && !e.repeat) {
     showPauseFromMenu();
   }
 });
@@ -398,10 +409,10 @@ function pollGamepad() {
 }
 
 // ---------- Audio ----------
-function applyAudio() {
+function applyAudio({ adPlaying = mode === 'ad' } = {}) {
   audio.sfxOn = save.sfx;
   audio.musicOn = save.music;
-  audio.forcedMute = mode === 'ad' || platform.muteSetting;
+  audio.forcedMute = adPlaying || platform.muteSetting;
   audio.apply();
 }
 
@@ -456,9 +467,10 @@ async function boot() {
   applyAudio();
   platform.onSettings(() => applyAudio());
   // Land straight in gameplay: the first level not yet finished.
-  const unfinished = LEVELS.findIndex((_, i) => i < save.unlocked && !save.stars[i]);
+  // Continue from the newest unlocked level; once it is finished, go after missing stars.
+  const newest = Math.min(save.unlocked, LEVELS.length) - 1;
   const notPerfect = LEVELS.findIndex((_, i) => (save.stars[i] || 0) < 3);
-  const firstOpen = unfinished >= 0 ? unfinished : notPerfect >= 0 ? notPerfect : 0;
+  const firstOpen = !save.stars[newest] ? newest : notPerfect >= 0 ? notPerfect : 0;
   platform.loadingStop();
   startLevel(firstOpen);
   requestAnimationFrame(frame);

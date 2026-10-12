@@ -44,10 +44,10 @@ export function parseLevel(def) {
   });
   if (!L.spawn || !L.door) throw new Error(`${def.name}: needs P and D`);
   for (const s of def.saws || []) {
-    const [c1, r1, c2, r2, period = 120, phase = 0] = s;
+    const [c1, r1, c2, r2, period = 120, phase = 0, radius = 18] = s;
     L.saws.push({
       ax: c1 * TILE + TILE / 2, ay: r1 * TILE + TILE / 2,
-      bx: c2 * TILE + TILE / 2, by: r2 * TILE + TILE / 2, period, phase, r: 18,
+      bx: c2 * TILE + TILE / 2, by: r2 * TILE + TILE / 2, period, phase, r: radius,
     });
   }
   L.sawCycle = L.saws.reduce((a, s) => lcm(a, s.period), 1);
@@ -171,6 +171,7 @@ function killedBy(L, S, p) {
     if (overlap(p.x, p.y, PW, PH, b.x + 8, b.y + d.y + 2, 16, 24)) return 'drop';
   }
   for (let i = 0; i < L.saws.length; i++) {
+    if (S.jam[i]) continue; // a jammed blade has stopped spinning and no longer cuts
     const s = L.saws[i], q = sawPos(s, S.sawT[i]);
     const nx = Math.max(p.x, Math.min(q.x, p.x + PW)), ny = Math.max(p.y, Math.min(q.y, p.y + PH));
     const dx = q.x - nx, dy = q.y - ny, r = s.r - 3;

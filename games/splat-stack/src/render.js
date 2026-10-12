@@ -77,6 +77,8 @@ export class Renderer {
     this.world = WORLDS[worldIndex % WORLDS.length];
     this.particles.length = 0; this.texts.length = 0; this.fallingCrumbles.length = 0;
     this.prev = null; this.doorAnim = 1;
+    this.lava = [];
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) if (tileAt(L, c, r) === LAVA) this.lava.push({ x: c * TILE, y: r * TILE });
     const g = this.static.getContext('2d');
     g.clearRect(0, 0, W, H);
     const w = this.world;
@@ -190,7 +192,6 @@ export class Renderer {
           ctx.lineTo(px, y + 9 + Math.sin(f * 0.08 + px * 0.09) * 2.5);
         }
         ctx.lineTo(x + TILE, y + TILE); ctx.closePath(); ctx.fill();
-        if (Math.random() < 0.004) this.particles.push({ x: x + Math.random() * TILE, y: y + 8, vx: 0, vy: -1.5 - Math.random(), life: 1, decay: 0.03, color: '#ffb347', size: 3, grav: 0.08 });
       }
     }
 
@@ -299,6 +300,9 @@ export class Renderer {
   tick() {
     this.shake = this.shake > 0.3 ? this.shake * 0.86 : 0;
     this.flash *= 0.8;
+    for (const lv of this.lava || []) {
+      if (Math.random() < 0.004) this.particles.push({ x: lv.x + Math.random() * TILE, y: lv.y + 8, vx: 0, vy: -1.5 - Math.random(), life: 1, decay: 0.03, color: '#ffb347', size: 3, grav: 0.08 });
+    }
     this.squash += (1 - this.squash) * 0.18;
     this.doorAnim = Math.min(1, this.doorAnim + 0.06);
     this.blink = this.blink > 0 ? this.blink - 1 : Math.random() < 0.006 ? 8 : 0;

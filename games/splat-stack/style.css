@@ -101,7 +101,14 @@ button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
 .stat-row { display: flex; justify-content: center; gap: 18px; font-weight: 800; font-size: 18px; }
 .stat-row span { color: var(--muted); font-weight: 700; font-size: 14px; display: block; }
 
-.levels { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.panel { position: relative; }
+.close {
+  position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14); font-size: 26px; font-weight: 900; line-height: 1;
+}
+.worlds { display: grid; gap: 0 14px; }
+.levels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.world { min-width: 0; }
 .lvl {
   aspect-ratio: 1; border-radius: 12px; background: rgba(255, 255, 255, 0.12); font-weight: 900; font-size: 20px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 3px 0 rgba(0,0,0,0.3);
@@ -122,7 +129,10 @@ button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
   .panel { padding: 14px 16px; }
   .star { width: 40px; height: 40px; }
   .btn { padding: 9px 16px; font-size: 15px; }
-  .levels { grid-template-columns: repeat(12, 1fr); gap: 5px; }
+  .worlds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .levels { gap: 5px; }
+  .panel .btns { margin-top: 8px; }
+  .panel .total { margin: 4px 0; }
   .lvl { font-size: 15px; border-radius: 9px; }
   .lvl small { font-size: 8px; }
   .panel h2 { margin: 8px 0 5px; font-size: 13px; }

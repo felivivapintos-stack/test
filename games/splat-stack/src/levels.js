@@ -1,10 +1,10 @@
 // 30 x 17 tiles. Legend:
 // # wall   ^ spikes   ~ lava   P start   D door   d where a shy door runs to
 // C crumbling block   p hidden spike   v falling spike   S spring
-// saws: [col1,row1, col2,row2, period, phase]
-// Saws stop when a splat sits in their path.
+// saws: [col1,row1, col2,row2, period, phase, radius=18]
+// Saws stop, and stop cutting, when a splat sits in their path.
 // par: deaths for 3 stars. tools/solve.mjs proves it is reachable and that
-// no hold-one-key strategy wins.
+// no hold-one-key strategy wins (except levels marked tutorial).
 
 export const LEVELS = [
   {
@@ -153,9 +153,10 @@ export const LEVELS = [
   },
   {
     name: "Jam Session",
-    hint: "Too fast to dodge. Saws hate getting stuck on things. Like you.",
+    tutorial: true, // walking in and dying once is the lesson
+    hint: "No room to jump it. Good thing blades jam on soft things. Like you.",
     par: 1,
-    saws: [[5,  14,  24,  14,  48,  0]],
+    saws: [[5, 14, 24, 14, 60, 0, 28]],
     map: [
       '##############################',
       '##############################',
@@ -169,7 +170,7 @@ export const LEVELS = [
       '##############################',
       '##############################',
       '##############################',
-      '#............................#',
+      '##############################',
       '#............................#',
       '#.P........................D.#',
       '##############################',
@@ -177,26 +178,26 @@ export const LEVELS = [
     ],
   },
   {
-    name: "Double Jam",
-    hint: "Two blades. You know what to do. Twice.",
-    par: 2,
-    saws: [[4,  14,  13,  14,  36,  0],  [17,  14,  26,  14,  40,  10]],
+    name: "Double Duty",
+    hint: "One splat, two jobs.",
+    par: 1,
+    saws: [[4, 14, 15, 14, 70, 0, 28]],
     map: [
       '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
-      '##############################',
       '#............................#',
       '#............................#',
-      '#.P............#...........D.#',
+      '#............................#',
+      '#............................#',
+      '#............................#',
+      '#............................#',
+      '#............................#',
+      '#............................#',
+      '#............................#',
+      '#.........................D..#',
+      '#...............##############',
+      '#...............##############',
+      '#...............##############',
+      '#.P..........^^^##############',
       '##############################',
       '##############################',
     ],
@@ -229,7 +230,7 @@ export const LEVELS = [
     name: "Boing",
     hint: "Springs launch you. Aim is your problem.",
     par: 0,
-    saws: [[15,  6,  15,  11,  90,  0]],
+    saws: [[15, 6, 15, 11, 90, 0]],
     map: [
       '##############################',
       '#............................#',
@@ -278,7 +279,7 @@ export const LEVELS = [
     name: "Saw Stairs",
     hint: "Up first. Then teach that blade some manners.",
     par: 2,
-    saws: [[15,  10,  25,  10,  56,  0]],
+    saws: [[15, 10, 25, 10, 56, 0]],
     map: [
       '##############################',
       '#............................#',
@@ -303,7 +304,7 @@ export const LEVELS = [
     name: "Lava Lamp",
     hint: "Build the bridge. Mind the blade.",
     par: 1,
-    saws: [[7,  12,  17,  12,  220,  0]],
+    saws: [[7, 12, 17, 12, 220, 0]],
     map: [
       '##############################',
       '#............................#',
@@ -400,7 +401,7 @@ export const LEVELS = [
     name: "Fan Club",
     hint: "Three blades. One floor that will not wait for you.",
     par: 0,
-    saws: [[9,  11,  9,  8,  52,  0],  [14,  11,  14,  8,  52,  17],  [19,  11,  19,  8,  52,  34]],
+    saws: [[9, 11, 9, 8, 52, 0], [14, 11, 14, 8, 52, 17], [19, 11, 19, 8, 52, 34]],
     map: [
       '##############################',
       '#............................#',
