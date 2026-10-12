@@ -77,3 +77,14 @@ táteis sobre o ecrã mapeados para XInput), sistema de ficheiros (sandbox da ap
 - https://www.gtaboom.com/gta-5-is-now-running-on-the-iphone-through-a-new-tool-called-vapor-1638
 - https://www.notebookcheck.net/Developer-shows-off-Red-Dead-Redemption-2-GTA-V-Fallout-4-and-other-AAA-PC-games-running-natively-on-iPhone-18-Pro.1405762.0.html
 - https://propakistani.pk/2026/09/28/iphone-18-pro-max-runs-gta-v-better-than-you-might-expect/amp/
+
+## Atualização: o Madeira é open source
+O Madeira está publicado em https://github.com/willfaust/Madeira (GPL-3.0-or-later), com IPAs
+nas releases. Já tem: Wine 11.4 em ARM64EC num só processo (wineserver numa thread), FEX,
+DXMT (D3D9/10/11), D3D12 próprio, WoW64 (jogos de 32 bits), Steam, controlos, JIT via
+StikDebug/StikJIT e correção do problema do registo x18 (que o iOS pode pôr a zero).
+Requisitos: iOS 26+, JIT e "Memory+". A compilação só é possível num Mac e precisa de
+entradas que não estão no repositório (LLVM compilado para iOS, runtime VC++ da Microsoft…).
+
+Também se confirmou no banco de testes do CI que o Wine oficial no macOS ARM é morto ao
+executar código PE (não usa `MAP_JIT`), ou seja, falta exatamente o trabalho que o Madeira já fez.
