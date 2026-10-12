@@ -1,4 +1,4 @@
-name: iOS build
+name: Build
 
 on:
   push:
@@ -7,6 +7,8 @@ on:
 env:
   # FEX-Emu revision built into the app. Bump to update.
   FEX_REF: 14c92681f4d62cf84d901460e0358de09c8847a7
+  # Wine release the iOS port is based on (patches in wine/patches).
+  WINE_REF: wine-11.19
 
 jobs:
   fex:
@@ -61,6 +63,92 @@ jobs:
         with:
           name: fex-dlls
           path: fex-out
+
+  wine-macos:
+    name: Wine (macOS ARM64 testbed)
+    needs: fex
+    runs-on: macos-15
+    timeout-minutes: 300
+    env:
+      WINE_INSTALL: ${{ github.workspace }}/wine-install
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: fex-dlls
+          path: fex
+
+      - name: Install tools
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          brew install -q bison flex coreutils
+          echo "$(brew --prefix bison)/bin" >> "$GITHUB_PATH"
+          echo "$(brew --prefix flex)/bin" >> "$GITHUB_PATH"
+          gh release download -R mstorsjo/llvm-mingw -p '*-ucrt-macos-universal.tar.xz' -O "$RUNNER_TEMP/llvm-mingw.tar.xz"
+          mkdir -p "$RUNNER_TEMP/llvm-mingw"
+          tar -xf "$RUNNER_TEMP/llvm-mingw.tar.xz" -C "$RUNNER_TEMP/llvm-mingw" --strip-components=1
+          echo "$RUNNER_TEMP/llvm-mingw/bin" >> "$GITHUB_PATH"
+
+      - name: Restore cached Wine
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: wine-install
+          key: wine-macos-${{ env.WINE_REF }}-${{ hashFiles('wine/patches/**') }}-v1
+
+      - name: Fetch Wine and apply patches
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          git clone -q --depth 1 --branch "$WINE_REF" https://gitlab.winehq.org/wine/wine.git wine-src
+          for patch in wine/patches/*.patch; do
+            [ -e "$patch" ] || continue
+            echo "Applying $patch"
+            git -C wine-src apply "$GITHUB_WORKSPACE/$patch"
+          done
+
+      - name: Build Wine
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir wine-build && cd wine-build
+          ../wine-src/configure CC=/usr/bin/clang CXX=/usr/bin/clang++ \
+            --prefix="$WINE_INSTALL" --enable-archs=arm64ec,aarch64 --disable-tests \
+            --without-x --without-freetype --without-gstreamer --without-sane --without-cups \
+            --without-krb5 --without-gphoto --without-pcap --without-usb --without-vulkan \
+            > configure.log 2>&1 || { tail -50 configure.log; exit 1; }
+          grep -iE "warning|error" configure.log | tail -40 || true
+          make -j"$(sysctl -n hw.ncpu)" > make.log 2>&1 || { grep -B5 -A5 -iE " error|error:" make.log | tail -120; exit 1; }
+          make install > install.log 2>&1 || { tail -50 install.log; exit 1; }
+
+      - name: Build test programs
+        run: |
+          aarch64-w64-mingw32-clang -O2 wine/tests/hello.c -o hello-arm64.exe
+          x86_64-w64-mingw32-clang -O2 wine/tests/hello.c -o hello-x64.exe
+
+      - name: "Test: wineboot"
+        id: wineboot
+        continue-on-error: true
+        run: |
+          export WINEPREFIX="$RUNNER_TEMP/prefix" WINEDLLOVERRIDES="mscoree,mshtml="
+          gtimeout 600 "$WINE_INSTALL/bin/wine" wineboot -i 2>&1 | tail -60
+          test -d "$WINEPREFIX/drive_c/windows/system32"
+
+      - name: "Test: native ARM64 exe"
+        continue-on-error: true
+        run: |
+          export WINEPREFIX="$RUNNER_TEMP/prefix" WINEDEBUG=err+all
+          gtimeout 300 "$WINE_INSTALL/bin/wine" ./hello-arm64.exe 2>&1 | tee arm64.log | tail -60
+          grep -q "PCEmu bench" arm64.log
+
+      - name: "Test: x86_64 exe through FEX"
+        continue-on-error: true
+        run: |
+          export WINEPREFIX="$RUNNER_TEMP/prefix" WINEDEBUG=err+all
+          cp fex/*.dll "$WINEPREFIX/drive_c/windows/system32/"
+          "$WINE_INSTALL/bin/wine" reg add 'HKLM\Software\Microsoft\Wow64\amd64' /ve /d libarm64ecfex.dll /f
+          gtimeout 300 "$WINE_INSTALL/bin/wine" ./hello-x64.exe 2>&1 | tee x64.log | tail -60
+          grep -q "PCEmu bench" x64.log
 
   ios:
     name: iOS app
