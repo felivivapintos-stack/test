@@ -8,7 +8,10 @@
 - **Sem Mac:** a app é compilada no GitHub Actions (runners macOS), instalada com o SideStore e o
   JIT é ativado com o StikDebug. Só é preciso um PC Windows/Linux uma vez (emparelhamento).
   Ver [INSTALAR-IOS.md](INSTALAR-IOS.md).
-- iPhone recente ajuda muito (≥8 GB RAM para jogos grandes).
+- Dispositivo de teste: **iPhone 13 mini (A15, 4 GB RAM, iOS 27)**. Chega para desenvolver e
+  para jogos de PC leves/antigos (DX9/DX11, ≤2 GB RAM). Jogos AAA como o GTA V precisam de
+  muito mais memória do que o iOS dá a uma app num aparelho de 4 GB → para esses é preciso
+  um iPhone com 8 GB+ (15 Pro ou mais recente).
 
 ## Decisão de arquitetura
 Não escrever um tradutor de CPU nem uma camada DirectX de raiz. **Integrar** projetos existentes:

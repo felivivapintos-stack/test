@@ -1,7 +1,12 @@
 # Instalar e testar no iPhone (sem Mac)
 
-A app é compilada na nuvem pelo GitHub Actions (que tem Macs). Tu só precisas do iPhone e,
-**uma única vez**, de um PC Windows ou Linux para a configuração inicial.
+A app é compilada na nuvem pelo GitHub Actions (que tem Macs). Tu só precisas do iPhone.
+No iOS 27 o ficheiro de emparelhamento pode ser gerado no próprio iPhone (SideStore + Side
+Installer, ver https://techybuff.com/enable-jit-iphone-without-computer-ios-27/). Se isso falhar,
+usa um PC Windows ou Linux **uma única vez**.
+
+Dispositivo de teste: iPhone 13 mini (A15, 4 GB RAM), iOS 27 → tem TXM, por isso a app usa o
+protocolo `universal.js`. No iOS 27 só as apps com este protocolo mantêm o JIT.
 
 ## Configuração única
 1. **Modo de programador** no iPhone: Definições → Privacidade e segurança → Modo de programador.
