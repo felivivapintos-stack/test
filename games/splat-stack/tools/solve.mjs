@@ -5,7 +5,9 @@
 import { parseLevel, createState, cloneState, step, doorPos, TILE } from '../src/sim.js';
 import { LEVELS } from '../src/levels.js';
 
-const STEP = 5;
+// Frames each decision is held. SOLVE_STEP=10 gives a "human" pace (6 inputs a second)
+// that cannot rely on frame-perfect tricks.
+const STEP = Number(process.env.SOLVE_STEP) || 5;
 const ACTIONS = [];
 for (const dir of [-1, 0, 1]) for (const j of [false, true]) ACTIONS.push({ l: dir < 0, r: dir > 0, j });
 const IDLE = { l: false, r: false, j: false };

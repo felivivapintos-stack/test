@@ -211,12 +211,20 @@ function die(L, S, cause) {
 function updateSplats(L, S) {
   for (let i = 0; i < S.splats.length; i++) {
     const s = S.splats[i];
+    const prevBottom = s.y + PH;
     s.vy = Math.min(s.vy + GRAV, MAX_FALL);
     s.y += s.vy;
     solids(L, S, s.x, s.y, PW, PH, true, i, hits);
-    if (hits.length) {
-      let top = Infinity;
-      for (const h of hits) top = Math.min(top, h.y);
+    // Land on things that were below us. A corpse made inside spikes or lava still
+    // rests on top of them, but only if it is mostly over them: grazing a spike from
+    // the side, or appearing next to another corpse, must never lift a splat.
+    let top = Infinity;
+    for (const h of hits) {
+      const fromAbove = h.y >= prevBottom - 1;
+      const mostlyOver = h.k !== 's' && Math.min(s.x + PW, h.x + h.w) - Math.max(s.x, h.x) >= PW / 2;
+      if (fromAbove || mostlyOver) top = Math.min(top, h.y);
+    }
+    if (top !== Infinity) {
       if (s.vy > 2) S.events.push({ type: 'thud', x: s.x, y: top });
       s.y = top - PH;
       s.vy = 0;

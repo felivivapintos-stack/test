@@ -129,11 +129,11 @@ export const LEVELS = [
   },
   {
     name: "Stack Overflow",
-    hint: "One of you was not enough. Two might be.",
+    hint: "One of you is not enough. Stand on yourself and look up.",
     par: 2,
     map: [
       '##############################',
-      '#............................#',
+      '#................v...........#',
       '#............................#',
       '#............................#',
       '#............................#',

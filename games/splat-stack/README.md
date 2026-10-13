@@ -50,6 +50,7 @@ O `par` em `src/levels.js` é comparado com esse resultado. Corre-o depois de mu
 Além disso, verifica que:
 - quando o par é maior do que o mínimo, existe mesmo uma rota com exatamente esse número de mortes;
 - os níveis marcados `tutorial` (só o Jam Session) podem ser ganhos a andar em frente, de propósito;
+- `SOLVE_STEP=10 node tools/solve.mjs` repete a prova a ritmo humano (6 decisões por segundo), para apanhar níveis que só se passam com timing ao frame;
 - nenhum nível se ganha só a segurar uma tecla (→, → + salto ou saltos ritmados).
 
 ## Integração com o CrazyGames (`src/platform.js`)
