@@ -284,7 +284,7 @@ export class Renderer {
     // Floating texts
     for (const tx of this.texts) {
       ctx.globalAlpha = Math.min(1, tx.life * 3);
-      ctx.font = `800 ${tx.big ? 26 : 17}px "Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif`;
+      ctx.font = `600 ${tx.big ? 26 : 18}px Fredoka, "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineWidth = 5; ctx.strokeStyle = 'rgba(0,0,0,0.55)'; ctx.strokeText(tx.text, tx.x, tx.y);
       ctx.fillStyle = tx.color; ctx.fillText(tx.text, tx.x, tx.y);

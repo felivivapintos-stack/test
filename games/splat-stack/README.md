@@ -64,11 +64,11 @@ Além disso, verifica que:
   quando o anúncio acaba (`adFinished`).
 - O som é desligado durante os anúncios e respeita a definição `muteAudio` do CrazyGames.
 - O progresso é guardado com `SDK.data` (conta CrazyGames), com `localStorage` como alternativa.
-- Sem imagens, fontes nem áudio externos (todo o som é sintetizado). O pacote tem cerca de 25 KB.
+- Sem imagens nem áudio externos (todo o som é sintetizado). As fontes Fredoka (títulos, números, botões) e Outfit (textos) vêm dentro do jogo em `fonts/`. O pacote tem cerca de 85 KB.
 
 ## Publicar no CrazyGames
 
-1. `sh tools/build.sh` cria `dist/splat-stack.zip` (index.html, style.css, src/).
+1. `sh tools/build.sh` cria `dist/splat-stack.zip` (index.html, style.css, src/, fonts/).
 2. No [CrazyGames Developer Portal](https://developer.crazygames.com/), cria o jogo como HTML5 e envia o zip.
 3. Testa na pré-visualização deles com `?crazygames_sandbox=1` (anúncios falsos).
 4. Material de submissão: descrição, controlos (setas/WASD + Espaço/W/↑, R recomeça, Esc pausa) e
@@ -79,6 +79,7 @@ Além disso, verifica que:
 
 ```
 index.html, style.css   página, HUD, menus, controlos táteis
+fonts/                  Fredoka e Outfit (woff2, licença SIL OFL)
 src/sim.js              física e regras determinísticas (partilhadas com o solucionador)
 src/levels.js           os 24 níveis em ASCII
 src/render.js           desenho em canvas, partículas, skins

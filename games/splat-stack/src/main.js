@@ -460,7 +460,9 @@ async function boot() {
   window.addEventListener('resize', resize);
   resize();
   setupTouch();
-  await platform.init();
+  // Load the faces before the first frame so canvas text never flashes in a fallback font.
+  const fonts = document.fonts ? Promise.all(['600 20px Fredoka', '500 16px Outfit'].map((f) => document.fonts.load(f))).catch(() => {}) : null;
+  await Promise.race([Promise.all([platform.init(), fonts]), new Promise((r) => setTimeout(r, 4500))]);
   platform.loadingStart();
   const loaded = platform.load();
   if (loaded) save = { ...save, ...loaded };
