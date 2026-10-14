@@ -41,7 +41,7 @@ jobs:
             -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_BENCHMARKS=Off -DLLVM_ENABLE_ZLIB=Off -DLLVM_ENABLE_ZSTD=Off
           ninja -C ../host llvm-tblgen
           cmake -G Ninja -S llvm -B ../ios -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_ARCHITECTURES=arm64 \
-            -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_BUILD_TYPE=Release -DCMAKE_MACOSX_BUNDLE=OFF \
             -DLLVM_HOST_TRIPLE=arm64-apple-ios17.0 -DLLVM_DEFAULT_TARGET_TRIPLE=arm64-apple-ios17.0 \
             -DLLVM_TARGET_ARCH=host -DLLVM_TARGETS_TO_BUILD="" -DLLVM_ENABLE_PROJECTS="" \
             -DLLVM_BUILD_TOOLS=Off -DLLVM_INCLUDE_TOOLS=Off -DLLVM_INCLUDE_UTILS=Off \
@@ -74,6 +74,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: ours
+
+      - name: Select Xcode 26+
+        run: |
+          ls -d /Applications/Xcode*.app
+          xcode=$(ls -d /Applications/Xcode_2[6-9]*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$xcode" ] || { echo "No Xcode 26+ on this runner"; exit 1; }
+          sudo xcode-select -s "$xcode"
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
 
       - name: Fetch Madeira and submodules
         run: |
@@ -113,6 +122,12 @@ jobs:
       - name: FEX (iOS)
         working-directory: madeira
         run: bash build/fex-ios/build.sh 2>&1 | tail -30
+
+      - name: FreeType
+        working-directory: madeira
+        run: |
+          git clone -q --depth 1 --branch VER-2-13-3 https://github.com/freetype/freetype.git research/freetype
+          bash build/freetype-ios/build.sh 2>&1 | tail -5
 
       - name: Wine unix side
         working-directory: madeira
