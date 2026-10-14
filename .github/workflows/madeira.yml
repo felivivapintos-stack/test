@@ -129,7 +129,15 @@ jobs:
 
       - name: FEX (iOS)
         working-directory: madeira
-        run: bash build/fex-ios/build.sh 2>&1 | tail -30
+        run: |
+          # Same options as build/fex-ios/build.sh, plus the processor: recent CMake leaves
+          # CMAKE_SYSTEM_PROCESSOR empty for iOS and FEX refuses to configure without it.
+          cmake -S FEX -B FEX/build-ios -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_SYSTEM_PROCESSOR=arm64 \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_OSX_DEPLOYMENT_TARGET=17.0 \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_THUNKS=OFF -DBUILD_FEXCONFIG=OFF \
+            -DBUILD_FEX_LINUX_TESTS=OFF -DENABLE_FEX_ALLOCATOR=OFF -DENABLE_ASSERTIONS=OFF \
+            -DENABLE_CLANG_THUNKS=ON -DENABLE_CCACHE=ON 2>&1 | tail -15
+          bash build/fex-ios/build.sh 2>&1 | tail -30
 
       - name: FreeType
         working-directory: madeira
