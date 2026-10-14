@@ -2,6 +2,9 @@ name: Madeira
 
 on:
   push:
+    paths:
+      - madeira/**
+      - .github/workflows/madeira.yml
   workflow_dispatch:
 
 concurrency:
