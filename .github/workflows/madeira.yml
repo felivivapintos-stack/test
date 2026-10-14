@@ -9,6 +9,9 @@ env:
   MADEIRA_REF: 48f976429c189f8396e23d251d8a82f43c705922
   # llvm-project commit Madeira's DXMT shader compiler is built against (docs/BUILDING.md).
   LLVM_SHORT_REF: 8dfdcc7b7
+  # Our app's identity, so it installs next to the original Madeira.
+  APP_NAME: PCEmu
+  APP_BUNDLE_ID: com.felivivapintos.pcemu
 
 jobs:
   llvm-ios:
@@ -155,20 +158,21 @@ jobs:
           mkdir -p Madeira/x86_64-vcruntime
           xcodebuild -project Madeira.xcodeproj -scheme Madeira -configuration Debug \
             -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO build 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(missing|not found)|BUILD" | tail -80
+            MADEIRA_BUNDLE_IDENTIFIER="$APP_BUNDLE_ID" CODE_SIGNING_ALLOWED=NO build 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(missing|not found)|BUILD" | tail -80
 
       - name: Package IPA
         working-directory: madeira/app
         run: |
           mkdir -p ipa/Payload
           cp -R build/Build/Products/Debug-iphoneos/Madeira.app ipa/Payload/
+          /usr/libexec/PlistBuddy -c "Set :CFBundleDisplayName $APP_NAME" ipa/Payload/Madeira.app/Info.plist
           codesign --force --sign - --entitlements Madeira/Madeira.entitlements ipa/Payload/Madeira.app || true
-          cd ipa && zip -qry ../Madeira.ipa Payload && ls -la ../Madeira.ipa
+          cd ipa && zip -qry "../$APP_NAME.ipa" Payload && ls -la "../$APP_NAME.ipa"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Madeira-ipa
-          path: madeira/app/Madeira.ipa
+          name: ${{ env.APP_NAME }}-ipa
+          path: madeira/app/${{ env.APP_NAME }}.ipa
 
       - uses: actions/upload-artifact@v4
         if: failure()
