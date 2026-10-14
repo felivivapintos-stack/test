@@ -128,9 +128,8 @@ jobs:
         with:
           path: |
             madeira/app/Madeira/*.a
-            madeira/FEX/build-ios/FEXCore/Source/*.a
-            madeira/FEX/build-ios/External
-          key: native-${{ env.MADEIRA_REF }}-${{ hashFiles('ours/madeira/patches/**', 'ours/madeira/tools/**') }}-v1
+            madeira/FEX/build-ios
+          key: native-${{ env.MADEIRA_REF }}-${{ hashFiles('ours/madeira/patches/**', 'ours/madeira/tools/**') }}-v2
 
       - name: Restore cached GnuTLS + FFmpeg
         if: steps.native-cache.outputs.cache-hit != 'true'
@@ -292,8 +291,7 @@ jobs:
         with:
           path: |
             madeira/app/Madeira/*.a
-            madeira/FEX/build-ios/FEXCore/Source/*.a
-            madeira/FEX/build-ios/External
+            madeira/FEX/build-ios
           key: ${{ steps.native-cache.outputs.cache-primary-key }}
 
       - name: Build app
