@@ -243,6 +243,15 @@ jobs:
       - name: DXMT
         working-directory: madeira
         run: |
+          # airconv's helper shaders, generated like DXMT's meson build does
+          # (metalir_generator + hexdump_generator); Madeira's script expects them.
+          mkdir -p build/dxmt-ios/shader-headers
+          for sh in air_msad air_samplepos air_tessellation; do
+            (cd build/dxmt-ios/shader-headers \
+             && xcrun -sdk macosx metal -std=metal3.1 --target=air64-apple-macos14.0 \
+                  -o $sh.air -c "$GITHUB_WORKSPACE/madeira/dxmt/src/airconv/shaders/$sh.metal" \
+             && xxd -n $sh -i $sh.air $sh.h)
+          done
           bash build/dxmt-ios/build.sh > dxmt.log 2>&1 || {
             tail -8 dxmt.log
             for e in build/dxmt-ios/obj/*.err; do
