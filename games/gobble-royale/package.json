@@ -1,0 +1,10 @@
+{
+  "name": "gobble-royale",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "balance": "node tools/balance.mjs",
+    "test": "node tools/balance.mjs 6",
+    "build": "sh tools/build.sh"
+  }
+}
