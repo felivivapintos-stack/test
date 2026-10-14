@@ -275,7 +275,7 @@ jobs:
           # StikJIT.framework's interface was emitted by Swift 6.4, which writes module
           # selectors (Swift::String); Xcode 26's Swift 6.2 only reads Swift.String.
           find Frameworks/StikJIT.xcframework -name '*.swiftinterface' -exec \
-            sed -i '' -E 's/\b(Swift|Foundation|StikJIT|_Concurrency)::/\1./g' {} +
+            perl -pi -e 's/\b(Swift|Foundation|StikJIT|_Concurrency)::/$1./g' {} +
           xcodebuild -project Madeira.xcodeproj -scheme Madeira -configuration Debug \
             -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
             MADEIRA_BUNDLE_IDENTIFIER="$APP_BUNDLE_ID" CODE_SIGNING_ALLOWED=NO build 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(missing|not found)|BUILD" | tail -80
