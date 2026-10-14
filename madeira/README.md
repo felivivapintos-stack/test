@@ -14,3 +14,24 @@ precisares de um Mac:
 As nossas alterações ficam em `patches/`, para ser fácil atualizar para versões novas do
 Madeira. Como o Madeira é GPL-3.0, tudo o que distribuirmos tem de continuar open source,
 com as licenças e avisos originais.
+
+## Estado da compilação (14/10/2026)
+| Passo | Estado |
+|---|---|
+| LLVM para iOS | ✅ (em cache) |
+| GnuTLS, FFmpeg, FreeType | ✅ |
+| FEX (FEXCore + alocador + externos) | ✅ |
+| Wine iOS: ntdll (37/37), wineserver (46/46), win32u | ✅ |
+| DXMT (87/87) + conversor de shaders | ✅ |
+| Emparelhamento remoto (Rust) | ✅ |
+| App: compilação Swift/Obj-C | ✅ |
+| App: ligação final | ⏳ faltavam 4 funções de terminfo (corrigido em `tools/terminfo_stubs.c`, por confirmar) |
+| `.ipa` e teste no iPhone | ⏳ |
+
+Entradas não documentadas do Madeira que o workflow cria: `wine/build-macos` (Wine
+configurado para macOS, só cabeçalhos gerados), a `libwineserver.a` base
+(`tools/wineserver-base.sh`), os cabeçalhos dos shaders do airconv e as bibliotecas
+`JemallocLibs`/externas do FEX.
+
+**Bloqueio atual:** os minutos do GitHub Actions da conta esgotaram-se (repositório
+privado; os runners macOS contam 10×). Tornar o repositório público dá minutos ilimitados.
