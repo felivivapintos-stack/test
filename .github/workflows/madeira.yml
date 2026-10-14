@@ -4,6 +4,10 @@ on:
   push:
   workflow_dispatch:
 
+concurrency:
+  group: madeira-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   # Madeira revision the app is built from (our changes: madeira/patches).
   MADEIRA_REF: 48f976429c189f8396e23d251d8a82f43c705922
@@ -51,7 +55,8 @@ jobs:
             -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_BENCHMARKS=Off -DLLVM_INCLUDE_EXAMPLES=Off \
             -DLLVM_ENABLE_ZLIB=Off -DLLVM_ENABLE_ZSTD=Off -DLLVM_ENABLE_LIBXML2=Off \
             -DLLVM_TABLEGEN="$PWD/../host/bin/llvm-tblgen" -DLLVM_NATIVE_TOOL_DIR="$PWD/../host/bin"
-          ninja -C ../ios
+          # Only the libraries: the iOS linker rejects the host-style flags of the tool targets.
+          ninja -C ../ios $(ninja -C ../ios -t targets all | grep -oE '^lib/libLLVM[A-Za-z0-9_]+\.a' | sort -u)
           mkdir -p ../llvm-out/lib
           cp -R llvm/include ../llvm-out/src-include
           cp -R ../ios/include ../llvm-out/build-include
