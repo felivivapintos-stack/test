@@ -122,7 +122,18 @@ jobs:
           mv llvm-out/build-include madeira/toolchains/llvm-ios-build/include
           mv llvm-out/lib madeira/toolchains/llvm-ios-build/lib
 
+      - name: Restore cached native libraries
+        id: native-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            madeira/app/Madeira/*.a
+            madeira/FEX/build-ios/FEXCore/Source/*.a
+            madeira/FEX/build-ios/External
+          key: native-${{ env.MADEIRA_REF }}-${{ hashFiles('ours/madeira/patches/**', 'ours/madeira/tools/**') }}-v1
+
       - name: Restore cached GnuTLS + FFmpeg
+        if: steps.native-cache.outputs.cache-hit != 'true'
         id: deps-cache
         uses: actions/cache/restore@v4
         with:
@@ -140,17 +151,17 @@ jobs:
           key: deps-${{ env.MADEIRA_REF }}-v1
 
       - name: GnuTLS
-        if: steps.deps-cache.outputs.cache-hit != 'true'
+        if: steps.native-cache.outputs.cache-hit != 'true' && steps.deps-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: bash build/gnutls-ios/build.sh 2>&1 | tail -30
 
       - name: FFmpeg
-        if: steps.deps-cache.outputs.cache-hit != 'true'
+        if: steps.native-cache.outputs.cache-hit != 'true' && steps.deps-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: bash build/ffmpeg/build.sh 2>&1 | tail -30
 
       - name: Save GnuTLS + FFmpeg
-        if: steps.deps-cache.outputs.cache-hit != 'true'
+        if: steps.native-cache.outputs.cache-hit != 'true' && steps.deps-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: |
@@ -167,6 +178,7 @@ jobs:
           key: ${{ steps.deps-cache.outputs.cache-primary-key }}
 
       - name: FEX (iOS)
+        if: steps.native-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: |
           # Same options as build/fex-ios/build.sh, plus the processor: recent CMake leaves
@@ -180,12 +192,14 @@ jobs:
           bash build/fex-ios/build.sh 2>&1 | tail -30
 
       - name: FreeType
+        if: steps.native-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: |
           git clone -q --depth 1 --branch VER-2-13-3 https://github.com/freetype/freetype.git research/freetype
           bash build/freetype-ios/build.sh 2>&1 | tail -5
 
       - name: llvm-mingw
+        if: steps.native-cache.outputs.cache-hit != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -193,6 +207,7 @@ jobs:
           tar -xf "$RUNNER_TEMP/llvm-mingw.tar.xz" -C madeira/toolchains
 
       - name: Restore cached Wine macOS tree
+        if: steps.native-cache.outputs.cache-hit != 'true'
         id: wine-cache
         uses: actions/cache/restore@v4
         with:
@@ -200,7 +215,7 @@ jobs:
           key: wine-build-macos-${{ env.MADEIRA_REF }}-v1
 
       - name: Wine macOS tree (config.h, generated headers, tools)
-        if: steps.wine-cache.outputs.cache-hit != 'true'
+        if: steps.native-cache.outputs.cache-hit != 'true' && steps.wine-cache.outputs.cache-hit != 'true'
         working-directory: madeira/wine
         run: |
           # Undocumented input of build/ntdll-unix, build/wineserver and build/win32u-unix:
@@ -215,13 +230,14 @@ jobs:
           ls -la include/config.h include/dwrite.h tools/winebuild/winebuild tools/widl/widl
 
       - name: Save Wine macOS tree
-        if: steps.wine-cache.outputs.cache-hit != 'true'
+        if: steps.native-cache.outputs.cache-hit != 'true' && steps.wine-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: madeira/wine/build-macos
           key: ${{ steps.wine-cache.outputs.cache-primary-key }}
 
       - name: Wine unix side
+        if: steps.native-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: |
           show_errors() {
@@ -241,6 +257,7 @@ jobs:
           ls -la app/Madeira/lib{ntdll_unix,wineserver,win32u_unix}.a
 
       - name: DXMT
+        if: steps.native-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: |
           # airconv's helper shaders, generated like DXMT's meson build does
@@ -265,8 +282,19 @@ jobs:
           cp build/dxmt-ios/libdxmt_combined.a app/Madeira/
 
       - name: Remote pairing (Rust)
+        if: steps.native-cache.outputs.cache-hit != 'true'
         working-directory: madeira
         run: bash build/rppairing-ios/build.sh 2>&1 | tail -30
+
+      - name: Save native libraries
+        if: steps.native-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            madeira/app/Madeira/*.a
+            madeira/FEX/build-ios/FEXCore/Source/*.a
+            madeira/FEX/build-ios/External
+          key: ${{ steps.native-cache.outputs.cache-primary-key }}
 
       - name: Build app
         working-directory: madeira/app
@@ -279,7 +307,12 @@ jobs:
             perl -pi -e 's/\bStikJIT:://g; s/\b(Swift|Foundation|_Concurrency)::/$1./g' {} +
           xcodebuild -project Madeira.xcodeproj -scheme Madeira -configuration Debug \
             -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
-            MADEIRA_BUNDLE_IDENTIFIER="$APP_BUNDLE_ID" CODE_SIGNING_ALLOWED=NO build 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(missing|not found)|BUILD" | tail -80
+            MADEIRA_BUNDLE_IDENTIFIER="$APP_BUNDLE_ID" CODE_SIGNING_ALLOWED=NO build > xcodebuild.log 2>&1 || {
+              grep -E "error:" xcodebuild.log | sort -u | head -40
+              grep -A40 -E "Undefined symbols|ld: (warning: )?(library|framework) not found|duplicate symbol" xcodebuild.log | head -120
+              exit 1
+            }
+            grep -E "BUILD SUCCEEDED" xcodebuild.log
 
       - name: Package IPA
         working-directory: madeira/app
