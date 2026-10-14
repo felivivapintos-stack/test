@@ -282,8 +282,10 @@ jobs:
             exit 1
           }
           grep -E "Results:|Built:" dxmt.log
+          xcrun -sdk iphoneos clang -arch arm64 -miphoneos-version-min=17.0 -O2 \
+            -c ../ours/madeira/tools/terminfo_stubs.c -o build/dxmt-ios/terminfo_stubs.o
           libtool -static -o build/dxmt-ios/libdxmt_combined.a build/dxmt-ios/libdxmt_unix.a \
-            toolchains/llvm-ios-build/lib/libLLVM*.a
+            build/dxmt-ios/terminfo_stubs.o toolchains/llvm-ios-build/lib/libLLVM*.a
           cp build/dxmt-ios/libdxmt_combined.a app/Madeira/
 
       - name: Remote pairing (Rust)
