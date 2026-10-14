@@ -124,7 +124,7 @@ jobs:
 
       - name: Restore cached GnuTLS + FFmpeg
         id: deps-cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             madeira/toolchains/gnutls-ios
@@ -149,6 +149,23 @@ jobs:
         working-directory: madeira
         run: bash build/ffmpeg/build.sh 2>&1 | tail -30
 
+      - name: Save GnuTLS + FFmpeg
+        if: steps.deps-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            madeira/toolchains/gnutls-ios
+            madeira/toolchains/ffmpeg-ios
+            madeira/app/Madeira/libgmp.a
+            madeira/app/Madeira/libnettle.a
+            madeira/app/Madeira/libhogweed.a
+            madeira/app/Madeira/libgnutls.a
+            madeira/app/Madeira/libavformat.a
+            madeira/app/Madeira/libavcodec.a
+            madeira/app/Madeira/libswresample.a
+            madeira/app/Madeira/libavutil.a
+          key: ${{ steps.deps-cache.outputs.cache-primary-key }}
+
       - name: FEX (iOS)
         working-directory: madeira
         run: |
@@ -158,7 +175,7 @@ jobs:
             -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_OSX_DEPLOYMENT_TARGET=17.0 \
             -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_THUNKS=OFF -DBUILD_FEXCONFIG=OFF \
             -DBUILD_FEX_LINUX_TESTS=OFF -DENABLE_FEX_ALLOCATOR=OFF -DENABLE_ASSERTIONS=OFF \
-            -DENABLE_CLANG_THUNKS=ON -DENABLE_CCACHE=ON > fex-configure.log 2>&1 \
+            -DENABLE_CLANG_THUNKS=ON -DENABLE_CCACHE=ON -DTUNE_CPU=none -DTUNE_ARCH=generic > fex-configure.log 2>&1 \
             || { grep -B2 -A12 "CMake Error" fex-configure.log; exit 1; }
           bash build/fex-ios/build.sh 2>&1 | tail -30
 
