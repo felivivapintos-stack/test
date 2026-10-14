@@ -243,7 +243,14 @@ jobs:
       - name: DXMT
         working-directory: madeira
         run: |
-          bash build/dxmt-ios/build.sh 2>&1 | tail -40
+          bash build/dxmt-ios/build.sh > dxmt.log 2>&1 || {
+            tail -8 dxmt.log
+            for e in build/dxmt-ios/obj/*.err; do
+              grep -q "error" "$e" && { echo "== $e"; grep -m10 -A3 "error" "$e"; }
+            done
+            exit 1
+          }
+          grep -E "Results:|Built:" dxmt.log
           libtool -static -o build/dxmt-ios/libdxmt_combined.a build/dxmt-ios/libdxmt_unix.a \
             toolchains/llvm-ios-build/lib/libLLVM*.a
           cp build/dxmt-ios/libdxmt_combined.a app/Madeira/
