@@ -224,9 +224,16 @@ jobs:
       - name: Wine unix side
         working-directory: madeira
         run: |
-          bash build/ntdll-unix/build.sh 2>&1 | tail -40
-          bash build/wineserver/build.sh 2>&1 | tail -40
-          bash build/win32u-unix/build.sh 2>&1 | tail -40
+          show_errors() {
+            for e in build/*/obj/*.err build/*/obj/err-*.txt; do
+              [ -s "$e" ] && grep -q "error" "$e" && { echo "== $e"; grep -m8 -B2 "error" "$e"; }
+            done
+            return 1
+          }
+          for part in ntdll-unix wineserver win32u-unix; do
+            bash build/$part/build.sh > $part.log 2>&1 || { tail -15 $part.log; show_errors; }
+            grep -E "Results:|Failed:" $part.log || true
+          done
           ls -la app/Madeira/lib{ntdll_unix,wineserver,win32u_unix}.a
 
       - name: DXMT
