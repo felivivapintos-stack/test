@@ -25,13 +25,13 @@ com as licenças e avisos originais.
 | DXMT (87/87) + conversor de shaders | ✅ |
 | Emparelhamento remoto (Rust) | ✅ |
 | App: compilação Swift/Obj-C | ✅ |
-| App: ligação final | ⏳ faltavam 4 funções de terminfo (corrigido em `tools/terminfo_stubs.c`, por confirmar) |
-| `.ipa` e teste no iPhone | ⏳ |
+| App: ligação final | ✅ (funções de terminfo em `tools/terminfo_stubs.c`) |
+| `.ipa` | ✅ publicado em Releases → `pcemu-latest` (`PCEmu.ipa`) |
+| Teste no iPhone | ⏳ |
 
 Entradas não documentadas do Madeira que o workflow cria: `wine/build-macos` (Wine
 configurado para macOS, só cabeçalhos gerados), a `libwineserver.a` base
 (`tools/wineserver-base.sh`), os cabeçalhos dos shaders do airconv e as bibliotecas
 `JemallocLibs`/externas do FEX.
 
-**Bloqueio atual:** os minutos do GitHub Actions da conta esgotaram-se (repositório
-privado; os runners macOS contam 10×). Tornar o repositório público dá minutos ilimitados.
+O repositório é público (minutos ilimitados no GitHub Actions).
