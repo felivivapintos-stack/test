@@ -7,6 +7,9 @@ on:
       - .github/workflows/madeira.yml
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: madeira-${{ github.ref }}
   cancel-in-progress: true
@@ -333,6 +336,17 @@ jobs:
         with:
           name: ${{ env.APP_NAME }}-ipa
           path: madeira/app/${{ env.APP_NAME }}.ipa
+
+      - name: Publish to the "latest" release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        working-directory: madeira/app
+        run: |
+          notes="Compilado de ${GITHUB_SHA::7} (Madeira ${MADEIRA_REF::7}). Instala com o SideStore: ver docs/INSTALAR-PCEMU.md."
+          gh release view pcemu-latest -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create pcemu-latest -R "$GITHUB_REPOSITORY" --title "PCEmu (última versão)" --notes "$notes" --prerelease --target "$GITHUB_SHA"
+          gh release edit pcemu-latest -R "$GITHUB_REPOSITORY" --notes "$notes"
+          gh release upload pcemu-latest "$APP_NAME.ipa" -R "$GITHUB_REPOSITORY" --clobber
 
       - uses: actions/upload-artifact@v4
         if: failure()
