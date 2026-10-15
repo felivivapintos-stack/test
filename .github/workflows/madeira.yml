@@ -309,6 +309,7 @@ jobs:
         working-directory: madeira/app
         run: |
           mkdir -p Madeira/x86_64-vcruntime
+          bash ../build/stage-licenses.sh
           # StikJIT.framework's interface was emitted by Swift 6.4, which writes module
           # selectors (Swift::String); Xcode 26's Swift 6.2 only reads Swift.String. The
           # module's own selector is dropped: it has an enum also named StikJIT.
