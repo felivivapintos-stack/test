@@ -90,3 +90,14 @@ src/main.js             ciclo de jogo, controlos, menus, anúncios
 tools/solve.mjs         solucionador que prova os níveis e o par
 tools/build.sh          zip para enviar
 ```
+
+## Material da loja
+
+`store/` tem as capas, os vídeos de pré-visualização e `store/SUBMISSION.md` com os passos e os textos
+para o formulário do CrazyGames. Para os voltar a gerar depois de mudar o jogo (precisa de ffmpeg):
+
+```
+python3 -m http.server 8765 &                                          # nesta pasta
+SOLVE_STEP=10 node tools/promo/record-inputs.mjs 1 7 6 > tools/promo/inputs.json
+node tools/promo/render.cjs store
+```
