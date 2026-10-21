@@ -35,6 +35,6 @@ NODE_PATH=$(npm root -g) node tools/story-test.js witness   # campanha completa 
 ```
 Arquitetura: `js/data.js` (conteúdo) · `js/engine.js` (regras, sem DOM) · `js/game.js` (dia, economia) · `js/story.js` (campanha) · `js/ui.js` + `js/apps.js` (DeskOS) · `js/main.js` (fluxo) · `js/audio.js` (sons sintetizados, TTS) · `js/llm.js` (IA opcional) · `js/mods.js`.
 
-Plano e análise do concorrente: [`PLANO.md`](PLANO.md).
+Plano e análise do concorrente: [`PLANO.md`](PLANO.md) · Estratégia de mercado e roadmap: [`ESTRATEGIA.md`](ESTRATEGIA.md).
 
 > Sátira. As marcas são fictícias. Se alguém alguma vez te pedir cartões-presente ao telefone, desliga: é burla. Sempre.
