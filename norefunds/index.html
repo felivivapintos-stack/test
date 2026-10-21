@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NO REFUNDS</title>
+<meta name="description" content="A satirical scam call-center sim. Build your script deck, read your marks, hit quota — and live with it.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="desktop" hidden>
+  <div id="wallpaper">
+    <div class="wp-logo">TOTALLY LEGIT<br>SOLUTIONS LLC</div>
+    <div class="wp-sub">"Your problem is our opportunity"</div>
+  </div>
+  <div id="icons"></div>
+  <div id="windows"></div>
+  <div id="toasts"></div>
+  <div id="taskbar">
+    <button id="start-btn">◆ DeskOS</button>
+    <div id="tasks"></div>
+    <div id="tray">
+      <div class="tray-item" id="tray-day"></div>
+      <div class="tray-item quota" title="Today's gross vs quota"><div class="qbar"><div id="qfill"></div></div><span id="qtext"></span></div>
+      <div class="tray-item" id="tray-cash" title="Your personal cut"></div>
+      <div class="tray-item heat" title="Police heat"><span>🔥</span><div class="hbar"><div id="hfill"></div></div></div>
+      <button class="tray-item" id="tray-sound" title="Sound">🔊</button>
+      <div class="tray-item" id="tray-clock"></div>
+    </div>
+  </div>
+  <div id="start-menu" hidden></div>
+</div>
+<div id="overlay" hidden></div>
+<div id="boot"></div>
+
+<script src="js/util.js"></script>
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/story.js"></script>
+<script src="js/llm.js"></script>
+<script src="js/apps.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
