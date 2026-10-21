@@ -104,7 +104,7 @@
     r.lang = 'en-US'; r.interimResults = true; r.maxAlternatives = 1;
     r.onresult = (e) => { let s = ''; for (const res of e.results) s += res[0].transcript; onText(s, e.results[e.results.length - 1].isFinal); };
     r.onend = onEnd; r.onerror = onEnd;
-    r.start();
+    try { r.start(); } catch (e) { NR.toast && NR.toast('Microphone unavailable here.', 'warn'); return null; }
     return r;
   };
 })(window.NR);
