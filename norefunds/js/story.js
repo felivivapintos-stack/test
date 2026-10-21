@@ -178,9 +178,9 @@ You'll walk away with nothing. But you'll walk away.`, { actions: [{ id: 'send',
 
     // Which ending applies after the review of the last day (or null to continue).
     ending(G, review) {
+      if (G.mode === 'story' && review.day >= 10 && G.flags.witness) return 'witness';
       if (review.fired) return 'fired';
       if (G.mode !== 'story' || review.day < 10) return null;
-      if (G.flags.witness) return 'witness';
       if (G.flags.promo && review.made) return 'kingpin';
       if (G.heat >= 70) return 'fugitive';
       return 'walkaway';

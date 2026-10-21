@@ -455,9 +455,25 @@
       body.replaceChildren(el('h3', 'Settings'), chk('sound', 'Sound effects'), chk('music', 'Hold music'), chk('voice', 'Victim voices (browser text-to-speech)'),
         el('label.row', 'Clock speed ', speed),
         el('p.muted', '🔒 Privacy: NO REFUNDS records nothing. The mic (optional) uses your browser\'s speech recognition and the text never leaves this page — unless you enable AI mode below, which sends call text to the provider you choose.'),
-        NR.llm ? NR.llm.settingsPanel() : null);
+        NR.llm ? NR.llm.settingsPanel() : null,
+        modsPanel());
     },
   });
+
+  function modsPanel() {
+    const ta = el('textarea', { rows: 5, style: { width: '100%' }, placeholder: 'Paste a mod JSON here (see mods/utility-shutoff.json)…' });
+    const msg = el('div.muted');
+    const list = el('div', ...NR.mods.map((m, i) => el('div.row', el('span.grow', `${m.enabled === false ? '⏸' : '✅'} ${m.data.name || 'Unnamed mod'}`),
+      el('button', { onclick: () => { m.enabled = m.enabled === false; NR.store.set('mods', NR.mods); msg.textContent = 'Reload the page to apply.'; NR.refreshApp('settings'); } }, m.enabled === false ? 'Enable' : 'Disable'),
+      el('button', { onclick: () => { NR.mods.splice(i, 1); NR.store.set('mods', NR.mods); msg.textContent = 'Removed. Reload the page to apply.'; NR.refreshApp('settings'); } }, 'Remove'))));
+    return el('div.panel', { style: { marginTop: '10px' } }, el('h3', '🧩 Mods'),
+      el('p.muted', 'Add scripts, traits, cards, lines and tips with JSON. Mods are plain data — they cannot run code.'),
+      list, ta,
+      el('div.row', el('button', { onclick: () => {
+        try { const data = JSON.parse(ta.value); NR.validateMod(data); NR.mods.push({ data, enabled: true }); NR.store.set('mods', NR.mods); msg.textContent = `Installed "${data.name || 'mod'}". Reload the page to apply.`; ta.value = ''; }
+        catch (e) { msg.textContent = '⚠ ' + e.message; }
+      } }, 'Install mod'), msg));
+  }
 
   // =================================================================== HELP
   NR.registerApp('help', {
