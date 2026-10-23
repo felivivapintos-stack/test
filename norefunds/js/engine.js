@@ -154,7 +154,11 @@
       if (c) this.hand.push(c);
     }
 
-    say(who, text, tag) { const e = { who, text, tag }; this.log.push(e); return e; }
+    say(who, text, tag) {
+      // In party mode a human voices the victim; the engine only keeps score.
+      if (this.party && who === 'them') return null;
+      const e = { who, text, tag }; this.log.push(e); return e;
+    }
 
     start() {
       const greet = NR.fill(NR.pick(NR.GREETINGS), this.ctx);
@@ -328,6 +332,12 @@
     }
 
     beginPayment() {
+      if (this.party) {
+        this.state = 'reading';
+        this.payout.codes = this.party.cards;
+        this.say('sys', `💳 ${this.v.first} agreed to pay! Victim: read your cards from your phone. Caller: type them into Redeem.`);
+        return;
+      }
       if (this.scam.pay === 'gift') {
         this.state = 'store';
         this.say('sys', `${this.v.first} is driving to the store to buy ${this.ctx.gift} cards. Keep them on the line…`);
@@ -443,6 +453,7 @@
 
     repeat() {
       if (this.state !== 'reading') return;
+      if (this.party) { this.say('you', 'Sorry, could you read that again?'); return; }
       this.patience -= 1;
       this.say('you', 'Sorry, could you read that again?');
       for (const c of this.payout.codes) {
@@ -463,7 +474,7 @@
 
     report() {
       if (this.state === 'done') return null;
-      const was = this.v.baiter;
+      const was = this.party ? this.party.baiter : this.v.baiter;
       this.say('sys', was ? '🚩 Correct! That was a scambaiter. Number blacklisted.' : '🚩 That was a real person. They hang up, confused.');
       this.end(was ? 'reported' : 'falsereport');
       return was;
@@ -486,4 +497,5 @@
     }
   }
   NR.Call = Call;
+  NR.giftCode = giftCode;
 })(window.NR);

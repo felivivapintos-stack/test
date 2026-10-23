@@ -20,6 +20,7 @@ Corre no browser, offline, sem instalar nada: abre `index.html`.
 - **História (10 dias):** o chefe Vance, a jornalista Nadia, o professor Harold, a tua avó Rosa, o detetive Okafor. Seis finais.
 - **Turno infinito:** as quotas sobem até tu partires.
 - **Desafio diário:** a mesma *seed* para toda a gente, 3 dias, melhor pontuação.
+- **🎉 Grupo — Scammers vs Baiters (2–8 jogadores):** juntem-se numa chamada de voz (Discord) e partilhem o ecrã do anfitrião. Em cada ronda, um jogador é o burlão e outro é a vítima. A vítima abre o jogo no telemóvel (botão **📱 I'm the victim** ou o link terminado em `#victim`), mete o código que aparece no ecrã e recebe uma ficha secreta: personagem, traços, um objetivo secreto e os seus cartões-presente. Algumas vítimas são, em segredo, **scambaiters** com cartões falsos. Não há servidor: os dois aparelhos geram a mesma personagem a partir do código.
 
 ## Opcional
 - **Vozes:** o TTS do próprio browser (grátis, offline).
@@ -32,8 +33,9 @@ Corre no browser, offline, sem instalar nada: abre `index.html`.
 node tools/sim.js 4000                                      # equilíbrio: milhares de chamadas simuladas
 NODE_PATH=$(npm root -g) node tools/smoke.js /tmp/shots     # joga um dia no Chromium e tira screenshots
 NODE_PATH=$(npm root -g) node tools/story-test.js witness   # campanha completa (plain | witness | kingpin)
+NODE_PATH=$(npm root -g) node tools/party-test.js /tmp/shots # modo de grupo com dois browsers (anfitrião + telemóvel)
 ```
-Arquitetura: `js/data.js` (conteúdo) · `js/engine.js` (regras, sem DOM) · `js/game.js` (dia, economia) · `js/story.js` (campanha) · `js/ui.js` + `js/apps.js` (DeskOS) · `js/main.js` (fluxo) · `js/audio.js` (sons sintetizados, TTS) · `js/llm.js` (IA opcional) · `js/mods.js`.
+Arquitetura: `js/data.js` (conteúdo) · `js/engine.js` (regras, sem DOM) · `js/game.js` (dia, economia) · `js/story.js` (campanha) · `js/ui.js` + `js/apps.js` (DeskOS) · `js/main.js` (fluxo) · `js/audio.js` (sons sintetizados, TTS) · `js/llm.js` (IA opcional) · `js/mods.js` · `js/party.js` (modo de grupo).
 
 Plano e análise do concorrente: [`PLANO.md`](PLANO.md) · Estratégia de mercado e roadmap: [`ESTRATEGIA.md`](ESTRATEGIA.md).
 

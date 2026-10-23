@@ -145,7 +145,7 @@ table.list tr:hover td { background: #fffbe6; }
 .leadcard.story { border-color: #8e44ad; background: #fbf4ff; }
 
 /* ---------------------------------------------------------- overlay */
-#overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 9800; display: flex; align-items: center; justify-content: center; padding: 16px; }
+#overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 9950; display: flex; align-items: center; justify-content: center; padding: 16px; }
 .modal { background: var(--win); border: 2px solid; border-color: #fff #444 #444 #fff; max-width: 640px; width: 100%; max-height: 92vh; overflow: auto; box-shadow: 0 10px 40px rgba(0,0,0,.6); }
 .modal .titlebar { cursor: default; }
 .modal .mb { padding: 14px; }
@@ -215,3 +215,20 @@ table.list tr:hover td { background: #fffbe6; }
   #icons { flex-direction: row; right: 10px; bottom: auto; }
   .icon { width: 70px; }
 }
+
+/* ---------------------------------------------------------- party */
+#boot { overflow-y: auto; }
+.victim-wrap { width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 10px; text-align: left; padding-block: 10px; }
+.victim-sheet { background: var(--win); color: var(--ink); padding: 14px; border: 2px solid; border-color: #fff #444 #444 #fff; transition: filter .2s; }
+.victim-sheet.blur { filter: blur(12px); }
+.victim-sheet h2 { margin: 8px 0 0; }
+.victim-sheet h3 { margin: 12px 0 4px; }
+.victim-sheet .role { font: 900 22px 'Impact', 'Arial Black', sans-serif; padding: 6px 10px; color: #fff; text-align: center; letter-spacing: 1px; }
+.victim-sheet .role.real { background: var(--good); }
+.victim-sheet .role.baiter { background: var(--bad); }
+.victim-sheet .trait { background: #fff; border-left: 4px solid var(--title); padding: 6px 8px; margin-bottom: 6px; }
+.victim-sheet .objective { background: #fff6d5; border: 2px dashed var(--warn); padding: 8px; font-weight: bold; }
+.victim-sheet .cards { display: grid; gap: 6px; }
+.victim-sheet .gcard { display: flex; justify-content: space-between; gap: 8px; background: #fff; border: 1px solid #bbb; padding: 8px; flex-wrap: wrap; }
+.victim-sheet .gcard b { font-size: 16px; letter-spacing: 1px; }
+.victim-wrap .row b { color: #d5f5e3; }

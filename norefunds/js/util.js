@@ -46,7 +46,7 @@ window.NR = window.NR || {};
     if (m && m[2]) {
       m[2].replace(/([.#])([\w-]+)/g, (_, t, v) => { if (t === '.') node.classList.add(v); else node.id = v; });
     }
-    if (attrs && (typeof attrs !== 'object' || attrs instanceof Node || Array.isArray(attrs))) { kids.unshift(attrs); attrs = null; }
+    if (attrs != null && (typeof attrs !== 'object' || attrs instanceof Node || Array.isArray(attrs))) { kids.unshift(attrs); attrs = null; }
     if (attrs) {
       for (const [k, v] of Object.entries(attrs)) {
         if (v == null || v === false) continue;

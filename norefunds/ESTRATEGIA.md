@@ -105,7 +105,7 @@ Isto não é fantasia neste género, mas exige um jogo que os streamers queiram 
 
 ## 8. Próximas 4 semanas (concreto)
 
-1. **Construir o protótipo das cartas de vítima** (uma página no telemóvel: código → personagem secreta + objetivo; o anfitrião vê os pontos).
+1. ✅ **Protótipo das cartas de vítima, feito.** Menu **🎉 Party: Scammers vs Baiters**: o anfitrião partilha o ecrã, a vítima mete o código no telemóvel e recebe a ficha secreta, há scambaiters com cartões falsos, objetivos secretos votados pelo grupo e um placar. **Agora falta o mais importante: testá-lo com 5 grupos reais** e medir se querem repetir (a meta da fase 0).
 2. **Modo Baiter single-player** (o inverso do motor atual) e o **Stream Mode** básico.
 3. **Botão de clips** (gravação da conversa em vídeo vertical com o canvas e o MediaRecorder do browser).
 4. Arte própria mínima (ícones e retratos em pixel art gerados com consistência) e trailer de 30 s.

@@ -11,6 +11,7 @@
     const today = new Date().toISOString().slice(0, 10);
     const best = NR.store.get('daily.' + today, null);
     boot.hidden = false;
+    boot.style.justifyContent = '';
     boot.replaceChildren(
       el('div.logo', 'NO REFUNDS'),
       el('div.stamp', 'A SCAM CALL-CENTER SIM'),
@@ -20,6 +21,8 @@
         el('button' + (hasSave ? '' : '.primary'), { onclick: () => confirmNew('story') }, '★ New Story (10 days)'),
         el('button', { onclick: () => confirmNew('endless') }, '∞ Endless Shift'),
         el('button', { onclick: () => { NR.newGame('daily', NR.hashStr(today)); enter(); } }, `📅 Daily Challenge ${today}${best ? ' — best ' + NR.money(best) : ''}`),
+        el('button', { onclick: () => NR.startParty() }, '🎉 Party: Scammers vs Baiters'),
+        el('button', { onclick: () => NR.victimScreen() }, '📱 I\'m the victim (party code)'),
         el('button', { onclick: () => settingsModal() }, '⚙ Settings')),
       el('p.tip', NR.pick(NR.TIPS)),
       el('div.fine', 'Satire. All brands are fictional. Runs offline · records nothing · v0.3'));
@@ -151,7 +154,7 @@
     const q = NR.quota(g.day);
     NR.$('#tray-day').textContent = `Day ${g.day}`;
     NR.$('#qfill').style.width = Math.min(100, (g.grossToday / q) * 100) + '%';
-    NR.$('#qtext').textContent = `${NR.money(g.grossToday)}/${NR.money(q)}`;
+    NR.$('#qtext').textContent = g.mode === 'party' ? '🎉 Party' : `${NR.money(g.grossToday)}/${NR.money(q)}`;
     NR.$('#tray-cash').textContent = '👛 ' + NR.money(g.cash);
     NR.$('#hfill').style.width = Math.min(100, g.heat) + '%';
     NR.$('#tray-clock').textContent = g.clockedIn ? NR.clockStr() : 'Off duty';
@@ -210,7 +213,7 @@
     document.addEventListener('click', (e) => { if (!e.target.closest('#start-menu')) NR.toggleStart(false); });
     NR.$('#tray-sound').addEventListener('click', () => { NR.settings.sound = !NR.settings.sound; NR.saveSettings(); if (!NR.settings.sound) { NR.shutUp(); NR.holdMusic(false); } updateTray(); });
     window.addEventListener('resize', () => NR.renderIcons());
-    title();
+    if (location.hash === '#victim') NR.victimScreen(); else title();
   });
   NR.title = title;
 })(window.NR);

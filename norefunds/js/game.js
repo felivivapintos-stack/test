@@ -39,7 +39,7 @@
     NR.G = Object.assign(fresh(), g);
     return true;
   };
-  function save() { if (NR.G) NR.store.set('save', NR.G); }
+  function save() { if (NR.G && NR.G.mode !== 'party') NR.store.set('save', NR.G); }
   NR.save = save;
 
   // ------------------------------------------------------------- leads
@@ -198,6 +198,7 @@
       return { ok: false, msg: `Invalid code. Attempts left on that card: ${3 - best.tries}` };
     }
     hit.done = true;
+    NR.emit('redeemed', hit);
     if (hit.baiter) {
       G.heat += 15; G.stats.baitersFell++;
       NR.emit('virus');

@@ -180,6 +180,7 @@
 
   function leadsView(body) {
     const g = G();
+    if (g.mode === 'party') { NR.partyPanel(body); return; }
     if (!g.clockedIn) { body.replaceChildren(el('p.muted', 'You are not clocked in.')); return; }
     const scams = NR.unlockedScams();
     const list = el('div');
