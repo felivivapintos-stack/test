@@ -174,7 +174,9 @@
         el('span.grow.muted', `${left} code(s) not redeemed yet. You can redeem after hanging up too.`),
         el('button.primary', { onclick: () => { c.finishPayment(); after(c); } }, '✅ Wrap up call')));
     }
-    body.replaceChildren(el('div.phone', victimPanel(c), transcript(c), controls));
+    const grid = el('div.phone', victimPanel(c), transcript(c), controls);
+    const bar = c.party && NR.partyCallBar ? NR.partyCallBar(c) : null;
+    body.replaceChildren(bar ? el('div.party-call', bar, grid) : grid);
     speakNew(c);
   }
 

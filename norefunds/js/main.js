@@ -21,6 +21,7 @@
         el('button' + (hasSave ? '' : '.primary'), { onclick: () => confirmNew('story') }, '★ New Story (10 days)'),
         el('button', { onclick: () => confirmNew('endless') }, '∞ Endless Shift'),
         el('button', { onclick: () => { NR.newGame('daily', NR.hashStr(today)); enter(); } }, `📅 Daily Challenge ${today}${best ? ' — best ' + NR.money(best) : ''}`),
+        NR.hasSavedParty() ? el('button', { onclick: () => NR.resumeParty() }, '🎉 Resume party') : null,
         el('button', { onclick: () => NR.startParty() }, '🎉 Party: Scammers vs Baiters'),
         el('button', { onclick: () => NR.victimScreen() }, '📱 I\'m the victim (party code)'),
         el('button', { onclick: () => settingsModal() }, '⚙ Settings')),

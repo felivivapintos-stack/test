@@ -231,6 +231,7 @@
         if (kwHit) { mult *= 1.25; flags.push('Improv ×1.25'); } else { mult *= 0.9; flags.push('Off-script ×0.9'); }
       }
       if (this.doubleNext) { mult *= 2; this.doubleNext = false; flags.push('Double Down ×2'); }
+      if (this.nextMult) { mult *= this.nextMult; flags.push(`Interference ×${this.nextMult}`); this.nextMult = null; }
 
       let dTrust = (tac.trust || 0) * mult;
       let dSusp = tac.susp || 0;
@@ -244,6 +245,11 @@
         if (this.v.detailKnown && low.includes(this.v.detail.key.toLowerCase())) { dTrust += 6; dSusp -= 4; flags.push('Personal touch +6'); }
       }
       if (this.cardsPlayed === 0 && this.up.duck) { dTrust += 6; flags.push('Rubber Duck +6'); }
+      if (this.demand) {
+        if (this.demand.tactics.includes(base)) { dTrust += 6; flags.push(`Gave them what they wanted +6`); }
+        else { dSusp += this.demand.susp; flags.push(`Ignored "${this.demand.name}" +${this.demand.susp} suspicion`); }
+        this.demand = null;
+      }
 
       const combo = NR.COMBOS.find((c) => c.a === this.last && c.b === base);
       if (combo) {
@@ -285,6 +291,7 @@
       if (known.length && NR.chance(0.3)) line = NR.pick(NR.TRAITS[NR.pick(known)].flavor) + ' ' + line;
       if (this.susp > 60 && level !== 'great' && NR.chance(0.45)) line += ' ' + NR.pick(NR.SUSPICIOUS_LINES);
       this.say('them', line, level);
+      this.setCue(level);
       this.addBaiterTell();
 
       this.quotes.push({ text: playerLine, score: dTrust - dSusp, tactic: id });
@@ -305,6 +312,7 @@
     ask(typed) {
       if (this.state !== 'talk') return null;
       const st = this.scam.stages[this.stage];
+      if (this.demand) { this.susp = NR.clamp(this.susp + this.demand.susp, 0, 100); this.say('sys', `Ignored "${this.demand.name}": suspicion +${this.demand.susp}`); this.demand = null; }
       const p = this.askChance();
       const playerLine = typed && typed.trim() ? typed.trim() : NR.fill(st.ask, this.ctx);
       this.say('you', playerLine, '🎯 Ask: ' + st.name);
@@ -318,17 +326,41 @@
         if (st.remote) this.remote = true;
         this.quotes.push({ text: playerLine, score: 12, tactic: 'ask' });
         this.stage++;
+        this.cue = st.pay ? ['AGREES TO PAY — read your cards!', '💳', 'good'] : ['AGREES — go along with it', '✅', 'good'];
         if (st.pay) this.beginPayment();
         else this.trust = NR.clamp(this.trust + 3, 0, 100);
       } else {
         this.susp = NR.clamp(this.susp + 12, 0, 100);
         this.trust = NR.clamp(this.trust - 3, 0, 100);
         this.say('them', NR.fill(NR.pick(st.no), this.ctx), 'bad');
+        this.cue = ['REFUSES — push back!', '❌', 'bad'];
         this.quotes.push({ text: playerLine, score: -12, tactic: 'ask' });
         this.addBaiterTell();
       }
       this.checkEnd();
       return { ok, p };
+    }
+
+    // Stage direction for a human playing the victim (party mode).
+    setCue(level) {
+      this.cue = this.susp >= 75 ? ['VERY SUSPICIOUS', '🤨', 'bad']
+        : this.patience <= 2 ? ['LOSING PATIENCE', '😤', 'bad']
+          : { great: ['WON OVER', '😍', 'good'], good: ['GOING ALONG', '🙂', 'ok'], bad: ['PUT OFF', '😒', 'bad'] }[level];
+    }
+
+    // Outside interference: party victim tokens and chaos events.
+    effect(e) {
+      if (this.state === 'done') return;
+      if (e.line) this.say('sys', e.line);
+      this.trust = NR.clamp(this.trust + (e.trust || 0), 0, 100);
+      this.susp = NR.clamp(this.susp + (e.susp || 0), 0, 100);
+      this.patience += e.patience || 0;
+      this.press = NR.clamp(this.press + (e.press || 0), 0, 40);
+      if (e.nextMult) this.nextMult = (this.nextMult || 1) * e.nextMult;
+      if (e.demand) this.demand = e.demand;
+      if (e.redraw) { this.discard.push(...this.hand); this.hand = []; for (let i = 0; i < this.handSize; i++) this.draw(); }
+      if (e.cue) this.cue = e.cue;
+      this.checkEnd();
     }
 
     beginPayment() {

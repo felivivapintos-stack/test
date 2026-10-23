@@ -21,6 +21,13 @@ Corre no browser, offline, sem instalar nada: abre `index.html`.
 - **Turno infinito:** as quotas sobem até tu partires.
 - **Desafio diário:** a mesma *seed* para toda a gente, 3 dias, melhor pontuação.
 - **🎉 Grupo — Scammers vs Baiters (2–8 jogadores):** juntem-se numa chamada de voz (Discord) e partilhem o ecrã do anfitrião. Em cada ronda, um jogador é o burlão e outro é a vítima. A vítima abre o jogo no telemóvel (botão **📱 I'm the victim** ou o link terminado em `#victim`), mete o código que aparece no ecrã e recebe uma ficha secreta: personagem, traços, um objetivo secreto e os seus cartões-presente. Algumas vítimas são, em segredo, **scambaiters** com cartões falsos. Não há servidor: os dois aparelhos geram a mesma personagem a partir do código.
+  - **Toda a gente joga em todas as rondas:**
+    - quem está de fora faz **previsões** (vítima real ou baiter? o dinheiro vai passar?);
+    - cada espectador recebe uma **carta de caos** (cão a ladrar, chefe a passar, sirenes…) e escolhe quando a usar.
+  - **A vítima tem 3 fichas de reação** ("Prova-o!", "O meu filho chegou", "Começar a chorar"…). Algumas obrigam o burlão a responder com a tática certa.
+  - **A faixa de reação** no ecrã partilhado diz à vítima como representar (😍 CONQUISTADA, 🤨 MUITO DESCONFIADA, 💳 ACEITA PAGAR…).
+  - **Ritmo:** cada chamada tem temporizador (3/5/8 min). Depois de a vítima aceitar pagar, os cartões congelam ao fim de 90 s, e as vítimas reais ganham pontos por ler devagar.
+  - **No fim**, há prémios (Melhor Vigarista, Melhor Vítima, Mestre do Baiting, Oráculo, Agente do Caos, Burlão Mais Ingénuo). Se a página recarregar, a festa pode ser retomada.
 
 ## Opcional
 - **Vozes:** o TTS do próprio browser (grátis, offline).

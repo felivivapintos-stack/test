@@ -111,7 +111,7 @@ table.list tr:hover td { background: #fffbe6; }
 .stages .cur { border-color: var(--accent); background: #fff6d5; font-weight: bold; }
 .transcript { overflow-y: auto; background: #fbfaf6; display: flex; flex-direction: column; gap: 6px; padding: 8px; min-height: 120px; }
 .msg { max-width: 82%; padding: 6px 9px; border-radius: 10px; line-height: 1.35; animation: pop .2s; }
-@keyframes pop { from { transform: scale(.95); opacity: 0; } }
+@keyframes pop { from { transform: scale(.94); } }
 .msg.you { align-self: flex-end; background: #d6eaf8; border-bottom-right-radius: 2px; }
 .msg.them { align-self: flex-start; background: #fff; border: 1px solid #ddd; border-bottom-left-radius: 2px; }
 .msg.them.great { border-color: var(--good); }
@@ -232,3 +232,25 @@ table.list tr:hover td { background: #fffbe6; }
 .victim-sheet .gcard { display: flex; justify-content: space-between; gap: 8px; background: #fff; border: 1px solid #bbb; padding: 8px; flex-wrap: wrap; }
 .victim-sheet .gcard b { font-size: 16px; letter-spacing: 1px; }
 .victim-wrap .row b { color: #d5f5e3; }
+
+.party-call { display: flex; flex-direction: column; gap: 6px; height: 100%; }
+.party-call .phone { flex: 1; min-height: 0; }
+.partybar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: #fff; border: 1px solid #bbb; padding: 6px; }
+.partybar .cue { display: flex; align-items: center; gap: 8px; font: 900 20px 'Impact', 'Arial Black', sans-serif; letter-spacing: 1px; padding: 4px 12px; border-radius: 4px; color: #fff; animation: pop .25s; }
+.partybar .cue small { font: 12px var(--ui); letter-spacing: 0; opacity: .9; }
+.partybar .cue .ci { font-size: 26px; }
+.partybar .cue.good { background: var(--good); } .partybar .cue.ok { background: var(--title); } .partybar .cue.bad { background: var(--bad); }
+.ptimer { font: bold 18px var(--mono); margin-left: auto; padding: 2px 8px; }
+.ptimer.low { color: var(--bad); animation: shake .5s infinite; }
+.ptimer.pay { color: #1565c0; }
+.partybar .prow { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; width: 100%; font-size: 12px; }
+.ptoken { background: #fde9e7; }
+.pchaos { background: #efe6fb; }
+.preds button.on { background: var(--accent); font-weight: bold; }
+.party-code { font: 900 44px var(--mono); letter-spacing: 8px; margin: 8px 0; }
+.awards { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px; margin: 10px 0; text-align: left; }
+.award { display: flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #ccc; padding: 6px; }
+.award .ai { font-size: 28px; }
+.victim-sheet table.cues { border-collapse: collapse; width: 100%; background: #fff; font-size: 12px; }
+.victim-sheet table.cues td { padding: 3px 6px; border-bottom: 1px solid #eee; }
+.pwarn { background: #fff3cd; border: 1px solid var(--warn); padding: 2px 8px; font-size: 12px; font-weight: bold; }
