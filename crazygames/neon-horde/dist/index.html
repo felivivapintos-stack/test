@@ -860,6 +860,7 @@ function buildBg(){
   starT=canvasOf(512,512);g=starT.getContext('2d');
   for(let i=0;i<160;i++){const s=Math.random();g.fillStyle=s>0.9?'#bff4ff':s>0.82?'#ffc6de':'#ffffff';g.globalAlpha=rand(0.25,0.95);g.beginPath();g.arc(rand(2,510),rand(2,510),s>0.96?1.7:rand(0.4,1.1),0,TAU);g.fill();}
   const sc=canvasOf(4,3);g=sc.getContext('2d');g.fillStyle='rgba(0,0,0,0.5)';g.fillRect(0,0,4,1);scanP=ctx.createPattern(sc,'repeat');
+  const im=new Image();im.onload=()=>{neb=im;};im.src='bg.jpg';
 }
 function sizeBuffers(){
   for(const b of BL){b.c.width=Math.max(1,Math.ceil(W/b.s));b.c.height=Math.max(1,Math.ceil(H/b.s));}
@@ -882,20 +883,10 @@ function tile(img,par,alpha,off){
 }
 function drawBg(t,lx,ly){
   ctx.setTransform(DPR,0,0,DPR,0,0);ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
-  tile(neb,0.15,1,0);
-  if(hi()){ctx.globalCompositeOperation='lighter';tile(starT,0.45,0.8,260);ctx.globalCompositeOperation='source-over';}
-  const R=Math.max(W,H)*0.75,gs=64*Z;
-  const ox=((-CX*Z+W/2)%gs+gs)%gs,oy=((-CY*Z+H/2)%gs+gs)%gs;
-  const g1=ctx.createRadialGradient(lx,ly,0,lx,ly,R);g1.addColorStop(0,'rgba(62,240,255,0.22)');g1.addColorStop(0.3,'rgba(124,92,255,0.10)');g1.addColorStop(1,'rgba(124,92,255,0.03)');
-  ctx.beginPath();for(let x=ox;x<W;x+=gs){ctx.moveTo(x,0);ctx.lineTo(x,H);}for(let y=oy;y<H;y+=gs){ctx.moveTo(0,y);ctx.lineTo(W,y);}
-  ctx.strokeStyle=hi()?g1:'rgba(124,92,255,0.11)';ctx.lineWidth=1;ctx.stroke();
-  const gm=gs*4,mx=((-CX*Z+W/2)%gm+gm)%gm,my=((-CY*Z+H/2)%gm+gm)%gm;
-  const g2=ctx.createRadialGradient(lx,ly,0,lx,ly,R);g2.addColorStop(0,'rgba(62,240,255,0.5)');g2.addColorStop(0.35,'rgba(168,107,255,0.16)');g2.addColorStop(1,'rgba(168,107,255,0.05)');
-  ctx.beginPath();for(let x=mx;x<W;x+=gm){ctx.moveTo(x,0);ctx.lineTo(x,H);}for(let y=my;y<H;y+=gm){ctx.moveTo(0,y);ctx.lineTo(W,y);}
-  ctx.globalAlpha=0.85+Math.sin(t*1.5)*0.15;ctx.strokeStyle=hi()?g2:'rgba(62,240,255,0.12)';ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1;
-  if(!hi())return;
+  tile(neb,0.25,1,0);
   ctx.globalCompositeOperation='lighter';
-  const rr=280*Z;ctx.globalAlpha=0.09;ctx.drawImage(flareImg('#3ef0ff'),lx-rr,ly-rr,rr*2,rr*2);ctx.globalAlpha=1;
+  tile(starT,0.55,0.75,260);
+  if(hi()){tile(starT,1,0.3,777);const rr=300*Z;ctx.globalAlpha=0.07;ctx.drawImage(flareImg('#3ef0ff'),lx-rr,ly-rr,rr*2,rr*2);ctx.globalAlpha=1;}
   ctx.globalCompositeOperation='source-over';
 }
 /* Cheap bloom: downsample, square (multiply) to keep only bright pixels, add three blur levels back */

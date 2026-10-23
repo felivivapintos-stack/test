@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Gera dist/index.html (página completa + SDK do CrazyGames) a partir de game.html.
+# Gera dist/ (index.html com o SDK do CrazyGames + bg.jpg) a partir de game.html.
 set -e
 cd "$(dirname "$0")"
 mkdir -p dist
@@ -11,4 +11,5 @@ mkdir -p dist
   cat game.html
   printf '\n</body>\n</html>\n'
 } > dist/index.html
-echo "dist/index.html ($(wc -c < dist/index.html) bytes)"
+cp bg.jpg dist/bg.jpg
+echo "dist/ pronto: index.html + bg.jpg (faz zip da pasta para o upload)"

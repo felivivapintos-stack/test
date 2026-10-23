@@ -4,10 +4,12 @@ Roguelite *survivor* em HTML5 (canvas, zero dependências) feito para o CrazyGam
 Sobrevive 10 minutos contra um enxame infinito, sobe de nível, junta armas e derruba 4 titãs.
 
 - `game.html`: o jogo inteiro (fonte).
-- `build.sh`: gera `dist/index.html`, a página completa com o SDK v3 do CrazyGames, pronta a fazer upload.
+- `bg.jpg`: fundo de nebulosa (2048², seamless), gerado por `tools/make_bg.py` (numpy + Pillow).
+- `build.sh`: gera `dist/` (`index.html` com o SDK v3 do CrazyGames + `bg.jpg`). Faz zip da pasta para o upload.
 
 ```sh
-./build.sh   # → dist/index.html
+python3 tools/make_bg.py bg.jpg   # só se quiseres outro fundo (muda SEED)
+./build.sh                        # → dist/
 ```
 
 ## O que está lá dentro
