@@ -21,9 +21,8 @@
         el('button' + (hasSave ? '' : '.primary'), { onclick: () => confirmNew('story') }, '★ New Story (10 days)'),
         el('button', { onclick: () => confirmNew('endless') }, '∞ Endless Shift'),
         el('button', { onclick: () => { NR.newGame('daily', NR.hashStr(today)); enter(); } }, `📅 Daily Challenge ${today}${best ? ' — best ' + NR.money(best) : ''}`),
-        NR.hasSavedParty() ? el('button', { onclick: () => NR.resumeParty() }, '🎉 Resume party') : null,
-        el('button', { onclick: () => NR.startParty() }, '🎉 Party: Scammers vs Baiters'),
-        el('button', { onclick: () => NR.victimScreen() }, '📱 I\'m the victim (party code)'),
+        el('button', { onclick: () => NR.mpHostDialog() }, '🌐 Multiplayer: host a game'),
+        el('button', { onclick: () => NR.mpJoinDialog() }, '🔑 Join a game with a code'),
         el('button', { onclick: () => settingsModal() }, '⚙ Settings')),
       el('p.tip', NR.pick(NR.TIPS)),
       el('div.fine', 'Satire. All brands are fictional. Runs offline · records nothing · v0.3'));
@@ -72,7 +71,6 @@
 
   NR.on('dayEnd', (r) => {
     const g = G();
-    NR.shutUp();
     NR.closeApp('remote');
     const calls = r.calls.length ? el('table.list', el('tr', el('th', 'Mark'), el('th', 'Script'), el('th', 'Result')),
       ...r.calls.map((c) => el('tr', el('td', c.name), el('td', c.scam), el('td', outcomeLabel(c))))) : el('p.muted', 'No calls.');
@@ -131,7 +129,6 @@
   function showEnding(id) {
     const g = G();
     const e = NR.ENDINGS[id];
-    NR.shutUp();
     if (id === 'witness') NR.achieve('redeemed', true);
     if (id === 'kingpin') NR.achieve('kingpin', true);
     const seen = NR.store.get('endings', {}); seen[id] = true; NR.store.set('endings', seen);
@@ -155,7 +152,7 @@
     const q = NR.quota(g.day);
     NR.$('#tray-day').textContent = `Day ${g.day}`;
     NR.$('#qfill').style.width = Math.min(100, (g.grossToday / q) * 100) + '%';
-    NR.$('#qtext').textContent = g.mode === 'party' ? '🎉 Party' : `${NR.money(g.grossToday)}/${NR.money(q)}`;
+    NR.$('#qtext').textContent = g.mode === 'mp' ? '🌐 ' + (NR.mpCode ? NR.mpCode() : 'Online') : `${NR.money(g.grossToday)}/${NR.money(q)}`;
     NR.$('#tray-cash').textContent = '👛 ' + NR.money(g.cash);
     NR.$('#hfill').style.width = Math.min(100, g.heat) + '%';
     NR.$('#tray-clock').textContent = g.clockedIn ? NR.clockStr() : 'Off duty';
@@ -212,9 +209,11 @@
   window.addEventListener('DOMContentLoaded', () => {
     NR.$('#start-btn').addEventListener('click', (e) => { e.stopPropagation(); NR.toggleStart(); });
     document.addEventListener('click', (e) => { if (!e.target.closest('#start-menu')) NR.toggleStart(false); });
-    NR.$('#tray-sound').addEventListener('click', () => { NR.settings.sound = !NR.settings.sound; NR.saveSettings(); if (!NR.settings.sound) { NR.shutUp(); NR.holdMusic(false); } updateTray(); });
+    NR.$('#tray-sound').addEventListener('click', () => { NR.settings.sound = !NR.settings.sound; NR.saveSettings(); if (!NR.settings.sound) NR.holdMusic(false); updateTray(); });
     window.addEventListener('resize', () => NR.renderIcons());
-    if (location.hash === '#victim') NR.victimScreen(); else title();
+    title();
+    const join = new URLSearchParams(location.search).get('join');
+    if (join) NR.mpJoinDialog(join);
   });
   NR.title = title;
 })(window.NR);

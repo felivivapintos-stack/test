@@ -112,15 +112,15 @@ You'll walk away with nothing. But you'll walk away.`, { actions: [{ id: 'send',
       };
       if (G.day === 2) {
         const v = add('harold', { age: 74, traits: ['elderly', 'lonely', 'polite'], baiter: false, city: 'Dayton, OH', story: { key: 'harold', tag: 'Lives alone', scam: 'tech' } });
-        if (v) { v.first = 'Harold'; v.last = 'Pemberton'; v.female = false; v.title = 'Mr. Pemberton'; v.detail = { kind: 'hobby', key: 'chess', text: 'teaching chess at the library' }; v.voice = { pitch: 0.75, rate: 0.85 }; return v; }
+        if (v) { v.first = 'Harold'; v.last = 'Pemberton'; v.female = false; v.title = 'Mr. Pemberton'; v.detail = { kind: 'hobby', key: 'chess', text: 'teaching chess at the library' }; return v; }
       }
       if (G.day === 6) {
         const v = add('nana', { age: 81, traits: ['elderly', 'lonely', 'technophobe'], baiter: false, city: 'Ocala, FL', story: { key: 'nana', tag: 'Ocala lead', scam: 'tech', warn: true } });
-        if (v) { v.first = 'Rosa'; v.last = 'Delgado'; v.female = true; v.title = 'Mrs. Delgado'; v.savings = 5200; v.detail = { kind: 'family', key: 'customer service', text: 'my grandchild — the one with the new customer service job' }; v.voice = { pitch: 1.15, rate: 0.8 }; return v; }
+        if (v) { v.first = 'Rosa'; v.last = 'Delgado'; v.female = true; v.title = 'Mrs. Delgado'; v.savings = 5200; v.detail = { kind: 'family', key: 'customer service', text: 'my grandchild — the one with the new customer service job' }; return v; }
       }
       if (G.day === 8 && G.flags.harold === 'scammed') {
         const v = add('harold2', { age: 74, traits: ['elderly', 'skeptic'], baiter: true, city: 'Dayton, OH', story: { key: 'harold2', tag: 'Returning customer', scam: 'tech' } });
-        if (v) { v.first = 'Harold'; v.last = 'Pemberton'; v.female = false; v.title = 'Mr. Pemberton'; v.voice = { pitch: 0.75, rate: 0.9 }; return v; }
+        if (v) { v.first = 'Harold'; v.last = 'Pemberton'; v.female = false; v.title = 'Mr. Pemberton'; return v; }
       }
       return null;
     },

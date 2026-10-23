@@ -2,7 +2,7 @@
 (function (NR) {
   'use strict';
   let ctx = null, master = null;
-  const settings = NR.store.get('settings', { sound: true, voice: true, music: true, speed: 1 });
+  const settings = NR.store.get('settings', { sound: true, music: true, speed: 1 });
   NR.settings = settings;
   NR.saveSettings = () => NR.store.set('settings', settings);
 
@@ -73,27 +73,6 @@
     }
     holdTimer = setTimeout(() => NR.holdMusic(true), t * 1000);
   };
-
-  // --------------------------------------------------------------- voices
-  const synth = window.speechSynthesis;
-  let voices = [];
-  function loadVoices() { voices = synth ? synth.getVoices().filter((v) => /^en/i.test(v.lang)) : []; }
-  if (synth) { loadVoices(); synth.onvoiceschanged = loadVoices; }
-
-  NR.speak = function (text, voice, female) {
-    if (!synth || !settings.voice || !settings.sound) return;
-    const clean = text.replace(/\(([A-Z0-9]) or ([A-Z0-9])\?\)/g, ' $1 or $2? ').replace(/[♪😇🚩🪪]/g, '');
-    const u = new SpeechSynthesisUtterance(clean);
-    if (voices.length) {
-      const fem = voices.filter((v) => /female|zira|samantha|victoria|karen|moira|tessa|fiona|susan|hazel|libby|aria|jenny/i.test(v.name));
-      const mal = voices.filter((v) => /male|david|daniel|alex|fred|george|mark|guy|ryan|tom/i.test(v.name) && !/female/i.test(v.name));
-      const pool = (female ? fem : mal).length ? (female ? fem : mal) : voices;
-      u.voice = pool[Math.abs(NR.hashStr(text.slice(0, 3)) + (voice.seed || 0)) % pool.length];
-    }
-    u.pitch = voice.pitch; u.rate = voice.rate;
-    synth.speak(u);
-  };
-  NR.shutUp = () => { if (synth) synth.cancel(); };
 
   // Optional mic input (Chrome/Edge). Transcribed locally by the browser; we store nothing.
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;

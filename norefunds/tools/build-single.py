@@ -8,7 +8,7 @@ css = (root / 'css/style.css').read_text()
 html = html.replace('<link rel="stylesheet" href="css/style.css">', '<style>\n' + css + '\n</style>')
 def js(m):
     return '<script>\n' + (root / m.group(1)).read_text().replace('</script', '<\\/script') + '\n</script>'
-html = re.sub(r'<script src="(js/[\w.-]+)"></script>', js, html)
+html = re.sub(r'<script src="(js/[\w./-]+)"></script>', js, html)
 if '--fragment' in sys.argv:
     html = re.sub(r'<!doctype html>\s*<html[^>]*>\s*<head>\s*', '', html, flags=re.I)
     html = re.sub(r'<meta charset="utf-8">\s*<meta name="viewport"[^>]*>\s*', '', html)

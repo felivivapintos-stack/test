@@ -10,7 +10,7 @@ const route = process.argv[2] || 'plain';
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('file://' + path.resolve(__dirname, '..', 'index.html'));
   const res = await page.evaluate(async (route) => {
-    NR.settings.voice = false; NR.settings.sound = false;
+    NR.settings.sound = false;
     NR.newGame('story');
     let ending = null;
     NR.on('ending', (e) => { ending = e; });

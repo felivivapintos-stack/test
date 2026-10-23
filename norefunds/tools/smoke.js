@@ -10,7 +10,7 @@ const out = process.argv[2] || '/tmp';
   page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
   await page.goto('file://' + path.resolve(__dirname, '..', 'index.html'));
-  await page.evaluate(() => { NR.settings.voice = false; NR.settings.sound = false; NR.settings.speed = 20; });
+  await page.evaluate(() => { NR.settings.sound = false; NR.settings.speed = 20; });
   await page.screenshot({ path: out + '/01-title.png' });
   await page.click('text=New Story');
   await page.click('text=Clock in');

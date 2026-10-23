@@ -56,14 +56,6 @@
     return box;
   }
 
-  function speakNew(c) {
-    c._spoken = c._spoken || 0;
-    for (; c._spoken < c.log.length; c._spoken++) {
-      const m = c.log[c._spoken];
-      if (m.who === 'them') NR.speak(m.tag === 'code' ? m.text.replace(/([A-Z0-9])(?=[A-Z0-9])/g, '$1 ') : m.text, Object.assign({ seed: NR.hashStr(c.v.id) }, c.v.voice), c.v.female);
-    }
-  }
-
   function fxLine(res) {
     if (!res) return;
     const parts = [];
@@ -108,6 +100,7 @@
     NR.refreshApp('phone');
     NR.refreshApp('remote');
     NR.emit('update');
+    NR.emit('callChanged', c);
   }
 
   function startStore(c) {
@@ -175,14 +168,13 @@
         el('button.primary', { onclick: () => { c.finishPayment(); after(c); } }, '✅ Wrap up call')));
     }
     const grid = el('div.phone', victimPanel(c), transcript(c), controls);
-    const bar = c.party && NR.partyCallBar ? NR.partyCallBar(c) : null;
+    const bar = c.human && NR.mpCallBar ? NR.mpCallBar(c) : null;
     body.replaceChildren(bar ? el('div.party-call', bar, grid) : grid);
-    speakNew(c);
   }
 
   function leadsView(body) {
     const g = G();
-    if (g.mode === 'party') { NR.partyPanel(body); return; }
+    if (g.mode === 'mp') { NR.mpPanel(body); return; }
     if (!g.clockedIn) { body.replaceChildren(el('p.muted', 'You are not clocked in.')); return; }
     const scams = NR.unlockedScams();
     const list = el('div');
@@ -455,7 +447,7 @@
       const chk = (k, label) => el('label.row', el('input', { type: 'checkbox', checked: s[k] !== false, onchange: (e) => { s[k] = e.target.checked; NR.saveSettings(); if (k === 'sound') NR.emit('update'); } }), label);
       const speed = el('select', { onchange: (e) => { s.speed = +e.target.value; NR.saveSettings(); NR.pauseClock(false); } },
         ...[[0.6, 'Relaxed'], [1, 'Normal'], [1.5, 'Hustle']].map(([v, l]) => el('option', { value: v, selected: s.speed == v }, l)));
-      body.replaceChildren(el('h3', 'Settings'), chk('sound', 'Sound effects'), chk('music', 'Hold music'), chk('voice', 'Victim voices (browser text-to-speech)'),
+      body.replaceChildren(el('h3', 'Settings'), chk('sound', 'Sound effects'), chk('music', 'Hold music'),
         el('label.row', 'Clock speed ', speed),
         el('p.muted', '🔒 Privacy: NO REFUNDS records nothing. The mic (optional) uses your browser\'s speech recognition and the text never leaves this page — unless you enable AI mode below, which sends call text to the provider you choose.'),
         NR.llm ? NR.llm.settingsPanel() : null,

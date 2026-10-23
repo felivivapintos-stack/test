@@ -254,3 +254,13 @@ table.list tr:hover td { background: #fffbe6; }
 .victim-sheet table.cues { border-collapse: collapse; width: 100%; background: #fff; font-size: 12px; }
 .victim-sheet table.cues td { padding: 3px 6px; border-bottom: 1px solid #eee; }
 .pwarn { background: #fff3cd; border: 1px solid var(--warn); padding: 2px 8px; font-size: 12px; font-weight: bold; }
+
+.lobby-code { display: flex; flex-direction: column; align-items: center; background: #fff; border: 2px dashed var(--title); padding: 8px; margin: 6px 0; }
+.lobby-code b { font: 900 48px var(--mono); letter-spacing: 10px; }
+.role-pill { display: inline-block; padding: 4px 10px; font-weight: bold; color: #fff; margin: 4px 0 8px; border-radius: 3px; }
+.role-pill.caller { background: var(--title); } .role-pill.victim { background: var(--bad); } .role-pill.spec { background: #6c5ce7; }
+button.big { display: inline-flex; flex-direction: column; align-items: flex-start; padding: 8px 12px; font-size: 14px; font-weight: bold; text-align: left; }
+button.big small { font-weight: normal; font-size: 11px; opacity: .85; }
+.watch-meters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0; }
+.watch-meters .muted { grid-column: 1 / -1; font-size: 12px; }
+.victim-sheet.compact { padding: 8px; }

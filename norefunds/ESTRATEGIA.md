@@ -105,7 +105,7 @@ Isto não é fantasia neste género, mas exige um jogo que os streamers queiram 
 
 ## 8. Próximas 4 semanas (concreto)
 
-1. ✅ **Protótipo das cartas de vítima, feito.** Menu **🎉 Party: Scammers vs Baiters**: o anfitrião partilha o ecrã, a vítima mete o código no telemóvel e recebe a ficha secreta, há scambaiters com cartões falsos, objetivos secretos votados pelo grupo e um placar. **v2:** toda a gente joga em todas as rondas (previsões e cartas de caos), a vítima tem fichas de reação, há uma faixa que lhe diz como representar, temporizadores de chamada e de pagamento, prémios finais e retoma depois de recarregar. **Agora falta o mais importante: testá-lo com 5 grupos reais** e medir se querem repetir (a meta da fase 0).
+1. ✅ **Feito, e já além da fase 0: multiplayer online por código.** Cada jogador usa o seu aparelho e entra com um código de 5 letras. Há voz incluída, as fichas da vítima e as cartas de caos são jogadas por cada um, e o anfitrião é o árbitro. Tudo P2P (WebRTC/PeerJS), sem servidor nosso. **Falta o mais importante: testar com 5 grupos reais** e medir se querem repetir.
 2. **Modo Baiter single-player** (o inverso do motor atual) e o **Stream Mode** básico.
 3. **Botão de clips** (gravação da conversa em vídeo vertical com o canvas e o MediaRecorder do browser).
 4. Arte própria mínima (ícones e retratos em pixel art gerados com consistência) e trailer de 30 s.

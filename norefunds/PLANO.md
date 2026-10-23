@@ -27,7 +27,7 @@
 ## 3. O que nos torna melhores
 
 1. **Profundidade em vez de truque:** cada vítima é um puzzle (traços escondidos, fraquezas, paciência, desconfiança) e tu resolve-lo com um baralho que vais construindo. Joga-se bem sem IA nenhuma.
-2. **Zero dependência de servidores:** corre no browser, offline e de graça. As vozes vêm do TTS do próprio browser e o microfone é opcional (reconhecimento de voz do browser). A IA generativa fica como **modo opcional** com a chave do próprio jogador.
+2. **Zero dependência de servidores:** corre no browser, offline e de graça. O microfone é opcional (reconhecimento de voz do browser). A IA generativa fica como **modo opcional** com a chave do próprio jogador.
 3. **Privacidade como argumento de venda:** nada é gravado nem sai do computador.
 4. **História com consequências:** uma campanha de 10 dias com notícias sobre as tuas vítimas, uma jornalista infiltrada, a chamada para a tua própria avó e vários finais. É uma sátira que, no fim, ensina a reconhecer burlas (bom para imprensa, streamers e escolas).
 5. **Longevidade:** modo infinito, desafio diário com *seed*, desbloqueáveis e mods em JSON.
@@ -46,7 +46,7 @@
 - Acesso remoto ao PC da vítima (encher o "reembolso" com um slider, o ecrã CMD a assustar).
 - Scambaiters com sinais que os denunciam; denunciá-los dá bónus, cair na armadilha dá vírus (pop-ups no teu SO).
 - Calor policial e rusga (minijogo de destruir provas).
-- Loja (cartas novas e objetos-joker), casino, mail do chefe, vozes TTS, microfone, sons sintetizados, *save*.
+- Loja (cartas novas e objetos-joker), casino, mail do chefe, microfone, sons sintetizados, *save*.
 - Ecrã "Análise de Chamadas" que cita as tuas melhores e piores falas.
 
 ### v0.3 — Ultrapassar

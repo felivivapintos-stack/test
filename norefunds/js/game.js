@@ -39,7 +39,7 @@
     NR.G = Object.assign(fresh(), g);
     return true;
   };
-  function save() { if (NR.G && NR.G.mode !== 'party') NR.store.set('save', NR.G); }
+  function save() { if (NR.G && NR.G.mode !== 'mp') NR.store.set('save', NR.G); }
   NR.save = save;
 
   // ------------------------------------------------------------- leads

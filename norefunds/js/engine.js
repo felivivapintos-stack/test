@@ -54,7 +54,6 @@
       traits, known: [traits[0]], detail, detailKnown: false,
       baseTrust: trust, baseSusp: susp, patience: Math.max(5, pat), savings, ssn: makeSSN(),
       baiter, story: opts.story || null,
-      voice: { pitch: female ? (age >= 65 ? 1.15 : 1.05) : (age >= 65 ? 0.75 : 0.9), rate: age >= 65 ? 0.85 : age < 40 ? 1.1 : 1 },
     };
   };
 
@@ -155,8 +154,8 @@
     }
 
     say(who, text, tag) {
-      // In party mode a human voices the victim; the engine only keeps score.
-      if (this.party && who === 'them') return null;
+      // In multiplayer a human voices the victim; the engine only keeps score.
+      if (this.human && who === 'them') return null;
       const e = { who, text, tag }; this.log.push(e); return e;
     }
 
@@ -341,14 +340,14 @@
       return { ok, p };
     }
 
-    // Stage direction for a human playing the victim (party mode).
+    // Stage direction for a human playing the victim (multiplayer).
     setCue(level) {
       this.cue = this.susp >= 75 ? ['VERY SUSPICIOUS', '🤨', 'bad']
         : this.patience <= 2 ? ['LOSING PATIENCE', '😤', 'bad']
           : { great: ['WON OVER', '😍', 'good'], good: ['GOING ALONG', '🙂', 'ok'], bad: ['PUT OFF', '😒', 'bad'] }[level];
     }
 
-    // Outside interference: party victim tokens and chaos events.
+    // Outside interference: multiplayer victim tokens and chaos events.
     effect(e) {
       if (this.state === 'done') return;
       if (e.line) this.say('sys', e.line);
@@ -364,9 +363,9 @@
     }
 
     beginPayment() {
-      if (this.party) {
+      if (this.human) {
         this.state = 'reading';
-        this.payout.codes = this.party.cards;
+        this.payout.codes = this.human.cards;
         this.say('sys', `💳 ${this.v.first} agreed to pay! Victim: read your cards from your phone. Caller: type them into Redeem.`);
         return;
       }
@@ -485,7 +484,7 @@
 
     repeat() {
       if (this.state !== 'reading') return;
-      if (this.party) { this.say('you', 'Sorry, could you read that again?'); return; }
+      if (this.human) { this.say('you', 'Sorry, could you read that again?'); return; }
       this.patience -= 1;
       this.say('you', 'Sorry, could you read that again?');
       for (const c of this.payout.codes) {
@@ -506,7 +505,7 @@
 
     report() {
       if (this.state === 'done') return null;
-      const was = this.party ? this.party.baiter : this.v.baiter;
+      const was = this.human ? this.human.baiter : this.v.baiter;
       this.say('sys', was ? '🚩 Correct! That was a scambaiter. Number blacklisted.' : '🚩 That was a real person. They hang up, confused.');
       this.end(was ? 'reported' : 'falsereport');
       return was;

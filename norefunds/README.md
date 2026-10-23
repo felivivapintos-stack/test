@@ -20,17 +20,15 @@ Corre no browser, offline, sem instalar nada: abre `index.html`.
 - **História (10 dias):** o chefe Vance, a jornalista Nadia, o professor Harold, a tua avó Rosa, o detetive Okafor. Seis finais.
 - **Turno infinito:** as quotas sobem até tu partires.
 - **Desafio diário:** a mesma *seed* para toda a gente, 3 dias, melhor pontuação.
-- **🎉 Grupo — Scammers vs Baiters (2–8 jogadores):** juntem-se numa chamada de voz (Discord) e partilhem o ecrã do anfitrião. Em cada ronda, um jogador é o burlão e outro é a vítima. A vítima abre o jogo no telemóvel (botão **📱 I'm the victim** ou o link terminado em `#victim`), mete o código que aparece no ecrã e recebe uma ficha secreta: personagem, traços, um objetivo secreto e os seus cartões-presente. Algumas vítimas são, em segredo, **scambaiters** com cartões falsos. Não há servidor: os dois aparelhos geram a mesma personagem a partir do código.
-  - **Toda a gente joga em todas as rondas:**
-    - quem está de fora faz **previsões** (vítima real ou baiter? o dinheiro vai passar?);
-    - cada espectador recebe uma **carta de caos** (cão a ladrar, chefe a passar, sirenes…) e escolhe quando a usar.
-  - **A vítima tem 3 fichas de reação** ("Prova-o!", "O meu filho chegou", "Começar a chorar"…). Algumas obrigam o burlão a responder com a tática certa.
-  - **A faixa de reação** no ecrã partilhado diz à vítima como representar (😍 CONQUISTADA, 🤨 MUITO DESCONFIADA, 💳 ACEITA PAGAR…).
-  - **Ritmo:** cada chamada tem temporizador (3/5/8 min). Depois de a vítima aceitar pagar, os cartões congelam ao fim de 90 s, e as vítimas reais ganham pontos por ler devagar.
-  - **No fim**, há prémios (Melhor Vigarista, Melhor Vítima, Mestre do Baiting, Oráculo, Agente do Caos, Burlão Mais Ingénuo). Se a página recarregar, a festa pode ser retomada.
+- **🌐 Multiplayer online — Scammers vs Baiters (2–8 jogadores):** cada pessoa joga no seu aparelho (PC ou telemóvel). O anfitrião cria a sala e recebe um **código de 5 letras**; os outros entram com **🔑 Join a game with a code** ou com o link de convite (`…/index.html?join=CÓDIGO`).
+  - **Em cada ronda:** um jogador faz a chamada e outro é a vítima, com uma ficha secreta (personagem, traços, objetivo secreto, cartões-presente). Algumas vítimas são, em segredo, **scambaiters** com cartões falsos.
+  - **A vítima** carrega nas suas **fichas de reação** ("Prova-o!", "Começar a chorar"…) e segue a **faixa** que lhe diz como representar.
+  - **Os espectadores** fazem **previsões** e lançam a sua **carta de caos**.
+  - **Voz incluída** entre todos, com efeito de linha telefónica para o burlão e a vítima durante a chamada (ou usem o Discord).
+  - **Temporizadores** de chamada (3/5/8 min) e de pagamento (90 s); a votação do objetivo é feita por todos; **prémios** no fim.
+  - **Como funciona:** WebRTC peer-to-peer (PeerJS). O servidor público e gratuito do PeerJS só serve para os jogadores se encontrarem pelo código; os dados e a voz vão diretamente entre eles. O anfitrião é o árbitro das rondas e dos pontos. Precisa de internet e de um separador normal do browser.
 
 ## Opcional
-- **Vozes:** o TTS do próprio browser (grátis, offline).
 - **Microfone:** reconhecimento de voz do browser; nada é gravado.
 - **Vítimas com IA:** em Definições, mete a tua chave da API da Anthropic e o Claude improvisa as respostas a partir das tuas palavras exatas. As regras de jogo continuam a decidir os números.
 - **Mods:** JSON com guiões, traços, cartas e falas novas (exemplo em [`mods/utility-shutoff.json`](mods/utility-shutoff.json)). São só dados e não executam código.
@@ -40,9 +38,9 @@ Corre no browser, offline, sem instalar nada: abre `index.html`.
 node tools/sim.js 4000                                      # equilíbrio: milhares de chamadas simuladas
 NODE_PATH=$(npm root -g) node tools/smoke.js /tmp/shots     # joga um dia no Chromium e tira screenshots
 NODE_PATH=$(npm root -g) node tools/story-test.js witness   # campanha completa (plain | witness | kingpin)
-NODE_PATH=$(npm root -g) node tools/party-test.js /tmp/shots # modo de grupo com dois browsers (anfitrião + telemóvel)
+NODE_PATH=$(npm root -g) node tools/mp-test.js /tmp/shots    # multiplayer online: 3 browsers entram por código e jogam uma volta
 ```
-Arquitetura: `js/data.js` (conteúdo) · `js/engine.js` (regras, sem DOM) · `js/game.js` (dia, economia) · `js/story.js` (campanha) · `js/ui.js` + `js/apps.js` (DeskOS) · `js/main.js` (fluxo) · `js/audio.js` (sons sintetizados, TTS) · `js/llm.js` (IA opcional) · `js/mods.js` · `js/party.js` (modo de grupo).
+Arquitetura: `js/data.js` (conteúdo) · `js/engine.js` (regras, sem DOM) · `js/game.js` (dia, economia) · `js/story.js` (campanha) · `js/ui.js` + `js/apps.js` (DeskOS) · `js/main.js` (fluxo) · `js/audio.js` (sons sintetizados) · `js/llm.js` (IA opcional) · `js/mods.js` · `js/multiplayer.js` (multiplayer online e voz) · `js/vendor/peerjs.min.js` (PeerJS 1.5.5, MIT).
 
 Plano e análise do concorrente: [`PLANO.md`](PLANO.md) · Estratégia de mercado e roadmap: [`ESTRATEGIA.md`](ESTRATEGIA.md).
 
