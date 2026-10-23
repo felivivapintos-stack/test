@@ -1,0 +1,24 @@
+{
+  "name": "Utility Shutoff",
+  "author": "NO REFUNDS team",
+  "description": "Adds a new script: the power company is about to cut them off.",
+  "SCAMS": {
+    "utility": {
+      "name": "Power Shutoff",
+      "brand": "Metro Gas & Electric",
+      "pay": "gift",
+      "unlock": 2,
+      "blurb": "Their power gets cut in 30 minutes unless they pay.",
+      "mods": { "urgency": 1.4, "fear": 1.2, "authority": 1.1 },
+      "stages": [
+        { "name": "Hook", "need": 15, "ask": "{title}, your account is three months past due. A crew is scheduled to disconnect your power today.", "yes": ["Today? But I paid my bill!", "Oh no, I'll lose everything in the freezer!"], "no": ["I have autopay.", "Send me a letter, then."] },
+        { "name": "The Truck", "need": 45, "ask": "The technician is already in your neighborhood. I can only stop him if we settle in the next thirty minutes.", "yes": ["Please stop him!", "What do I need to do?"], "no": ["Then I'll talk to him when he gets here.", "Funny, I don't see a truck."] },
+        { "name": "Payment", "need": 70, "pay": true, "ask": "Our express payment line only takes {gift} cards. The total is {amount}.", "yes": ["Okay, I'm going to the store right now.", "Fine. Just don't cut the power."], "no": ["The power company takes checks.", "That's a scam."] }
+      ]
+    }
+  },
+  "PLAYER_LINES": {
+    "fear": { "utility": ["Once the power is cut, reconnection takes six to eight weeks."] }
+  },
+  "TIPS": ["Real fact: utility companies don't demand immediate payment by gift card or threaten same-day shutoffs over the phone."]
+}
