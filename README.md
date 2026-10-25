@@ -7,7 +7,3 @@ em dispositivos ARM64 (iPhone, iPad, Android e, mais tarde, Apple TV).
 - [`docs/PLANO.md`](docs/PLANO.md) — arquitetura, fases, riscos e o que dá para fazer já.
 
 Alvo: **iOS/iPadOS**. App em [`ios/`](ios/) — biblioteca, controlos, sessão Metal e JIT feitos; o motor Windows (Wine para iOS) ainda falta. Estado detalhado em [`docs/PLANO.md`](docs/PLANO.md); instalação em [`docs/INSTALAR-IOS.md`](docs/INSTALAR-IOS.md).
-
----
-
-**Outro projeto neste repositório:** [`norefunds/`](norefunds/) — *NO REFUNDS*, um simulador satírico de um call center de burlas que corre no browser (abre `norefunds/index.html`).
