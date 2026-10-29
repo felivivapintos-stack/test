@@ -1,0 +1,4 @@
+# Ferramentas usadas pelos jogos Roblox deste repositório.
+# Com o Rokit instalado, corre `rokit install` nesta pasta.
+[tools]
+rojo = "rojo-rbx/rojo@7.4.4"
