@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Frontline Zero</title>
+<meta name="description" content="Fast military FPS in your browser: Team Deathmatch and Free-for-All, killstreaks, slides and unlockable weapons.">
+<link rel="stylesheet" href="style.css">
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+</head>
+<body>
+<canvas id="game"></canvas>
+<canvas id="tags"></canvas>
+
+<div id="hud" class="hidden">
+  <canvas id="minimap" width="168" height="168"></canvas>
+  <div id="scorebar">
+    <div class="sb ally"><span id="sb-a">0</span></div>
+    <div class="sb-mid"><div id="sb-time">6:00</div><div id="sb-mode">TDM · 75</div></div>
+    <div class="sb enemy"><span id="sb-b">0</span></div>
+  </div>
+  <div id="feed"></div>
+  <div id="xhair"><i class="l"></i><i class="r"></i><i class="t"></i><i class="b"></i><b></b></div>
+  <div id="hitmark"><i></i><i></i><i></i><i></i></div>
+  <div id="notices"></div>
+  <div id="streaks"></div>
+  <div id="ammo">
+    <div id="ammo-name">M7 Vanguard</div>
+    <div id="ammo-count"><b id="ammo-mag">30</b><span id="ammo-res">/ 150</span></div>
+    <div id="ammo-extra"><span id="nades">● ●</span><span id="ammo-hint"></span></div>
+  </div>
+  <div id="hp"><div id="hp-fill"></div></div>
+  <div id="dmgdir"></div>
+  <div id="blood"></div>
+  <div id="scope" class="hidden"><div class="ring"></div></div>
+  <div id="death" class="hidden"><div id="death-by"></div><div id="death-t"></div></div>
+  <button class="icon" id="btn-pause" aria-label="Pause" title="Pause (Esc)">
+    <svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+  </button>
+  <div id="click-to-play" class="hidden">Click to play</div>
+</div>
+
+<div id="board" class="hidden"></div>
+
+<div id="touch" class="hidden">
+  <div id="stick"><div id="knob"></div></div>
+  <button class="tb" id="t-fire" aria-label="Fire">FIRE</button>
+  <button class="tb small" id="t-ads" aria-label="Aim">AIM</button>
+  <button class="tb small" id="t-jump" aria-label="Jump">JUMP</button>
+  <button class="tb small" id="t-crouch" aria-label="Crouch">DUCK</button>
+  <button class="tb small" id="t-reload" aria-label="Reload">R</button>
+  <button class="tb small" id="t-swap" aria-label="Swap weapon">⇄</button>
+  <button class="tb small" id="t-nade" aria-label="Grenade">G</button>
+</div>
+
+<div id="overlay"><div class="panel" id="panel"></div></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

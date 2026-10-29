@@ -1,0 +1,9 @@
+{
+  "name": "frontline-zero",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tools/test.mjs 3",
+    "build": "sh tools/build.sh"
+  }
+}
