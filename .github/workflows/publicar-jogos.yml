@@ -1,0 +1,42 @@
+name: Publicar jogos
+
+# Corre sempre que mudas algo em publicar/ (ou à mão, no separador Actions).
+on:
+  push:
+    paths:
+      - "publicar/**"
+  workflow_dispatch:
+    inputs:
+      jogos:
+        description: "Ids dos jogos separados por espaço (vazio = todos)"
+        required: false
+        default: ""
+
+jobs:
+  publicar:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publicar no itch.io e preparar o pacote CrazyGames
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          JOGOS: ${{ github.event.inputs.jogos }}
+        run: |
+          if [ -z "$BUTLER_API_KEY" ]; then
+            echo "::warning::Segredo BUTLER_API_KEY em falta: só valido e empacoto, não envio para o itch.io."
+            python3 publicar/publicar.py --so-verificar $JOGOS
+          else
+            python3 publicar/publicar.py $JOGOS
+          fi
+
+      - name: Guardar os pacotes CrazyGames
+        uses: actions/upload-artifact@v4
+        with:
+          name: pacotes-crazygames
+          path: publicar/dist/*.zip
+          if-no-files-found: warn

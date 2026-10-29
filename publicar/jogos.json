@@ -1,0 +1,16 @@
+{
+  "jogos": [
+    {
+      "id": "exemplo",
+      "nome": "Jogo de exemplo",
+      "pasta": "exemplo",
+      "versao": "1.0.0",
+      "itch": {
+        "utilizador": "O-TEU-UTILIZADOR-ITCH",
+        "jogo": "nome-do-jogo-no-itch",
+        "canal": "html5"
+      },
+      "crazygames": true
+    }
+  ]
+}

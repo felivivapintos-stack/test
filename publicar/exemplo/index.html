@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jogo de exemplo</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #111; color: #eee; font-family: sans-serif; }
+  canvas { display: block; margin: 0 auto; background: #222; }
+  p { text-align: center; }
+</style>
+</head>
+<body>
+<p>Clica nos quadrados. Pontos: <span id="pontos">0</span></p>
+<canvas id="c" width="480" height="320"></canvas>
+<script>
+  const c = document.getElementById("c"), g = c.getContext("2d");
+  let alvo = novo(), pontos = 0;
+  function novo() { return { x: Math.random() * 440, y: Math.random() * 280 }; }
+  function desenhar() {
+    g.clearRect(0, 0, c.width, c.height);
+    g.fillStyle = "#4caf50";
+    g.fillRect(alvo.x, alvo.y, 40, 40);
+  }
+  c.addEventListener("pointerdown", e => {
+    const r = c.getBoundingClientRect();
+    const x = (e.clientX - r.left) * c.width / r.width, y = (e.clientY - r.top) * c.height / r.height;
+    if (x >= alvo.x && x <= alvo.x + 40 && y >= alvo.y && y <= alvo.y + 40) {
+      document.getElementById("pontos").textContent = ++pontos;
+      alvo = novo();
+      desenhar();
+    }
+  });
+  desenhar();
+</script>
+</body>
+</html>
