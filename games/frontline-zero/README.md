@@ -1,10 +1,24 @@
 # Frontline Zero
 
-**FPS militar de rondas rápidas no browser, para competir com o Call of Duty mais recente no que
-um jogo de browser consegue ganhar: abrir em 2 segundos, correr em qualquer PC/telemóvel e não
-pedir 150 GB nem 70 €.** Jogo original: sem nomes, armas, mapas ou marcas da Activision.
+**FPS militar de rondas rápidas para PC (Windows), para competir com o Call of Duty mais recente
+no que um jogo pequeno consegue ganhar: instala em segundos (~100 MB em vez de 150 GB), corre em
+qualquer PC, até portáteis fracos, e é grátis.** Jogo original: sem nomes, armas, mapas ou marcas da Activision.
 
-Para jogar localmente: `python3 -m http.server` nesta pasta e abre `http://localhost:8000`.
+## Versão PC (Windows)
+O jogo é agora, antes de tudo, **um jogo de PC**: uma app de Windows (`desktop/`, Electron) com o mesmo motor.
+
+- **Descarregar:** Releases do GitHub → `frontline-zero-latest` →
+  `Frontline-Zero-Setup-<versão>.exe` (instalador, cria atalho) ou `Frontline-Zero-Portable-<versão>.exe` (corre sem instalar).
+  O workflow `.github/workflows/frontline-zero.yml` compila-os num Windows do GitHub Actions a cada alteração.
+- O Windows SmartScreen pode avisar "editor desconhecido" (o .exe não está assinado): *Mais informações → Executar mesmo assim*.
+- Só no PC: ecrã inteiro real (**F11**), rato em modo *raw input* (sem aceleração do Windows), qualidade gráfica
+  Low/Medium/High/Ultra, FPS ilimitados (desliga o V-Sync, reinicia o jogo), contador de FPS, botão de sair, sem anúncios.
+  Funciona sem internet; o progresso fica guardado no PC.
+- Desenvolver: `cd desktop && npm install && npm start` (copia o jogo para `desktop/app/` sem o SDK do CrazyGames e abre a janela).
+  `npm run dist` gera os .exe (num Windows; no Linux é preciso o Wine).
+
+A versão browser continua a existir (`index.html`, para o CrazyGames). Para jogá-la localmente:
+`python3 -m http.server` nesta pasta e abre `http://localhost:8000`.
 
 ## Plano
 
@@ -36,7 +50,8 @@ src/sim.js              regras, movimento, tiro, granadas, killstreaks, IA dos b
 src/render.js           WebGL2: mapa estático, soldados em caixas, arma na mão, partículas
 src/audio.js            sons sintetizados com WebAudio
 src/platform.js         SDK v3 do CrazyGames + gravação do progresso
-src/main.js             ciclo de jogo, rato/teclado/toque, HUD, menus
+src/main.js             ciclo de jogo, rato/teclado/toque, HUD, menus, opções de PC
+desktop/                app Windows: main.cjs (janela, ecrã inteiro, FPS), preload.cjs (ponte), prepare.mjs
 tools/test.mjs          joga partidas só com bots sem browser e verifica que nada parte
 tools/build.sh          zip para enviar ao CrazyGames
 tools/artifact.py       página única para ver como artifact

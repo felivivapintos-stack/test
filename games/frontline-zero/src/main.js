@@ -26,8 +26,24 @@ try {
 // ---------------------------------------------------------------- save
 const defaults = {
   xp: 0, primary: 'vanguard', mode: 'tdm', difficulty: 1, sens: 1, fov: 100, volume: 0.8,
-  matches: 0, wins: 0, kills: 0,
+  quality: 2, showFps: false, matches: 0, wins: 0, kills: 0,
 };
+// PC build (desktop/): the Electron shell exposes `window.desktop`; no ads there, real fullscreen and FPS options
+const desktop = window.desktop || null;
+let desktopSettings = { fullscreen: false, uncapped: false };
+const QUALITY = [
+  { name: 'Low', scale: 0.6 },
+  { name: 'Medium', scale: 0.8 },
+  { name: 'High', scale: 1 },
+  { name: 'Ultra', scale: 1, fullDpr: true },
+];
+
+function applyQuality() {
+  const q = QUALITY[save.quality] || QUALITY[2];
+  const dpr = window.devicePixelRatio || 1;
+  renderer.scale = Math.min(dpr, q.fullDpr ? 3 : 1.5) * q.scale;
+  $('fps').classList.toggle('hidden', !save.showFps);
+}
 let save = { ...defaults };
 
 function persist() { platform.save(save); }
@@ -52,6 +68,12 @@ const touch = { mx: 0, mz: 0, fire: false, ads: false, stickId: null, lookId: nu
 
 addEventListener('keydown', (e) => {
   if (e.code === 'Tab') { e.preventDefault(); showBoard = true; }
+  if (e.code === 'F11' && desktop) {
+    e.preventDefault();
+    desktopSettings.fullscreen = !desktopSettings.fullscreen;
+    desktop.setFullscreen(desktopSettings.fullscreen);
+    return;
+  }
   if (screen !== 'play') {
     if (e.code === 'Escape' && screen === 'pause') resume();
     return;
@@ -219,8 +241,9 @@ function pause() {
     <h1 class="logo">Paused</h1>
     <div class="row" style="margin-top:22px"><button class="btn" id="resume">Resume</button></div>
     ${settingsHtml()}
-    <div class="row"><button class="btn ghost" id="quit">Leave match</button></div>`);
+    <div class="row"><button class="btn ghost" id="quit">Leave match</button>${desktop ? '<button class="btn ghost" id="exit">Quit to desktop</button>' : ''}</div>`);
   $('resume').onclick = resume;
+  if (desktop) $('exit').onclick = () => desktop.quit();
   $('quit').onclick = () => { s = null; menu(); };
   bindSettings();
 }
@@ -278,12 +301,12 @@ function finishMatch() {
     ${levelHtml()}
     <div class="row" style="margin-top:18px">
       <button class="btn" id="again">Play again</button>
-      <button class="btn ghost" id="double">▶ Double XP</button>
+      ${desktop ? '' : '<button class="btn ghost" id="double">▶ Double XP</button>'}
       <button class="btn ghost" id="tomenu">Loadout</button>
     </div>`);
   $('again').onclick = () => withMidgame(startMatch);
   $('tomenu').onclick = () => withMidgame(menu);
-  $('double').onclick = async () => {
+  if (!desktop) $('double').onclick = async () => {
     $('double').disabled = true;
     const ok = await platform.ad('rewarded', adHooks());
     if (ok) {
@@ -308,7 +331,7 @@ function adHooks() {
 
 async function withMidgame(next) {
   const now = performance.now();
-  if (matchesThisSession >= 2 && now - lastMidgame > 180000) {
+  if (!desktop && matchesThisSession >= 2 && now - lastMidgame > 180000) {
     lastMidgame = now;
     await platform.ad('midgame', adHooks());
   }
@@ -330,14 +353,38 @@ function settingsHtml() {
   return `<div class="label">Settings</div>
     <div class="row"><label>Sensitivity <input type="range" id="sens" min="0.2" max="3" step="0.05" value="${save.sens}"></label></div>
     <div class="row"><label>Field of view <input type="range" id="fov" min="70" max="120" step="1" value="${save.fov}"></label> <span id="fov-v">${save.fov}</span></div>
-    <div class="row"><label>Volume <input type="range" id="vol" min="0" max="1" step="0.05" value="${save.volume}"></label></div>`;
+    <div class="row"><label>Volume <input type="range" id="vol" min="0" max="1" step="0.05" value="${save.volume}"></label></div>
+    <div class="row"><span>Graphics</span>
+      <div class="seg">${QUALITY.map((q, i) => `<button data-quality="${i}" class="${i === save.quality ? 'on' : ''}">${q.name}</button>`).join('')}</div>
+    </div>
+    <div class="row">
+      <label><input type="checkbox" id="showfps" ${save.showFps ? 'checked' : ''}> Show FPS</label>
+      ${desktop ? `<label><input type="checkbox" id="fullscreen" ${desktopSettings.fullscreen ? 'checked' : ''}> Fullscreen <kbd>F11</kbd></label>
+      <label><input type="checkbox" id="uncapped" ${desktopSettings.uncapped ? 'checked' : ''}> Unlimited FPS</label>
+      <button class="btn ghost small hidden" id="restart">Restart to apply</button>` : ''}
+    </div>`;
 }
 
 function bindSettings() {
   $('sens').oninput = (e) => { save.sens = +e.target.value; persist(); };
   $('fov').oninput = (e) => { save.fov = +e.target.value; $('fov-v').textContent = save.fov; persist(); };
   $('vol').oninput = (e) => { save.volume = +e.target.value; audio.volume = save.volume; audio.apply(); persist(); };
+  for (const b of document.querySelectorAll('[data-quality]')) {
+    b.onclick = () => {
+      save.quality = +b.dataset.quality; persist(); applyQuality();
+      for (const o of document.querySelectorAll('[data-quality]')) o.classList.toggle('on', o === b);
+    };
+  }
+  $('showfps').onchange = (e) => { save.showFps = e.target.checked; persist(); applyQuality(); };
+  if (!desktop) return;
+  $('fullscreen').onchange = (e) => { desktopSettings.fullscreen = e.target.checked; desktop.setFullscreen(e.target.checked); };
+  $('uncapped').onchange = async (e) => {
+    await desktop.setUncapped(e.target.checked);
+    $('restart').classList.toggle('hidden', e.target.checked === startedUncapped);
+  };
+  $('restart').onclick = () => desktop.restart();
 }
+let startedUncapped = false;
 
 function statBar(v) { return `<div class="bar"><i style="width:${Math.round(Math.min(1, v) * 100)}%"></i></div>`; }
 
@@ -360,9 +407,9 @@ function menu() {
   }).join('');
   showPanel(`
     <h1 class="logo">Frontline <span>Zero</span></h1>
-    <div class="tag">6v6 firefights · killstreaks · no download</div>
+    <div class="tag">${desktop ? `6v6 firefights · killstreaks · v${desktopSettings.version || ''}` : '6v6 firefights · killstreaks · no download'}</div>
     ${levelHtml()}
-    <div class="row" style="margin-top:18px"><button class="btn" id="play">Play</button></div>
+    <div class="row" style="margin-top:18px"><button class="btn" id="play">Play</button>${desktop ? '<button class="btn ghost" id="exit">Quit</button>' : ''}</div>
     <div class="row">
       <div class="seg" id="modes">${Object.entries(MODES).map(([k, m]) => `<button data-mode="${k}" class="${k === save.mode ? 'on' : ''}">${m.name}</button>`).join('')}</div>
     </div>
@@ -379,6 +426,7 @@ function menu() {
       Kill streaks: 3 = UAV · 5 = Air Strike · 7 = Attack Drone
     </div>`);
   $('play').onclick = startMatch;
+  if (desktop) $('exit').onclick = () => desktop.quit();
   for (const b of document.querySelectorAll('[data-mode]')) b.onclick = () => { save.mode = b.dataset.mode; persist(); menu(); };
   for (const b of document.querySelectorAll('[data-diff]')) b.onclick = () => { save.difficulty = +b.dataset.diff; persist(); menu(); };
   for (const b of document.querySelectorAll('[data-gun]')) b.onclick = () => { save.primary = b.dataset.gun; persist(); menu(); };
@@ -659,10 +707,15 @@ function renderBoard() {
 }
 
 // ---------------------------------------------------------------- loop
+const fpsMeter = { frames: 0, t: 0 };
 function frame(now) {
   requestAnimationFrame(frame);
   const dt = Math.min(0.1, (now - last) / 1000);
   last = now;
+  if (save.showFps) {
+    fpsMeter.frames++; fpsMeter.t += dt;
+    if (fpsMeter.t >= 0.5) { $('fps').textContent = `${Math.round(fpsMeter.frames / fpsMeter.t)} FPS`; fpsMeter.frames = 0; fpsMeter.t = 0; }
+  }
   if (screen === 'play' && s) {
     acc += dt;
     let first = true;
@@ -710,6 +763,11 @@ if (new URLSearchParams(location.search).has('debug')) {
   await platform.init();
   save = { ...defaults, ...(platform.load() || {}) };
   save.fov = Math.min(120, Math.max(70, save.fov));
+  if (desktop) {
+    try { desktopSettings = await desktop.settings(); } catch (e) { console.warn(e); }
+    startedUncapped = !!desktopSettings.uncapped;
+  }
+  applyQuality();
   audio.volume = save.volume;
   audio.forcedMute = platform.muteSetting;
   platform.onSettings((st) => { audio.forcedMute = !!(st && st.muteAudio); audio.apply(); });

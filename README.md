@@ -8,6 +8,6 @@ em dispositivos ARM64 (iPhone, iPad, Android e, mais tarde, Apple TV).
 
 Alvo: **iOS/iPadOS**. App em [`ios/`](ios/) — biblioteca, controlos, sessão Metal e JIT feitos; o motor Windows (Wine para iOS) ainda falta. Estado detalhado em [`docs/PLANO.md`](docs/PLANO.md); instalação em [`docs/INSTALAR-IOS.md`](docs/INSTALAR-IOS.md).
 
-## Jogos de browser
-- [`games/frontline-zero/`](games/frontline-zero/) — **Frontline Zero**, FPS militar de rondas rápidas (TDM/FFA contra bots,
-  killstreaks, slide, armas a desbloquear) para o CrazyGames. Plano e controlos no README da pasta.
+## Jogos
+- [`games/frontline-zero/`](games/frontline-zero/) — **Frontline Zero**, FPS militar de rondas rápidas para **PC (Windows)**
+  e browser: TDM/FFA contra bots, killstreaks, slide, armas a desbloquear. O `.exe` sai em Releases → `frontline-zero-latest`.

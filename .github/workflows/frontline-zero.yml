@@ -1,0 +1,62 @@
+name: Frontline Zero (PC)
+
+# Builds the Windows game (installer + portable .exe) and publishes it to the
+# "frontline-zero-latest" release.
+on:
+  push:
+    paths:
+      - 'games/frontline-zero/**'
+      - '.github/workflows/frontline-zero.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: frontline-zero-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Bot-only matches
+        working-directory: games/frontline-zero
+        run: node tools/test.mjs 3
+
+  windows:
+    needs: test
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: games/frontline-zero/desktop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: games/frontline-zero/desktop/package-lock.json
+      - run: npm ci
+      - name: Build installer and portable exe
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: npm run dist && ls -la dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Frontline-Zero-Windows
+          path: games/frontline-zero/desktop/dist/*.exe
+      - name: Publish to the "latest" release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="Frontline Zero para Windows, compilado de ${GITHUB_SHA::7}. Setup = instalador; Portable = corre sem instalar."
+          gh release view frontline-zero-latest -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create frontline-zero-latest -R "$GITHUB_REPOSITORY" --title "Frontline Zero (Windows, última versão)" --notes "$notes" --prerelease --target "$GITHUB_SHA"
+          gh release edit frontline-zero-latest -R "$GITHUB_REPOSITORY" --notes "$notes"
+          gh release upload frontline-zero-latest dist/*.exe -R "$GITHUB_REPOSITORY" --clobber

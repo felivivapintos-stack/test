@@ -1,0 +1,45 @@
+{
+  "name": "frontline-zero",
+  "productName": "Frontline Zero",
+  "version": "0.2.0",
+  "description": "Fast military FPS for PC: Team Deathmatch and Free-for-All against bots.",
+  "author": "Frontline Zero",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "prepare-game": "node prepare.mjs",
+    "start": "node prepare.mjs && electron .",
+    "dist": "node prepare.mjs && electron-builder --win nsis portable --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.1.0",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "com.frontlinezero.game",
+    "productName": "Frontline Zero",
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "app/**"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Frontline Zero",
+      "artifactName": "Frontline-Zero-Setup-${version}.exe"
+    },
+    "portable": {
+      "artifactName": "Frontline-Zero-Portable-${version}.exe"
+    },
+    "publish": null
+  }
+}
