@@ -8,6 +8,12 @@ projeto Rojo em `roblox/<jogo>/`, com multijogador e com os problemas da convers
 - Rojo 7.4.4 instalado no PC (Windows) via Rokit; versão fixada em `roblox/rokit.toml`.
 - Plugin do Rojo: `roblox/instalar-plugin.ps1` (o `rojo plugin install` falhou por não encontrar o Studio no registo).
 - `roblox/teste-rojo/`: projeto mínimo para confirmar a ligação (peça verde + mensagens `[teste-rojo]` no Output).
+- Plugin do Rojo 7.4.4 instalado em `%LOCALAPPDATA%\Roblox\Plugins\Rojo.rbxm` (29/10/2026).
+- MCP do Studio: o servidor `Roblox/studio-rust-mcp-server` foi descontinuado; usa-se o MCP que vem
+  dentro do Studio (Assistant › … › Manage MCP Servers › Enable Studio as MCP server), configurado
+  para o Claude Code em `.mcp.json` na raiz do repositório.
+- `roblox/shared/`: base comum feita (Remotes, Fase, UI, Util, GestorRondas, DadosJogador, Estatisticas).
+- `roblox/gobble-royale/`: 1.ª versão completa, compila com `rojo build`; falta testar no Studio.
 
 ## Base comum (`roblox/shared/`)
 

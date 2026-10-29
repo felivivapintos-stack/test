@@ -1,0 +1,34 @@
+{
+  "name": "gobble-royale",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Comum": {
+        "$path": "../shared/src/Comum"
+      },
+      "Gobble": {
+        "$path": "src/shared"
+      }
+    },
+    "ServerScriptService": {
+      "ComumServidor": {
+        "$path": "../shared/src/Servidor"
+      },
+      "Gobble": {
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Gobble": {
+          "$path": "src/client"
+        }
+      }
+    },
+    "Players": {
+      "$properties": {
+        "CharacterAutoLoads": false
+      }
+    }
+  }
+}
