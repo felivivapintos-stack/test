@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Splat Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500..700&family=Outfit:wght@400..700&display=swap">
+<meta name="description" content="A jelly platformer where every death becomes a block. Die smart, stack up, reach the door.">
+<link rel="stylesheet" href="style.css">
+<canvas id="game"></canvas>
+
+<div id="hud">
+  <div class="pill" id="hud-level">1</div>
+  <div class="pill" id="hud-deaths"><span class="skull"></span><b id="deaths">0</b><span class="par" id="par">par 0</span></div>
+  <div class="hud-right">
+    <button class="pill btn-skip hidden" id="btn-skip" aria-label="Skip level"><span class="ad-badge">AD</span>Skip</button>
+    <button class="icon" id="btn-restart" aria-label="Restart level" title="Restart (R)">
+      <svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+    </button>
+    <button class="icon" id="btn-pause" aria-label="Pause" title="Pause (Esc)">
+      <svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+    </button>
+  </div>
+</div>
+
+<div id="banner" class="hidden"><div id="banner-title"></div><div id="banner-hint"></div></div>
+
+<div id="touch" class="hidden">
+  <div class="tleft">
+    <button class="tbtn" data-k="l" aria-label="Left"><svg viewBox="0 0 24 24"><path d="M15 4 7 12l8 8z"/></svg></button>
+    <button class="tbtn" data-k="r" aria-label="Right"><svg viewBox="0 0 24 24"><path d="m9 4 8 8-8 8z"/></svg></button>
+  </div>
+  <button class="tbtn tjump" data-k="j" aria-label="Jump"><svg viewBox="0 0 24 24"><path d="m12 4 8 9h-5v7H9v-7H4z"/></svg></button>
+</div>
+
+<div id="rotate" class="hidden"><div>Turn your phone sideways for a bigger view</div></div>
+
+<div id="overlay" class="hidden">
+  <div class="panel" id="panel"></div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+
+</body></html>

@@ -1,0 +1,46 @@
+// Every visible string lives here (English only).
+const STRINGS={
+ subtitle:'The Nations Penalty Cup',
+ tagline:'96 nations. 48 qualify. One trophy. Your nerves.',
+ loading:'Warming up…',
+ play:'PLAY',continue:'CONTINUE',newTournament:'NEW TOURNAMENT',rules:'How to play',back:'Back',close:'Got it',menu:'Menu',
+ soundOn:'Mute sound',soundOff:'Enable sound',
+ statNations:'Nations',statQualify:'Qualify',statChampion:'Champion',
+ chooseNation:'Choose your nation',search:'Search nations…',all:'All',noTeams:'No nations found.',
+ regions:{EU:'Europe',SA:'South America',AF:'Africa',AS:'Asia & Oceania',NA:'North America'},
+ tiers:['','Underdog','Outsider','Contender','Strong','Favourite'],enterPitch:'TAKE THE PITCH',
+ replaceTitle:'Start over?',replaceBody:'You have a tournament in progress with {team}. Starting a new one will replace it.',replaceYes:'START NEW',cancel:'Cancel',
+ stages:['Groups','Round of 32','Round of 16','Quarter-finals','Semi-finals','Final'],
+ group:'Group {g}',matchday:'Matchday {n}/3',nextMatch:'Next match',playNow:'PLAY NOW',playFinal:'PLAY THE FINAL',
+ tabGroup:'Group {g}',tabResults:'Results',tabAll:'All groups',tabBracket:'Bracket',
+ noResults:'No matches yet. The first penalty is waiting for you.',
+ tableHead:['Nation','P','GD','Pts'],win:'W',drawShort:'D',loss:'L',
+ rulesBody:'<div class="howto"><div><b>Shooting</b><p>Move the target with your mouse, or touch the goal where you want the ball to go. Hold to build power and release inside the green zone. Too little and the shot is weak; too much and it flies over.</p></div><div><b>Saving</b><p>Watch the taker. A ring flashes where the ball is heading just before the kick. Tap or click it before the ball arrives. Too slow and you will not get there.</p></div><div><b>Tournament</b><p>48 nations qualify from 96. 12 groups of 4, then the top two and the 8 best third-placed teams go through. Knockouts go to sudden death if level after five.</p></div></div><p class="fine">Keyboard: arrows aim, hold Space to shoot. To save, arrows move the glove and Space dives. Esc pauses. Original tournament with its own draw; it does not reproduce official participants or schedules. Progress is saved on this device.</p>',
+ penalties5:'5 penalties',knockout:'Knockout',pause:'Pause',
+ yourTurn:'Your kick',protect:'Your save',suddenDeath:'Sudden death',decisive:'Decisive kick',
+ shoot:'SHOOT.',save:'SAVE.',
+ instrShoot:'Aim at the goal, hold for power, release in the green.',instrSave:'Watch for the flash, then tap where the ball is going.',
+ holdBtn:'HOLD FOR POWER',saveBtn:'DIVE',meterPower:'Power',meterReaction:'Ball arrives',
+ goal:'GOAL!',saved:'SAVED!',wide:'WIDE!',over:'OVER!',post:'OFF THE POST!',bar:'OFF THE BAR!',
+ goalYou:['Top bins!','Clinical.','Ice in the veins.','No chance for the keeper.','Picture perfect.'],
+ goalYouCentre:['Cheeky down the middle!','Nerves of steel.'],
+ goalThem:['They scored. Your turn to answer.','Unstoppable. Shake it off.','Read it next time.'],
+ savedYou:['What a save!','Hero!','Brilliant reflexes!','You read it perfectly.'],
+ savedThem:['The keeper guessed right.','Too close to the keeper.','Mix up your corners.'],
+ weak:'Not enough power. Release later.',overMsg:'Too much power. Release in the green.',wideMsg:'Aimed a touch too wide.',postMsg:'So close…',
+ lateMsg:'Too late. React to the flash sooner.',wrongMsg:'Wrong spot. Follow the flash.',noDive:'You did not dive.',earlyMsg:'Dived too early and went down.',theyMissed:'They missed! Lucky escape.',
+ firstShot:'Move the target to a corner, then hold and release in the green.',firstSave:'When the ring flashes, tap it fast.',
+ paused:'PAUSED',pausedSub:'Take a breath. The game can wait.',pausedBody:'Completed matches are saved. If you leave now, this match restarts from the beginning.',resume:'RESUME',leave:'Back to tournament',
+ victory:'VICTORY',draw:'DRAW',defeat:'DEFEAT',
+ rChampion:'The trophy is yours. So is the world.',rOut:'The dream ends here. There is always another tournament.',rGroupWin:'Three points. One step closer.',rGroupDraw:'One point. Everything still to play for.',rGroupLoss:'Head up. There are still games to play.',rKoWin:'You are through. The trophy is closer.',
+ lift:'LIFT THE TROPHY',viewCampaign:'VIEW CAMPAIGN',
+ secondTitle:'Second chance?',secondBody:'Watch a short ad and replay this match.',secondYes:'REPLAY MATCH',secondNo:'Accept defeat',
+ champEyebrow:'Champions',endEyebrow:'End of the road',champTitle:'THE WORLD<br>IS <em>YOURS.</em>',endTitle:'WE COME BACK<br><em>STRONGER.</em>',
+ champBody:'From the groups to the final. The trophy wears your colours.',groupOut:'Your nation did not get out of the group.',outAt:'Your run ended in the {stage}.',campaign:'Your campaign',
+ statsLine:'{goals} of {kicks} penalties scored · {saves} saves',
+ vs:'VS'
+};
+export const lang='en';
+document.documentElement.lang='en';
+export function t(key,vars){let v=STRINGS[key]??key;if(Array.isArray(v)&&vars===undefined)return v;if(vars&&typeof v==='string')v=v.replace(/\{(\w+)\}/g,(_,k)=>vars[k]??'');return v;}
+export const pick=key=>{const a=STRINGS[key];return Array.isArray(a)?a[Math.floor(Math.random()*a.length)]:a;};

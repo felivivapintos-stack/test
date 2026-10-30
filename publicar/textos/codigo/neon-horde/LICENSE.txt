@@ -1,0 +1,24 @@
+COMMERCIAL LICENSE - Neon Horde
+
+Copyright (c) 2026 {AUTHOR}. All rights reserved.
+
+By purchasing this package you (the "Buyer") receive a non-exclusive, worldwide,
+perpetual licence to:
+
+  1. Use, modify and reskin the source code and original assets.
+  2. Publish games built from it, free or paid, on any platform, including
+     web portals with advertising, app stores and your own websites.
+  3. Use it in projects you build for one client per licence purchased.
+
+The Buyer may NOT:
+
+  a. Resell, sublicense or redistribute the source code or assets on their own,
+     or as part of another template, starter kit or asset pack.
+  b. Publish the game unchanged under its original name and branding.
+
+Third-party components keep their own licences (listed in README.md). They are
+included as permitted by those licences.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
