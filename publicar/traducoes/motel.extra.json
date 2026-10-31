@@ -1,0 +1,22 @@
+{
+"' para ficar calad'+(c&&c.name==='Rico'?'o':'a')+'. Pago.'": "' to keep quiet. Paid.'",
+"'Ir ao quarto '+ROOMS[idx].n+' com '+(c.name==='Rico'?'o ':'a ')+c.name+' ('": "'Go to room '+ROOMS[idx].n+' with '+c.name+' ('",
+"' de '+DAYS": "' of '+DAYS",
+"(c?c.name:'alguém')+' quer '": "(c?c.name:'someone')+' wants '",
+"'desistiu'": "'gave up'",
+"(muted?'desligado':'ligado')": "(muted?'off':'on')",
+"' imundo'": "' filthy'",
+"'lavado '": "'laundered '",
+"'livre'": "'free'",
+"'relaxado'": "'relaxed'",
+"pl(st.bribes,'suborno','subornos')": "pl(st.bribes,'bribe','bribes')",
+"pl(st.crates,'caixa','caixas')": "pl(st.crates,'crate','crates')",
+"pl(st.launder,'lavagem','lavagens')": "pl(st.launder,'wash','washes')",
+"pl(st.cleans,'limpeza','limpezas')": "pl(st.cleans,'clean-up','clean-ups')",
+"pl(st.rugs,'tapete','tapetes')": "pl(st.rugs,'rug','rugs')",
+"pl(st.pots,'pote','potes')": "pl(st.pots,'pot','pots')",
+"alto": "high",
+"medio": "medium",
+"baixo": "low",
+"' com '+c.name+'": "' with '+c.name+'"
+}

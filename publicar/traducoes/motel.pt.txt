@@ -1,0 +1,474 @@
+0	Run a Motel With Your Friends
+1	DIA 1/7
+2	SUSPEITA
+3	II
+4	Arrasta o rato para rodar a câmara · roda para zoom · Esc pausa
+5	Run a Motel
+6	with your friends
+7	Desert Rose Motel, Route 66, Novo México. De dia: lençóis lavados e café queimado. De noite: a rede de acompanhantes do quarto 13, o poker na receção, o camião do contrabando, os telefonemas da Família e um jacaré chamado Bubba que come o que lhe atirarem.
+8	Objetivo: chegar a
+9	em 7 dias sem que a suspeita do xerife chegue a 100%.
+10	Abrir o motel
+11	Continuar
+12	Espaço
+13	para abrir ·
+14	Esc
+15	no jogo abre a pausa com os controlos
+16	Pausa
+17	Controlos
+18	setas +
+19	Enter
+20	Comando
+21	analógico esquerdo +
+22	, direito roda a câmara,
+23	Start
+24	Câmara
+25	arrastar o rato roda, a roda faz zoom
+26	Ação
+27	carrega para usar, mantém para limpar ou tratar do assunto
+28	Gráficos
+29	A fachada
+30	Receção:
+31	faz o check-in antes que a paciência acabe.
+32	Quartos sujos:
+33	mantém a ação na porta.
+34	Quarto 13:
+35	à noite chegam os clientes de chapéu. Pagam bem, mas o xerife repara.
+36	A rede (de noite)
+37	Lounge:
+38	às 19:00 chegam as acompanhantes e esperam no banco ao lado dos quartos.
+39	Cliente de chapéu:
+40	faz o check-in e uma acompanhante livre vai com ele para o 13 ou para um quarto vazio.
+41	Problemas:
+42	se um quarto pisca a vermelho, mantém a ação na porta e põe o cliente na rua.
+43	Ânimo:
+44	cada serviço cansa. Dá-lhes gorjeta no lounge ou vão para casa.
+45	Limpeza:
+46	no fim do dia podes contratar faxineiras, que limpam sozinhas os quartos sujos mas fogem das cenas de crime e podem contar ao xerife o que viram, ou o Sr. Lobo, caro, que limpa tudo, sangue incluído, e não fala. Os salários pagam-se ao fim do dia.
+47	Cliente da casa:
+48	na jukebox do lounge podes pagar e ir para um quarto com quem estiver livre. Ficas uns segundos fora de jogo e sais relaxado (mais rápido). Mas há risco de denúncia: chantagem ou uma chamada anónima para o xerife. O risco sobe com pouco ânimo, com o xerife por perto e com cada visita no mesmo dia.
+49	Outros negócios
+50	Lavandaria 24h:
+51	o dinheiro da rede, dos contratos, do contrabando e do poker é sujo. Mantém a ação na lavandaria para o lavar (10% de comissão). O que ficar por lavar no fim do dia faz as Finanças desconfiar.
+52	Contrabando:
+53	a partir do dia 2, à noite, um camião de "frutas e legumes" larga caixas no parque. Leva-as uma a uma para a arrecadação ao lado do contentor. Caixas ao relento são apreendidas pelo xerife ou perdidas de manhã.
+54	Poker clandestino:
+55	por volta das 20:00 os jogadores sentam-se à mesa da receção e o pote cresce. Recolhe-o, e esconde as cartas quando o xerife se aproximar, senão ele apreende o pote.
+56	O negócio a sério
+57	Telefone:
+58	atende e chega um alvo de fato cinzento e mala.
+59	Porta do alvo:
+60	mantém a ação. Sai um tapete com sapatos.
+61	Pântano ou contentor:
+62	Sangue:
+63	esfregona no armário.
+64	Xerife:
+65	Tarefas:
+66	a lista no canto e as setas no mundo mostram o mais urgente.
+67	Gráficos: alto
+68	Som: ligado
+69	Sair para o menu
+70	Fim do dia 1
+71	Livro oficial (para as Finanças)
+72	Livro real (para a Família)
+73	Abrir o dia 2
+74	Contratar
+75	Contratar faxineira
+76	Contratar o Sr. Lobo
+77	Apanhados
+78	Jogar outra vez
+79	A abrir o motel…
+80	./lib/three.module.js
+81	three/addons/
+82	./lib/addons/
+83	three/addons/objects/Sky.js
+84	three/addons/postprocessing/EffectComposer.js
+85	three/addons/postprocessing/RenderPass.js
+86	three/addons/postprocessing/GTAOPass.js
+87	three/addons/postprocessing/UnrealBloomPass.js
+88	three/addons/postprocessing/OutputPass.js
+89	three/addons/postprocessing/SMAAPass.js
+90	three/addons/postprocessing/ShaderPass.js
+91	three/addons/shaders/FXAAShader.js
+92	KeyW
+93	KeyS
+94	KeyA
+95	KeyD
+96	KeyE
+97	WASD + E
+98	ArrowUp
+99	ArrowDown
+100	ArrowLeft
+101	ArrowRight
+102	Setas + Enter
+103	KeyI
+104	KeyK
+105	KeyJ
+106	KeyL
+107	KeyO
+108	IJKL + O
+109	Numpad8
+110	Numpad5
+111	Numpad4
+112	Numpad6
+113	Numpad0
+114	Numpad + 0
+115	Space
+116	(pointer:coarse)
+117	translate(
+118	px,
+119	px)
+120	Dia de abertura
+121	O xerife só aparece à tarde. Aprende o caminho entre a receção, os quartos e o pântano.
+122	Autocarro de turistas
+123	Ao fim da manhã chega um autocarro cheio. Os quartos pagam mais 50%.
+124	Inspeção sanitária
+125	O xerife traz a inspeção: cada quarto sujo que ele vir sobe a suspeita.
+126	Lua cheia
+127	Esta noite há o dobro de clientes de chapéu e a rede paga mais 25%.
+128	Convenção de xerifes
+129	Mais rondas e os subornos custam o dobro.
+130	Tempestade de areia
+131	Ninguém vê nada a cinco metros. Nem o xerife.
+132	Última noite
+133	A Família paga o dobro pelos contratos. É agora ou nunca.
+134	Cliente da casa
+135	Estivador
+136	Mago da lavandaria
+137	Croupier
+138	Mão de tapete
+139	Segurança da noite
+140	Sorriso da receção
+141	Rei da lixívia
+142	Diplomata
+143	Linha direta da Família
+144	Especialista em check-outs
+145	Patrono das artes
+146	SUSPEITA +
+147	Não há quarto livre para a rede. Limpa o 13.
+148	Nenhuma acompanhante livre no lounge.
+149	Não há quartos livres. Limpa os sujos.
+150	Volto já, querido.
+151	Mais um cowboy...
+152	? Outra vez?
+153	Cinco estrelas, prometo.
+154	vai com o cliente para o
+155	. Ela fica com
+156	movimento no 13
+157	o vizinho do
+158	queixou-se das paredes finas
+159	a rede no quarto
+160	O alvo ficou no quarto
+161	. Ninguém o vai acordar.
+162	Candy
+163	Roxy
+164	Dolores
+165	Jade
+166	Rico
+167	saiu do quarto
+168	a chorar e não volta esta noite.
+169	um vizinho ligou para o 911
+170	Rua!
+171	As minhas calças!
+172	Isto não fica assim!
+173	Eu conheço o xerife!
+174	agradece. O cliente foi para a rua sem as calças.
+175	Cliente na rua.
+176	A rede chegou ao lounge. Os clientes de chapéu não tardam.
+177	foi para casa. Está farta desta noite.
+178	A Família cobra
+179	Isto demora?
+180	Há alguém aí?
+181	Vou ao motel do lado!
+182	Tenho um carro a arrefecer...
+183	O alvo cansou-se de esperar.
+184	SOCORRO!
+185	Problemas no quarto
+186	! O cliente passou das marcas. Põe-no na rua.
+187	O alvo fez check-out vivo.
+188	Dar ao Bubba
+189	Atirar ao contentor
+190	Esconder no gelo
+191	Gelo extra no quarto 1... não, não peças gelo.
+192	Largar o tapete
+193	Subornar (
+194	Suborno: faltam
+195	Nunca estive aqui.
+196	Bom negócio, amigo.
+197	Que motel tão limpo.
+198	"Nunca estive aqui." O xerife guarda o envelope.
+199	Guardar na arrecadação
+200	Largar a caixa
+201	Esfregar sangue
+202	Arrumar esfregona
+203	Pegar na caixa
+204	Pegar no tapete
+205	Tirar do gelo
+206	Atender
+207	Pegar esfregona
+208	Lavar dinheiro (
+209	Voltar ao jogo
+210	Quem dá as cartas?
+211	Recolher o pote (
+212	Esconder as cartas
+213	Estamos só a ler o jornal.
+214	Ir ao quarto
+215	· risco
+216	Nem o dono tem crédito na casa. Faltam
+217	Não há quarto livre
+218	Ninguém livre no lounge
+219	Gorjeta à
+220	Gorjeta: faltam
+221	És um amor.
+222	Assim sim.
+223	Mais uma hora, vá.
+224	Check-in
+225	Tratar do assunto
+226	Pôr o cliente na rua
+227	Limpar quarto
+228	Limpar a cena
+229	"Fato cinzento. Mala. Não sai vivo."
+230	A Família: "Um senhor de fato cinzento e mala vai pedir um quarto. Não deixes que saia."
+231	*THUMP*
+232	Feito. Agora há um tapete com sapatos à porta do
+233	Contentor. O camião do lixo só passa de manhã.
+234	GLUB
+235	O Bubba agradece.
+236	Glub.
+237	O pântano não faz perguntas.
+238	Dona Graça
+239	Dona Fátima
+240	Sr. Armando
+241	Sr. Lobo
+242	Sr
+243	Sou o Sr. Lobo. Resolvo problemas.
+244	Ninguém toca em nada.
+245	Lixívia, sacos e silêncio.
+246	Dona
+247	Sr.
+248	da limpeza contou ao xerife o que viu
+249	Eu não sou paga para isto. Vou contar.
+250	Não vi nada. Não vi nada.
+251	Isto não é comigo.
+252	Ai, Nossa Senhora...
+253	Para o patrão, desconto não há.
+254	O chefe? Que honra.
+255	Isto fica entre nós... certo?
+256	foi ao quarto
+257	. Os outros que segurem o motel.
+258	O teu segredo custa
+259	Chantagem:
+260	alguém
+261	para ficar calad
+262	. Pago.
+263	sem dinheiro para a chantagem, a história chegou ao xerife
+264	Não pagas? Então falo.
+265	chamada anónima: o dono do motel usa a rede
+266	Quem é que ligou ao xerife?!
+267	Ninguém viu nada. P
+268	volta ao trabalho relaxado (mais rápido durante uns segundos).
+269	Noite de poker na receção. A casa fica com uma parte de cada mão.
+270	Os jogadores foram-se e deixaram
+271	no pote.
+272	Chegou o camião das "frutas e legumes". Descarrega antes que o xerife veja.
+273	Seis caixas. Não perguntes.
+274	O xerife Dwayne estacionou. Foge do cone de visão dele.
+275	Boa noite. Só uma voltinha.
+276	Rotina, rotina...
+277	Cheira-me a esturro.
+278	Alguém viu um senhor de fato cinzento?
+279	Que barulho foi este?
+280	o xerife abriu o contentor
+281	Este lixo... tem SAPATOS.
+282	Ei! TU! Pára aí!
+283	"Que caixas são essas?"
+284	Que caixas são essas?
+285	Hum? Caixas?
+286	Hum?
+287	Hum. Devia ser o calor.
+288	Juro que vi qualquer coisa.
+289	Ei! Pára aí!
+290	"Que tapete é este? Tem sapatos!"
+291	Isto tem SAPATOS.
+292	"Mercadoria sem fatura."
+293	Mercadoria sem fatura. Apreendida.
+294	"Isto não é ketchup."
+295	Isto não é ketchup.
+296	"Juro que vi um tapete..."
+297	Desapareceu?!
+298	"Perdi-o de vista."
+299	Perdi-o de vista...
+300	"Apanhado com um tapete com sapatos!"
+301	Isso tem SAPATOS!
+302	poker clandestino na receção
+303	Poker? Na MINHA comarca? O pote fica comigo.
+304	"Tanta lantejoula a esta hora..."
+305	barulho estranho no
+306	Que barulheira no
+307	inspeção: quarto
+308	Quarto
+309	: chumbado.
+310	Autocarro de turistas!
+311	Cinco hóspedes de uma vez. Toda a gente à receção.
+312	A noite começa
+313	A rede está a chegar ao lounge. O néon acendeu.
+314	O FBI já ouviu falar do Desert Rose. Mais um deslize e acabou.
+315	O telefone da receção está a tocar.
+316	Chamada perdida. A Família não gosta de esperar.
+317	Gráficos:
+318	assets/tex/
+319	"Chivo Mono",ui-monospace,monospace
+320	DESERT ROSE MOTEL
+321	OFFICE
+322	LIMPEZA
+323	ICE
+324	LIXO
+325	PÂNTANO · NÃO ALIMENTAR O JACARÉ
+326	LOUNGE
+327	LAVANDARIA 24H
+328	SÓ MOEDAS
+329	ARRECADAÇÃO
+330	MOTEL
+331	NO VACANCY
+332	VACANCY
+333	SHERIFF
+334	FRÁGIL
+335	FRUTAS & LEGUMES
+336	px) translate(-50%,-100%)
+337	ALVO
+338	SUJO
+339	!! CENA
+340	PROBLEMA
+341	REDE
+342	no lixo
+343	no gelo
+344	RING RING
+345	opacity:
+346	color:
+347	Pote
+348	cartas escondidas
+349	· NÃO INCOMODAR
+350	· relaxado
+351	: põe o cliente na rua (
+352	O xerife viu o tapete! Foge do cone ou suborna-o
+353	Atender o telefone (
+354	Leva o tapete ao pântano (ou ao contentor)
+355	Tapete no chão
+356	com o xerife cá!
+357	tapete(s) no gelo por despachar
+358	Tratar do assunto no quarto
+359	Check-in ao senhor de fato cinzento
+360	Check-in:
+361	na fila
+362	Sangue no chão: esfregona no armário
+363	(a limpeza está a tratar)
+364	está com o ânimo em baixo: gorjeta no lounge
+365	Esconde as cartas: o xerife vem aí!
+366	O xerife foi-se: volta ao poker
+367	Recolher o pote do poker (
+368	está ocupado no quarto
+369	Leva a caixa para a arrecadação
+370	caixa(s) para a arrecadação
+371	Lavar dinheiro sujo (
+372	Tudo calmo. Vigia o lounge e o telefone.
+373	Tudo calmo. Espera hóspedes na receção.
+374	DIA
+375	<span class="
+376	REDE:
+377	no lounge ·
+378	a trabalhar
+379	CONTRATO: senhor de fato cinzento e mala ·
+380	Tapetes por despachar:
+381	. Só recebes no pântano ou no contentor.
+382	Continuar no dia
+383	Ecrã tátil
+384	Toca em Abrir
+385	para entrar
+386	Bom dia. O café está queimado e o quarto 13 está pronto. Esc para pausa.
+387	Dia
+388	De volta ao dia
+389	. O cofre tem
+390	Acabou o dia e o alvo continua vivo.
+391	Fim do dia
+392	APROVADO
+393	Quartos (
+394	Lavandaria self-service
+395	Lixívia industrial
+396	Salários da limpeza
+397	Lucro declarado
+398	LAVADO
+399	Rede (
+400	serviços)
+401	Parte das acompanhantes
+402	Gorjetas
+403	Despesas pessoais do dono (
+404	Silêncio comprado
+405	Salários da limpeza (
+406	Contratos (
+407	Contrabando (
+408	caixa)
+409	caixas)
+410	Poker (a parte da casa)
+411	Comissão da lavandaria
+412	Envelopes ao xerife
+413	Multas da Família
+414	Lucro do dia
+415	No cofre
+416	hóspedes desistiram na fila.
+417	Ainda tens
+418	tapete(s) por despachar.
+419	cliente(s) posto(s) na rua.
+420	saída(s) antes do fim da noite.
+421	A limpeza tratou de
+422	quarto(s) ou mancha(s).
+423	Uma faxineira foi contar ao xerife
+424	vez(es).
+425	O dono foi denunciado
+426	As visitas do dono ficaram em segredo.
+427	caixa(s) de contrabando ficaram ao relento e desapareceram.
+428	O xerife apreendeu
+429	caixa(s).
+430	Ficou
+431	por lavar: amanhã as Finanças fazem perguntas (+
+432	% de suspeita).
+433	Dinheiro todo lavado.
+434	Faltam
+435	para o milhão.
+436	Já passaste o milhão.
+437	O camião do lixo leva o contentor ao amanhecer.
+438	Amanhã:
+439	Abrir o dia
+440	para a rede (
+441	#summary tr.tot td:last-child
+442	Funcionário do dia
+443	Estagiário
+444	cliente na rua
+445	clientes na rua
+446	visita ao lounge
+447	visitas ao lounge
+448	. O camião do lixo já passou.
+449	As Finanças ligaram:
+450	sem explicação. Suspeita +
+451	Apanhados no dia
+452	O xerife Dwayne chamou o FBI. O Desert Rose Motel fecha com
+453	no cofre, que agora é prova. O Bubba fica sem jantar.
+454	Milionários
+455	Sete dias,
+456	e nenhuma pergunta. Os bons artistas copiam, os grandes artistas compram um segundo motel.
+457	Sobreviveram, mas pobres
+458	Sete dias e
+459	. Faltaram
+460	para o milhão. A Família recomenda mais contratos e menos limpezas.
+461	para a limpeza (
+462	/dia)
+463	Contratar o Sr. Lobo: limpa crimes, não fala (
+464	começa amanhã às 08:00. O salário paga-se ao fim do dia.
+465	para contratar
+466	junta-se à rede amanhã à noite.
+467	tr:last-child td:last-child
+468	Som:
+469	(automático). G para mudar.
+470	Escape
+471	KeyP
+472	KeyG
+473	Erro:

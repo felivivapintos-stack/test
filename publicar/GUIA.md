@@ -27,7 +27,7 @@ Querem jogos acabados, com boa primeira impressão e sessões longas.
 ### GameMonetize: todos os jogos, por potencial
 Entra fácil, paga pouco por jogada e vive de volume, por isso compensa pôr lá tudo o que for
 aceitável. O que mais conta: perceber-se em 5 segundos, funcionar no telemóvel e estar em inglês.
-Os 14 pacotes estão em `dist/gamemonetize/`, por esta ordem de prioridade.
+Os 15 pacotes estão em `dist/gamemonetize/`, por esta ordem de prioridade.
 
 | # | Jogo | Potencial | Porquê |
 |---|---|---|---|
@@ -45,10 +45,11 @@ Os 14 pacotes estão em `dist/gamemonetize/`, por esta ordem de prioridade.
 | **12** | **Sombras de 1947** | Baixo | Muito texto e ainda em português. Rende mais no itch.io. |
 | **13** | **Afiado** | Baixo | 3D, só teclado e rato. Já traduzido para inglês. |
 | **14** | **Backline** | Baixo | Igual ao Afiado, com tema de concerto. Já traduzido para inglês. |
+| **15** | **Run a Motel With Your Friends** | Incerto | Gestão 3D com humor negro, traduzido para inglês. Tem temas adultos (rede de acompanhantes): o GameMonetize pode recusá-lo ou retirá-lo. Submetido na versão fiel, por escolha tua. |
 
 **Não preparados para o GameMonetize:**
-- **Run a Motel** e **Em Cena**: têm temas adultos (acompanhantes, conteúdo sexual), que os
-  portais de anúncios recusam. Ficam para o itch.io marcados como 18+.
+- **Em Cena**: tem conteúdo sexual explícito, que os portais de anúncios recusam. Fica para o
+  itch.io marcado como 18+.
 - **GAFFER** e **GAFFER Rebuild**: usam nomes reais de clubes e da Premier League. Primeiro é
   preciso trocá-los por nomes inventados.
 - **Pibe del Cerro**: cerca de 20 MB, só teclado e só em espanhol. Dá mais trabalho a preparar do
@@ -57,7 +58,8 @@ Os 14 pacotes estão em `dist/gamemonetize/`, por esta ordem de prioridade.
 
 Traduções: o Pinta e Esconde, o Farol, o Afiado e o Backline já foram passados para inglês
 (`python3 translate.py <jogo>` aplica `traducoes/<jogo>.json` ao original em `originais-pt/`).
-Faltam o Sombras de 1947 e o Run a Motel.
+O Run a Motel também já está em inglês. O Sombras de 1947 fica para depois: cerca de 60% já
+está traduzido em `traducoes/sombras-1947.en*.txt`, mas ainda não foi aplicado ao jogo.
 
 ### itch.io (venda direta ou "paga o que quiseres", aceita temas adultos e jogos de nicho)
 O público do itch.io gosta de jogos com personalidade, narrativa e humor.
@@ -211,12 +213,14 @@ suspeito tem o seu feitio: aprende a lê-los antes de acusar. O júri só conden
 oportunidade e prova material.
 **Género:** Mistério. **Tags:** noir, detective, investigação, português
 
-### Run a Motel With Your Friends (itch.io, 18+, em português)
-**Frase:** Chega a 1 milhão em 7 dias sem que o xerife desconfie.
-**Descrição:** Desert Rose Motel, Route 66, Novo México. De dia: lençóis lavados e café
-queimado. De noite: o poker na receção, o camião do contrabando, os telefonemas da Família e um
-jacaré chamado Bubba que come o que lhe atirarem. Gestão com humor negro em 3D.
-**Género:** Simulação. **Tags:** management, dark-humor, 3d, adulto
+### Run a Motel With Your Friends (itch.io 18+ e GameMonetize)
+**Tagline:** Reach a million in 7 days before the sheriff gets suspicious.
+**Description:** Desert Rose Motel, Route 66, New Mexico. By day: fresh sheets and burnt coffee.
+By night: back-room poker, the smuggling truck, calls from the Family and an alligator named Bubba
+who eats whatever you throw him. A darkly comic 3D management game for 1 to 4 players on one
+screen.
+**Controls:** WASD + E (or arrows + Enter, IJKL + O, numpad + 0, gamepad). Esc pause.
+**Genre:** Simulation. **Tags:** management, dark-humor, 3d, local-multiplayer
 
 ### Gobble Royale (GameMonetize)
 **Title:** Gobble Royale

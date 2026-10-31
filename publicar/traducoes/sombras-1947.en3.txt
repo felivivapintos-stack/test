@@ -1,0 +1,300 @@
+640	of 1947
+641	Central Station
+642	Captain's Office
+643	Lead
+645	Does this mean anything to you?
+646	, found
+647	at the scene.
+648	Yes, it's mine. I lost it days ago. I don't know how it got there.
+649	Object
+650	Henchman
+651	Lab report no.
+652	Analysis of «
+653	»: a match. The expert signs off on it.
+654	Film frame from
+655	radio singer
+656	lawyer's secretary
+657	car salesman
+658	insurance agent
+659	tennis instructor
+663	· lover of
+664	Private eye
+665	Blow to the temple
+666	A sharp blow to the left temple. Next to the body, a heavy glass ashtray with blood on it.
+667	The ashtray. A single blow, from the front. Whoever struck was close and the victim didn't raise their hands: they knew them.
+668	Suffocation
+669	The pillow has lipstick marks. The victim's eyes have small haemorrhages.
+670	Smothered with the pillow. Whoever did it had to put their full weight on it for two minutes. It wasn't an impulse.
+671	, room
+672	Motel register
+673	The room was paid for at 9:50 p.m. by «Mr. and Mrs. Jones». The clerk wrote down the car's licence plate:
+674	. It's registered to
+675	Register
+676	Burnt-out flashbulb
+677	It was on the sill, outside the window. Someone photographed this room. On the base, the shop's stamp: «Photography
+678	Windowsill
+679	Trace
+680	County morgue
+682	Cause of death
+683	Coroner's report
+684	Time of death
+685	Going by body temperature and rigor, between
+686	and
+687	. My money's on
+688	Between
+689	, according to the
+690	Anything else?
+691	The wedding ring was in the jacket pocket, not on the finger. Taken off that night, or someone took it off.
+692	Fresh scratches on the backs of the hands. Fought off someone they knew well enough to let close.
+693	A crumpled receipt in the fist: «$1,000 — for all the negatives». Never got to pay it.
+694	Autopsy detail
+695	The wedding ring was in the pocket, not on the finger.
+696	Fresh scratches on the hands: fought back.
+697	A receipt in the fist: «$1,000 — for all the negatives».
+698	I was at the Wilshire bridge club until midnight.
+699	I was on shift at Queen of Angels hospital.
+700	I was at my sister's house, in Pasadena.
+701	I left the motel at
+702	and went straight to the
+703	. I played until one.
+704	I was at the office all night, developing photographs.
+705	Agency photographs
+706	An envelope with photographs of
+707	at the door of the
+708	. On the back: «Agency
+709	— Investigations».
+711	Cheque to
+712	Cheque stub from
+713	, «professional services».
+714	Stubs
+715	Taxi ticket
+716	Taxi receipt from the night of the crime: destination
+717	, at
+718	Alibi proof
+719	A paper that backs up the story of
+720	: they were far from the motel at the time of the crime.
+721	Stained kid gloves
+722	At the bottom of the trash can, wrapped in newspaper: a pair of kid gloves with dark stains on the fingers.
+725	Letter from
+726	, it's over. I'm going back to
+727	. Don't look for me anymore.» Dated yesterday.
+728	Club doorman's log
+729	arrived at the club at
+730	. Late
+731	and without a tie.
+732	and didn't leave again until one.
+733	Room key
+734	In a jacket pocket in the dressing room: the key to room
+735	. The clerk swears there was only one.
+737	Blank frame. Three frames are missing, cut out with a razor.
+738	A figure in
+739	knocks on the door of room
+740	leaves the room and lights a cigarette in the parking lot.
+741	The empty parking lot. A light on in the room.
+742	Someone didn't want this hour on record.
+743	By the height and the walk, it looks like
+744	Agency
+745	— Investigations
+747	The negatives of
+748	from the night of the crime are hanging up to dry. You can print one.
+750	Hidden film roll
+751	It fell out of a coat during the escape: a roll of film. Inside, the three missing frames.
+752	Agency account book
+753	— $250 — paid.» And further down, in pencil: «
+754	— $1,000 — by Friday».
+755	Statement by
+756	left at
+757	. I remember because they tipped me a dollar.»
+758	I don't see anything, detective. That's what I'm paid for. But go ahead and ask.
+759	Who left
+760	Who left the room that night?
+761	. Left at
+762	. I remember because they tipped me a dollar.
+763	Anyone else
+764	Did anyone else come or go?
+765	I didn't see anyone else.
+766	A car stopped across the street around
+767	. Out got
+768	. I didn't see their face, I swear.
+769	The photographer
+770	Seen anyone with a camera around here?
+771	For a week now a guy in a grey hat has been hanging around the motel. Says he's from the agency
+772	Relationship with
+773	What was your relationship with
+774	I didn't tell you right away because I knew how it would look.
+775	The night of the crime
+776	Where were you at
+777	All right, I lied. I went there. But when I left, they were alive
+778	I went there to talk. Just to talk. Don't look at me like that.
+779	I've already identified the body, detective. I don't know what else you want from me.
+780	I knew about the affair. I hired a private eye,
+781	, to be sure. I wanted a divorce, I didn't
+782	want them dead
+783	We were happy. I had no idea.
+784	All right, I knew. I paid a private eye to
+785	follow them. Seeing those photographs... nobody knows what that's like.
+786	Do you know
+787	Never
+788	I went to the
+789	. I wanted to look
+790	in the face. Nothing more.
+791	Only from the photographs. Plays or dances at some club, the
+792	I heard on the radio. I still can't believe it.
+793	We loved each other.
+794	was going to leave
+795	. At least that's what they said.
+796	We were friends. That's all.
+797	broke up with me that night. Said they were going back to
+798	. I was beside myself. But I left before it all happened.
+799	Did you know someone was following you?
+800	I didn't notice anything.
+801	I saw the guy with the camera.
+802	said he was asking for money. Go talk to him.
+803	I saw a guy in a grey hat with a camera.
+804	said he was asking for money. His name is
+805	Take off your hat, detective. We're colleagues, in our own way.
+806	The clients
+807	Who were you working for on this case?
+808	For
+809	. That's all.
+810	All right, I also asked
+811	for money. A thousand dollars for the negatives. In this line of work, everybody does it.
+812	I asked
+813	for a thousand dollars for the negatives, I admit it. But
+814	was going to pay. Dead, they were no use to me.
+815	The photographs
+816	What did you photograph that night?
+817	Nothing special.
+818	I photographed who went in. But the negatives... somebody stole them from me.
+819	It's all on the negatives, in the darkroom. At
+820	someone else showed up. Go see for yourself.
+821	Alley behind the Agency
+823	The body of
+824	took a point-blank shot. The camera is still around his neck, with the lens smashed.
+825	Notebook of
+826	Last page, in pencil: «
+827	— confirm. Ask for double.»
+829	A second death
+830	Two hours after you talked to
+831	, the car radio crackles.
+832	«Shots fired behind the
+833	Agency. Man down in the alley.»
+835	Someone is cleaning up what was left behind.
+837	Anonymous call
+838	A phone rings at the station. They're asking for you.
+839	Anonymous voice
+840	«If you want to know who took too many photographs, ask
+841	why they burned papers in the alley last night.»
+842	Room
+843	Mr. and Mrs. Jones
+844	The Flash in the Window
+845	A Night at the
+846	. The neon sign blinks every three seconds.
+847	In room
+848	, someone knocks on the door.
+849	opens it with a smile, expecting someone else.
+850	Across the street, a flashbulb pops in the dark.
+851	In a motel room there are always three people, even when only two are there: the lovers, and the one they're cheating on.
+852	in room
+853	. Registered
+854	as «Mr
+856	In a motel like this nobody sees anything and everybody knows everything.
+857	The spouse is always the first suspect. For a reason.
+858	How much would someone pay to stay out of a photograph like this?
+859	Three people knew about that room. Which one went back?
+860	confesses at dawn.
+861	The jury isn't convinced.
+862	walks out of court on the arm of an expensive lawyer and doesn't look back.
+863	is acquitted
+864	for lack of evidence. In the corridor,
+865	passes you and looks down.
+866	is convicted
+867	. Months later, an anonymous photograph lands on your desk:
+868	at the door of room
+869	The case of room
+870	goes to the archive. The motel changes its name the following year.
+871	Crime at the
+872	A private eye's photographs at the heart of the case.
+873	confessed to the death of
+874	. Detective Eli Mercer reconstructed the night from photographic negatives and the motel register.
+875	for the motel crime
+876	Defence promises to appeal.
+877	The jury found
+878	of the death of
+879	. The defence talks of a «rushed case».
+880	Motel case with no culprit.
+881	For lack of evidence,
+882	walked free. The case of room
+883	remains unsolved.
+884	Jury acquits
+885	Police under fire.
+886	was acquitted
+887	. The lawyer called the investigation «an out-of-focus photograph».
+888	Motel case shelved
+889	Victim's family outraged.
+890	The police shelved the investigation into the death of
+891	The photographs didn't lie. The people looking at them did.
+892	Some nights I go over the negatives again. I no longer know whose face I see there.
+893	The motel turned off its sign. I still see the light blinking.
+895	Paragon Studios
+897	Silverlake Studios
+898	«Kiss of Ash»
+899	«The Last Street»
+900	«Moonless Night»
+901	«The Price of Silence»
+902	a silk scarf around the neck
+903	a white fox stole
+904	a wool cap pulled down on the head
+905	Director of
+906	· always wears
+907	Supporting actress · rival of
+908	· never takes off
+909	Set electrician · always has
+910	from the gate of
+911	, stage
+912	Fall from the catwalk
+913	fell thirty feet from the lighting catwalk. Broken neck. Still in the dress from the final scene.
+914	Loose railing
+915	The catwalk railing is missing two bolts. The threads are clean and shiny: they were taken out recently, with a wrench.
+916	Catwalk
+917	Call sheet for the day
+918	Shooting schedule: «
+919	— lighting rehearsal (
+920	— break,
+921	in the dressing room.
+922	goes up to the catwalk for the rooftop scene.»
+923	Call sheet
+924	Note in the dressing room
+925	Found on the dressing room mirror of
+926	: «Come up to the catwalk before the scene. We need to talk. Nobody can know.» Unsigned.
+927	Dressing room
+928	Was it the fall?
+929	The fall broke her neck, yes. But she has a bruise on the breastbone the size of an open hand. She was pushed.
+930	Bruise on the chest
+931	A hand-sized mark on the breastbone: she was pushed.
+932	She died at the moment of the fall. Her watch stopped at
+933	The watch of
+934	stopped at
+935	She was two months pregnant. Don't ask me whose. But I bet someone at that studio knew.
+936	She had fine white hairs caught in the sequins of her dress. Animal fur, good quality.
+937	She had black graphite dust on her shoulders. The kind electricians use on contacts.
+938	She was two months pregnant.
+939	White animal fur caught on the dress.
+940	Graphite dust on the shoulders of the dress.
+941	Film frame from the take at
+942	At the back of the shot, on the catwalk, behind
+943	: a figure with
+944	Lighting rehearsal.
+945	at the top of the ladder, in a cap, aiming a spotlight.
+946	crosses the stage smoking, in a white stole, and leaves by the side door.
+947	Take 4 of the rooftop scene.
+948	on the catwalk. In the background, half hidden by the light, a figure with
+949	The camera keeps rolling. Screams. Someone runs to the ladder. Shaky picture.
+950	, screening room
+951	Dailies
+952	The projectionist shows you the dailies shot on the stage at the time of the fall. You can ask for a frame to be blown up.
+955	Bungalow of
+956	«Either you tell your wife, or I will. You have until the end of the shoot.»
+957	Director's schedule
+958	At the time of the fall,
+959	was in a meeting with the producer in the administration building. The secretary confirms it.

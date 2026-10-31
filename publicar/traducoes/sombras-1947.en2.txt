@@ -1,0 +1,306 @@
+330	Cut cord
+331	A silk curtain cord with one end cut with scissors. The braid pattern matches the marks on the victim's neck.
+332	Looks like a heart attack. The coroner says it isn't.
+333	Glass that smells of almonds
+334	A half-empty whisky glass next to the victim. It smells of bitter almonds: cyanide.
+335	Cyanide bottle
+336	A brown bottle labelled «potassium cyanide, photographic use». It's almost empty.
+337	A blow to the back of the head.
+338	Head wound
+339	A violent blow to the back of the head, with a heavy, narrow object. One was enough.
+340	Monkey wrench
+341	A heavy monkey wrench, too clean for a tool. A hair and a dark stain are stuck in the jaw.
+342	Robbery
+343	Robberies
+344	thief
+345	The Job at
+346	Empty Safe at
+347	The Jewels of
+348	Light Fingers at
+349	Alarm log
+350	The alarm company logged the door opening at
+351	. When the patrol arrived, nobody was there.
+352	Robbed:
+353	, owned by
+354	. They took
+355	The safe was opened with a blowtorch.
+356	Safe cut open with a blowtorch
+357	The safe door was cut with a blowtorch. The work of someone who learned in a navy shipyard during the war.
+358	Nothing was forced.
+359	Lock intact
+360	Neither the door nor the safe was forced. Whoever got in had a key, or a very good copy.
+361	They came in through the window without breaking anything.
+362	Cut glass
+363	A perfect circle cut in the window glass with a diamond cutter. The latch was opened from inside.
+364	The loot
+365	Wrapped in newspaper, inside a coffee can:
+366	. It's what went missing
+367	Arson
+368	Fires
+369	arsonist
+370	Ashes at
+371	Smoke over
+372	Fire at
+373	Embers at
+374	The Night
+375	Burned
+376	Fire department report
+377	The fire alarm went off at
+378	. According to the firemen, the fire started a few minutes earlier.
+379	, burned tonight. Luckily, nobody died.
+380	The firemen smelled gasoline before they saw the flames.
+381	Melted gas can
+382	At the seat of the fire, a melted gas can. The fire started here. It was no accident.
+383	Gasoline receipt
+384	A receipt from a Temple St. gas station: two five-gallon cans, paid in cash on the afternoon of the fire.
+385	They used a homemade timer.
+386	Cigarette and matches
+387	The remains of a cigarette tied to a matchbook with a rubber band. A homemade timer: it gives you ten minutes to get away.
+388	Tied matches
+389	In a drawer: matchbooks already tied to cigarettes with rubber bands, ready to use.
+390	They want it to look like a short circuit.
+391	Stripped wire
+392	An electrical wire stripped on purpose and pushed against oily rags. It looks like a short circuit. It isn't.
+393	Wire spool and pliers
+394	A spool of the same copper wire and pliers with bits of insulation stuck in the jaws.
+395	a three-strand pearl necklace
+396	three Swiss gold watches
+397	a two-carat diamond ring
+398	$4,000 in cash
+399	a gold coin collection
+400	an emerald bracelet
+401	partner
+402	partner
+403	Partner
+404	. The business was doing badly.
+405	Partnership agreement
+406	Agreement between
+407	. In the margin, in pencil: «They're sinking us. I have to do something.»
+408	We were partners for
+409	years. Business wasn't good, it's true. But you don't solve anything like that.
+410	Fine.
+411	was sinking the business and I was going to lose everything. We argued. But that doesn't prove anything.
+412	Bitter divorce. Left with nothing.
+413	Divorce papers
+414	Divorce proceedings between
+415	was left without the house and without a cent.
+416	We were married for
+417	years. We barely spoke anymore. Sometimes that's for the best.
+418	Got everything in the divorce. Everything! I hated
+419	, all right. But hating isn't a crime.
+420	Secret affair.
+421	wanted to end it and tell everything.
+422	Love letters
+423	A bundle of letters from
+424	. The last one says: «It's over. If you come looking for me again, I'll tell everything.»
+425	We were close. Nobody knew.
+426	wanted to end it, and I accepted.
+427	was going to tell my family everything. Everything I'd built was going to end. I was desperate
+428	and wouldn't pay.
+429	Debt ledger
+430	A notebook with names and amounts. «
+431	», underlined three times, with the words «FINAL DEADLINE».
+432	owed me money. Lots of people owe me. I collect, detective. I don't kill.
+433	Owed me
+434	and laughed in my face. In this business, if you don't make people respect you, you end up in the gutter.
+435	Owed
+436	, who was threatening to go to the police.
+437	Collection letter
+438	A letter from
+439	: «You have until Friday to pay the
+440	. Then I go to the police.»
+441	I owe money, yes. I was saving up to pay.
+442	knew that.
+443	Was going to the police. Was going to ruin me over
+444	. I was desperate
+445	Professional rivalry.
+446	stole their clients.
+447	Newspaper clipping
+448	A story about the success of
+449	, cut out and scratched over in red ink until the paper tore.
+450	Competition is competition. I didn't like
+451	, but I respected
+452	stole everything from me: clients, name, reputation. I wanted to see
+453	in the gutter.
+454	Fired
+455	eight days ago.
+456	Dismissal letter
+457	Signed by
+458	, eight days ago. No severance. Reason: «dishonesty».
+459	I worked for
+460	until last week. I got fired. Oh well, I'll find something else.
+461	Fired me like a dog, after nine years. Called me a thief
+462	in front of everyone.
+463	brother
+464	sister
+465	Inheritance: with
+466	, gets everything.
+467	Will
+468	Copy of the parents' will: everything to
+469	. If
+470	dies without children, the inheritance goes to
+471	was
+472	. We weren't close, but blood is blood.
+473	Always
+474	was the favourite. Everything for
+475	, nothing for me. My whole life.
+476	Threatened
+477	in front of witnesses.
+478	Police complaint
+479	Copy of a complaint by
+480	about threats: «Said they'd set my house on fire.»
+481	We're neighbours. We argued about the noise, like everyone in this city.
+482	Made my life hell. The police complaint was the last straw.
+483	Any debts,
+484	None. My accounts are in order.
+485	Betting slips
+486	Losing slips from the Santa Anita racetrack. They add up to more than
+487	All right, I lose money on the horses. Half the city does. But I had nothing to do with what happened to
+488	Where do you spend Thursday nights?
+489	At home. I'm a creature of habit.
+490	Motel key
+491	Key to room 12 at the Palm Court Motel, with a note: «See you Thursday. — B.»
+492	I'm seeing someone. Someone I shouldn't be with. Please, don't tell anyone.
+493	Ever been in trouble with the police?
+494	Never. Clean record.
+495	Old Chicago record
+496	Chicago police record, 1938: receiving stolen goods. Eighteen months in Joliet prison.
+497	That was another life. I came to Los Angeles to start over, and that's what I'm doing.
+498	is that your real name?
+499	Of course it is. What a question.
+500	Passport under another name
+501	An old passport with the same photo and another name. Issued in New York, 1936.
+502	I changed my name. There were people in New York looking for me. It has nothing to do with this.
+503	Do you take anything for your nerves?
+504	Nothing. I sleep like a log.
+505	Morphine bottle
+506	A bottle of morphine without a prescription and a syringe in a leather case.
+507	The pain hasn't stopped since the war. I get it on the side. Don't arrest me for that.
+508	Is business going well?
+509	Honestly, as always.
+510	Hijacked cargo manifests
+511	Manifests from a truck hijacked at the port of San Pedro. The goods are here, stacked in crates.
+512	I buy cheap, sell cheap and don't ask where it comes from. But I did nothing to
+513	Cigarillo butt
+514	A menthol cigarillo butt, Havana Gold brand, crushed on the floor. Recent.
+515	Menthol cigarillos
+516	A half-empty box of Havana Gold menthol cigarillos.
+517	Menthol cigarillos? Never smoked one in my life.
+518	Never seen it. Anyone could have left that there.
+519	Yes, they're mine. I was there. I smoked one while I waited. But I only went to talk!
+520	Broken cufflink
+521	A silver cufflink with an onyx stone, broken. It was torn off in a struggle.
+522	Unmatched cufflink
+523	In a jewellery box: a silver and onyx cufflink. Its pair is missing.
+524	I don't wear cufflinks. I don't own the shirts for it.
+525	Cufflinks like that are sold in any shop on Broadway.
+526	It's mine. It must have fallen when... when I was there. All right, I was there!
+527	Pearl earring
+528	A clip-on pearl earring, dropped on the floor. The clip is broken.
+529	Unmatched pearl earring
+530	In a jewellery box: a clip-on pearl earring. Its pair is missing.
+531	Pearls? Detective, take a good look at me. I can't afford pearls.
+532	There are a thousand earrings like that in Los Angeles.
+533	It's mine. I lost it there that night. I went to talk to the victim, nothing more!
+534	Shoe print
+535	A clear shoe print, size
+536	, with a cross-shaped cut in the sole.
+537	Shoes with a cut sole
+538	A pair of size
+539	shoes, still dusty. The sole has a cross-shaped cut.
+540	Look at my feet, detective. That's not my size.
+541	A shoe print? Half the city wears that size.
+542	All right, I was there. I went in and out. When I left, everything was fine, I swear!
+543	Scented handkerchief
+544	A silk handkerchief with a strong smell of sandalwood cologne.
+545	A silk handkerchief with a strong jasmine perfume.
+546	Sandalwood cologne
+547	Jasmine perfume
+548	An almost empty bottle of sandalwood cologne, and matching silk handkerchiefs.
+549	An almost empty bottle of jasmine perfume, and matching silk handkerchiefs.
+550	That smell? It's not mine. You can smell me, if you like.
+551	A handkerchief? I have no idea whose it is.
+552	It's mine. I left it there. I was with the victim that night, but I didn't do anything.
+553	Driving glove
+554	A brown leather driving glove, left hand. Expensive. Made to measure.
+555	Unmatched glove
+556	On the hat stand: a brown leather driving glove, right hand. The left one isn't there.
+557	I don't even have a car, detective.
+558	Bullock's sells gloves like that by the dozen.
+559	It's mine. I lost it there. I went there that night, I admit it. But I didn't do what you think!
+560	Hotel Mirador matches
+561	A matchbox from the Hotel Mirador, on Wilshire, almost full. It doesn't belong to the victim.
+562	Hotel Mirador receipt
+563	A receipt from the Hotel Mirador bar, from the night of the crime, and a matchbox like the one at the scene.
+564	Hotel Mirador? Never set foot in there. Too expensive for me.
+565	Everybody has hotel matches. You pick them up anywhere.
+566	I was at the Mirador that night, yes. Then I stopped by. Just for a minute!
+567	Green paint fingerprint
+568	A bottle-green paint fingerprint on the doorknob, still tacky.
+569	Can of green paint
+570	An open can of bottle-green paint and a brush that's still wet. There are fingerprints of the same colour on the door.
+571	Paint? I don't paint anything, detective. Not even my nails.
+572	Green paint? I don't know what you're talking about.
+573	I was painting the door when I decided to go there. I went with dirty hands. But I didn't do anything!
+574	At the Orpheum cinema, the nine o'clock show. A gangster picture.
+575	Punched Orpheum ticket
+576	A ticket for the 9:00 p.m. show at the Orpheum, on the date of the crime, punched at the door.
+577	Unused Orpheum ticket
+578	A ticket for the 9:00 p.m. show at the Orpheum, on the date of the crime. It's intact: it was never punched at the door.
+579	Having dinner at Taix with some friends. We stayed late.
+580	Taix receipt
+581	Receipt from Taix restaurant: table for four, paid at 11:40 p.m. on the night of the crime.
+582	Receipt from Taix restaurant on the night of the crime: one person, paid at
+583	At home, listening to the boxing match on the radio.
+584	Notes on the broadcast
+585	Pencil notes with the results of the radio fight, round by round, to the very last.
+586	Taxi receipt
+587	Taxi receipt from the night of the crime: picked up at
+588	, destination
+589	Working late. The doorman saw me leave.
+590	Time book
+591	Time book: clocked out at 11:50 p.m. on the night of the crime, signed by the doorman.
+592	Time book from the night of the crime: clocked out at
+593	. Well before the time of the crime.
+594	Playing poker at a club on 5th Street. Lost money, as always.
+595	Poker table list
+596	The list of players at the table on the night of the crime, with names and losses noted until midnight.
+597	Receipt from a gas station near
+598	, on the night of the crime, at
+599	At Queen of Angels hospital, visiting my mother.
+600	Visitor log
+601	Queen of Angels hospital card: in at 8:30 p.m., out at 11:45 p.m., on the night of the crime.
+602	Queen of Angels hospital card from the night of the crime: out at
+603	Echo Park Lake
+606	I heard. A terrible thing. How can I help, detective?
+607	Detective. I was expecting you. Sooner or later, you people always come.
+608	I don't know what you want from me, but make it quick. I have a life.
+609	Have a seat, detective. Coffee? No? Then let's get to it.
+610	I don't like your tone, detective.
+611	I'm calling my lawyer.
+612	I have nothing to hide!
+613	This is an insult, detective.
+614	We barely knew each other. We said hello, nothing more.
+615	We got along, detective. Very well, actually.
+616	We had nothing to do with each other.
+617	A normal relationship. Nothing to tell.
+618	All right, I lied. I went there that night. But I didn't do what you think!
+619	This stinks, Mercer.
+620	There are names in the victim's address book. We start there.
+621	I've seen this a thousand times. It's always someone the victim knew.
+622	The captain wants this wrapped up before the papers get it. As always.
+623	You've got that look again, Mercer. The look of someone who already suspects somebody.
+624	Drawers
+625	Refrigerated drawers. Three of them have name tags. One just has a number.
+626	Lab coat
+627	The coroner's lab coat, hanging on a peg. There's a fountain pen in the pocket and it smells of formaldehyde.
+628	Portrait
+629	An oil portrait of the master of the house, painted twenty years ago. The painter gave him a kinder look than the family remembers.
+630	Candelabra
+631	The candles burned all the way down. Nobody put them out after the dinner went wrong.
+633	Fire hydrant
+634	A fire hydrant. Someone has stuck a boxing poster on it.
+635	Shop window
+636	The drugstore window. The night clerk swears he was tidying the stockroom and saw nothing.
+637	Traffic
+638	Vice

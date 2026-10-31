@@ -329,12 +329,12 @@ const TYPES = {
   water: { label: 'Empty bottles', steps: ['cooler', 'deliver'], w: 0.08 }
 };
 const HINT = {
-  pickup: r => `Get ${r.b.name}'s ${TYPES[r.type].item}`,
+  pickup: r => `Get ${r.b.name}’s ${TYPES[r.type].item}`,
   sharpen: () => 'Skate sharpener (workshop)', tape: () => 'Tape the stick (workshop)', screws: () => 'Tighten at the helmet bench (workshop)',
   rack: () => 'New stick from the locker room', towels: () => 'Towel from the locker room', cooler: () => 'Fill at the water station (locker room)', deliver: r => `Hand it to ${r.b.name} on the bench`
 };
 const ITEM = {
-  pickup: r => `${r.b.name}'s ${TYPES[r.type].item}`, sharpen: () => 'sharpened skate', tape: () => 'taped stick', screws: () => 'tightened helmet',
+  pickup: r => `${r.b.name}’s ${TYPES[r.type].item}`, sharpen: () => 'sharpened skate', tape: () => 'taped stick', screws: () => 'tightened helmet',
   rack: () => 'untaped stick', towels: () => 'towel and anti-fog', cooler: () => 'full bottles'
 };
 const COLORS = { pickup: 0x9aa4b0, rack: 0x23262e, towels: 0xf0f0f0, cooler: 0x3d7fd6 };

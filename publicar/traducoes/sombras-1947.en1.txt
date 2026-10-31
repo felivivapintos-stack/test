@@ -1,0 +1,208 @@
+0	Shadows of 1947
+1	Notebook
+2	Map
+3	Sound
+4	Desk
+5	Money
+6	Intuition points
+7	Black and white mode
+8	Sound and music
+9	Map of Los Angeles
+10	Close
+11	Trust
+12	of 5 stars
+15	Pawnshop owner
+17	Tropicana barmaid
+19	Gordon Pryce's widow
+21	Mechanic, Voss Garage
+23	Boxer, the victim's ex-boyfriend
+25	Photographer, Pell Studios
+30	Note:
+31	can't keep still even when saying their own name. Don't trust the tics alone.
+33	. Let's see how long that lasts.
+34	Poker face. Won't sweat over anything. Look for the detail.
+35	PAWNSHOP
+36	Shell casing
+37	.45 shell casing
+38	A .45 ACP brass casing, still warm. Military pistol ammunition: a Colt M1911, probably army surplus.
+39	Display case
+40	Blood on the display case
+41	The robber smashed the jewellery case with his fist and left fresh blood on the shards. He must have a nasty cut on his hand.
+42	Pawn ledger
+43	March 31: «Colt M1911 — pawned by D. Ruiz — $15». April 1: «Redeemed by D. Ruiz». He got the pistol back yesterday.
+44	Matchbox
+46	Tropicana matches
+47	A matchbox from the Tropicana Club, 5th Street. It's dry despite the rain outside, and Halvorsen doesn't smoke: his ashtray is clean.
+48	Cash register
+49	The cash register drawer is open and empty. They took about two hundred dollars.
+50	Saxophone
+51	A tenor saxophone pawned by some musician down on his luck. Beautiful, but it has nothing to do with the case.
+53	Rag
+54	Bloodstained rag
+55	Hidden behind the bar: a bar rag soaked in blood that's still damp. Someone treated a wound here not long ago.
+56	Pinned note
+57	«D.R.»'s tab
+58	Pinned next to the register: «D.R. — owes Mr. Vance $300. Final warning.»
+59	Microphone
+60	The stage microphone. The band has gone home.
+61	Piano
+62	A baby grand with a broken C key. Nobody has tuned it since the war.
+63	Glasses
+64	Glasses with dregs of whisky and lipstick marks. A normal night at the Tropicana.
+65	Under the car
+66	Cut brake line
+67	The brake fluid line has a clean, straight cut. It didn't tear in the crash: it was cut with a tool.
+68	Glove box
+69	Voss Garage receipt
+70	In the glove box: «Voss Garage, Glendale — full service and brake adjustment — June 18 — $12 paid.» One day before the crash.
+71	Road
+72	No skid marks
+73	There isn't a single tyre mark on the bend. The driver tried to brake at over seventy miles an hour, and there were no brakes.
+74	Briefcase
+75	Gordon Pryce's briefcase
+76	A leather briefcase with Paragon Studios' account book. Several pages are missing, torn out in a hurry.
+77	Hubcap
+78	A dented hubcap. It flew off in the crash.
+79	Bottle
+80	An old beer bottle, covered in dust. It's been here for weeks.
+81	Desk drawer
+82	Insurance policy
+83	A Golden State Insurance policy in Gordon Pryce's name: $50,000. Beneficiary: Clara Pryce. Signed only two months ago.
+84	Letter
+85	Love letter from «R.»
+86	«My Clara, a few more weeks and we'll be free. Always yours, R.» In a Westwood Tennis Club envelope.
+87	Blotter
+88	Torn-out pages
+89	Hidden under the blotter: the missing pages of the account book. In the margin, in Gordon's hand: «Kessler — $80,000 embezzled. Go to the DA on Monday.»
+90	An upright piano with Gershwin sheet music open. Nobody has played it in months.
+91	Photograph
+92	The Pryces' wedding photo, 1939. He's smiling. She isn't.
+93	Workbench
+94	Wire cutters
+95	Wire cutters with oily, reddish residue on the blades. They smell of brake fluid.
+96	Toolbox
+97	Envelope with $500
+98	Hidden at the bottom of the toolbox: $500 in new bills. The envelope is stamped «Paragon Studios — Treasury».
+99	Tyres
+100	Worn tyres waiting to be retreaded.
+101	Calendar
+102	A June 1947 calendar, a freebie from a tyre brand. The 18th is circled in red.
+103	Oil can
+104	A can of motor oil. Half empty.
+105	The body
+106	Strangulation marks
+107	Thin, even marks around the neck. Not hands. A cord or a thin wire, pulled from behind.
+108	Victim's hand
+109	Black silk fibres
+110	Caught under the victim's nails: fibres of braided black silk. She fought whoever killed her.
+111	Feet
+112	Missing shoe
+113	The victim only has her left shoe. There's no sign of the right one anywhere, and the grass around isn't trampled. She was killed somewhere else and brought here.
+114	Handbag
+115	The victim's handbag
+116	ID: Lillian Shore, 22, 410 Alvarado Street, apt. 3. Inside, a card: «Pell Studios — Screen Tests — Cahuenga Blvd.»
+117	Rose
+118	Red rose
+119	A long-stemmed red rose laid on the victim's chest. Fresh. The killer wanted to leave a signature.
+120	Bench
+121	A park bench wet with dew. Nobody sat here tonight.
+122	Newspaper
+123	Yesterday's paper, soaked. The headline is about the studio strikes.
+124	Diary
+125	Lillian's diary
+126	Last entry, Sunday: «Tomorrow, Monday, at 9 p.m.: screen test with Mr. Pell! He says I have a face for the movies. Don't tell Nick.»
+127	Wastebasket
+128	Nick's letter
+129	Crumpled in the basket: «Lilly, if you're not mine, you're nobody's. I'm coming over on Saturday. — Nick.» Dated last week.
+130	Photographs
+131	Studio photographs
+132	Glamour portraits of Lillian, stamped «Pell Studios» on the back. On one, in pencil: «My rose. — A.P.»
+133	Radio
+134	A Bakelite radio tuned to a big band station. It's still warm.
+135	Wardrobe
+136	Cheap but well-kept dresses, and a pair of new white gloves. She dreamed big.
+137	DEVELOPING
+138	Darkroom
+139	Woman's shoe
+140	In the darkroom, behind the developing tanks: a high-heeled shoe, right foot, size 6. It matches the victim's.
+141	Backdrop
+142	Cut silk cord
+143	The backdrop hangs from cords of braided black silk. A piece is missing from one, cut with scissors.
+144	Appointment book
+145	Pell's appointment book
+146	Monday: «9 p.m. — L. Shore». The entry was crossed out hard, but you can still read it.
+147	Vase
+148	Vase of red roses
+149	A dozen long-stemmed red roses. You count eleven.
+150	Camera
+151	A large-format bellows camera. Expensive gear for a studio on this street.
+152	Projector
+153	A 500-watt studio lamp. It's still warming the room.
+233	Blue Lantern
+236	Black Orchid
+239	Alvarado Street
+252	6th Street
+253	Detective Lou Brandt
+254	Detective Sal Moretti
+255	Detective Hank Dolan
+256	Detective Al Fierro
+257	Detective Ted Garrity
+258	Detective Walt Shea
+259	Captain Whitcomb
+260	Captain Thayer
+261	Captain Ruskin
+262	Captain Hale
+263	March
+264	Tuesday
+265	Saturday
+279	It's been raining for three days and the city's gutters can't take any more.
+280	The Santa Ana winds blow hot from the desert. Nobody sleeps well.
+281	A low fog covers the city. Car headlights look like ghosts.
+282	A muggy night. Every window is open and nobody heard a thing.
+283	It's cold for Los Angeles. The newsboys stamp their feet on the street corners.
+284	Okinawa, 1945. A Japanese soldier came out of a cave with his hands up. Mercer still doesn't know if he was lying. Some nights he still sees his face.
+285	Mercer's father was a cop in Phoenix. He used to say the truth has a smell, like bread. He died without ever catching the man he was after.
+286	Naha, May 1945. The city was nothing but dust and walls. A ten-year-old boy led the patrol through the minefield for a can of peaches.
+287	Some nights Mercer drives aimlessly down Sunset, just to see the lights. The city looks honest from a moving car.
+288	The medal is in a drawer, under the shirts. Mercer's wife asks why he doesn't hang it up. He never answers.
+289	On the ship home, a chaplain told Mercer that peace would be harder than war. He laughed at the time.
+290	photographer
+291	photographer
+292	Studio
+293	mechanic
+294	Garage
+295	Taxi Garage
+296	jazz singer
+297	Club
+298	bar owner
+299	bar owner
+300	Pawnshop
+301	Jewellery store
+302	House
+303	film producer
+304	film producer
+305	aspiring actor
+306	aspiring actress
+307	Apartment of
+308	Homicide
+309	Homicides
+310	Death at
+311	Blood at
+312	The Last Night of
+313	The Case of
+314	Silence at
+315	A Body at
+316	Stopped watch
+317	The victim's wristwatch broke in the fall. The hands stopped at
+318	, was found
+319	A single stab, between the ribs.
+320	Knife wound
+321	A single narrow-blade wound between the ribs. Whoever did it knew where to strike.
+322	Narrow-blade knife
+323	Wrapped in a rag, at the bottom of a drawer: a narrow-blade knife, washed in a hurry. There's still dried blood near the handle.
+324	A point-blank shot.
+325	.32 bullet wound
+326	A point-blank shot, .32 calibre. There are powder burns on the clothes: the victim was inches from the shooter.
+327	.32 pistol
+328	A .32 automatic hidden behind a loose panel. One round is missing from the magazine and the barrel smells of gunpowder.
+329	Thin, even marks around the neck. A cord or a wire, pulled from behind.

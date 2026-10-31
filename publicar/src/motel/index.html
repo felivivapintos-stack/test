@@ -133,120 +133,120 @@ kbd{font-family:var(--body);border:1px solid var(--line);padding:0 4px;color:var
   <div class="vign"></div>
   <div id="labels"></div>
   <div id="hud" hidden>
-    <div class="day" id="hDay">DIA 1/7<span>08:00</span></div>
+    <div class="day" id="hDay">DAY 1/7<span>08:00</span></div>
     <div class="cash"><b id="hCash">$0</b><div class="goal"><i id="hGoal"></i></div><small id="hDirty"></small></div>
-    <div class="heat"><span>SUSPEITA</span><div class="bar" id="hBar"><i id="hHeat"></i><em id="hHeatN">0%</em></div></div>
-    <button id="pauseBtn" aria-label="Pausa">II</button>
+    <div class="heat"><span>SUSPICION</span><div class="bar" id="hBar"><i id="hHeat"></i><em id="hHeatN">0%</em></div></div>
+    <button id="pauseBtn" aria-label="Pause">II</button>
   </div>
   <div id="info"></div>
   <div id="msgs"></div>
   <div id="tasks"></div>
   <div id="banner"><b></b><span></span></div>
-  <div id="hint" class="hide-sm" hidden>Arrasta o rato para rodar a câmara · roda para zoom · Esc pausa</div>
+  <div id="hint" class="hide-sm" hidden>Drag the mouse to turn the camera · wheel to zoom · Esc pause</div>
 
   <div class="ov" id="title">
     <div class="card">
       <h1>Run a Motel<small>with your friends</small></h1>
-      <p>Desert Rose Motel, Route 66, Novo México. De dia: lençóis lavados e café queimado. De noite: a rede de acompanhantes do quarto 13, o poker na receção, o camião do contrabando, os telefonemas da Família e um jacaré chamado Bubba que come o que lhe atirarem.</p>
-      <p class="dim">Objetivo: chegar a <b style="color:var(--vacancy)">$1.000.000</b> em 7 dias sem que a suspeita do xerife chegue a 100%.</p>
+      <p>Desert Rose Motel, Route 66, New Mexico. By day: fresh sheets and burnt coffee. By night: the escort ring in room 13, poker at the front desk, the smuggling truck, calls from the Family and an alligator named Bubba who eats whatever you throw him.</p>
+      <p class="dim">Goal: reach <b style="color:var(--vacancy)">$1.000.000</b> in 7 days before the sheriff’s suspicion hits 100%.</p>
       <div class="slots" id="slots"></div>
       <div class="row">
-        <button id="startBtn">Abrir o motel</button>
-        <button class="ghost" id="contBtn" hidden>Continuar</button>
-        <span class="dim hide-sm"><kbd>Espaço</kbd> para abrir · <kbd>Esc</kbd> no jogo abre a pausa com os controlos</span>
+        <button id="startBtn">Open the motel</button>
+        <button class="ghost" id="contBtn" hidden>Continue</button>
+        <span class="dim hide-sm"><kbd>Space</kbd> to open · <kbd>Esc</kbd> in game opens the pause menu with the controls</span>
       </div>
     </div>
   </div>
 
   <div class="ov" id="pause" hidden>
     <div class="card">
-      <h2>Pausa</h2>
+      <h2>Pause</h2>
       <div class="cols">
         <div>
-          <h3>Controlos</h3>
+          <h3>Controls</h3>
           <ul>
             <li><b>P1</b> <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> + <kbd>E</kbd></li>
-            <li><b>P2</b> setas + <kbd>Enter</kbd></li>
+            <li><b>P2</b> arrows + <kbd>Enter</kbd></li>
             <li><b>P3</b> <kbd>I</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd> + <kbd>O</kbd></li>
             <li><b>P4</b> numpad <kbd>8</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd> + <kbd>0</kbd></li>
-            <li><b>Comando</b> analógico esquerdo + <kbd>A</kbd>, direito roda a câmara, <kbd>Start</kbd> pausa</li>
-            <li><b>Câmara</b> arrastar o rato roda, a roda faz zoom</li>
-            <li><b>Ação</b> carrega para usar, mantém para limpar ou tratar do assunto</li>
-            <li><b>Pausa</b> <kbd>Esc</kbd> ou <kbd>P</kbd> · <b>Gráficos</b> <kbd>G</kbd></li>
+            <li><b>Gamepad</b> left stick + <kbd>A</kbd>, right stick turns the camera, <kbd>Start</kbd> pausa</li>
+            <li><b>Camera</b> drag the mouse to turn, the wheel zooms</li>
+            <li><b>Action</b> press to use, hold to clean or take care of business</li>
+            <li><b>Pause</b> <kbd>Esc</kbd> ou <kbd>P</kbd> · <b>Graphics</b> <kbd>G</kbd></li>
           </ul>
         </div>
         <div>
-          <h3>A fachada</h3>
+          <h3>The front</h3>
           <ul>
-            <li><b>Receção:</b> faz o check-in antes que a paciência acabe.</li>
-            <li><b>Quartos sujos:</b> mantém a ação na porta.</li>
-            <li><b>Quarto 13:</b> à noite chegam os clientes de chapéu. Pagam bem, mas o xerife repara.</li>
+            <li><b>Front desk:</b> check guests in before they run out of patience.</li>
+            <li><b>Dirty rooms:</b> hold the action at the door.</li>
+            <li><b>Room 13:</b> at night the men in hats arrive. They pay well, but the sheriff notices.</li>
           </ul>
         </div>
         <div>
-          <h3>A rede (de noite)</h3>
+          <h3>The ring (at night)</h3>
           <ul>
-            <li><b>Lounge:</b> às 19:00 chegam as acompanhantes e esperam no banco ao lado dos quartos.</li>
-            <li><b>Cliente de chapéu:</b> faz o check-in e uma acompanhante livre vai com ele para o 13 ou para um quarto vazio.</li>
-            <li><b>Problemas:</b> se um quarto pisca a vermelho, mantém a ação na porta e põe o cliente na rua.</li>
-            <li><b>Ânimo:</b> cada serviço cansa. Dá-lhes gorjeta no lounge ou vão para casa.</li>
-            <li><b>Limpeza:</b> no fim do dia podes contratar faxineiras, que limpam sozinhas os quartos sujos mas fogem das cenas de crime e podem contar ao xerife o que viram, ou o Sr. Lobo, caro, que limpa tudo, sangue incluído, e não fala. Os salários pagam-se ao fim do dia.</li>
-            <li><b>Cliente da casa:</b> na jukebox do lounge podes pagar e ir para um quarto com quem estiver livre. Ficas uns segundos fora de jogo e sais relaxado (mais rápido). Mas há risco de denúncia: chantagem ou uma chamada anónima para o xerife. O risco sobe com pouco ânimo, com o xerife por perto e com cada visita no mesmo dia.</li>
+            <li><b>Lounge:</b> at 19:00 the escorts arrive and wait on the bench next to the rooms.</li>
+            <li><b>Man in a hat:</b> check him in and a free escort goes with him to 13 or to an empty room.</li>
+            <li><b>Trouble:</b> if a room flashes red, hold the action at the door and throw the client out.</li>
+            <li><b>Morale:</b> every job wears them out. Tip them in the lounge or they go home.</li>
+            <li><b>Cleaning:</b> at the end of the day you can hire cleaners, who clean dirty rooms on their own but run from crime scenes and may tell the sheriff what they saw, or Mr. Wolf, pricey, who cleans everything, blood included, and never talks. Wages are paid at the end of the day.</li>
+            <li><b>House customer:</b> at the lounge jukebox you can pay and go to a room with whoever is free. You’re out of play for a few seconds and come back relaxed (faster). But you risk being reported: blackmail or an anonymous call to the sheriff. The risk goes up with low morale, with the sheriff nearby and with every visit on the same day.</li>
           </ul>
         </div>
         <div>
-          <h3>Outros negócios</h3>
+          <h3>Other business</h3>
           <ul>
-            <li><b>Lavandaria 24h:</b> o dinheiro da rede, dos contratos, do contrabando e do poker é sujo. Mantém a ação na lavandaria para o lavar (10% de comissão). O que ficar por lavar no fim do dia faz as Finanças desconfiar.</li>
-            <li><b>Contrabando:</b> a partir do dia 2, à noite, um camião de "frutas e legumes" larga caixas no parque. Leva-as uma a uma para a arrecadação ao lado do contentor. Caixas ao relento são apreendidas pelo xerife ou perdidas de manhã.</li>
-            <li><b>Poker clandestino:</b> por volta das 20:00 os jogadores sentam-se à mesa da receção e o pote cresce. Recolhe-o, e esconde as cartas quando o xerife se aproximar, senão ele apreende o pote.</li>
+            <li><b>24h Laundromat:</b> money from the ring, the contracts, the smuggling and the poker is dirty. Hold the action at the laundromat to wash it (10% fee). Whatever is left unwashed at the end of the day makes the taxman suspicious.</li>
+            <li><b>Smuggling:</b> from day 2, at night, a "fruit and veg" truck drops crates in the parking lot. Carry them one by one to the storeroom next to the dumpster. Crates left outside get seized by the sheriff or lost by morning.</li>
+            <li><b>Back-room poker:</b> around 20:00 the players sit at the front desk table and the pot grows. Collect it, and hide the cards when the sheriff comes near, or he seizes the pot.</li>
           </ul>
         </div>
         <div>
-          <h3>O negócio a sério</h3>
+          <h3>The real business</h3>
           <ul>
-            <li><b>Telefone:</b> atende e chega um alvo de fato cinzento e mala.</li>
-            <li><b>Porta do alvo:</b> mantém a ação. Sai um tapete com sapatos.</li>
-            <li><b>Pântano ou contentor:</b> só aí recebes. O contentor é revistado; o Bubba não fala.</li>
-            <li><b>Sangue:</b> esfregona no armário.</li>
-            <li><b>Xerife:</b> vê num cone à frente dele (o leque azul no chão). Se vir um tapete, vai verificar; se te vir a carregá-lo, persegue-te. Foge do cone, despacha o tapete ou suborna-o. Ouve barulhos e vai ver.</li>
-            <li><b>Tarefas:</b> a lista no canto e as setas no mundo mostram o mais urgente.</li>
+            <li><b>Phone:</b> answer it and a mark in a grey suit with a briefcase shows up.</li>
+            <li><b>Mark’s door:</b> hold the action. Out comes a rug with shoes.</li>
+            <li><b>Swamp or dumpster:</b> só aí recebes. O contentor é revistado; o Bubba não fala.</li>
+            <li><b>Blood:</b> mop in the closet.</li>
+            <li><b>Sheriff:</b> vê num cone à frente dele (o leque azul no chão). Se vir um tapete, vai verificar; se te vir a carregá-lo, persegue-te. Foge do cone, despacha o tapete ou suborna-o. Ouve barulhos e vai ver.</li>
+            <li><b>Tasks:</b> the list in the corner and the arrows in the world show what’s most urgent.</li>
           </ul>
         </div>
       </div>
       <div class="row">
-        <button id="resumeBtn">Continuar</button>
-        <button class="ghost" id="gfxBtn">Gráficos: alto</button>
-        <button class="ghost" id="soundBtn">Som: ligado</button>
-        <button class="ghost" id="quitBtn">Sair para o menu</button>
+        <button id="resumeBtn">Continue</button>
+        <button class="ghost" id="gfxBtn">Graphics: high</button>
+        <button class="ghost" id="soundBtn">Sound: on</button>
+        <button class="ghost" id="quitBtn">Quit to menu</button>
       </div>
     </div>
   </div>
 
   <div class="ov" id="summary" hidden>
     <div class="card">
-      <h2 id="sumTitle">Fim do dia 1</h2>
+      <h2 id="sumTitle">End of day 1</h2>
       <div class="books">
-        <div class="book"><h3 class="dim">Livro oficial (para as Finanças)</h3><table id="bookA"></table></div>
-        <div class="book real"><h3 class="dim">Livro real (para a Família)</h3><table id="bookB"></table></div>
+        <div class="book"><h3 class="dim">Official books (for the taxman)</h3><table id="bookA"></table></div>
+        <div class="book real"><h3 class="dim">Real books (for the Family)</h3><table id="bookB"></table></div>
       </div>
       <div class="staff" id="staff"></div>
       <p class="dim" id="sumNote"></p>
       <div class="tomorrow" id="tomorrow" hidden></div>
-      <div class="row"><button id="nextBtn">Abrir o dia 2</button><button class="ghost" id="hireBtn" hidden>Contratar</button><button class="ghost" id="hireCleanBtn" hidden>Contratar faxineira</button><button class="ghost" id="hireWolfBtn" hidden>Contratar o Sr. Lobo</button><span class="dim hide-sm"><kbd>Espaço</kbd></span></div>
+      <div class="row"><button id="nextBtn">Open day 2</button><button class="ghost" id="hireBtn" hidden>Hire</button><button class="ghost" id="hireCleanBtn" hidden>Hire a cleaner</button><button class="ghost" id="hireWolfBtn" hidden>Hire Mr. Wolf</button><span class="dim hide-sm"><kbd>Space</kbd></span></div>
     </div>
   </div>
 
   <div class="ov" id="over" hidden>
     <div class="card">
-      <h2 id="overTitle">Apanhados</h2>
+      <h2 id="overTitle">Busted</h2>
       <p id="overText"></p>
-      <div class="row"><button id="againBtn">Jogar outra vez</button><span class="dim hide-sm"><kbd>Espaço</kbd></span></div>
+      <div class="row"><button id="againBtn">Play again</button><span class="dim hide-sm"><kbd>Space</kbd></span></div>
     </div>
   </div>
 
-  <div id="touch" hidden><div id="stick"><div id="knob"></div></div><button id="actbtn" aria-label="Ação">Ação</button></div>
-  <div id="loading">A abrir o motel…</div>
+  <div id="touch" hidden><div id="stick"><div id="knob"></div></div><button id="actbtn" aria-label="Action">Action</button></div>
+  <div id="loading">Opening the motel…</div>
 </div>
 
 <script type="importmap">
@@ -293,7 +293,7 @@ const ROOMS=[1,2,3,4,5,13].map((n,i)=>({n,x:262+i*92,w:86,cx:262+i*92+43,dy:214,
 const PCOL=['#ffb547','#3dd6ff','#9dff5c','#ff7ae0'];
 const SCHEMES=[
   {up:'KeyW',down:'KeyS',left:'KeyA',right:'KeyD',act:'KeyE',key:'E',name:'WASD + E'},
-  {up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',act:'Enter',key:'Enter',name:'Setas + Enter'},
+  {up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',act:'Enter',key:'Enter',name:'Arrows + Enter'},
   {up:'KeyI',down:'KeyK',left:'KeyJ',right:'KeyL',act:'KeyO',key:'O',name:'IJKL + O'},
   {up:'Numpad8',down:'Numpad5',left:'Numpad4',right:'Numpad6',act:'Numpad0',key:'0',name:'Numpad + 0'},
 ];
@@ -422,19 +422,19 @@ const isNight=()=>phase()>=.55;
 
 /* ---------- eventos do dia ---------- */
 const EVENTS=[null,
-  {id:'open',name:'Dia de abertura',txt:'O xerife só aparece à tarde. Aprende o caminho entre a receção, os quartos e o pântano.'},
-  {id:'bus',name:'Autocarro de turistas',txt:'Ao fim da manhã chega um autocarro cheio. Os quartos pagam mais 50%.'},
-  {id:'inspect',name:'Inspeção sanitária',txt:'O xerife traz a inspeção: cada quarto sujo que ele vir sobe a suspeita.'},
-  {id:'moon',name:'Lua cheia',txt:'Esta noite há o dobro de clientes de chapéu e a rede paga mais 25%.'},
-  {id:'conv',name:'Convenção de xerifes',txt:'Mais rondas e os subornos custam o dobro.'},
-  {id:'storm',name:'Tempestade de areia',txt:'Ninguém vê nada a cinco metros. Nem o xerife.'},
-  {id:'final',name:'Última noite',txt:'A Família paga o dobro pelos contratos. É agora ou nunca.'},
+  {id:'open',name:'Opening day',txt:'The sheriff only shows up in the afternoon. Learn the way between the front desk, the rooms and the swamp.'},
+  {id:'bus',name:'Tour bus',txt:'A full bus arrives late in the morning. Rooms pay 50% more.'},
+  {id:'inspect',name:'Health inspection',txt:'The sheriff brings the inspector: every dirty room he sees raises suspicion.'},
+  {id:'moon',name:'Full moon',txt:'Twice as many men in hats tonight, and the ring pays 25% more.'},
+  {id:'conv',name:'Sheriffs’ convention',txt:'More patrols and bribes cost double.'},
+  {id:'storm',name:'Sandstorm',txt:'Nobody can see five metres ahead. Not even the sheriff.'},
+  {id:'final',name:'Last night',txt:'The Family pays double for contracts. It’s now or never.'},
 ];
 const ev=()=>G&&EVENTS[G.day]?EVENTS[G.day].id:null;
 /* ---------- quem fez o quê (para o funcionário do dia) ---------- */
 let actor=null;
 function credit(k,n=1){if(actor){actor.st=actor.st||{};actor.st[k]=(actor.st[k]||0)+n}}
-const TITLES=[['perks','Cliente da casa'],['crates','Estivador'],['launder','Mago da lavandaria'],['pots','Croupier'],['rugs','Mão de tapete'],['ejects','Segurança da noite'],['checkins','Sorriso da receção'],['cleans','Rei da lixívia'],['bribes','Diplomata'],['calls','Linha direta da Família'],['kills','Especialista em check-outs'],['tips','Patrono das artes']];
+const TITLES=[['perks','House customer'],['crates','Stevedore'],['launder','Laundry wizard'],['pots','Croupier'],['rugs','Rug hand'],['ejects','Night security'],['checkins','Front-desk smile'],['cleans','Bleach king'],['bribes','Diplomat'],['calls','Family hotline'],['kills','Check-out specialist'],['tips','Patron of the arts']];
 function bubble(o,text,t=2.8){if(!G)return;G.bubbles=G.bubbles.filter(b=>b.o!==o);G.bubbles.push({id:++uid,o,text,t})}
 function noise(x,y){if(G)G.noise={x,y}}
 function showBanner(title,sub,day){const b=$('banner');b.querySelector('b').textContent=title;b.querySelector('span').textContent=sub;b.className='show'+(day?' day':'');
@@ -460,7 +460,7 @@ function planDay(){
 function say(text,col='#f1e8da'){G.msgs.push({text,col,t:6});if(G.msgs.length>4)G.msgs.shift()}
 function floatTxt(x,y,text,col){G.floats.push({id:++uid,x,y,text,col,t:1.6})}
 function earn(n,kind,x,y){G.money+=n;if(kind==='dirty')G.dirty+=n;credit('cash',n);floatTxt(x,y,'+'+money(n),kind==='legit'?'#3dffb0':'#ff3d7f');(n>=5000?sfx.bigcash:sfx.cash)()}
-function addHeat(n,why){if(n>=20){stage.classList.add('hit');setTimeout(()=>stage.classList.remove('hit'),350)}G.heat=Math.min(100,G.heat+n);G.flash=.6;say('SUSPEITA +'+n+'%: '+why,'#ff6b5a');sfx.bad();shake=.3}
+function addHeat(n,why){if(n>=20){stage.classList.add('hit');setTimeout(()=>stage.classList.remove('hit'),350)}G.heat=Math.min(100,G.heat+n);G.flash=.6;say('SUSPICION +'+n+'%: '+why,'#ff6b5a');sfx.bad();shake=.3}
 
 /* ---------- hóspedes ---------- */
 const SKIN=['#f1c9a5','#e0ac7e','#c68e60','#a36d45','#7a4d2e','#ead0b8'];
@@ -502,7 +502,7 @@ function checkIn(){
   const freeNormal=G.rooms.findIndex((r,i)=>i<5&&r.state==='free');
   const roomFor=g=>g.type==='night'?(!freeCrew?-1:G.rooms[5].state==='free'?5:freeNormal):freeNormal;
   const g=queue().find(g=>roomFor(g)>=0);
-  if(!g){const h=queue()[0];say(h.type==='night'?(freeCrew?'Não há quarto livre para a rede. Limpa o 13.':'Nenhuma acompanhante livre no lounge.'):'Não há quartos livres. Limpa os sujos.','#ffb547');sfx.bad();return}
+  if(!g){const h=queue()[0];say(h.type==='night'?(freeCrew?'No free room for the ring. Clean 13.':'No free escort in the lounge.'):'No free rooms. Clean the dirty ones.','#ffb547');sfx.bad();return}
   const idx=roomFor(g);credit('checkins');
   const R=ROOMS[idx];G.rooms[idx].state='reserved';G.rooms[idx].guest=g;
   g.state='toRoom';g.room=idx;g.path=[{x:DOOR_OUT.x,y:448},{x:R.cx,y:272},{x:R.cx,y:R.dy}];
@@ -511,14 +511,14 @@ function checkIn(){
     c.path=[{x:CREW_X,y:c.y},{x:CREW_X,y:262},{x:R.cx,y:262},{x:R.cx,y:R.dy+6}];
     g.trouble=Math.random()<.24?rnd(3,9):0;
     const price=Math.round((2500*G.day+(idx===5?500*G.day:0))*(ev()==='moon'?1.25:1)),cut=Math.round(price*.4);
-    bubble(c,pick(['Volto já, querido.','Mais um cowboy...','O '+R.n+'? Outra vez?','Cinco estrelas, prometo.']));
+    bubble(c,pick(['Back in a sec, honey.','Another cowboy...','O '+R.n+'? Again?','Five stars, I promise.']));
     earn(price-cut,'dirty',DESK_PT.x,DESK_PT.y);G.stats.vip++;G.stats.vipCash+=price;G.stats.crewCut+=cut;
-    say(c.name+' vai com o cliente para o '+R.n+'. Ela fica com '+money(cut)+'.','#ff7ae0');
-    if(idx===5)addHeat(3,'movimento no 13');
-    else{const nb=[idx-1,idx+1].some(j=>j>=0&&j<5&&G.rooms[j].state==='occupied'&&!G.rooms[j].service);addHeat(nb?9:5,nb?'o vizinho do '+R.n+' queixou-se das paredes finas':'a rede no quarto '+R.n)}
+    say(c.name+' goes with the client to '+R.n+'. She keeps '+money(cut)+'.','#ff7ae0');
+    if(idx===5)addHeat(3,'activity in 13');
+    else{const nb=[idx-1,idx+1].some(j=>j>=0&&j<5&&G.rooms[j].state==='occupied'&&!G.rooms[j].service);addHeat(nb?9:5,nb?'the neighbour in '+R.n+' complained about the thin walls':'the ring in room '+R.n)}
   }else{
     const n=Math.round((80+20*G.day)*(ev()==='bus'?1.5:1));earn(n,'legit',DESK_PT.x,DESK_PT.y);G.stats.rooms++;G.stats.roomCash+=n;
-    if(g.type==='target')say('O alvo ficou no quarto '+R.n+'. Ninguém o vai acordar.','#ff3d7f');
+    if(g.type==='target')say('The mark stayed in room '+R.n+'. Nobody’s going to wake him.','#ff3d7f');
   }
 }
 /* ---------- a rede ---------- */
@@ -539,16 +539,16 @@ function endService(g,how){
   const R=ROOMS[g.room],r=G.rooms[g.room],c=g.crew;
   r.state='dirty';r.guest=null;r.trouble=0;r.service=false;leave(g,R.cx,R.dy);g.crew=null;
   if(c){c.x=R.cx;c.y=R.dy+6}
-  if(how==='quit'){if(c)crewQuit(c,'saiu do quarto '+R.n+' a chorar e não volta esta noite.');addHeat(12,'um vizinho ligou para o 911')}
-  else if(how==='eject'){floatTxt(R.cx,R.dy,'Rua!','#3dffb0');G.stats.saved++;credit('ejects');bubble(g,pick(['As minhas calças!','Isto não fica assim!','Eu conheço o xerife!']));if(c)crewReturn(c,8);say(c?c.name+' agradece. O cliente foi para a rua sem as calças.':'Cliente na rua.','#3dffb0')}
+  if(how==='quit'){if(c)crewQuit(c,'left room '+R.n+' in tears and won’t be back tonight.');addHeat(12,'a neighbour called 911')}
+  else if(how==='eject'){floatTxt(R.cx,R.dy,'Out!','#3dffb0');G.stats.saved++;credit('ejects');bubble(g,pick(['My pants!','This isn’t over!','I know the sheriff!']));if(c)crewReturn(c,8);say(c?c.name+' says thanks. The client hit the street without his pants.':'Client thrown out.','#3dffb0')}
   else if(c)crewReturn(c,-24);
 }
 function updateCrew(dt){
   const ph=phase();
   for(const c of G.crew){
     if(c.state==='off'){if(ph>=.52&&ph<.92&&!c.quit){const s=seatOf(c),left=Math.random()<.5;c.state='arrive';c.x=CREW_X+(left?-170:170)+rnd(-20,20);c.y=WALK_Y;
-      c.path=[{x:CREW_X,y:WALK_Y},{x:CREW_X,y:s.y},{x:s.x,y:s.y}];if(c===G.crew[0])say('A rede chegou ao lounge. Os clientes de chapéu não tardam.','#ff7ae0')}}
-    else if(c.state==='arrive'||c.state==='returning'){if(step(c,42,dt)){c.state='lounge';if(c.mood<=0)crewQuit(c,'foi para casa. Está farta desta noite.')}}
+      c.path=[{x:CREW_X,y:WALK_Y},{x:CREW_X,y:s.y},{x:s.x,y:s.y}];if(c===G.crew[0])say('The ring has reached the lounge. The men in hats won’t be long.','#ff7ae0')}}
+    else if(c.state==='arrive'||c.state==='returning'){if(step(c,42,dt)){c.state='lounge';if(c.mood<=0)crewQuit(c,'went home. She’s had enough of tonight.')}}
     else if(c.state==='lounge'){c.mood=Math.min(100,c.mood+dt*1.4);
       if(ph>=.96){c.state='leaving';c.path=[{x:CREW_X,y:c.y},{x:CREW_X,y:WALK_Y},{x:W+40,y:WALK_Y}]}}
     else if(c.state==='toRoom'){if(step(c,46,dt))c.state='working'}
@@ -558,15 +558,15 @@ function updateCrew(dt){
 function contractFail(why){
   if(!G.contract)return;
   const pen=2000*G.day;G.money=Math.max(0,G.money-pen);G.stats.penalties+=pen;
-  say(why+' A Família cobra '+money(pen)+'.','#ff6b5a');sfx.bad();G.contract=null;
+  say(why+' The Family charges '+money(pen)+'.','#ff6b5a');sfx.bad();G.contract=null;
 }
 function updateGuests(dt){
   const q=queue();
   q.forEach((g,i)=>{const ty=328+i*20;g.path=[{x:DESK_PT.x+(i%2?5:-5),y:ty}];step(g,g.speed,dt);
     g.pat-=dt*(G.day>=4?1.15:1);
-    if(!g.moaned&&g.pat<g.maxPat*.3){g.moaned=true;bubble(g,pick(['Isto demora?','Há alguém aí?','Vou ao motel do lado!','Tenho um carro a arrefecer...']))}
-    if(g.pat<=0){G.stats.lost++;floatTxt(g.x,g.y,'desistiu','#ffb547');leave(g,g.x,g.y);g.path.unshift({x:DOOR_OUT.x,y:DOOR_OUT.y});
-      if(g.type==='target')contractFail('O alvo cansou-se de esperar.')}});
+    if(!g.moaned&&g.pat<g.maxPat*.3){g.moaned=true;bubble(g,pick(['Is this going to take long?','Anyone there?','I’m going to the motel next door!','I’ve got a car cooling down...']))}
+    if(g.pat<=0){G.stats.lost++;floatTxt(g.x,g.y,'gave up','#ffb547');leave(g,g.x,g.y);g.path.unshift({x:DOOR_OUT.x,y:DOOR_OUT.y});
+      if(g.type==='target')contractFail('The mark got tired of waiting.')}});
   for(const g of G.guests){
     if(g.state==='arrive'){if(step(g,g.speed,dt))g.state='queue'}
     else if(g.state==='toRoom'){if(step(g,g.speed,dt)){g.state='inRoom';G.rooms[g.room].state='occupied';g.timer=g.type==='night'?rnd(16,22):g.type==='target'?rnd(30,38):rnd(22,34)}}
@@ -574,12 +574,12 @@ function updateGuests(dt){
       const c=g.crew,r=G.rooms[g.room];
       if(c&&c.state!=='working')continue;              // à espera que ela chegue
       g.timer-=dt;
-      if(g.trouble>0){g.trouble-=dt;if(g.trouble<=0){r.trouble=12;bubble({x:ROOMS[g.room].cx,y:ROOMS[g.room].dy},'SOCORRO!',3);noise(ROOMS[g.room].cx,ROOMS[g.room].dy);say('Problemas no quarto '+ROOMS[g.room].n+'! O cliente passou das marcas. Põe-no na rua.','#ff6b5a');sfx.bad()}}
+      if(g.trouble>0){g.trouble-=dt;if(g.trouble<=0){r.trouble=12;bubble({x:ROOMS[g.room].cx,y:ROOMS[g.room].dy},'HELP!',3);noise(ROOMS[g.room].cx,ROOMS[g.room].dy);say('Trouble in room '+ROOMS[g.room].n+'! The client went too far. Throw him out.','#ff6b5a');sfx.bad()}}
       if(r.trouble>0){r.trouble-=dt;if(r.trouble<=0)endService(g,'quit')}
       else if(g.timer<=0)endService(g,'ok');
     }
     else if(g.state==='inRoom'){g.timer-=dt;if(g.timer<=0){const R=ROOMS[g.room];G.rooms[g.room].state='dirty';G.rooms[g.room].guest=null;leave(g,R.cx,R.dy);
-      if(g.type==='target'&&G.contract&&G.contract.target===g)contractFail('O alvo fez check-out vivo.')}}
+      if(g.type==='target'&&G.contract&&G.contract.target===g)contractFail('The mark checked out alive.')}}
     else if(g.state==='leaving'){if(step(g,g.speed,dt))g.gone=true}
   }
   G.guests=G.guests.filter(g=>!g.gone);
@@ -590,75 +590,75 @@ function near(p,x,y,r=42){return dist(p.x,p.y,x,y)<r}
 function doorOf(p){return ROOMS.findIndex(R=>near(p,R.cx,R.dy+4,40))}
 function actionFor(p){
   if(p.carry==='body'){
-    if(p.x>SWAMP_X-34&&p.y<520)return{k:'swamp',label:'Dar ao Bubba',run:()=>dispose(p,'swamp')};
-    if(near(p,DUMP.x,DUMP.y,56))return{k:'dump',label:'Atirar ao contentor',run:()=>dispose(p,'dump')};
-    if(near(p,ICE.x,ICE.y,42))return{k:'ice',label:'Esconder no gelo',run:()=>{G.ice.push(p.body);G.bodies=G.bodies.filter(b=>b!==p.body);p.body=null;p.carry=null;say('Gelo extra no quarto 1... não, não peças gelo.','#9fd8ff')}};
-    return{k:'drop',label:'Largar o tapete',run:()=>{p.body.carrier=null;p.body.x=p.x;p.body.y=p.y+10;p.body=null;p.carry=null}};
+    if(p.x>SWAMP_X-34&&p.y<520)return{k:'swamp',label:'Feed Bubba',run:()=>dispose(p,'swamp')};
+    if(near(p,DUMP.x,DUMP.y,56))return{k:'dump',label:'Throw in the dumpster',run:()=>dispose(p,'dump')};
+    if(near(p,ICE.x,ICE.y,42))return{k:'ice',label:'Hide in the ice',run:()=>{G.ice.push(p.body);G.bodies=G.bodies.filter(b=>b!==p.body);p.body=null;p.carry=null;say('Extra ice in room 1... no, don’t order ice.','#9fd8ff')}};
+    return{k:'drop',label:'Drop the rug',run:()=>{p.body.carrier=null;p.body.x=p.x;p.body.y=p.y+10;p.body=null;p.carry=null}};
   }
   const sh=G.sheriff;
   if(sh&&!sh.bribed&&near(p,sh.x,sh.y,46)){
     const c=1000*G.day*(ev()==='conv'?2:1);
-    return{k:'bribe',label:G.money>=c?'Subornar ('+money(c)+')':'Suborno: faltam '+money(c-G.money),run:()=>{
+    return{k:'bribe',label:G.money>=c?'Bribe ('+money(c)+')':'Bribe: short by '+money(c-G.money),run:()=>{
       if(G.money<c){sfx.bad();return}
-      G.money-=c;G.stats.bribes+=c;sh.bribed=true;credit('bribes');bubble(sh,pick(['Nunca estive aqui.','Bom negócio, amigo.','Que motel tão limpo.']));G.heat=Math.max(0,G.heat-25);sh.path=[{x:sh.car.x,y:sh.car.y-24}];
-      say('"Nunca estive aqui." O xerife guarda o envelope.','#3dffb0');sfx.cash()}};
+      G.money-=c;G.stats.bribes+=c;sh.bribed=true;credit('bribes');bubble(sh,pick(['I was never here.','Pleasure doing business, friend.','Such a clean motel.']));G.heat=Math.max(0,G.heat-25);sh.path=[{x:sh.car.x,y:sh.car.y-24}];
+      say('"I was never here." The sheriff pockets the envelope.','#3dffb0');sfx.cash()}};
   }
   if(p.carry==='crate'){
-    if(near(p,SHED_PT.x,SHED_PT.y,50))return{k:'store',label:'Guardar na arrecadação',run:()=>storeCrate(p)};
-    return{k:'dropc',label:'Largar a caixa',run:()=>{const c=p.crate;c.carrier=null;c.x=p.x;c.y=p.y+10;p.crate=null;p.carry=null}};
+    if(near(p,SHED_PT.x,SHED_PT.y,50))return{k:'store',label:'Put in the storeroom',run:()=>storeCrate(p)};
+    return{k:'dropc',label:'Drop the crate',run:()=>{const c=p.crate;c.carrier=null;c.x=p.x;c.y=p.y+10;p.crate=null;p.carry=null}};
   }
   if(p.carry==='mop'){
     const b=G.blood.find(b=>near(p,b.x,b.y,30));
-    if(b)return{k:'mop'+b.id,label:'Esfregar sangue',hold:.9,run:()=>{G.blood=G.blood.filter(x=>x!==b);credit('cleans');beep(500,.05,'triangle')}};
-    if(near(p,CLOSET.x,CLOSET.y,38))return{k:'ret',label:'Arrumar esfregona',run:()=>{p.carry=null}};
+    if(b)return{k:'mop'+b.id,label:'Scrub the blood',hold:.9,run:()=>{G.blood=G.blood.filter(x=>x!==b);credit('cleans');beep(500,.05,'triangle')}};
+    if(near(p,CLOSET.x,CLOSET.y,38))return{k:'ret',label:'Put the mop away',run:()=>{p.carry=null}};
   }else{
     const body=G.bodies.find(b=>!b.carrier&&near(p,b.x,b.y,34));
     const cr=G.crates.find(c=>!c.carrier&&near(p,c.x,c.y,30));
-    if(!body&&cr)return{k:'pickc',label:'Pegar na caixa',run:()=>{cr.carrier=p;p.crate=cr;p.carry='crate';beep(220,.08,'square')}};
-    if(body)return{k:'pick',label:'Pegar no tapete',run:()=>{body.carrier=p;p.body=body;p.carry='body';beep(160,.1,'square')}};
-    if(G.ice.length&&near(p,ICE.x,ICE.y,42))return{k:'unice',label:'Tirar do gelo',run:()=>{const b=G.ice.pop();b.carrier=p;G.bodies.push(b);p.body=b;p.carry='body'}};
-    if(G.phone&&near(p,PHONE.x,PHONE.y,40))return{k:'phone',label:'Atender',run:answer};
-    if(near(p,CLOSET.x,CLOSET.y,36))return{k:'mop',label:'Pegar esfregona',run:()=>{p.carry='mop'}};
+    if(!body&&cr)return{k:'pickc',label:'Pick up the crate',run:()=>{cr.carrier=p;p.crate=cr;p.carry='crate';beep(220,.08,'square')}};
+    if(body)return{k:'pick',label:'Pick up the rug',run:()=>{body.carrier=p;p.body=body;p.carry='body';beep(160,.1,'square')}};
+    if(G.ice.length&&near(p,ICE.x,ICE.y,42))return{k:'unice',label:'Take out of the ice',run:()=>{const b=G.ice.pop();b.carrier=p;G.bodies.push(b);p.body=b;p.carry='body'}};
+    if(G.phone&&near(p,PHONE.x,PHONE.y,40))return{k:'phone',label:'Answer',run:answer};
+    if(near(p,CLOSET.x,CLOSET.y,36))return{k:'mop',label:'Grab the mop',run:()=>{p.carry='mop'}};
   }
-  if(!p.carry&&G.dirty>=1&&near(p,LAUNDRY.x,LAUNDRY.y+28,42))return{k:'wash',label:'Lavar dinheiro ('+money(Math.min(G.dirty,10000*G.day))+')',hold:1,run:launder};
+  if(!p.carry&&G.dirty>=1&&near(p,LAUNDRY.x,LAUNDRY.y+28,42))return{k:'wash',label:'Launder money ('+money(Math.min(G.dirty,10000*G.day))+')',hold:1,run:launder};
   if(!p.carry&&G.poker.active&&!G.poker.leaving&&near(p,POKER.x,POKER.y,54)){
     const P=G.poker;
-    if(P.covered)return{k:'unc',label:'Voltar ao jogo',run:()=>{P.covered=false;bubble({x:POKER.x,y:POKER.y},'Quem dá as cartas?')}};
-    if(P.pot>=800*G.day&&!G.sheriff)return{k:'pot',label:'Recolher o pote ('+money(P.pot)+')',run:()=>{P.pot=Math.round(P.pot);earn(P.pot,'dirty',POKER.x,POKER.y);G.stats.poker+=P.pot;P.pot=0;credit('pots')}};
-    return{k:'cover',label:'Esconder as cartas',run:()=>{P.covered=true;bubble({x:POKER.x,y:POKER.y},'Estamos só a ler o jornal.')}};
+    if(P.covered)return{k:'unc',label:'Back to the game',run:()=>{P.covered=false;bubble({x:POKER.x,y:POKER.y},'Who’s dealing?')}};
+    if(P.pot>=800*G.day&&!G.sheriff)return{k:'pot',label:'Collect the pot ('+money(P.pot)+')',run:()=>{P.pot=Math.round(P.pot);earn(P.pot,'dirty',POKER.x,POKER.y);G.stats.poker+=P.pot;P.pot=0;credit('pots')}};
+    return{k:'cover',label:'Hide the cards',run:()=>{P.covered=true;bubble({x:POKER.x,y:POKER.y},'We’re just reading the paper.')}};
   }
   if(!p.carry&&near(p,JUKEBOX.x,JUKEBOX.y,26)){
     const c=G.crew.filter(c=>c.state==='lounge'&&c.mood>15).sort((a,b)=>b.mood-a.mood)[0];
     const idx=G.rooms[5].state==='free'?5:G.rooms.findIndex((r,i)=>i<5&&r.state==='free');
     if(c&&idx>=0){const cost=ownerCost(),risk=ownerRisk(p,c);
-      return{k:'owner'+c.id,label:'Ir ao quarto '+ROOMS[idx].n+' com '+(c.name==='Rico'?'o ':'a ')+c.name+' ('+money(cost)+' · risco '+Math.round(risk*100)+'%)',
-        run:()=>{if(G.money<cost){say('Nem o dono tem crédito na casa. Faltam '+money(cost-G.money)+'.','#ffb547');sfx.bad();return}ownerVisit(p,c,idx,risk)}}}
-    if(isNight())return{k:'ownerno',label:G.crew.some(c=>c.state==='lounge')?'Não há quarto livre':'Ninguém livre no lounge',run:()=>sfx.bad()};
+      return{k:'owner'+c.id,label:'Go to room '+ROOMS[idx].n+' with '+c.name+' ('+money(cost)+' · risk '+Math.round(risk*100)+'%)',
+        run:()=>{if(G.money<cost){say('Not even the owner gets credit here. Short by '+money(cost-G.money)+'.','#ffb547');sfx.bad();return}ownerVisit(p,c,idx,risk)}}}
+    if(isNight())return{k:'ownerno',label:G.crew.some(c=>c.state==='lounge')?'No free room':'Nobody free in the lounge',run:()=>sfx.bad()};
   }
   if(!p.carry&&near(p,LOUNGE.x,LOUNGE.y+8,58)){
     const c=G.crew.filter(c=>c.state==='lounge'&&c.mood<85).sort((a,b)=>a.mood-b.mood)[0];
-    if(c){const cost=400*G.day;return{k:'tip'+c.id,label:G.money>=cost?'Gorjeta à '+c.name+' ('+money(cost)+')':'Gorjeta: faltam '+money(cost-G.money),run:()=>{
-      if(G.money<cost){sfx.bad();return}G.money-=cost;G.stats.tips+=cost;credit('tips');bubble(c,pick(['És um amor.','Assim sim.','Mais uma hora, vá.']));c.mood=Math.min(100,c.mood+40);floatTxt(c.x,c.y,'♥','#ff7ae0');sfx.cash()}}}
+    if(c){const cost=400*G.day;return{k:'tip'+c.id,label:G.money>=cost?'Tip '+c.name+' ('+money(cost)+')':'Tip: short by '+money(cost-G.money),run:()=>{
+      if(G.money<cost){sfx.bad();return}G.money-=cost;G.stats.tips+=cost;credit('tips');bubble(c,pick(['You’re a sweetheart.','That’s more like it.','One more hour, come on.']));c.mood=Math.min(100,c.mood+40);floatTxt(c.x,c.y,'♥','#ff7ae0');sfx.cash()}}}
   }
   if(!p.carry&&queue().length&&near(p,DESK_PT.x,DESK_PT.y,82))return{k:'desk',label:'Check-in',run:checkIn};
   const di=doorOf(p);
   if(di>=0){
     const r=G.rooms[di],R=ROOMS[di];
     if(!p.carry&&r.state==='occupied'&&r.guest&&G.contract&&G.contract.target===r.guest&&G.contract.state==='active')
-      return{k:'kill'+di,label:'Tratar do assunto',hold:1.3,run:()=>kill(di)};
-    if(r.trouble>0)return{k:'eject'+di,label:'Pôr o cliente na rua',hold:.8,run:()=>{const g=r.guest;if(g)endService(g,'eject')}};
-    if(r.state==='dirty')return{k:'clean'+di,label:'Limpar quarto '+R.n,hold:1.6,run:()=>{r.state='free';credit('cleans');beep(700,.06,'triangle')}};
-    if(r.state==='crime')return{k:'clean'+di,label:'Limpar a cena',hold:2.8,run:()=>{r.state='free';credit('cleans');beep(700,.06,'triangle')}};
+      return{k:'kill'+di,label:'Take care of business',hold:1.3,run:()=>kill(di)};
+    if(r.trouble>0)return{k:'eject'+di,label:'Throw the client out',hold:.8,run:()=>{const g=r.guest;if(g)endService(g,'eject')}};
+    if(r.state==='dirty')return{k:'clean'+di,label:'Clean room '+R.n,hold:1.6,run:()=>{r.state='free';credit('cleans');beep(700,.06,'triangle')}};
+    if(r.state==='crime')return{k:'clean'+di,label:'Clean the scene',hold:2.8,run:()=>{r.state='free';credit('cleans');beep(700,.06,'triangle')}};
   }
   return null;
 }
 function answer(){
   G.phone=null;credit('calls');
   const reward=12000*G.day*(ev()==='final'?2:1);
-  bubble({x:PHONE.x,y:PHONE.y-10},'"Fato cinzento. Mala. Não sai vivo."',3.5);
+  bubble({x:PHONE.x,y:PHONE.y-10},'"Grey suit. Briefcase. He doesn’t leave alive."',3.5);
   const g=spawnGuest('target');
   G.contract={state:'active',reward,target:g};
-  say('A Família: "Um senhor de fato cinzento e mala vai pedir um quarto. Não deixes que saia." '+money(reward),'#ff3d7f');
+  say('The Family: "A gentleman in a grey suit with a briefcase will ask for a room. Don’t let him leave." '+money(reward),'#ff3d7f');
   beep(400,.15,'sine');
 }
 function kill(di){
@@ -667,25 +667,25 @@ function kill(di){
   G.bodies.push({id:++uid,x:R.cx+rnd(-6,6),y:R.dy+24,carrier:null,reward:G.contract.reward,look:g.look});
   G.blood.push({id:++uid,x:R.cx-16,y:R.dy+14,r:rnd(10,14)},{id:++uid,x:R.cx+18,y:R.dy+30,r:rnd(6,9)});
   G.contract.state='killed';G.contract=null;shake=.25;
-  say('Feito. Agora há um tapete com sapatos à porta do '+R.n+'.','#ff3d7f');sfx.thud();
+  say('Done. Now there’s a rug with shoes outside '+R.n+'.','#ff3d7f');sfx.thud();
 }
 function dispose(p,where){
   const b=p.body;G.bodies=G.bodies.filter(x=>x!==b);p.body=null;p.carry=null;credit('rugs');
-  if(where==='dump'){G.dumpster++;noise(DUMP.x,DUMP.y);say('Contentor. O camião do lixo só passa de manhã.','#ffb547')}
-  else{G.gatorT=1.6;G.splash={x:p.x+40,y:p.y};G.fx.push({k:'splash',x:p.x+40,y:p.y});shake=.35;bubble({x:p.x+40,y:p.y},'GLUB',2);sfx.splash();say(pick(['O Bubba agradece.','Glub.','O pântano não faz perguntas.']),'#9dff5c')}
+  if(where==='dump'){G.dumpster++;noise(DUMP.x,DUMP.y);say('Dumpster. The garbage truck only comes in the morning.','#ffb547')}
+  else{G.gatorT=1.6;G.splash={x:p.x+40,y:p.y};G.fx.push({k:'splash',x:p.x+40,y:p.y});shake=.35;bubble({x:p.x+40,y:p.y},'GLUB',2);sfx.splash();say(pick(['Bubba says thanks.','Glub.','The swamp asks no questions.']),'#9dff5c')}
   earn(b.reward,'dirty',p.x,p.y);G.stats.contracts++;G.stats.contractCash+=b.reward;
 }
 
 /* ---------- equipa de limpeza ---------- */
-const CLEAN_NAMES=['Dona Graça','Dona Fátima','Sr. Armando'];
+const CLEAN_NAMES=['Mrs. Graça','Mrs. Fátima','Mr. Armando'];
 const CLEAN_HOME=[[296,414],[314,414],[332,414]];
 const wage=t=>(t==='wolf'?3000:800)*G.day;
 const canHireClean=()=>G.cleaners.length<3&&G.cleaners.filter(c=>c.type==='normal').length<CLEAN_NAMES.length;
 const canHireWolf=()=>G.cleaners.length<3&&!G.cleaners.some(c=>c.type==='wolf');
 function hireCleaner(type){
-  const i=G.cleaners.length,home=CLEAN_HOME[i%3],name=type==='wolf'?'Sr. Lobo':CLEAN_NAMES[G.cleaners.filter(c=>c.type==='normal').length];
+  const i=G.cleaners.length,home=CLEAN_HOME[i%3],name=type==='wolf'?'Mr. Wolf':CLEAN_NAMES[G.cleaners.filter(c=>c.type==='normal').length];
   const look=type==='wolf'?{skin:'#e0ac7e',hair:'#a7a19a',shirt:'#15151a',pants:'#15151a',shoes:'#0a0a0a',tie:true,shades:true,long:true,scale:1.03}
-    :{skin:pick(SKIN),hair:pick(HAIR),shirt:'#8ac6e8',pants:'#3c4a5e',shoes:'#f2f2f2',vest:'#f2f2f2',long:false,hat:name.startsWith('Sr')?'cap':null,capc:'#8ac6e8'};
+    :{skin:pick(SKIN),hair:pick(HAIR),shirt:'#8ac6e8',pants:'#3c4a5e',shoes:'#f2f2f2',vest:'#f2f2f2',long:false,hat:name.startsWith('Mr')?'cap':null,capc:'#8ac6e8'};
   G.cleaners.push({id:++uid,type,name,look,home,x:home[0],y:home[1],state:'idle',job:null,t:0,path:[],seen:new Set()});
 }
 function cleanerNeeds(j){return j.kind==='room'?(G.rooms[j.i].state==='dirty'||(j.crime&&G.rooms[j.i].state==='crime')):G.blood.includes(j.b)}
@@ -702,7 +702,7 @@ function updateCleaners(dt){
     }else if(c.state==='walk'){
       if(!cleanerNeeds(c.job)){c.state='idle';c.job=null}
       else if(step(c,c.type==='wolf'?52:42,dt)){c.state='work';c.t=c.job.kind==='blood'?3:c.job.crime?6:4;
-        if(c.type==='wolf'&&c.job.crime)bubble(c,pick(['Sou o Sr. Lobo. Resolvo problemas.','Ninguém toca em nada.','Lixívia, sacos e silêncio.']))}
+        if(c.type==='wolf'&&c.job.crime)bubble(c,pick(['I’m Mr. Wolf. I solve problems.','Nobody touches anything.','Bleach, bags and silence.']))}
     }else if(c.state==='work'){
       if(!cleanerNeeds(c.job)){c.state='idle';c.job=null;continue}
       c.t-=dt;
@@ -713,8 +713,8 @@ function updateCleaners(dt){
     if(c.type==='normal'){
       const seen=[...G.bodies.map(b=>({id:b.id,x:b.carrier?b.carrier.x:b.x,y:b.carrier?b.carrier.y:b.y})),...G.blood.map(b=>({id:b.id,x:b.x,y:b.y}))];
       for(const o of seen){if(c.seen.has(o.id)||dist(c.x,c.y,o.x,o.y)>70)continue;c.seen.add(o.id);
-        if(Math.random()<.35){G.stats.snitches++;addHeat(10,'a '+c.name.replace('Dona ','').replace('Sr. ','')+' da limpeza contou ao xerife o que viu');bubble(c,'Eu não sou paga para isto. Vou contar.',3.2)}
-        else bubble(c,pick(['Não vi nada. Não vi nada.','Isto não é comigo.','Ai, Nossa Senhora...']),2.6)}
+        if(Math.random()<.35){G.stats.snitches++;addHeat(10,'a '+c.name.replace('Mrs. ','').replace('Mr. ','')+' from the cleaning crew told the sheriff what they saw');bubble(c,'I don’t get paid for this. I’m telling.',3.2)}
+        else bubble(c,pick(['I didn’t see anything. I didn’t see anything.','Not my business.','Oh, Holy Mother...']),2.6)}
     }
   }
 }
@@ -728,8 +728,8 @@ function ownerVisit(p,c,idx,risk){
   r.state='occupied';r.service=true;r.owner=p;r.guest=null;
   c.state='toRoom';c.room=idx;c.path=[{x:CREW_X,y:c.y},{x:CREW_X,y:262},{x:R.cx,y:262},{x:R.cx,y:R.dy+6}];
   p.away={state:'walk',room:idx,crew:c,risk,t:12,path:[{x:p.x,y:262},{x:R.cx,y:262},{x:R.cx,y:R.dy}]};p.carry=null;
-  bubble(c,pick(['Para o patrão, desconto não há.','O chefe? Que honra.','Isto fica entre nós... certo?']));
-  say('P'+(p.id+1)+' foi ao quarto '+R.n+' com '+c.name+'. Os outros que segurem o motel.','#ff7ae0');
+  bubble(c,pick(['No discount for the boss.','The boss? What an honour.','This stays between us... right?']));
+  say('P'+(p.id+1)+' went to room '+R.n+' with '+c.name+'. The others can hold down the motel.','#ff7ae0');
 }
 function updateOwner(p,dt){
   const a=p.away,R=ROOMS[a.room],r=G.rooms[a.room];
@@ -741,26 +741,26 @@ function updateOwner(p,dt){
   p.x=R.cx;p.y=R.dy+14;p.away=null;p.buff=40;p.lock=true;
   r.state='dirty';r.service=false;r.owner=null;
   const c=a.crew;if(c&&(c.state==='working'||c.state==='toRoom')){if(c.state==='working'){c.x=R.cx;c.y=R.dy+6}crewReturn(c,15)}
-  floatTxt(p.x,p.y,'relaxado','#ff7ae0');
+  floatTxt(p.x,p.y,'relaxed','#ff7ae0');
   if(Math.random()<a.risk){
     G.stats.reports++;
     if(Math.random()<.55){
       const hush=4000*G.day;
-      if(G.money>=hush){G.money-=hush;G.stats.hush+=hush;bubble(c||p,'O teu segredo custa '+money(hush)+'.',3.5);say('Chantagem: '+(c?c.name:'alguém')+' quer '+money(hush)+' para ficar calad'+(c&&c.name==='Rico'?'o':'a')+'. Pago.','#ff6b5a');sfx.bad()}
-      else{addHeat(20,'sem dinheiro para a chantagem, a história chegou ao xerife');bubble(c||p,'Não pagas? Então falo.',3.5)}
+      if(G.money>=hush){G.money-=hush;G.stats.hush+=hush;bubble(c||p,'Your secret costs '+money(hush)+'.',3.5);say('Blackmail: '+(c?c.name:'someone')+' wants '+money(hush)+' to keep quiet. Paid.','#ff6b5a');sfx.bad()}
+      else{addHeat(20,'no money for the blackmail, the story reached the sheriff');bubble(c||p,'Not paying? Then I talk.',3.5)}
     }else{
-      addHeat(18,'chamada anónima: o dono do motel usa a rede');
+      addHeat(18,'anonymous call: the motel owner uses the ring');
       if(!G.sheriff){G.sheriffPlan.unshift(Math.min(.97,phase()+.03))}
-      bubble(p,'Quem é que ligou ao xerife?!',3);
+      bubble(p,'Who called the sheriff?!',3);
     }
-  }else say('Ninguém viu nada. P'+(p.id+1)+' volta ao trabalho relaxado (mais rápido durante uns segundos).','#3dffb0');
+  }else say('Nobody saw a thing. P'+(p.id+1)+' goes back to work relaxed (faster for a few seconds).','#3dffb0');
 }
 
 /* ---------- negócios: lavandaria, contrabando, poker ---------- */
 function launder(){
   const b=Math.min(G.dirty,10000*G.day),fee=Math.round(b*.1);
   G.dirty-=b;G.money-=fee;G.stats.laundered+=b;G.stats.launderFee+=fee;credit('launder');G.washT=1.4;
-  floatTxt(LAUNDRY.x,LAUNDRY.y,'lavado '+money(b),'#3dd6ff');beep(900,.05,'sine');setTimeout(()=>beep(1200,.06,'sine'),70);
+  floatTxt(LAUNDRY.x,LAUNDRY.y,'laundered '+money(b),'#3dd6ff');beep(900,.05,'sine');setTimeout(()=>beep(1200,.06,'sine'),70);
 }
 function storeCrate(p){
   const c=p.crate;G.crates=G.crates.filter(x=>x!==c);p.crate=null;p.carry=null;
@@ -772,7 +772,7 @@ function updateRackets(dt){
     P.started=true;P.active=true;
     P.gamblers=POKER_SEATS.map((st,i)=>({id:++uid,look:lookFor(i%2?'day':'night'),x:-40-i*34,y:WALK_Y,state:'arrive',
       path:[{x:118,y:WALK_Y},{x:118,y:430},{x:100,y:414},{x:st[0],y:st[1]}]}));
-    say('Noite de poker na receção. A casa fica com uma parte de cada mão.','#ffd34a');
+    say('Poker night at the front desk. The house takes a cut of every hand.','#ffd34a');
   }
   if(P.active){
     let seated=0;
@@ -780,15 +780,15 @@ function updateRackets(dt){
     if(!P.covered&&!P.leaving&&seated)P.pot+=110*G.day*seated/4*dt;
     if(ph>=.93&&!P.leaving){P.leaving=true;
       P.gamblers.forEach(g=>{g.state='leaving';g.path=[{x:100,y:414},{x:118,y:430},{x:118,y:WALK_Y},{x:-40,y:WALK_Y}]});
-      if(P.pot>=1){P.pot=Math.round(P.pot);earn(P.pot,'dirty',POKER.x,POKER.y);G.stats.poker+=P.pot;say('Os jogadores foram-se e deixaram '+money(P.pot)+' no pote.','#ffd34a');P.pot=0}}
+      if(P.pot>=1){P.pot=Math.round(P.pot);earn(P.pot,'dirty',POKER.x,POKER.y);G.stats.poker+=P.pot;say('The players left, leaving '+money(P.pot)+' in the pot.','#ffd34a');P.pot=0}}
     P.gamblers=P.gamblers.filter(g=>!g.gone);
     if(P.leaving&&!P.gamblers.length)P.active=false;
   }
-  if(!G.smugDone&&G.day>=2&&ph>=.66){G.smugDone=true;G.truck={x:-180,y:562,state:'in',t:0};say('Chegou o camião das "frutas e legumes". Descarrega antes que o xerife veja.','#ffb547')}
+  if(!G.smugDone&&G.day>=2&&ph>=.66){G.smugDone=true;G.truck={x:-180,y:562,state:'in',t:0};say('The "fruit and veg" truck is here. Unload before the sheriff sees.','#ffb547')}
   const T=G.truck;
   if(T){
     if(T.state==='in'){T.x+=220*dt;if(T.x>=700){T.x=700;T.state='stop';T.t=3;
-      for(let i=0;i<6;i++)G.crates.push({id:++uid,x:636+i*22,y:520+(i%2)*12,carrier:null});bubble(T,'Seis caixas. Não perguntes.',3);sfx.thud()}}
+      for(let i=0;i<6;i++)G.crates.push({id:++uid,x:636+i*22,y:520+(i%2)*12,carrier:null});bubble(T,'Six crates. Don’t ask.',3);sfx.thud()}}
     else if(T.state==='stop'){T.t-=dt;if(T.t<=0)T.state='out'}
     else{T.x+=260*dt;if(T.x>W+300)G.truck=null}
   }
@@ -806,8 +806,8 @@ function spawnSheriff(){
   for(const q of pts){if(q.office)path.push({x:130,y:452},{...q},{x:130,y:452},{x:240,y:446});else path.push({...q})}
   path.push({x:car.x,y:car.y-24});
   G.sheriff={id:++uid,x:car.x,y:car.y-24,car,pause:0,bribed:false,seen:new Set(),path,mode:'patrol',fx:0,fy:-1,look:0,alert:null,lost:0,moving:false};
-  say('O xerife Dwayne estacionou. Foge do cone de visão dele.','#5fa8ff');sfx.siren();
-  bubble(G.sheriff,pick(['Boa noite. Só uma voltinha.','Rotina, rotina...','Cheira-me a esturro.','Alguém viu um senhor de fato cinzento?']));
+  say('Sheriff Dwayne just parked. Stay out of his line of sight.','#5fa8ff');sfx.siren();
+  bubble(G.sheriff,pick(['Evening. Just a quick round.','Routine, routine...','Something smells fishy.','Anyone seen a gentleman in a grey suit?']));
 }
 const shRange=()=>(isNight()?125:165)*(ev()==='storm'?.55:1);
 // o xerife vê num cone à frente dele (e sente quem lhe passa mesmo ao lado)
@@ -822,50 +822,50 @@ function updateSheriff(dt){
   s.moving=false;
   if(s.bribed){if(moveTo(s,s.car.x,s.car.y-24,80,dt))G.sheriff=null;return}
   s.look=(s.pause>0||s.mode==='look')?Math.sin(clock*1.8)*.9:0;
-  if(G.noise&&s.mode==='patrol'&&dist(s.x,s.y,G.noise.x,G.noise.y)<460){s.mode='noise';s.alert={x:G.noise.x,y:G.noise.y+22};bubble(s,'Que barulho foi este?')}
+  if(G.noise&&s.mode==='patrol'&&dist(s.x,s.y,G.noise.x,G.noise.y)<460){s.mode='noise';s.alert={x:G.noise.x,y:G.noise.y+22};bubble(s,'What was that noise?')}
   G.noise=null;
   if(s.mode==='patrol'){
     if(s.pause>0)s.pause-=dt;
     else{const wp=s.path[0];if(!wp){G.sheriff=null;return}
       if(moveTo(s,wp.x,wp.y,40,dt)){s.path.shift();s.pause=.9;
-        if(wp.dump&&G.dumpster>0){addHeat(22*G.dumpster,'o xerife abriu o contentor');bubble(s,'Este lixo... tem SAPATOS.');G.dumpster=0}
+        if(wp.dump&&G.dumpster>0){addHeat(22*G.dumpster,'the sheriff opened the dumpster');bubble(s,'This trash... has SHOES.');G.dumpster=0}
         if(!s.path.length){G.sheriff=null;return}}}
     for(const b of G.bodies){if(s.seen.has(b.id))continue;const bx=b.carrier?b.carrier.x:b.x,by=b.carrier?b.carrier.y:b.y;
-      if(shSees(s,bx,by)){s.mode=b.carrier?'chase':'check';s.alert={kind:'body',b};s.lost=0;bubble(s,b.carrier?'Ei! TU! Pára aí!':'?!');sfx.siren();break}}
+      if(shSees(s,bx,by)){s.mode=b.carrier?'chase':'check';s.alert={kind:'body',b};s.lost=0;bubble(s,b.carrier?'Hey! YOU! Stop right there!':'?!');sfx.siren();break}}
     if(s.mode==='patrol')for(const c of G.crates){if(s.seen.has(c.id))continue;
-      if(c.carrier){if(shSees(s,c.carrier.x,c.carrier.y)){s.seen.add(c.id);addHeat(8,'"Que caixas são essas?"');bubble(s,'Que caixas são essas?')}}
-      else if(shSees(s,c.x,c.y)){s.mode='check';s.alert={kind:'crate',b:c};bubble(s,'Hum? Caixas?');break}}
-    if(s.mode==='patrol')for(const b of G.blood){if(s.seen.has(b.id))continue;if(shSees(s,b.x,b.y,.8)){s.mode='check';s.alert={kind:'blood',b};bubble(s,'Hum?');break}}
+      if(c.carrier){if(shSees(s,c.carrier.x,c.carrier.y)){s.seen.add(c.id);addHeat(8,'"What are those crates?"');bubble(s,'What are those crates?')}}
+      else if(shSees(s,c.x,c.y)){s.mode='check';s.alert={kind:'crate',b:c};bubble(s,'Huh? Crates?');break}}
+    if(s.mode==='patrol')for(const b of G.blood){if(s.seen.has(b.id))continue;if(shSees(s,b.x,b.y,.8)){s.mode='check';s.alert={kind:'blood',b};bubble(s,'Huh?');break}}
   }
   else if(s.mode==='noise'){if(moveTo(s,s.alert.x,s.alert.y,58,dt)){s.mode='look';s.pause=1.8;s.alert=null}}
   else if(s.mode==='look'){s.pause-=dt;if(s.pause<=0){s.mode='patrol';s.pause=0}}
   else if(s.mode==='check'){
     const a=s.alert,b=a.b,gone=a.kind==='body'?!G.bodies.includes(b):a.kind==='crate'?(!G.crates.includes(b)||!!b.carrier):!G.blood.includes(b);
-    if(gone){s.seen.add(b.id);bubble(s,pick(['Hum. Devia ser o calor.','Juro que vi qualquer coisa.']));s.mode='look';s.pause=1;s.alert=null}
-    else if(a.kind==='body'&&b.carrier){s.mode='chase';s.lost=0;bubble(s,'Ei! Pára aí!')}
+    if(gone){s.seen.add(b.id);bubble(s,pick(['Hm. Must be the heat.','I swear I saw something.']));s.mode='look';s.pause=1;s.alert=null}
+    else if(a.kind==='body'&&b.carrier){s.mode='chase';s.lost=0;bubble(s,'Hey! Stop right there!')}
     else if(moveTo(s,b.x,b.y,52,dt)||dist(s.x,s.y,b.x,b.y)<38){s.seen.add(b.id);
-      if(a.kind==='body'){addHeat(34,'"Que tapete é este? Tem sapatos!"');bubble(s,'Isto tem SAPATOS.')}
-      else if(a.kind==='crate'){addHeat(10,'"Mercadoria sem fatura."');bubble(s,'Mercadoria sem fatura. Apreendida.');G.crates=G.crates.filter(x=>x!==b);G.stats.confiscated++}
-      else{addHeat(12,'"Isto não é ketchup."');bubble(s,'Isto não é ketchup.')}
+      if(a.kind==='body'){addHeat(34,'"What’s this rug? It has shoes!"');bubble(s,'This has SHOES.')}
+      else if(a.kind==='crate'){addHeat(10,'"Goods without a receipt."');bubble(s,'Goods without a receipt. Seized.');G.crates=G.crates.filter(x=>x!==b);G.stats.confiscated++}
+      else{addHeat(12,'"That’s not ketchup."');bubble(s,'That’s not ketchup.')}
       s.mode='look';s.pause=1.2;s.alert=null}
   }
   else if(s.mode==='chase'){
     const b=s.alert.b;
-    if(!G.bodies.includes(b)){s.seen.add(b.id);addHeat(6,'"Juro que vi um tapete..."');bubble(s,'Desapareceu?!');s.mode='look';s.pause=1.5;s.alert=null}
+    if(!G.bodies.includes(b)){s.seen.add(b.id);addHeat(6,'"I swear I saw a rug..."');bubble(s,'It’s gone?!');s.mode='look';s.pause=1.5;s.alert=null}
     else if(!b.carrier){s.mode='check'}
     else{const tx=b.carrier.x,ty=b.carrier.y;
       if(shSees(s,tx,ty,1.4))s.lost=0;else s.lost+=dt;
-      if(s.lost>2.5){s.seen.add(b.id);addHeat(8,'"Perdi-o de vista."');bubble(s,'Perdi-o de vista...');s.mode='look';s.pause=1.5;s.alert=null}
-      else if(moveTo(s,tx,ty,70,dt)||dist(s.x,s.y,tx,ty)<36){s.seen.add(b.id);addHeat(40,'"Apanhado com um tapete com sapatos!"');bubble(s,'Isso tem SAPATOS!');s.mode='look';s.pause=1.5;s.alert=null}
+      if(s.lost>2.5){s.seen.add(b.id);addHeat(8,'"Lost sight of him."');bubble(s,'Lost sight of him...');s.mode='look';s.pause=1.5;s.alert=null}
+      else if(moveTo(s,tx,ty,70,dt)||dist(s.x,s.y,tx,ty)<36){s.seen.add(b.id);addHeat(40,'"Caught with a rug with shoes!"');bubble(s,'That has SHOES!');s.mode='look';s.pause=1.5;s.alert=null}
     }
   }
   const P=G.poker;
   if(P.active&&!P.covered&&!P.leaving&&!s.seen.has('poker')&&dist(s.x,s.y,POKER.x,POKER.y)<170&&shSees(s,POKER.x,POKER.y)){
-    s.seen.add('poker');addHeat(15,'poker clandestino na receção');bubble(s,'Poker? Na MINHA comarca? O pote fica comigo.');G.stats.confiscated+=0;P.pot=0;P.covered=true}
-  for(const c of G.crew)if(['arrive','toRoom','returning','lounge'].includes(c.state)&&!s.seen.has('c'+c.id)&&isNight()&&shSees(s,c.x,c.y,.7)){s.seen.add('c'+c.id);addHeat(4,'"Tanta lantejoula a esta hora..."')}
+    s.seen.add('poker');addHeat(15,'illegal poker at the front desk');bubble(s,'Poker? In MY county? The pot’s mine.');G.stats.confiscated+=0;P.pot=0;P.covered=true}
+  for(const c of G.crew)if(['arrive','toRoom','returning','lounge'].includes(c.state)&&!s.seen.has('c'+c.id)&&isNight()&&shSees(s,c.x,c.y,.7)){s.seen.add('c'+c.id);addHeat(4,'"So many sequins at this hour..."')}
   ROOMS.forEach((Rm,i)=>{const r=G.rooms[i];
-    if(r.service&&r.state==='occupied'&&!s.seen.has('r'+i)&&dist(s.x,s.y,Rm.cx,Rm.dy)<110){s.seen.add('r'+i);addHeat(i===5?8:10,'barulho estranho no '+Rm.n);bubble(s,'Que barulheira no '+Rm.n+'...')}
-    if(ev()==='inspect'&&(r.state==='dirty'||r.state==='crime')&&!s.seen.has('i'+i)&&shSees(s,Rm.cx,Rm.dy)){s.seen.add('i'+i);addHeat(6,'inspeção: quarto '+Rm.n+' imundo');bubble(s,'Quarto '+Rm.n+': chumbado.')}
+    if(r.service&&r.state==='occupied'&&!s.seen.has('r'+i)&&dist(s.x,s.y,Rm.cx,Rm.dy)<110){s.seen.add('r'+i);addHeat(i===5?8:10,'strange noise in '+Rm.n);bubble(s,'What a racket in '+Rm.n+'...')}
+    if(ev()==='inspect'&&(r.state==='dirty'||r.state==='crime')&&!s.seen.has('i'+i)&&shSees(s,Rm.cx,Rm.dy)){s.seen.add('i'+i);addHeat(6,'inspection: room '+Rm.n+' filthy');bubble(s,'Room '+Rm.n+': failed.')}
   });
 }
 
@@ -886,15 +886,15 @@ function resolve(x,y,r=8){
 function update(dt){
   G.t+=dt;const ph=phase();
   G.flash=Math.max(0,G.flash-dt);G.gatorT=Math.max(0,G.gatorT-dt);
-  if(ev()==='bus'&&!G.busDone&&ph>=.16){G.busDone=true;for(let i=0;i<5;i++){const g=spawnGuest('day');g.x=-30-i*26}showBanner('Autocarro de turistas!','Cinco hóspedes de uma vez. Toda a gente à receção.',true)}
-  if(isNight()&&!G.nightShown){G.nightShown=true;showBanner('A noite começa','A rede está a chegar ao lounge. O néon acendeu.')}
-  if(G.heat>=75&&!G.warned){G.warned=true;say('O FBI já ouviu falar do Desert Rose. Mais um deslize e acabou.','#ff3344');sfx.siren()}
+  if(ev()==='bus'&&!G.busDone&&ph>=.16){G.busDone=true;for(let i=0;i<5;i++){const g=spawnGuest('day');g.x=-30-i*26}showBanner('Tour bus!','Five guests at once. Everyone to the front desk.',true)}
+  if(isNight()&&!G.nightShown){G.nightShown=true;showBanner('Night falls','The ring is arriving at the lounge. The neon is on.')}
+  if(G.heat>=75&&!G.warned){G.warned=true;say('The FBI has heard of the Desert Rose. One more slip and it’s over.','#ff3344');sfx.siren()}
   if(G.heat<60)G.warned=false;
   G.bubbles.forEach(b=>b.t-=dt);G.bubbles=G.bubbles.filter(b=>b.t>0);
   G.spawnT-=dt;if(G.spawnT<=0&&ph<.93){if(inbound()<5)spawnGuest('day');G.spawnT=ph<.55?rnd(6,9)/(1+G.day*.05):rnd(13,18)}
   if(ph>=.5&&ph<.95){G.vipT-=dt;if(G.vipT<=0){if(inbound()<5)spawnGuest('night');G.vipT=rnd(9,13)*(ev()==='moon'?.5:1)}}
-  if(ph>=.28&&ph<.88&&!G.contract&&!G.phone){G.phoneT-=dt;if(G.phoneT<=0){G.phone={t:16,b:0};G.phoneT=rnd(18,28);say('O telefone da receção está a tocar.','#ff3d7f')}}
-  if(G.phone){G.phone.t-=dt;G.phone.b-=dt;if(G.phone.b<=0){sfx.ring();G.phone.b=.8}if(G.phone.t<=0){G.phone=null;say('Chamada perdida. A Família não gosta de esperar.','#ffb547')}}
+  if(ph>=.28&&ph<.88&&!G.contract&&!G.phone){G.phoneT-=dt;if(G.phoneT<=0){G.phone={t:16,b:0};G.phoneT=rnd(18,28);say('The front desk phone is ringing.','#ff3d7f')}}
+  if(G.phone){G.phone.t-=dt;G.phone.b-=dt;if(G.phone.b<=0){sfx.ring();G.phone.b=.8}if(G.phone.t<=0){G.phone=null;say('Missed call. The Family doesn’t like waiting.','#ffb547')}}
   if(!G.sheriff&&G.sheriffPlan.length&&ph>=G.sheriffPlan[0]){G.sheriffPlan.shift();spawnSheriff()}
   updateSheriff(dt);
   updateGuests(dt);
@@ -955,25 +955,25 @@ scene.add(sun,sun.target,moon);sun.target.position.copy(MAPC);
 const sunDir=new THREE.Vector3(),horizon=new THREE.Color();
 
 // qualidade
-const QUALITY=['alto','medio','baixo'];
-let quality='alto',composer=null,bloom=null,gtao=null;
-try{quality=localStorage.getItem('motel.quality')||'alto'}catch(e){}
-if(!QUALITY.includes(quality))quality='alto';
+const QUALITY=['high','medium','low'];
+let quality='high',composer=null,bloom=null,gtao=null;
+try{quality=localStorage.getItem('motel.quality')||'high'}catch(e){}
+if(!QUALITY.includes(quality))quality='high';
 function setQuality(q){
-  quality=q;$('gfxBtn').textContent='Gráficos: '+q;
-  const dpr=Math.min(devicePixelRatio||1,q==='alto'?1.5:q==='medio'?1:.75);
+  quality=q;$('gfxBtn').textContent='Graphics: '+q;
+  const dpr=Math.min(devicePixelRatio||1,q==='high'?1.5:q==='medium'?1:.75);
   renderer.setPixelRatio(dpr);
-  const map=q==='alto'?4096:q==='medio'?2048:1024;
+  const map=q==='high'?4096:q==='medium'?2048:1024;
   sun.shadow.mapSize.set(map,map);sun.shadow.map?.dispose();sun.shadow.map=null;
-  renderer.shadowMap.type=q==='baixo'?THREE.PCFShadowMap:THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type=q==='low'?THREE.PCFShadowMap:THREE.PCFSoftShadowMap;
   composer?.dispose?.();composer=null;gtao=null;bloom=null;
   const w=Math.max(1,stage.clientWidth),h=Math.max(1,stage.clientHeight);
   renderer.setSize(w,h,false);
-  if(q!=='baixo'){
+  if(q!=='low'){
     const rt=new THREE.WebGLRenderTarget(w*dpr,h*dpr,{type:THREE.HalfFloatType});
     const c=new EffectComposer(renderer,rt);
     c.addPass(new RenderPass(scene,camera));
-    if(q==='alto'){
+    if(q==='high'){
       gtao=new GTAOPass(scene,camera,w,h);gtao.output=GTAOPass.OUTPUT.Default;gtao.blendIntensity=.85;
       gtao.updateGtaoMaterial({radius:.5,distanceExponent:1.5,thickness:1,scale:1,samples:12});
       gtao.updatePdMaterial({lumaPhi:10,depthPhi:2,normalPhi:3,radius:6,rings:2,samples:12});
@@ -981,7 +981,7 @@ function setQuality(q){
     }
     bloom=new UnrealBloomPass(new THREE.Vector2(w,h),.4,.55,1.1);c.addPass(bloom);
     c.addPass(new OutputPass());
-    if(q==='alto')c.addPass(new SMAAPass());
+    if(q==='high')c.addPass(new SMAAPass());
     else{const fx=new ShaderPass(FXAAShader);c.addPass(fx);c.fxaa=fx}
     c.setPixelRatio(dpr);c.setSize(w,h);
     if(c.fxaa)c.fxaa.material.uniforms.resolution.value.set(1/(w*dpr),1/(h*dpr));
@@ -1231,7 +1231,7 @@ function buildWorld(){
   phoneMat=new THREE.MeshStandardMaterial({color:0x8a1a1a,roughness:.4,emissive:0xff2050,emissiveIntensity:0});
   phoneMesh=box(.28,.12,.22,phoneMat,X(PHONE.x),.8,Z(PHONE.y));
   box(.95,2,.5,M.wood,X(CLOSET.x),0,Z(CLOSET.y)-.2);
-  textMesh('LIMPEZA',.7,.18,{fg:'#f1e8da',bg:'#3a2a1a',size:20,x:X(CLOSET.x),y:1.7,z:Z(CLOSET.y)+.06});
+  textMesh('CLEANING',.7,.18,{fg:'#f1e8da',bg:'#3a2a1a',size:20,x:X(CLOSET.x),y:1.7,z:Z(CLOSET.y)+.06});
   // quadro das chaves
   box(1.6,.8,.05,M.wood,ocx+.6,1.4,oz0+.15);
   for(let i=0;i<6;i++)box(.06,.18,.03,flat(0xd4b04a,{metalness:.9,roughness:.3}),ocx+.05+i*.22,1.5,oz0+.2);
@@ -1249,7 +1249,7 @@ function buildWorld(){
   for(const sx of [-1,1])for(const sz of [-1,1])mesh(new THREE.CylinderGeometry(.08,.08,.1,8).rotateZ(Math.PI/2),flat(0x111),X(DUMP.x)+sx*1,.08,Z(DUMP.y)+sz*.55);
   lidMesh=new THREE.Group();lidMesh.position.set(X(DUMP.x),1.35,Z(DUMP.y)-.7);scene.add(lidMesh);
   box(2.45,.08,1.45,flat(0x1f4a2a,{roughness:.6}),0,0,.72,lidMesh);
-  textMesh('LIXO',1,.3,{fg:'#e0ecd8',size:30,x:X(DUMP.x),y:.75,z:Z(DUMP.y)+.71});
+  textMesh('TRASH',1,.3,{fg:'#e0ecd8',size:30,x:X(DUMP.x),y:.75,z:Z(DUMP.y)+.71});
   // pântano
   waterMat=new THREE.MeshStandardMaterial({color:0x1e3324,roughness:.08,metalness:.1,normalMap:TEX.water?.normal||null,normalScale:new THREE.Vector2(.35,.35)});
   if(waterMat.normalMap){waterMat.normalMap=waterMat.normalMap.clone();waterMat.normalMap.repeat.set(.12,.12);waterMat.normalMap.needsUpdate=true}
@@ -1270,7 +1270,7 @@ function buildWorld(){
     const b1=mesh(new THREE.CylinderGeometry(.06,.12,2,6),M.wood,.6,3.4,0,t);b1.rotation.z=-.8;
     const b2=mesh(new THREE.CylinderGeometry(.05,.1,1.6,6),M.wood,-.5,3,0.2,t);b2.rotation.z=.9;
   }
-  textMesh('PÂNTANO · NÃO ALIMENTAR O JACARÉ',3.2,.5,{fg:'#2a1a10',bg:'#e8d8a8',size:30,x:X(SWAMP_X)-1.2,y:1.4,z:Z(500)+.06,ry:0});
+  textMesh('SWAMP · DO NOT FEED THE ALLIGATOR',3.2,.5,{fg:'#2a1a10',bg:'#e8d8a8',size:30,x:X(SWAMP_X)-1.2,y:1.4,z:Z(500)+.06,ry:0});
   box(.1,1.4,.1,M.wood,X(SWAMP_X)-2.4,0,Z(500));box(.1,1.4,.1,M.wood,X(SWAMP_X),0,Z(500));
   // jacaré
   gator=new THREE.Group();scene.add(gator);
@@ -1310,12 +1310,12 @@ function buildWorld(){
   // lavandaria 24h
   {const kx=X(LAUNDRY.x),kz=Z(LAUNDRY.y),fz=kz+.82;
    box(2.4,2.7,1.6,M.plaster,kx,0,kz);box(2.6,.18,1.9,M.roof,kx,2.7,kz+.1);
-   textMesh('LAVANDARIA 24H',2.3,.42,{fg:'#3dd6ff',size:46,emissive:4,x:kx,y:2.35,z:fz+.01});
+   textMesh('24H LAUNDROMAT',2.3,.42,{fg:'#3dd6ff',size:46,emissive:4,x:kx,y:2.35,z:fz+.01});
    for(const dx of [-.6,.6]){box(.95,1.1,.12,flat(0xf2f2f2,{roughness:.35}),kx+dx,.05,fz);
      mesh(new THREE.CylinderGeometry(.3,.3,.04,24).rotateX(Math.PI/2),flat(0x9aa4ac,{metalness:.8,roughness:.25}),kx+dx,.62,fz+.07,scene,false);
      mesh(new THREE.CylinderGeometry(.24,.24,.05,24).rotateX(Math.PI/2),new THREE.MeshStandardMaterial({color:0x223040,roughness:.05,metalness:.3,transparent:true,opacity:.75}),kx+dx,.62,fz+.09,scene,false);
      const dr=new THREE.Group();dr.position.set(kx+dx,.62,fz+.08);scene.add(dr);box(.36,.1,.02,cloth('#e8e0cc',.9),0,-.05,0,dr,false);box(.1,.36,.02,cloth('#c0306a',.9),0,-.18,0,dr,false);drums.push(dr)}
-   textMesh('SÓ MOEDAS',.8,.16,{fg:'#1a1a1a',bg:'#f2d24a',size:18,x:kx,y:1.5,z:fz+.01});
+   textMesh('COINS ONLY',.8,.16,{fg:'#1a1a1a',bg:'#f2d24a',size:18,x:kx,y:1.5,z:fz+.01});
    laundryLight=new THREE.PointLight(0x3dd6ff,0,7,1.8);laundryLight.position.set(kx,2,fz+.9);scene.add(laundryLight);}
   // arrecadação do contrabando
   {const sx=X(836),sz=Z(405),fz=Z(430);
@@ -1323,7 +1323,7 @@ function buildWorld(){
    box(4,2.6,2.5,rust,sx,0,sz);box(4.3,.12,2.8,rust,sx,2.6,sz);
    box(2.4,2,.06,flat(0x6a6e72,{metalness:.6,roughness:.5}),sx,0,fz+.01);
    for(let i=1;i<10;i++)box(2.4,.03,.08,flat(0x4a4e52),sx,i*.2,fz+.02,scene,false);
-   textMesh('ARRECADAÇÃO',2,.32,{fg:'#e8d8a8',size:34,x:sx,y:2.25,z:fz+.02});
+   textMesh('STOREROOM',2,.32,{fg:'#e8d8a8',size:34,x:sx,y:2.25,z:fz+.02});
    box(.12,.16,.06,flat(0xd4b04a,{metalness:.9,roughness:.3}),sx,.3,fz+.06);}
   // mesa de poker na receção
   {const tx=X(POKER.x),tz=Z(POKER.y);
@@ -1435,12 +1435,12 @@ const bloodGeo=new THREE.CircleGeometry(1,14),bloodMat=new THREE.MeshStandardMat
 const ringGeo=new THREE.RingGeometry(.42,.52,24);
 function makeCrate(){const g=new THREE.Group();box(.6,.46,.5,M.wood,0,0,0,g);
   for(const y of [.08,.38])box(.62,.06,.52,flat(0x6a4a2a),0,y,0,g);
-  textMesh('FRÁGIL',.5,.14,{fg:'#c0182a',size:22,parent:g,x:0,y:.23,z:.26});scene.add(g);return g}
+  textMesh('FRAGILE',.5,.14,{fg:'#c0182a',size:22,parent:g,x:0,y:.23,z:.26});scene.add(g);return g}
 function makeBoxTruck(){const g=new THREE.Group();const paint=new THREE.MeshStandardMaterial({color:0xe8e0cc,roughness:.5,metalness:.2});
   box(4.4,2.3,2.1,paint,-.9,.55,0,g);box(1.7,1.5,2,new THREE.MeshStandardMaterial({color:0x2a6a4a,metalness:.4,roughness:.35}),2,.55,0,g);
   box(.05,.6,1.8,new THREE.MeshStandardMaterial({color:0x10141a,metalness:.8,roughness:.1}),2.86,1.25,0,g);
   for(const [x,z] of [[-2.4,1],[-.9,1],[2,1],[-2.4,-1],[-.9,-1],[2,-1]]){const w=mesh(new THREE.CylinderGeometry(.42,.42,.3,16),flat(0x151515,{roughness:.9}),x,.42,z,g);w.rotation.x=Math.PI/2}
-  for(const z of [1.06,-1.06]){const t=textMesh('FRUTAS & LEGUMES',3.6,.6,{fg:'#2a6a4a',size:52,parent:g,x:-.9,y:1.9,z});if(z<0)t.rotation.y=Math.PI}
+  for(const z of [1.06,-1.06]){const t=textMesh('FRUIT & VEG',3.6,.6,{fg:'#2a6a4a',size:52,parent:g,x:-.9,y:1.9,z});if(z<0)t.rotation.y=Math.PI}
   const h=glow(0xfff2c8,1);box(.05,.2,.4,h,2.86,.75,.6,g,false);box(.05,.2,.4,h,2.86,.75,-.6,g,false);g.userData.head=h;
   scene.add(g);return g}
 const drops=[],dropGeo=new THREE.SphereGeometry(.07,6,4),dropMat=new THREE.MeshStandardMaterial({color:0xd8f0dc,roughness:.05,transparent:true,opacity:.85});
@@ -1532,16 +1532,16 @@ function sync(dt){
       v.dnd.visible=r.state==='occupied';
       const tg=G.contract&&G.contract.state==='active'&&r.guest===G.contract.target&&r.state==='occupied';
       const lx=X(R.cx)+.3,ly=2.4,lz=Z(200)+.3;
-      if(tg)label('room'+i,lx,ly,lz,'ALVO','room','color:#ff3d7f;border:1px solid #ff3d7f');
-      else if(r.state==='dirty')label('room'+i,lx,ly,lz,'SUJO','room','color:#ffb547');
-      else if(r.state==='crime')label('room'+i,lx,ly,lz,'!! CENA','room','color:#ff6b5a');
-      else if(r.trouble>0)label('room'+i,lx,ly,lz,'PROBLEMA '+Math.ceil(r.trouble)+'s','room','color:#fff;background:'+(Math.sin(t*10)>0?'#c0182a':'#5a0a14'));
-      else if(r.service&&r.state==='occupied')label('room'+i,lx,ly,lz,'REDE','room','color:#ff7ae0;border:1px solid #ff7ae0');
-      else if(r.state==='free')label('room'+i,lx,ly,lz,'livre','room','color:#3dffb0;opacity:.7');
+      if(tg)label('room'+i,lx,ly,lz,'MARK','room','color:#ff3d7f;border:1px solid #ff3d7f');
+      else if(r.state==='dirty')label('room'+i,lx,ly,lz,'DIRTY','room','color:#ffb547');
+      else if(r.state==='crime')label('room'+i,lx,ly,lz,'!! SCENE','room','color:#ff6b5a');
+      else if(r.trouble>0)label('room'+i,lx,ly,lz,'TROUBLE '+Math.ceil(r.trouble)+'s','room','color:#fff;background:'+(Math.sin(t*10)>0?'#c0182a':'#5a0a14'));
+      else if(r.service&&r.state==='occupied')label('room'+i,lx,ly,lz,'RING','room','color:#ff7ae0;border:1px solid #ff7ae0');
+      else if(r.state==='free')label('room'+i,lx,ly,lz,'free','room','color:#3dffb0;opacity:.7');
       v.doorMat.emissive.setHex((tg||r.trouble>0)&&Math.sin(t*(r.trouble>0?10:6))>0?0x550015:0);
     });
-    if(G.dumpster)label('dump',X(DUMP.x),2.2,Z(DUMP.y),'×'+G.dumpster+' no lixo','room','color:#ffb547');
-    if(G.ice.length)label('ice',X(ICE.x),2.1,Z(ICE.y),'×'+G.ice.length+' no gelo','room','color:#9fd8ff');
+    if(G.dumpster)label('dump',X(DUMP.x),2.2,Z(DUMP.y),'×'+G.dumpster+' in the trash','room','color:#ffb547');
+    if(G.ice.length)label('ice',X(ICE.x),2.1,Z(ICE.y),'×'+G.ice.length+' in the ice','room','color:#9fd8ff');
     lidMesh.rotation.x+=((G.dumpster?-.5:0)-lidMesh.rotation.x)*Math.min(1,dt*6);
     phoneMat.emissiveIntensity=G.phone&&Math.sin(t*30)>0?3:0;phoneMesh.rotation.y=G.phone?Math.sin(t*50)*.15:0;
     if(G.phone)label('phone',X(PHONE.x),1.6,Z(PHONE.y),'RING RING','float','color:#ff3d7f;font-size:12px');
@@ -1595,8 +1595,8 @@ function sync(dt){
     if(waterMat.normalMap){waterMat.normalMap.offset.x=t*.004;waterMat.normalMap.offset.y=t*.003}
     drums.forEach((d,i)=>{if(G.washT>0)d.rotation.z+=dt*(14+i*3)});
     pokerCover.visible=G.poker.covered&&G.poker.active;pokerTop.visible=!pokerCover.visible;pokerLight.intensity=G.poker.active?3:0;
-    if(G.poker.active&&!G.poker.covered&&G.poker.pot>=1)label('pot',X(POKER.x),1.7,Z(POKER.y),'Pote '+money(G.poker.pot),'room','color:#ffd34a');
-    if(G.poker.covered&&G.poker.active)label('pot',X(POKER.x),1.7,Z(POKER.y),'cartas escondidas','room','color:#a497b4');
+    if(G.poker.active&&!G.poker.covered&&G.poker.pot>=1)label('pot',X(POKER.x),1.7,Z(POKER.y),'Pot '+money(G.poker.pot),'room','color:#ffd34a');
+    if(G.poker.covered&&G.poker.active)label('pot',X(POKER.x),1.7,Z(POKER.y),'cards hidden','room','color:#a497b4');
     for(const g of G.poker.gamblers){const d=get(g.id,()=>new Human(g.look));
       const sat=g.state==='seat',face=sat?(G.poker.covered?Math.atan2(g.x-POKER.x,g.y-POKER.y):Math.atan2(POKER.x-g.x,POKER.y-g.y)):null;
       d.obj.place(X(g.x),Z(g.y),dt,{idle:sat,face})}
@@ -1627,10 +1627,10 @@ function sync(dt){
     const d=get('p'+p.id,()=>{const h=new Human({skin:pick(SKIN),hair:pick(HAIR),shirt:p.col,pants:'#22262e',shoes:'#f2f2f2',hat:'player',capc:'#1c1529',long:true});
       const ring=new THREE.Mesh(ringGeo,new THREE.MeshBasicMaterial({color:p.col,transparent:true,opacity:.95,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.y=.06;h.root.add(ring);return h});
     const inside=p.away&&p.away.state==='in';d.obj.root.visible=!inside;
-    if(inside){const R=ROOMS[p.away.room];label('own'+p.id,X(R.cx)+.3,3.05,Z(200)+.3,'P'+(p.id+1)+' · NÃO INCOMODAR '+Math.ceil(p.away.t)+'s','room','color:'+p.col+';border:1px solid '+p.col);d.obj.px=null;continue}
+    if(inside){const R=ROOMS[p.away.room];label('own'+p.id,X(R.cx)+.3,3.05,Z(200)+.3,'P'+(p.id+1)+' · DO NOT DISTURB '+Math.ceil(p.away.t)+'s','room','color:'+p.col+';border:1px solid '+p.col);d.obj.px=null;continue}
     d.obj.place(X(p.x),Z(p.y),dt,{carry:p.carry==='body'||p.carry==='crate',mop:p.carry==='mop',idle:!p.moving});
     d.obj.root.position.y=Z(p.y)<Z(216)?.15:0;
-    label('tag'+p.id,X(p.x),0,Z(p.y)+.75,'P'+(p.id+1)+(p.buff>0?' · relaxado':''),'tag','color:'+p.col);
+    label('tag'+p.id,X(p.x),0,Z(p.y)+.75,'P'+(p.id+1)+(p.buff>0?' · relaxed':''),'tag','color:'+p.col);
     if(state==='play'&&p.action){
       const a=p.action,k=p.pad!=null?'A':p.scheme==='touch'?'●':SCHEMES[p.scheme].key;
       const prog=a.hold&&p.holdKey===a.k&&p.hold>0?`<i style="width:${Math.min(100,p.hold/a.hold*100).toFixed(0)}%"></i>`:'';
@@ -1644,49 +1644,49 @@ function sync(dt){
 /* ---------- tarefas (o que fazer a seguir) ---------- */
 function tasks(){
   const T=[],add=(pri,txt,col,x,y)=>T.push({pri,txt,col,x,y}),s=G.sheriff;
-  G.rooms.forEach((r,i)=>{if(r.trouble>0)add(100,'Quarto '+ROOMS[i].n+': põe o cliente na rua ('+Math.ceil(r.trouble)+'s)','#ff6b5a',ROOMS[i].cx,ROOMS[i].dy)});
-  if(s&&s.mode==='chase')add(96,'O xerife viu o tapete! Foge do cone ou suborna-o','#ff3344',s.x,s.y);
-  if(G.phone)add(90,'Atender o telefone ('+Math.ceil(G.phone.t)+'s)','#ff3d7f',PHONE.x,PHONE.y);
+  G.rooms.forEach((r,i)=>{if(r.trouble>0)add(100,'Room '+ROOMS[i].n+': throw the client out ('+Math.ceil(r.trouble)+'s)','#ff6b5a',ROOMS[i].cx,ROOMS[i].dy)});
+  if(s&&s.mode==='chase')add(96,'The sheriff saw the rug! Get out of his sight or bribe him','#ff3344',s.x,s.y);
+  if(G.phone)add(90,'Answer the phone ('+Math.ceil(G.phone.t)+'s)','#ff3d7f',PHONE.x,PHONE.y);
   const carrying=players.some(p=>p.carry==='body');
-  if(carrying)add(85,'Leva o tapete ao pântano (ou ao contentor)','#9dff5c',SWAMP_X-24,220);
+  if(carrying)add(85,'Take the rug to the swamp (or the dumpster)','#9dff5c',SWAMP_X-24,220);
   const ground=G.bodies.find(b=>!b.carrier);
-  if(ground)add(s?92:80,'Tapete no chão'+(s?' com o xerife cá!':''),'#ff3d7f',ground.x,ground.y);
-  if(G.ice.length&&!carrying&&!ground)add(40,G.ice.length+' tapete(s) no gelo por despachar','#9fd8ff',ICE.x,ICE.y);
+  if(ground)add(s?92:80,'Rug on the floor'+(s?' with the sheriff here!':''),'#ff3d7f',ground.x,ground.y);
+  if(G.ice.length&&!carrying&&!ground)add(40,G.ice.length+' rug(s) in the ice still to dispose of','#9fd8ff',ICE.x,ICE.y);
   if(G.contract){const g=G.contract.target;
-    if(g.state==='inRoom'){const R=ROOMS[g.room];add(75,'Tratar do assunto no quarto '+R.n,'#ff3d7f',R.cx,R.dy)}
-    else if(g.state==='queue'||g.state==='arrive')add(70,'Check-in ao senhor de fato cinzento','#ff3d7f',DESK_PT.x,DESK_PT.y)}
-  const q=queue();if(q.length){const low=Math.min(...q.map(g=>g.pat/g.maxPat));add(low<.3?74:50,'Check-in: '+q.length+' na fila','#3dffb0',DESK_PT.x,DESK_PT.y)}
+    if(g.state==='inRoom'){const R=ROOMS[g.room];add(75,'Take care of business in room '+R.n,'#ff3d7f',R.cx,R.dy)}
+    else if(g.state==='queue'||g.state==='arrive')add(70,'Check in the gentleman in the grey suit','#ff3d7f',DESK_PT.x,DESK_PT.y)}
+  const q=queue();if(q.length){const low=Math.min(...q.map(g=>g.pat/g.maxPat));add(low<.3?74:50,'Check-in: '+q.length+' in line','#3dffb0',DESK_PT.x,DESK_PT.y)}
   const wolf=G.cleaners.some(c=>c.type==='wolf');
-  if(G.blood.length&&!(wolf&&!s))add(s?78:45,'Sangue no chão: esfregona no armário','#ff6b5a',G.blood[0].x,G.blood[0].y);
+  if(G.blood.length&&!(wolf&&!s))add(s?78:45,'Blood on the floor: mop in the closet','#ff6b5a',G.blood[0].x,G.blood[0].y);
   const dirty=ROOMS.filter((R,i)=>G.rooms[i].state==='dirty'||G.rooms[i].state==='crime');
-  if(dirty.length)add(ev()==='inspect'&&s?77:G.cleaners.length?20:G.rooms.slice(0,5).every(r=>r.state!=='free')?60:35,'Limpar quarto'+(dirty.length>1?'s ':' ')+dirty.map(R=>R.n).join(', ')+(G.cleaners.length?' (a limpeza está a tratar)':''),'#ffb547',dirty[0].cx,dirty[0].dy);
-  const tired=G.crew.find(c=>c.state==='lounge'&&c.mood<40);if(tired)add(42,tired.name+' está com o ânimo em baixo: gorjeta no lounge','#ff7ae0',LOUNGE.x,LOUNGE.y);
+  if(dirty.length)add(ev()==='inspect'&&s?77:G.cleaners.length?20:G.rooms.slice(0,5).every(r=>r.state!=='free')?60:35,'Clean room'+(dirty.length>1?'s ':' ')+dirty.map(R=>R.n).join(', ')+(G.cleaners.length?' (the cleaners are on it)':''),'#ffb547',dirty[0].cx,dirty[0].dy);
+  const tired=G.crew.find(c=>c.state==='lounge'&&c.mood<40);if(tired)add(42,tired.name+' is feeling low: tip in the lounge','#ff7ae0',LOUNGE.x,LOUNGE.y);
   const P=G.poker;
-  if(P.active&&!P.leaving&&!P.covered&&s&&dist(s.x,s.y,POKER.x,POKER.y)<340)add(94,'Esconde as cartas: o xerife vem aí!','#ff3344',POKER.x,POKER.y);
-  else if(P.active&&!P.leaving&&P.covered&&!s)add(52,'O xerife foi-se: volta ao poker','#3dffb0',POKER.x,POKER.y);
-  if(P.active&&!P.covered&&P.pot>=2500*G.day&&!s)add(47,'Recolher o pote do poker ('+money(P.pot)+')','#ffd34a',POKER.x,POKER.y);
-  players.filter(p=>p.away).forEach(p=>add(18,'P'+(p.id+1)+' está ocupado no quarto '+ROOMS[p.away.room].n,p.col,null,null));
-  if(players.some(p=>p.carry==='crate'))add(83,'Leva a caixa para a arrecadação','#ffb547',SHED_PT.x,SHED_PT.y);
-  const gc=G.crates.filter(c=>!c.carrier);if(gc.length)add(s?87:66,'Contrabando: '+gc.length+' caixa(s) para a arrecadação','#ffb547',gc[0].x,gc[0].y);
-  if(G.dirty>=8000*G.day)add(Math.min(72,30+G.dirty/(4000*G.day)+(phase()>.85?20:0)),'Lavar dinheiro sujo ('+money(G.dirty)+')','#3dd6ff',LAUNDRY.x,LAUNDRY.y+28);
-  if(!T.length)add(1,isNight()?'Tudo calmo. Vigia o lounge e o telefone.':'Tudo calmo. Espera hóspedes na receção.','#a497b4',null,null);
+  if(P.active&&!P.leaving&&!P.covered&&s&&dist(s.x,s.y,POKER.x,POKER.y)<340)add(94,'Hide the cards: the sheriff is coming!','#ff3344',POKER.x,POKER.y);
+  else if(P.active&&!P.leaving&&P.covered&&!s)add(52,'The sheriff left: back to the poker','#3dffb0',POKER.x,POKER.y);
+  if(P.active&&!P.covered&&P.pot>=2500*G.day&&!s)add(47,'Collect the poker pot ('+money(P.pot)+')','#ffd34a',POKER.x,POKER.y);
+  players.filter(p=>p.away).forEach(p=>add(18,'P'+(p.id+1)+' is busy in room '+ROOMS[p.away.room].n,p.col,null,null));
+  if(players.some(p=>p.carry==='crate'))add(83,'Take the crate to the storeroom','#ffb547',SHED_PT.x,SHED_PT.y);
+  const gc=G.crates.filter(c=>!c.carrier);if(gc.length)add(s?87:66,'Smuggling: '+gc.length+' crate(s) for the storeroom','#ffb547',gc[0].x,gc[0].y);
+  if(G.dirty>=8000*G.day)add(Math.min(72,30+G.dirty/(4000*G.day)+(phase()>.85?20:0)),'Launder dirty money ('+money(G.dirty)+')','#3dd6ff',LAUNDRY.x,LAUNDRY.y+28);
+  if(!T.length)add(1,isNight()?'All quiet. Watch the lounge and the phone.':'All quiet. Wait for guests at the front desk.','#a497b4',null,null);
   return T.sort((a,b)=>b.pri-a.pri).slice(0,3);
 }
 
 /* ---------- HUD ---------- */
 function hud(){
   if(!G)return;
-  const dh='DIA '+G.day+'/'+DAYS+'<span class="'+(isNight()?'n':'')+'">'+hourStr()+'</span>';
+  const dh='DAY '+G.day+'/'+DAYS+'<span class="'+(isNight()?'n':'')+'">'+hourStr()+'</span>';
   if($('hDay')._h!==dh){$('hDay').innerHTML=dh;$('hDay')._h=dh}
-  $('hCash').textContent=money(G.money);{const dt=G.dirty>=1?'SUJO '+money(G.dirty):'';if($('hDirty').textContent!==dt)$('hDirty').textContent=dt}$('hGoal').style.width=Math.min(100,G.money/GOAL*100)+'%';
+  $('hCash').textContent=money(G.money);{const dt=G.dirty>=1?'DIRTY '+money(G.dirty):'';if($('hDirty').textContent!==dt)$('hDirty').textContent=dt}$('hGoal').style.width=Math.min(100,G.money/GOAL*100)+'%';
   const hc=G.heat<50?'#ffb547':G.heat<80?'#ff7a3a':'#ff3344';
   $('hHeat').style.width=G.heat+'%';$('hHeat').style.background=hc;$('hHeatN').textContent=Math.round(G.heat)+'%';
   $('hBar').classList.toggle('flash',G.flash>0);
   let info='';
   const wk=G.crew.filter(c=>c.state==='working'||c.state==='toRoom').length,fr=G.crew.filter(c=>c.state==='lounge').length;
-  const rede=(wk||fr)?'REDE: '+fr+' no lounge · '+wk+' a trabalhar':'';
-  if(G.contract)info='CONTRATO: senhor de fato cinzento e mala · '+money(G.contract.reward);
-  else{const pend=G.bodies.length+G.ice.length;if(pend)info='Tapetes por despachar: '+pend+'. Só recebes no pântano ou no contentor.'}
+  const rede=(wk||fr)?'RING: '+fr+' in the lounge · '+wk+' working':'';
+  if(G.contract)info='CONTRACT: gentleman in a grey suit with a briefcase · '+money(G.contract.reward);
+  else{const pend=G.bodies.length+G.ice.length;if(pend)info='Rugs to dispose of: '+pend+'. You only get paid at the swamp or the dumpster.'}
   if(rede)info=info?info+'   ·   '+rede:rede;
   if($('info').textContent!==info)$('info').textContent=info;
   const mh=G.msgs.map(m=>`<div style="color:${m.col};opacity:${Math.min(1,m.t).toFixed(2)}">${m.text}</div>`).join('');
@@ -1698,10 +1698,10 @@ function hud(){
 
 /* ---------- ecrãs ---------- */
 function show(id){['title','summary','over','pause'].forEach(x=>$(x).hidden=x!==id);const h=!(state==='play'||state==='pause');$('hud').hidden=$('info').hidden=$('msgs').hidden=$('hint').hidden=$('tasks').hidden=h;
-  if(h)stage.classList.remove('danger');const sv=loadSave();$('contBtn').hidden=!(id==='title'&&sv);if(sv)$('contBtn').textContent='Continuar no dia '+sv.day+' ('+money(sv.money)+')'}
+  if(h)stage.classList.remove('danger');const sv=loadSave();$('contBtn').hidden=!(id==='title'&&sv);if(sv)$('contBtn').textContent='Continue day '+sv.day+' ('+money(sv.money)+')'}
 function renderSlots(){
   $('slots').innerHTML=[0,1,2,3].map(i=>{const p=players[i];const c=PCOL[i];
-    const how=p?(p.pad!=null?'Comando':p.scheme==='touch'?'Ecrã tátil':SCHEMES[p.scheme].name):(isTouch&&i===0?'Toca em Abrir':SCHEMES[i].name.split(' + ')[1]+' para entrar');
+    const how=p?(p.pad!=null?'Gamepad':p.scheme==='touch'?'Touch screen':SCHEMES[p.scheme].name):(isTouch&&i===0?'Tap Open':SCHEMES[i].name.split(' + ')[1]+' to start');
     return `<div class="slot${p?' on':''}" style="--c:${c}"><b>P${i+1}${p?' · pronto':''}</b>${how}</div>`}).join('');
 }
 function join(o){if(players.length>=4)return;const id=players.length;players.push({id,col:PCOL[id],x:160+id*24,y:505,...o,prev:true,lock:true});sfx.join();renderSlots()}
@@ -1711,17 +1711,17 @@ function startGame(){
   $('touch').hidden=!players.some(p=>p.scheme==='touch');
   document.activeElement?.blur?.();
   newGame();state='play';show(null);cam.yaw=0;cam.pitch=.72;
-  say('Bom dia. O café está queimado e o quarto 13 está pronto. Esc para pausa.','#ffb547');
+  say('Good morning. The coffee’s burnt and room 13 is ready. Esc to pause.','#ffb547');
   dayCard();music.start();
 }
-function dayCard(){const e=EVENTS[G.day];showBanner(e.name,'Dia '+G.day+' de '+DAYS+'. '+e.txt,true)}
+function dayCard(){const e=EVENTS[G.day];showBanner(e.name,'Day '+G.day+' of '+DAYS+'. '+e.txt,true)}
 function continueGame(){
   const sv=loadSave();if(!sv)return startGame();
   startGame();
   G.day=sv.day;G.money=sv.money;G.dirty=Math.min(sv.money,sv.dirty||0);G.heat=Math.min(sv.heat||0,60);G.total={...freshStats(),...sv.total};
   while(G.crew.length<Math.min(sv.crew,CREW_POOL.length))hireCrew(G.crew.length);
   (sv.cleaners||[]).forEach(t=>hireCleaner(t));
-  planDay();dayCard();say('De volta ao dia '+G.day+'. O cofre tem '+money(G.money)+'.','#ffb547');
+  planDay();dayCard();say('Back to day '+G.day+'. The safe holds '+money(G.money)+'.','#ffb547');
 }
 function pause(){if(state!=='play')return;state='pause';show('pause');$('resumeBtn').focus()}
 function resume(){if(state!=='pause')return;state='play';show(null);document.activeElement?.blur?.();players.forEach(p=>{p.lock=true;p.prev=true})}
@@ -1730,7 +1730,7 @@ function row(a,b,c){return `<tr${c?' class="'+c+'"':''}><td>${a}</td><td>${b}</t
 function endDay(){
   const s=G.stats;for(const k in s)G.total[k]+=s[k];
   G.guests.forEach(g=>{if(g.state==='inRoom'||g.state==='toRoom'){G.rooms[g.room].state='dirty';G.rooms[g.room].guest=null}});
-  if(G.contract)contractFail('Acabou o dia e o alvo continua vivo.');
+  if(G.contract)contractFail('The day is over and the mark is still alive.');
   G.guests=[];G.sheriff=null;G.phone=null;
   G.rooms.forEach(r=>{r.service=false;r.trouble=0});
   G.crew.forEach(c=>{c.state='off';c.room=-1;c.quit=false;c.mood=100;c.path=[]});
@@ -1742,18 +1742,18 @@ function endDay(){
   G.taxHeat=G.dirty>=1?Math.min(30,Math.max(3,Math.round(G.dirty/(5000*G.day)*5))):0;
   const exp=Math.min(s.roomCash,40*G.day);
   const real=s.roomCash-s.wages+s.vipCash-s.crewCut-s.tips-s.ownerCost-s.hush+s.contractCash+s.crateCash+s.poker-s.launderFee-s.bribes-s.penalties;
-  $('sumTitle').textContent='Fim do dia '+G.day;
+  $('sumTitle').textContent='End of day '+G.day;
   $('staff').innerHTML=staffHtml();
-  $('bookA').innerHTML='<span class="stamp ok">APROVADO</span>'+row('Quartos ('+s.rooms+')',money(s.roomCash))+row('Lavandaria self-service',money(s.laundered))+row('Lixívia industrial','−'+money(exp))+row('Salários da limpeza','−'+money(s.wages))+row('Lucro declarado',money(s.roomCash+s.laundered-exp-s.wages),'tot');
-  $('bookB').innerHTML='<span class="stamp dirty">LAVADO</span>'+row('Quartos ('+s.rooms+')',money(s.roomCash))+row('Rede ('+s.vip+' serviços)',money(s.vipCash))+row('Parte das acompanhantes','−'+money(s.crewCut))+row('Gorjetas','−'+money(s.tips))+row('Despesas pessoais do dono ('+s.owner+')','−'+money(s.ownerCost))+row('Silêncio comprado','−'+money(s.hush))+row('Salários da limpeza ('+G.cleaners.length+')','−'+money(s.wages))+row('Contratos ('+s.contracts+')',money(s.contractCash))+row('Contrabando ('+s.crates+(s.crates===1?' caixa)':' caixas)'),money(s.crateCash))+row('Poker (a parte da casa)',money(s.poker))+row('Comissão da lavandaria','−'+money(s.launderFee))+row('Envelopes ao xerife','−'+money(s.bribes))+row('Multas da Família','−'+money(s.penalties))+row('Lucro do dia',money(real),'tot')+row('No cofre',money(G.money),'tot');
+  $('bookA').innerHTML='<span class="stamp ok">APPROVED</span>'+row('Rooms ('+s.rooms+')',money(s.roomCash))+row('Self-service laundry',money(s.laundered))+row('Industrial bleach','−'+money(exp))+row('Cleaning wages','−'+money(s.wages))+row('Declared profit',money(s.roomCash+s.laundered-exp-s.wages),'tot');
+  $('bookB').innerHTML='<span class="stamp dirty">LAUNDERED</span>'+row('Rooms ('+s.rooms+')',money(s.roomCash))+row('Ring ('+s.vip+' jobs)',money(s.vipCash))+row('Escorts’ share','−'+money(s.crewCut))+row('Tips','−'+money(s.tips))+row('Owner’s personal expenses ('+s.owner+')','−'+money(s.ownerCost))+row('Bought silence','−'+money(s.hush))+row('Cleaning wages ('+G.cleaners.length+')','−'+money(s.wages))+row('Contracts ('+s.contracts+')',money(s.contractCash))+row('Smuggling ('+s.crates+(s.crates===1?' crate)':' crates)'),money(s.crateCash))+row('Poker (house cut)',money(s.poker))+row('Laundromat fee','−'+money(s.launderFee))+row('Envelopes to the sheriff','−'+money(s.bribes))+row('Family fines','−'+money(s.penalties))+row('Day’s profit',money(real),'tot')+row('In the safe',money(G.money),'tot');
   const left=GOAL-G.money,pend=G.bodies.length+G.ice.length;
-  $('sumNote').textContent=(s.lost?s.lost+' hóspedes desistiram na fila. ':'')+(pend?'Ainda tens '+pend+' tapete(s) por despachar. ':'')+(s.saved?s.saved+' cliente(s) posto(s) na rua. ':'')+(s.quits?s.quits+' saída(s) antes do fim da noite. ':'')+(s.cleanJobs?'A limpeza tratou de '+s.cleanJobs+' quarto(s) ou mancha(s). ':'')+(s.snitches?'Uma faxineira foi contar ao xerife '+s.snitches+' vez(es). ':'')+(s.reports?'O dono foi denunciado '+s.reports+' vez(es). ':s.owner?'As visitas do dono ficaram em segredo. ':'')+(s.cratesLost?s.cratesLost+' caixa(s) de contrabando ficaram ao relento e desapareceram. ':'')+(s.confiscated?'O xerife apreendeu '+s.confiscated+' caixa(s). ':'')+(G.taxHeat?'Ficou '+money(G.dirty)+' por lavar: amanhã as Finanças fazem perguntas (+'+G.taxHeat+'% de suspeita). ':'Dinheiro todo lavado. ')+(left>0?'Faltam '+money(left)+' para o milhão. ':'Já passaste o milhão. ')+'O camião do lixo leva o contentor ao amanhecer.';
+  $('sumNote').textContent=(s.lost?s.lost+' guests gave up waiting in line. ':'')+(pend?'You still have '+pend+' rug(s) to dispose of. ':'')+(s.saved?s.saved+' client(s) thrown out. ':'')+(s.quits?s.quits+' walkout(s) before the end of the night. ':'')+(s.cleanJobs?'The cleaners took care of '+s.cleanJobs+' room(s) or stain(s). ':'')+(s.snitches?'A cleaner went to the sheriff '+s.snitches+' time(s). ':'')+(s.reports?'The owner was reported '+s.reports+' time(s). ':s.owner?'The owner’s visits stayed secret. ':'')+(s.cratesLost?s.cratesLost+' crate(s) of contraband were left outside and vanished. ':'')+(s.confiscated?'The sheriff seized '+s.confiscated+' crate(s). ':'')+(G.taxHeat?'There’s '+money(G.dirty)+' left unwashed: tomorrow the taxman asks questions (+'+G.taxHeat+'% suspicion). ':'All the money is clean. ')+(left>0?'Short by '+money(left)+' of the million. ':'You’ve passed the million. ')+'The garbage truck takes the dumpster at dawn.';
   if(G.day>=DAYS)return gameOver('final');
-  const nxe=EVENTS[G.day+1];$('tomorrow').hidden=false;$('tomorrow').innerHTML='<b>Amanhã: '+nxe.name+'.</b> '+nxe.txt;
+  const nxe=EVENTS[G.day+1];$('tomorrow').hidden=false;$('tomorrow').innerHTML='<b>Tomorrow: '+nxe.name+'.</b> '+nxe.txt;
   saveGame(G.day+1);
-  $('nextBtn').textContent='Abrir o dia '+(G.day+1);
+  $('nextBtn').textContent='Open day '+(G.day+1);
   const nx=CREW_POOL[G.crew.length];$('hireBtn').hidden=!nx;
-  if(nx)$('hireBtn').textContent='Contratar '+nx.name+' para a rede ('+money(hireCost())+')';
+  if(nx)$('hireBtn').textContent='Hire '+nx.name+' for the ring ('+money(hireCost())+')';
   hireButtons();
   state='dayend';show('summary');
   document.querySelectorAll('#summary tr.tot td:last-child').forEach(countUp);
@@ -1764,9 +1764,9 @@ function staffHtml(){
   if(!players.length)return'';
   const best={};for(const [k] of TITLES)best[k]=Math.max(0,...players.map(p=>(p.st||{})[k]||0));
   const mvp=players.reduce((a,b)=>(((b.st||{}).cash||0)>((a.st||{}).cash||0)?b:a),players[0]);
-  return '<h3>Funcionário do dia</h3>'+players.map(p=>{const st=p.st||{};
-    let title='Estagiário',score=0;for(const [k,n] of TITLES){const v=st[k]||0;if(v&&v===best[k]&&v>score){title=n;score=v}}
-    const pl=(n,a,b)=>n+' '+(n===1?a:b),bits=[money(st.cash||0)];if(st.checkins)bits.push(pl(st.checkins,'check-in','check-ins'));if(st.cleans)bits.push(pl(st.cleans,'limpeza','limpezas'));if(st.rugs)bits.push(pl(st.rugs,'tapete','tapetes'));if(st.ejects)bits.push(pl(st.ejects,'cliente na rua','clientes na rua'));if(st.bribes)bits.push(pl(st.bribes,'suborno','subornos'));if(st.crates)bits.push(pl(st.crates,'caixa','caixas'));if(st.launder)bits.push(pl(st.launder,'lavagem','lavagens'));if(st.pots)bits.push(pl(st.pots,'pote','potes'));if(st.perks)bits.push(pl(st.perks,'visita ao lounge','visitas ao lounge'));
+  return '<h3>Employee of the day</h3>'+players.map(p=>{const st=p.st||{};
+    let title='Intern',score=0;for(const [k,n] of TITLES){const v=st[k]||0;if(v&&v===best[k]&&v>score){title=n;score=v}}
+    const pl=(n,a,b)=>n+' '+(n===1?a:b),bits=[money(st.cash||0)];if(st.checkins)bits.push(pl(st.checkins,'check-in','check-ins'));if(st.cleans)bits.push(pl(st.cleans,'clean-up','clean-ups'));if(st.rugs)bits.push(pl(st.rugs,'rug','rugs'));if(st.ejects)bits.push(pl(st.ejects,'client thrown out','clients thrown out'));if(st.bribes)bits.push(pl(st.bribes,'bribe','bribes'));if(st.crates)bits.push(pl(st.crates,'crate','crates'));if(st.launder)bits.push(pl(st.launder,'wash','washes'));if(st.pots)bits.push(pl(st.pots,'pot','pots'));if(st.perks)bits.push(pl(st.perks,'lounge visit','lounge visits'));
     return `<div style="--c:${p.col}"><b>P${p.id+1}${p===mvp&&(st.cash||0)>0?' ★':''}</b><em>${title}</em><span>${bits.join(' · ')}</span></div>`}).join('');
 }
 function nextDay(){
@@ -1775,20 +1775,20 @@ function nextDay(){
   G.nightShown=false;G.busDone=false;G.bubbles=[];G.noise=null;G.smugDone=false;G.truck=null;G.crates=[];G.poker=freshPoker();
   players.forEach(p=>{p.lock=true;p.prev=true;p.st={}});saveGame();
   document.activeElement?.blur?.();
-  state='play';show(null);say('Dia '+G.day+'. O camião do lixo já passou.','#ffb547');dayCard();
-  if(G.taxHeat){G.heat=Math.min(95,G.heat+G.taxHeat);say('As Finanças ligaram: '+money(G.dirty)+' sem explicação. Suspeita +'+G.taxHeat+'%.','#ff6b5a');G.taxHeat=0}
+  state='play';show(null);say('Day '+G.day+'. The garbage truck already came.','#ffb547');dayCard();
+  if(G.taxHeat){G.heat=Math.min(95,G.heat+G.taxHeat);say('The taxman called: '+money(G.dirty)+' unexplained. Suspicion +'+G.taxHeat+'%.','#ff6b5a');G.taxHeat=0}
 }
 function gameOver(kind){
   state='over';show('over');clearSave();music.stop();
   if(kind==='busted'){
-    $('overTitle').textContent='Apanhados no dia '+G.day;
-    $('overText').textContent='O xerife Dwayne chamou o FBI. O Desert Rose Motel fecha com '+money(G.money)+' no cofre, que agora é prova. O Bubba fica sem jantar.';
+    $('overTitle').textContent='Busted on day '+G.day;
+    $('overText').textContent='Sheriff Dwayne called the FBI. The Desert Rose Motel closes with '+money(G.money)+' in the safe, which is now evidence. Bubba goes without dinner.';
   }else if(G.money>=GOAL){
-    $('overTitle').textContent='Milionários';
-    $('overText').textContent='Sete dias, '+money(G.money)+' e nenhuma pergunta. Os bons artistas copiam, os grandes artistas compram um segundo motel.';
+    $('overTitle').textContent='Millionaires';
+    $('overText').textContent='Seven days, '+money(G.money)+' and no questions asked. Good artists copy, great artists buy a second motel.';
   }else{
-    $('overTitle').textContent='Sobreviveram, mas pobres';
-    $('overText').textContent='Sete dias e '+money(G.money)+'. Faltaram '+money(GOAL-G.money)+' para o milhão. A Família recomenda mais contratos e menos limpezas.';
+    $('overTitle').textContent='Survived, but broke';
+    $('overText').textContent='Seven days and '+money(G.money)+'. Short by '+money(GOAL-G.money)+' of the million. The Family recommends more contracts and less cleaning.';
   }
 }
 const cycleQuality=()=>setQuality(QUALITY[(QUALITY.indexOf(quality)+1)%QUALITY.length]);
@@ -1797,20 +1797,20 @@ $('contBtn').addEventListener('click',continueGame);
 $('nextBtn').addEventListener('click',()=>{if(state==='dayend')nextDay()});
 function hireButtons(){
   const nd=G.day+1,nn=CLEAN_NAMES[G.cleaners.filter(c=>c.type==='normal').length];
-  $('hireCleanBtn').hidden=!canHireClean();if(canHireClean())$('hireCleanBtn').textContent='Contratar '+nn+' para a limpeza ('+money(800*nd)+'/dia)';
-  $('hireWolfBtn').hidden=!canHireWolf();if(canHireWolf())$('hireWolfBtn').textContent='Contratar o Sr. Lobo: limpa crimes, não fala ('+money(3000*nd)+'/dia)';
+  $('hireCleanBtn').hidden=!canHireClean();if(canHireClean())$('hireCleanBtn').textContent='Hire '+nn+' for cleaning ('+money(800*nd)+'/day)';
+  $('hireWolfBtn').hidden=!canHireWolf();if(canHireWolf())$('hireWolfBtn').textContent='Hire Mr. Wolf: cleans up crimes, never talks ('+money(3000*nd)+'/day)';
 }
 for(const [id,type] of [['hireCleanBtn','normal'],['hireWolfBtn','wolf']])$(id).addEventListener('click',()=>{
   if(state!=='dayend')return;if(type==='wolf'?!canHireWolf():!canHireClean())return;
   hireCleaner(type);const c=G.cleaners[G.cleaners.length-1];
-  $('sumNote').textContent=c.name+' começa amanhã às 08:00. O salário paga-se ao fim do dia. '+$('sumNote').textContent;
+  $('sumNote').textContent=c.name+' starts tomorrow at 08:00. Wages are paid at the end of the day. '+$('sumNote').textContent;
   hireButtons();saveGame(G.day+1);
 });
 $('hireBtn').addEventListener('click',()=>{
   if(state!=='dayend')return;const nx=CREW_POOL[G.crew.length],c=hireCost();if(!nx)return;
-  if(G.money<c){$('hireBtn').textContent='Faltam '+money(c-G.money)+' para contratar '+nx.name;return}
+  if(G.money<c){$('hireBtn').textContent='Short by '+money(c-G.money)+' to hire '+nx.name;return}
   G.money-=c;hireCrew(G.crew.length);$('hireBtn').hidden=true;
-  $('sumNote').textContent=nx.name+' junta-se à rede amanhã à noite. '+$('sumNote').textContent;
+  $('sumNote').textContent=nx.name+' joins the ring tomorrow night. '+$('sumNote').textContent;
   $('bookB').querySelector('tr:last-child td:last-child').textContent=money(G.money);
 });
 $('againBtn').addEventListener('click',toMenu);
@@ -1818,7 +1818,7 @@ $('pauseBtn').addEventListener('click',pause);
 $('resumeBtn').addEventListener('click',resume);
 $('quitBtn').addEventListener('click',toMenu);
 $('gfxBtn').addEventListener('click',()=>{cycleQuality();perfDone=true});
-$('soundBtn').addEventListener('click',()=>{muted=!muted;music.vol();$('soundBtn').textContent='Som: '+(muted?'desligado':'ligado')});
+$('soundBtn').addEventListener('click',()=>{muted=!muted;music.vol();$('soundBtn').textContent='Sound: '+(muted?'off':'on')});
 
 /* ---------- loop ---------- */
 let last=performance.now(),perfT=0,perfN=0,perfDone=false;
@@ -1827,7 +1827,7 @@ function autoQuality(dt){
   if(perfDone||state!=='play')return;
   perfT+=dt;perfN++;if(perfT<5)return;
   const fps=perfN/perfT;perfT=0;perfN=0;
-  if(fps<30&&quality!=='baixo'){setQuality(QUALITY[QUALITY.indexOf(quality)+1]);say('Gráficos: '+quality+' (automático). G para mudar.','#a497b4')}else perfDone=true;
+  if(fps<30&&quality!=='low'){setQuality(QUALITY[QUALITY.indexOf(quality)+1]);say('Graphics: '+quality+' (automatic). G to change.','#a497b4')}else perfDone=true;
 }
 function frame(now){
   const dt=Math.min(.05,(now-last)/1000);last=now;clock+=dt;
@@ -1841,7 +1841,7 @@ function frame(now){
   }else if(state==='dayend'||state==='over'){
     if(just.has('Space')){if(state==='dayend')nextDay();else toMenu()}
   }
-  if(just.has('KeyG')&&state!=='loading'){cycleQuality();perfDone=true;if(G&&state==='play')say('Gráficos: '+quality,'#a497b4')}
+  if(just.has('KeyG')&&state!=='loading'){cycleQuality();perfDone=true;if(G&&state==='play')say('Graphics: '+quality,'#a497b4')}
   for(const g of pads()){
     const a=!!g.buttons[0]?.pressed,st=!!g.buttons[9]?.pressed,pv=padPrev[g.index]||{};
     if(state==='title'){if(a&&!pv.a&&!players.some(p=>p.pad===g.index))join({pad:g.index});if(st&&!pv.st)startGame()}
@@ -1870,7 +1870,7 @@ function frame(now){
     state='title';newGame();renderSlots();show('title');
     $('loading').remove();
     window.__ready=true;window.__game={get G(){return G},get players(){return players},spawnGuest:t=>spawnGuest(t),spawnSheriff:()=>spawnSheriff(),tick:sec=>{for(let i=0;i<sec/.05&&state==='play';i++)update(.05)}};
-  }catch(e){$('loading').textContent='Erro: '+e.message;console.error(e)}
+  }catch(e){$('loading').textContent='Error: '+e.message;console.error(e)}
   requestAnimationFrame(frame);
 })();
 </script>

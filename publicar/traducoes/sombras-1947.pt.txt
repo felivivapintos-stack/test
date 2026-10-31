@@ -1,0 +1,2635 @@
+0	Sombras de 1947
+1	Caderno
+2	Mapa
+3	Som
+4	Secretária
+5	Dinheiro
+6	Pontos de intuição
+7	Modo preto e branco
+8	Som e música
+9	Mapa de Los Angeles
+10	Fechar
+11	Confiança
+12	de 5 estrelas
+13	use strict
+14	Ole Halvorsen
+15	Dono da loja de penhores
+16	Mae Collins
+17	Empregada de bar do Tropicana
+18	Clara Pryce
+19	Viúva de Gordon Pryce
+20	Eddie Voss
+21	Mecânico, Garagem Voss
+22	Nick Corso
+23	Pugilista, ex-namorado da vítima
+24	Arthur Pell
+25	Fotógrafo, Pell Studios
+26	[data-p="
+27	translate(
+28	translate(0,
+29	) rotate(
+30	Repara:
+31	não para quieto nem quando diz o próprio nome. Não te fies só nos tiques.
+32	Calm
+33	. Vamos ver quanto tempo dura.
+34	Cara de jogador de póquer. Não vai suar por nada. Procura o pormenor.
+35	PENHORES
+36	Cápsula
+37	Cápsula .45
+38	Cápsula de latão calibre .45 ACP, ainda morna. Munição de pistola militar: uma Colt M1911, provavelmente excedente do exército.
+39	Vitrina
+40	Sangue na vitrina
+41	O assaltante partiu a vitrina das joias com o punho e deixou sangue fresco nos estilhaços. Tem de ter um corte feio na mão.
+42	Livro de penhores
+43	31 de março: «Colt M1911 — penhorada por D. Ruiz — 15 $». 1 de abril: «Resgatada por D. Ruiz». Resgatou a pistola ontem.
+44	Caixa de fósforos
+45	TROP
+46	Fósforos do Tropicana
+47	Caixa de fósforos do Clube Tropicana, Rua 5. Está seca, apesar da chuva lá fora, e o Halvorsen não fuma: o cinzeiro dele está limpo.
+48	Caixa registadora
+49	A gaveta da caixa registadora está aberta e vazia. Levaram cerca de duzentos dólares.
+50	Saxofone
+51	Um saxofone tenor penhorado por algum músico em apuros. Bonito, mas não tem nada a ver com o caso.
+52	TROPICANA
+53	Pano
+54	Pano ensanguentado
+55	Escondido atrás do balcão: um pano de bar encharcado de sangue ainda húmido. Alguém tratou uma ferida aqui há pouco.
+56	Papel preso
+57	Conta de «D.R.»
+58	Preso com um pionés junto à caixa: «D.R. — deve 300 $ ao Sr. Vance. Último aviso.»
+59	Microfone
+60	O microfone do palco. A banda já foi para casa.
+61	Piano
+62	Um piano de meia cauda com a tecla do dó partida. Ninguém o afina desde a guerra.
+63	Copos
+64	Copos com restos de whisky e marcas de baton. Uma noite normal no Tropicana.
+65	Por baixo do carro
+66	Tubo dos travões cortado
+67	O tubo do fluido dos travões tem um corte limpo e direito. Não rasgou no acidente: foi cortado com uma ferramenta.
+68	Porta-luvas
+69	Recibo da Garagem Voss
+70	No porta-luvas: «Garagem Voss, Glendale — revisão completa e afinação de travões — 18 de junho — 12 $ pagos.» Um dia antes do acidente.
+71	Estrada
+72	Sem marcas de travagem
+73	Na curva não há uma única marca de pneus. O condutor tentou travar a mais de setenta à hora, e não havia travões.
+74	Pasta
+75	Pasta de Gordon Pryce
+76	Pasta de couro com o livro de contas dos Estúdios Paragon. Faltam várias páginas, arrancadas à pressa.
+77	Tampão
+78	O tampão de uma roda, amolgado. Saltou na queda.
+79	Garrafa
+80	Uma garrafa de cerveja velha, coberta de pó. Está aqui há semanas.
+81	Gaveta da secretária
+82	Apólice de seguro
+83	Apólice da Seguradora Golden State em nome de Gordon Pryce: 50 000 $. Beneficiária: Clara Pryce. Assinada há apenas dois meses.
+84	Carta
+85	Carta de amor de «R.»
+86	«Minha Clara, mais umas semanas e seremos livres. Sempre teu, R.» Num envelope do Clube de Ténis de Westwood.
+87	Mata-borrão
+88	Páginas arrancadas
+89	Escondidas sob o mata-borrão: as páginas em falta do livro de contas. Na margem, com a letra de Gordon: «Kessler — 80 000 $ desviados. Ir ao procurador na segunda-feira.»
+90	Um piano de parede com partituras de Gershwin abertas. Ninguém toca há meses.
+91	Fotografia
+92	Fotografia do casamento dos Pryce, em 1939. Ele sorri. Ela não.
+93	Bancada
+94	Alicate de corte
+95	Um alicate de corte com resíduos oleosos e avermelhados nas lâminas. Cheira a fluido de travões.
+96	Caixa de ferramentas
+97	Envelope com 500 $
+98	Escondidos no fundo da caixa de ferramentas: 500 $ em notas novas. O envelope tem o carimbo «Estúdios Paragon — Tesouraria».
+99	Pneus
+100	Pneus gastos à espera da recauchutagem.
+101	Calendário
+102	Calendário de junho de 1947, oferta de uma marca de pneus. O dia 18 está marcado com um círculo vermelho.
+103	Lata de óleo
+104	Uma lata de óleo de motor. Meia vazia.
+105	O corpo
+106	Marcas de estrangulamento
+107	Marcas finas e regulares à volta do pescoço. Não foram mãos. Foi um cordão ou um fio fino, puxado por trás.
+108	Mão da vítima
+109	Fibras de seda preta
+110	Presas nas unhas da vítima: fibras de seda preta entrançada. Ela lutou contra quem a matou.
+111	Pés
+112	Sapato em falta
+113	A vítima só tem o sapato esquerdo. Não há sinal do direito em lado nenhum, e a relva à volta não está pisada. Foi morta noutro sítio e trazida para aqui.
+114	Mala
+115	Mala da vítima
+116	Documento: Lillian Shore, 22 anos, Rua Alvarado 410, ap. 3. Dentro, um cartão: «Pell Studios — Testes de Ecrã — Cahuenga Blvd.»
+117	Rosa
+118	Rosa vermelha
+119	Uma rosa vermelha de caule longo, pousada sobre o peito da vítima. Fresca. O assassino quis deixar uma assinatura.
+120	Banco
+121	Um banco de jardim molhado do orvalho. Ninguém se sentou aqui esta noite.
+122	Jornal
+123	Um jornal de ontem, encharcado. A manchete fala de greves nos estúdios.
+124	Diário
+125	Diário da Lillian
+126	Última entrada, domingo: «Amanhã, segunda, às 9 da noite: teste de ecrã com o Sr. Pell! Diz que tenho rosto para o cinema. Não contar ao Nick.»
+127	Cesto do lixo
+128	Carta do Nick
+129	Amarrotada no cesto: «Lilly, se não és minha, não és de ninguém. Vou aí no sábado. — Nick.» Datada da semana passada.
+130	Fotografias
+131	Fotografias de estúdio
+132	Retratos glamorosos da Lillian, com o carimbo «Pell Studios» no verso. Numa delas, a lápis: «A minha rosa. — A.P.»
+133	Rádio
+134	Um rádio de baquelite sintonizado numa estação de big band. Ainda está morno.
+135	Roupeiro
+136	Vestidos baratos mas bem cuidados, e um par de luvas brancas novas. Sonhava alto.
+137	A REVELAR
+138	Câmara escura
+139	Sapato de mulher
+140	Na câmara escura, atrás dos tanques de revelação: um sapato de salto, pé direito, número 36. Faz par com o da vítima.
+141	Pano de fundo
+142	Cordão de seda cortado
+143	O pano de fundo é preso por cordões de seda preta entrançada. Falta um pedaço num deles, cortado à tesoura.
+144	Agenda
+145	Agenda de Pell
+146	Segunda-feira: «21h — L. Shore». A entrada foi riscada com força, mas ainda se lê.
+147	Jarra
+148	Jarra de rosas vermelhas
+149	Uma dúzia de rosas vermelhas de caule longo. Conta-se onze.
+150	Câmara
+151	Uma câmara de grande formato, de fole. Equipamento caro para um estúdio desta rua.
+152	Projetor
+153	Um projetor de estúdio de 500 watts. Ainda aquece a sala.
+154	Walter
+155	Frank
+156	Harold
+157	Leo
+158	Vincent
+159	Arthur
+160	Ray
+161	Charles
+162	Howard
+163	Sam
+164	Joe
+165	Gus
+166	Lloyd
+167	Henry
+168	Victor
+169	Stan
+170	Earl
+171	Benny
+172	Milton
+173	Clyde
+174	Floyd
+175	Oscar
+176	Roy
+177	Herb
+178	Dorothy
+179	Vera
+180	June
+181	Helen
+182	Ruth
+183	Evelyn
+184	Grace
+185	Irene
+186	Lorraine
+187	Betty
+188	Marion
+189	Edith
+190	Ida
+191	Kay
+192	Lucille
+193	Peggy
+194	Jean
+195	Mildred
+196	Hazel
+197	Doris
+198	Agnes
+199	Thelma
+200	Nora
+201	Halloran
+202	Becker
+203	Novak
+204	DeLuca
+205	Whitfield
+206	Sorensen
+207	Marsh
+208	Kowalski
+209	Fenwick
+210	Calloway
+211	Reyes
+212	Thorne
+213	Brennan
+214	Lindqvist
+215	Ashby
+216	Moreau
+217	Delgado
+218	Sutter
+219	Kramer
+220	Holt
+221	Garrity
+222	Abbott
+223	Rourke
+224	Mendez
+225	Okada
+226	Pruitt
+227	Szabo
+228	Whelan
+229	Castellano
+230	Dunphy
+231	Lomax
+232	Varga
+233	Lanterna Azul
+234	Starlight
+235	Zanzibar
+236	Orquídea Negra
+237	Moonglow
+238	Flamingo
+239	Rua Alvarado
+240	Figueroa St.
+241	Temple St.
+242	Sunset Blvd.
+243	Vermont Ave.
+244	Hope St.
+245	Olive St.
+246	Spring St.
+247	Hill St.
+248	Beverly Blvd.
+249	Melrose Ave.
+250	Vine St.
+251	Western Ave.
+252	Rua 6
+253	Detetive Lou Brandt
+254	Detetive Sal Moretti
+255	Detetive Hank Dolan
+256	Detetive Al Fierro
+257	Detetive Ted Garrity
+258	Detetive Walt Shea
+259	Capitão Whitcomb
+260	Capitão Thayer
+261	Capitão Ruskin
+262	Capitão Hale
+263	março
+264	terça-feira
+265	sábado
+266	Hollywood
+267	Los Feliz
+268	Glendale
+269	Echo Park
+270	Silver Lake
+271	Bunker Hill
+272	Downtown
+273	Wilshire
+274	Westlake
+275	Boyle Heights
+276	Hancock Park
+277	Santa Monica
+278	Culver City
+279	Chove há três dias e as sarjetas da cidade já não aguentam.
+280	Os ventos de Santa Ana sopram quentes do deserto. Ninguém dorme bem.
+281	Um nevoeiro baixo cobre a cidade. Os faróis dos carros parecem fantasmas.
+282	Noite abafada. As janelas estão todas abertas e ninguém ouviu nada.
+283	Faz frio para Los Angeles. Os vendedores de jornais batem os pés nas esquinas.
+284	Okinawa, 1945. Um soldado japonês saiu da gruta com as mãos no ar. Mercer ainda hoje não sabe se ele mentia. Às vezes, à noite, ainda lhe vê a cara.
+285	O pai de Mercer era polícia em Phoenix. Dizia que a verdade tem um cheiro, como o pão. Morreu sem nunca ter apanhado o homem que procurava.
+286	Naha, maio de 1945. A cidade era só pó e paredes. Um rapaz de dez anos guiou a patrulha por entre as minas por uma lata de pêssegos.
+287	Há noites em que Mercer conduz sem destino pela Sunset, só para ver as luzes. A cidade parece honesta a partir de um carro em movimento.
+288	A medalha está numa gaveta, debaixo das camisas. A mulher de Mercer pergunta porque não a pendura. Ele nunca responde.
+289	No navio de volta, um capelão disse a Mercer que a paz seria mais difícil do que a guerra. Na altura riu-se.
+290	fotógrafo
+291	fotógrafa
+292	Estúdio
+293	mecânico
+294	Garagem
+295	Garagem de Táxis
+296	cantora de jazz
+297	Clube
+298	dono de bar
+299	dona de bar
+300	Penhores
+301	Joalharia
+302	Casa
+303	produtor de cinema
+304	produtora de cinema
+305	aspirante a ator
+306	aspirante a atriz
+307	Apartamento de
+308	Homicídio
+309	Homicídios
+310	Morte em
+311	Sangue em
+312	A Última Noite de
+313	O Caso
+314	Silêncio em
+315	Um Corpo
+316	Relógio parado
+317	O relógio de pulso da vítima partiu-se na queda. Os ponteiros pararam às
+318	, foi encontrad
+319	Uma facada só, entre as costelas.
+320	Ferida de faca
+321	Uma única ferida, de lâmina estreita, entre as costelas. Quem a fez sabia onde golpear.
+322	Faca de lâmina estreita
+323	Embrulhada num pano, no fundo de uma gaveta: uma faca de lâmina estreita, lavada à pressa. Ainda há sangue seco junto ao cabo.
+324	Um tiro à queima-roupa.
+325	Ferimento de bala .32
+326	Um tiro à queima-roupa, calibre .32. Há queimaduras de pólvora na roupa: a vítima estava a centímetros de quem disparou.
+327	Pistola .32
+328	Uma pistola automática .32 escondida atrás de um painel solto. Falta uma bala no carregador e o cano cheira a pólvora.
+329	Marcas finas e regulares à volta do pescoço. Foi um cordão ou um fio, puxado por trás.
+330	Cordão cortado
+331	Um cordão de cortinado em seda com uma ponta cortada à tesoura. O padrão da trança coincide com as marcas no pescoço da vítima.
+332	Parece um ataque cardíaco. O médico-legista diz que não é.
+333	Copo com cheiro a amêndoas
+334	Um copo de whisky meio vazio junto à vítima. Cheira a amêndoas amargas: cianeto.
+335	Frasco de cianeto
+336	Um frasco castanho com o rótulo «cianeto de potássio, uso fotográfico». Está quase vazio.
+337	Um golpe na nuca.
+338	Ferimento na nuca
+339	Um golpe violento na nuca, dado com um objeto pesado e estreito. Bastou um.
+340	Chave inglesa
+341	Uma chave inglesa pesada, limpa demais para uma ferramenta. No encaixe ficou um cabelo preso e uma mancha escura.
+342	Roubo
+343	Roubos
+344	ladrão
+345	O Golpe de
+346	Cofre Vazio em
+347	As Joias de
+348	Mãos Leves em
+349	Registo do alarme
+350	A companhia de alarmes registou a abertura da porta às
+351	. Quando a patrulha chegou, já não havia ninguém.
+352	Assaltaram
+353	, de
+354	. Levaram
+355	O cofre foi aberto a maçarico.
+356	Cofre aberto a maçarico
+357	A porta do cofre foi cortada com um maçarico. Trabalho de quem aprendeu num estaleiro naval durante a guerra.
+358	Ninguém forçou nada.
+359	Fechadura intacta
+360	Nem a porta nem o cofre foram forçados. Quem entrou tinha uma chave, ou uma cópia muito boa.
+361	Entraram pela janela, sem partir nada.
+362	Vidro cortado
+363	Um círculo perfeito cortado no vidro da janela com um cortador de diamante. A tranca foi aberta por dentro.
+364	O produto do roubo
+365	Embrulhado em jornal, dentro de uma lata de café:
+366	. É o que desapareceu
+367	Fogo posto
+368	Incêndios
+369	incendiário
+370	Cinzas em
+371	Fumo sobre
+372	Fogo
+373	Brasas em
+374	A Noite em que
+375	Ardeu
+376	Relatório dos bombeiros
+377	O alarme de incêndio foi dado às
+378	. Segundo os bombeiros, o fogo começou uns minutos antes.
+379	, ardeu esta noite. Ninguém morreu, por sorte.
+380	Os bombeiros sentiram o cheiro a gasolina antes de verem as chamas.
+381	Lata de gasolina derretida
+382	No foco do incêndio, uma lata de gasolina derretida. O fogo começou aqui. Não foi acidente.
+383	Recibo de gasolina
+384	Recibo de uma bomba da Temple St.: duas latas de cinco galões, pagas em dinheiro na tarde do incêndio.
+385	Usaram um temporizador caseiro.
+386	Cigarro e fósforos
+387	Os restos de um cigarro atado a um maço de fósforos com um elástico. Um temporizador caseiro: dá dez minutos para fugir.
+388	Fósforos atados
+389	Numa gaveta: maços de fósforos já atados a cigarros com elásticos, prontos a usar.
+390	Querem que pareça um curto-circuito.
+391	Fio descarnado
+392	Um fio elétrico descarnado de propósito e encostado a trapos com óleo. Parece um curto-circuito. Não é.
+393	Bobina de fio e alicate
+394	Uma bobina do mesmo fio de cobre e um alicate com restos de isolamento preso nas lâminas.
+395	um colar de pérolas de três voltas
+396	três relógios de ouro suíços
+397	um anel com um diamante de dois quilates
+398	4 000 $ em notas
+399	uma coleção de moedas de ouro
+400	um bracelete de esmeraldas
+401	sócio
+402	sócia
+403	Sócio
+404	. O negócio ia mal.
+405	Contrato de sociedade
+406	Contrato entre
+407	. Na margem, a lápis: «Está a afundar-nos. Tenho de fazer alguma coisa.»
+408	Éramos sócios há
+409	anos. O negócio não ia bem, é verdade. Mas não se resolve nada assim.
+410	Está bem.
+411	estava a afundar o negócio e eu ia perder tudo. Discutimos. Mas isso não prova nada.
+412	Divórcio amargo. Ficou sem nada.
+413	Papéis do divórcio
+414	Processo de divórcio entre
+415	ficou sem a casa e sem um tostão.
+416	Fomos casados
+417	anos. Já mal nos falávamos. Às vezes isso é o melhor.
+418	Ficou com tudo no divórcio. Tudo! Odiava-
+419	, pronto. Mas odiar não é crime.
+420	Relação secreta.
+421	queria acabar e contar tudo.
+422	Cartas de amor
+423	Um maço de cartas de
+424	. A última diz: «Acabou. Se me procurares outra vez, conto tudo.»
+425	Éramos próximos. Ninguém sabia.
+426	queria acabar, e eu aceitei.
+427	ia contar tudo à minha família. Tudo o que construí ia acabar. Fiquei desesperad
+428	$ e não pagava.
+429	Livro de dívidas
+430	Um caderno com nomes e quantias. «
+431	$», sublinhado três vezes, com as palavras «ÚLTIMO PRAZO».
+432	devia-me dinheiro. Muita gente me deve. Eu cobro, detetive. Não mato.
+433	Devia-me
+434	$ e ria-se na minha cara. Neste negócio, quem não se faz respeitar acaba na sarjeta.
+435	Devia
+436	, que ameaçava ir à polícia.
+437	Carta de cobrança
+438	Uma carta de
+439	: «Tens até sexta para pagar os
+440	$. Depois vou à polícia.»
+441	Devo-lhe dinheiro, sim. Estava a juntar para pagar.
+442	sabia disso.
+443	Ia à polícia. Ia arruinar-me por
+444	$. Fiquei desesperad
+445	Rivalidade profissional.
+446	roubou-lhe os clientes.
+447	Recorte de jornal
+448	Uma notícia sobre o sucesso de
+449	, recortada e riscada a tinta vermelha até rasgar o papel.
+450	Concorrência é concorrência. Não gostava de
+451	, mas respeitava-
+452	roubou-me tudo: clientes, nome, reputação. Queria vê-l
+453	na sarjeta.
+454	Despedid
+455	há oito dias.
+456	Carta de despedimento
+457	Assinada por
+458	, há oito dias. Sem indemnização. Motivo: «desonestidade».
+459	Trabalhei para
+460	até à semana passada. Despediu-me. Paciência, arranjo outra coisa.
+461	Despediu-me como a um cão, depois de nove anos. Chamou-me ladr
+462	à frente de todos.
+463	irmão
+464	irmã
+465	Herança: com
+466	, fica com tudo.
+467	Testamento
+468	Cópia do testamento dos pais: tudo para
+469	. Se
+470	morrer sem filhos, a herança passa para
+471	Era
+472	. Não éramos chegados, mas era sangue.
+473	Sempre
+474	preferiram. Tudo para
+475	, nada para mim. Toda a vida.
+476	Ameaçou
+477	em frente a testemunhas.
+478	Queixa na esquadra
+479	Cópia de uma queixa de
+480	por ameaças: «Disse que me pegava fogo à casa.»
+481	Somos vizinhos. Discutimos por causa do barulho, como toda a gente nesta cidade.
+482	Fazia-me a vida num inferno. A queixa na polícia foi a gota de água.
+483	Tem dívidas,
+484	Nenhuma. As minhas contas estão em dia.
+485	Talões de apostas
+486	Talões perdedores do hipódromo de Santa Anita. Somam mais de
+487	Está bem, perco dinheiro nos cavalos. Meia cidade perde. Mas não tenho nada a ver com o que aconteceu a
+488	Onde passa as quintas-feiras à noite?
+489	Em casa. Sou uma pessoa de hábitos.
+490	Chave de motel
+491	Chave do quarto 12 do Motel Palm Court, com um bilhete: «Até quinta. — B.»
+492	Tenho uma pessoa. Uma pessoa com quem não devia estar. Por favor, não conte a ninguém.
+493	Já teve problemas com a polícia?
+494	Nunca. Ficha limpa.
+495	Ficha antiga de Chicago
+496	Ficha da polícia de Chicago, 1938: receção de bens roubados. Dezoito meses na prisão de Joliet.
+497	Isso foi noutra vida. Vim para Los Angeles para começar de novo, e é o que estou a fazer.
+498	é o seu verdadeiro nome?
+499	Claro que é. Que pergunta.
+500	Passaporte com outro nome
+501	Um passaporte antigo com a mesma fotografia e outro nome. Emitido em Nova Iorque, 1936.
+502	Mudei de nome. Havia gente em Nova Iorque à minha procura. Não tem nada a ver com isto.
+503	Toma alguma coisa para os nervos?
+504	Nada. Durmo como uma pedra.
+505	Frasco de morfina
+506	Um frasco de morfina sem receita e uma seringa num estojo de couro.
+507	Desde a guerra as dores não passam. Arranjo-a por fora. Não me prenda por isso.
+508	Os negócios correm bem?
+509	Honestamente, como sempre.
+510	Guias de carga desviada
+511	Guias de um camião desviado no porto de San Pedro. A mercadoria está aqui, empilhada em caixas.
+512	Compro barato, vendo barato e não pergunto de onde vem. Mas não fiz mal nenhum a
+513	Beata de cigarrilha
+514	Uma beata de cigarrilha de mentol, marca Havana Gold, esmagada no chão. Recente.
+515	Cigarrilhas de mentol
+516	Uma caixa de cigarrilhas de mentol Havana Gold, meio vazia.
+517	Cigarrilhas de mentol? Nunca fumei isso na vida.
+518	Nunca vi. Qualquer pessoa podia ter deixado isso lá.
+519	São minhas, sim. Estive lá. Fumei uma enquanto esperava. Mas só fui para conversar!
+520	Botão de punho partido
+521	Um botão de punho de prata com uma pedra de ónix, partido. Foi arrancado numa luta.
+522	Botão de punho sem par
+523	Numa caixa de joias: um botão de punho de prata e ónix. O par desapareceu.
+524	Não uso botões de punho. Não tenho camisas para isso.
+525	Botões desses vendem-se em qualquer loja da Broadway.
+526	É meu. Deve ter caído quando... quando lá estive. Estive lá, pronto!
+527	Brinco de pérola
+528	Um brinco de pérola com fecho de mola, caído no chão. A mola está partida.
+529	Brinco de pérola sem par
+530	Numa caixa de joias: um brinco de pérola com fecho de mola. O par desapareceu.
+531	Pérolas? Detetive, olhe bem para mim. Não tenho dinheiro para pérolas.
+532	Há mil brincos assim em Los Angeles.
+533	É meu. Perdi-o lá nessa noite. Fui falar com a vítima, mais nada!
+534	Pegada de sapato
+535	Uma pegada nítida, número
+536	, com um corte em forma de cruz na sola.
+537	Sapatos com sola cortada
+538	Um par de sapatos número
+539	, ainda com pó. A sola tem um corte em forma de cruz.
+540	Olhe para os meus pés, detetive. Não é o meu número.
+541	Uma pegada? Metade da cidade calça esse número.
+542	Está bem, estive lá. Entrei e saí. Quando saí, estava tudo bem, juro!
+543	Lenço perfumado
+544	Um lenço de seda com um cheiro forte a água-de-colónia de sândalo.
+545	Um lenço de seda com um perfume forte de jasmim.
+546	Colónia de sândalo
+547	Perfume de jasmim
+548	Um frasco de água-de-colónia de sândalo, quase no fim, e lenços de seda iguais.
+549	Um frasco de perfume de jasmim, quase no fim, e lenços de seda iguais.
+550	Esse cheiro? Não é o meu. Pode cheirar-me, se quiser.
+551	Um lenço? Não faço ideia de quem seja.
+552	É meu. Deixei-o lá. Estive com a vítima nessa noite, mas não fiz nada.
+553	Luva de condução
+554	Uma luva de condução de pele castanha, da mão esquerda. Cara. Feita por medida.
+555	Luva sem par
+556	No porta-chapéus: uma luva de condução de pele castanha, da mão direita. A esquerda não está.
+557	Eu nem tenho carro, detetive.
+558	Luvas dessas vendem-se no Bullock's às dezenas.
+559	É minha. Perdi-a lá. Fui lá nessa noite, admito. Mas não fiz o que pensa!
+560	Fósforos do Hotel Mirador
+561	Uma caixa de fósforos do Hotel Mirador, em Wilshire, quase cheia. Não pertence à vítima.
+562	Recibo do Hotel Mirador
+563	Um recibo do bar do Hotel Mirador, da noite do crime, e uma caixa de fósforos igual à da cena.
+564	Hotel Mirador? Nunca lá pus os pés. É caro demais para mim.
+565	Toda a gente tem fósforos de hotéis. Apanham-se em qualquer lado.
+566	Estive no Mirador nessa noite, sim. Depois passei por lá. Só um minuto!
+567	Dedada de tinta verde
+568	Uma dedada de tinta verde-garrafa na maçaneta, ainda pegajosa.
+569	Lata de tinta verde
+570	Uma lata de tinta verde-garrafa aberta e um pincel ainda húmido. Há dedadas da mesma cor na porta.
+571	Tinta? Eu não pinto nada, detetive. Nem as unhas.
+572	Tinta verde? Não sei do que está a falar.
+573	Estava a pintar a porta quando decidi ir lá. Fui de mãos sujas. Mas não fiz nada!
+574	No cinema Orpheum, na sessão das nove. Um filme de gangsters.
+575	Bilhete picado do Orpheum
+576	Um bilhete da sessão das 21h00 do cinema Orpheum, na data do crime, picado à entrada.
+577	Bilhete do Orpheum por usar
+578	Um bilhete da sessão das 21h00 do Orpheum, na data do crime. Está intacto: nunca foi picado à entrada.
+579	A jantar no restaurante Taix com uns amigos. Ficámos até tarde.
+580	Recibo do Taix
+581	Recibo do restaurante Taix: mesa para quatro, pago às 23h40 da noite do crime.
+582	Recibo do restaurante Taix da noite do crime: uma só pessoa, pago às
+583	Em casa, a ouvir o combate de boxe na rádio.
+584	Notas do relato
+585	Notas a lápis com os resultados do combate da rádio, assalto a assalto, até ao último.
+586	Recibo de táxi
+587	Recibo de táxi da noite do crime: partida às
+588	, destino
+589	A trabalhar até tarde. O porteiro viu-me sair.
+590	Livro de ponto
+591	Livro de ponto: saída às 23h50 na noite do crime, com a assinatura do porteiro.
+592	Livro de ponto da noite do crime: saída às
+593	. Bem antes da hora do crime.
+594	A jogar póquer num clube da Rua 5. Perdi dinheiro, como sempre.
+595	Lista da mesa de póquer
+596	A lista de jogadores da mesa da noite do crime, com o nome e as perdas anotadas até à meia-noite.
+597	Recibo de uma bomba de gasolina perto de
+598	, na noite do crime, às
+599	No hospital Queen of Angels, a visitar a minha mãe.
+600	Registo de visitas
+601	Cartão do hospital Queen of Angels: entrada às 20h30, saída às 23h45, na noite do crime.
+602	Cartão do hospital Queen of Angels da noite do crime: saída às
+603	Lago de Echo Park
+604	MacArthur Park
+605	Elysian Park
+606	Já soube. Uma desgraça. Em que posso ajudar, detetive?
+607	Detetive. Estava à sua espera. Mais cedo ou mais tarde, vocês vêm sempre.
+608	Não sei o que quer de mim, mas despache-se. Tenho uma vida.
+609	Sente-se, detetive. Quer café? Não? Então vamos a isto.
+610	Não gosto do seu tom, detetive.
+611	Vou chamar o meu advogado.
+612	Eu não tenho nada a esconder!
+613	Isto é um insulto, detetive.
+614	Mal nos conhecíamos. Cumprimentávamo-nos, mais nada.
+615	Dávamo-nos bem, detetive. Muito bem, até.
+616	Não tínhamos nada a ver um com o outro.
+617	Uma relação normal. Nada a dizer.
+618	Está bem, menti. Fui lá nessa noite. Mas não fiz o que pensa!
+619	Isto cheira mal, Mercer.
+620	Na agenda da vítima há nomes. Começamos por aí.
+621	Já vi isto mil vezes. É sempre alguém que a vítima conhecia.
+622	O capitão quer isto arrumado antes dos jornais. Como sempre.
+623	Tens aquela cara outra vez, Mercer. A cara de quem já desconfia de alguém.
+624	Gavetas
+625	Gavetas frigoríficas. Em três delas há etiquetas com nomes. Numa, só um número.
+626	Bata
+627	A bata do médico-legista, pendurada num cabide. Tem uma caneta de tinta permanente no bolso e cheira a formol.
+628	Retrato
+629	O retrato a óleo do dono da casa, pintado há vinte anos. O pintor deu-lhe um olhar mais bondoso do que a família se lembra.
+630	Candelabro
+631	As velas arderam até ao fim. Ninguém as apagou depois de o jantar acabar mal.
+632	DRUGSTORE
+633	Boca de incêndio
+634	Uma boca de incêndio. Alguém lhe colou um cartaz de um combate de boxe.
+635	Montra
+636	A montra da drogaria. O empregado da noite jura que estava a arrumar o armazém e não viu nada.
+637	Trânsito
+638	Costumes
+639	Dr. Ezra Lindqvist
+640	de 1947
+641	Esquadra Central
+642	Gabinete do Capitão
+643	Indício
+644	any:
+645	Isto diz-lhe alguma coisa?
+646	, encontrad
+647	no local.
+648	É meu, sim. Perdi-o há dias. Não sei como foi lá parar.
+649	Objeto
+650	Capanga
+651	Relatório do laboratório n.º
+652	Análise de «
+653	»: coincidem. O perito assina por baixo.
+654	Fotograma das
+655	cantora de rádio
+656	secretária de um advogado
+657	vendedor de automóveis
+658	agente de seguros
+659	instrutor de ténis
+660	Motel Palm Court
+661	Motel Sunset Arms
+662	Motel Mirador
+663	· amante de
+664	Detetive privado
+665	Golpe na têmpora
+666	Um golpe seco na têmpora esquerda. Ao lado do corpo, um cinzeiro de vidro grosso com sangue.
+667	O cinzeiro. Um só golpe, de frente. Quem o deu estava perto e a vítima não levantou as mãos: conhecia-o.
+668	Sufocação
+669	A almofada da cama tem marcas de baton. Os olhos da vítima têm pequenas hemorragias.
+670	Sufocada com a almofada. Quem o fez teve de pôr o peso todo em cima durante dois minutos. Não foi um impulso.
+671	, quarto
+672	Livro de registos do motel
+673	O quarto foi pago às 21h50 por «Sr. e Sra. Jones». O porteiro anotou a matrícula do carro:
+674	. Está registado em nome de
+675	Registos
+676	Lâmpada de flash queimada
+677	Estava no parapeito, do lado de fora da janela. Alguém fotografou este quarto. Na base, o carimbo da loja «Fotografia
+678	Parapeito
+679	Vestígio
+680	Morgue do condado
+681	Hall of Justice, Downtown
+682	Causa da morte
+683	Relatório do médico-legista
+684	Hora da morte
+685	Pela temperatura do corpo e o estado da rigidez, entre as
+686	e as
+687	. Aposto nas
+688	Entre as
+689	, segundo o
+690	Mais alguma coisa?
+691	Tinha a aliança no bolso do casaco, não no dedo. Tirou-a nessa noite, ou alguém lha tirou.
+692	Tinha arranhões frescos nas costas das mãos. Defendeu-se de alguém que conhecia bem o suficiente para estar perto.
+693	Tinha um recibo amarrotado no punho: «1 000 $ — por todos os negativos». Nunca chegou a pagar.
+694	Pormenor da autópsia
+695	A aliança estava no bolso, não no dedo.
+696	Arranhões frescos nas mãos: defendeu-se.
+697	Um recibo no punho: «1 000 $ — por todos os negativos».
+698	Estive no clube de bridge de Wilshire até à meia-noite.
+699	Estive de turno no hospital Queen of Angels.
+700	Estive em casa da minha irmã, em Pasadena.
+701	Saí do motel às
+702	e fui direito ao Clube
+703	. Toquei até à uma.
+704	Estive no escritório toda a noite, a revelar fotografias.
+705	Fotografias da Agência
+706	Um envelope com fotografias de
+707	à porta do
+708	. No verso: «Agência
+709	— Investigações».
+710	Envelope
+711	Cheque para
+712	Talão de cheque de
+713	, «serviços profissionais».
+714	Talões
+715	Bilhete de táxi
+716	Recibo de táxi da noite do crime: destino
+717	, às
+718	Prova do álibi
+719	Um papel que confirma a história de
+720	: estava longe do motel à hora do crime.
+721	Luvas de pelica manchadas
+722	No fundo do caixote do lixo, embrulhadas em jornal: um par de luvas de pelica com manchas escuras nos dedos.
+723	clue:
+724	flag:open_L
+725	Carta de
+726	, acabou. Volto para
+727	. Não me procures mais.» Datada de ontem.
+728	Livro do porteiro do clube
+729	chegou ao clube às
+730	. Atrasad
+731	e sem gravata.
+732	e não voltou a sair até à uma.
+733	Chave do quarto
+734	No bolso de um casaco no camarim: a chave do quarto
+735	. O porteiro jura que só havia uma.
+736	entram no quarto
+737	Fotograma em branco. Faltam três fotogramas cortados à lâmina.
+738	Uma figura de
+739	bate à porta do quarto
+740	sai do quarto e acende um cigarro no parque.
+741	O parque de estacionamento vazio. Uma luz acesa no quarto.
+742	Alguém não queria que esta hora ficasse registada.
+743	Pela altura e pelo andar, parece
+744	Agência
+745	— Investigações
+746	flag:open_D
+747	Os negativos de
+748	da noite do crime estão pendurados a secar. Podes imprimir um.
+749	pé
+750	Rolo de filme escondido
+751	Caiu do casaco durante a fuga: um rolo de filme. Lá dentro, os três fotogramas que faltavam.
+752	Livro de contas da agência
+753	— 250 $ — pago.» E mais abaixo, a lápis: «
+754	— 1 000 $ — até sexta».
+755	Declaração de
+756	saiu às
+757	. Lembro-me porque deu-me um dólar de gorjeta.»
+758	Eu não vejo nada, detetive. É o que me pagam para fazer. Mas pergunte.
+759	Quem saiu
+760	Quem saiu do quarto nessa noite?
+761	. Saiu às
+762	. Lembro-me porque deu-me um dólar de gorjeta.
+763	Mais alguém
+764	Mais alguém entrou ou saiu?
+765	Não vi mais ninguém.
+766	Um carro parou do outro lado da rua por volta das
+767	. Desceu
+768	. Não lhe vi a cara, juro.
+769	O fotógrafo
+770	Viu alguém com uma câmara por aqui?
+771	Há uma semana que um tipo de chapéu cinzento ronda o motel. Diz que é da agência
+772	Relação com
+773	Qual era a sua relação com
+774	Não lhe disse logo porque sabia como ia parecer.
+775	A noite do crime
+776	Onde estava às
+777	Está bem, menti. Fui lá. Mas quando saí estava viv
+778	Fui lá falar. Só falar. Não me olhe assim.
+779	Já identifiquei o corpo, detetive. Não sei o que mais quer de mim.
+780	Sabia do caso. Contratei um detetive,
+781	, para ter a certeza. Queria o divórcio, não
+782	queria mort
+783	Éramos felizes. Não fazia ideia de nada.
+784	Eu sabia, pronto. Paguei a um detetive para
+785	seguir. Ver aquelas fotografias... ninguém imagina o que é.
+786	Conhece
+787	Nunca
+788	Fui ao Clube
+789	. Queria olhar
+790	na cara. Mais nada.
+791	Só das fotografias. Toca ou dança num clube qualquer, o Clube
+792	Soube pela rádio. Ainda não acredito.
+793	Amávamo-nos.
+794	ia deixar
+795	. Pelo menos era o que dizia.
+796	Éramos amigos. Só isso.
+797	acabou comigo nessa noite. Disse que voltava para
+798	. Fiquei fora de mim. Mas saí antes de tudo acontecer.
+799	Sabia que alguém vos seguia?
+800	Não reparei em nada.
+801	Vi o tipo da câmara.
+802	dizia que ele lhe pedia dinheiro. Vá falar com ele.
+803	Vi um tipo de chapéu cinzento com uma câmara.
+804	disse que ele lhe pedia dinheiro. Chama-se
+805	Tire o chapéu, detetive. Somos colegas, à nossa maneira.
+806	Os clientes
+807	Para quem trabalhava neste caso?
+808	Para
+809	. Só isso.
+810	Está bem, também pedi dinheiro a
+811	. Mil dólares pelos negativos. Neste ramo, toda a gente faz isso.
+812	Pedi mil dólares a
+813	pelos negativos, admito. Mas
+814	ia pagar. Morto, não me servia de nada.
+815	As fotografias
+816	O que fotografou nessa noite?
+817	Nada de especial.
+818	Fotografei quem entrou. Mas os negativos... alguém mos roubou.
+819	Está tudo nos negativos, na câmara escura. Às
+820	chegou mais alguém. Vá ver com os seus olhos.
+821	Beco atrás da Agência
+822	flag:open_D2
+823	O corpo de
+824	levou um tiro à queima-roupa. Ainda tem a câmara ao pescoço, com a objetiva partida.
+825	Caderno de
+826	Última página, a lápis: «
+827	— confirmar. Pedir o dobro.»
+828	int:iD
+829	Uma segunda morte
+830	Duas horas depois de falares com
+831	, o rádio do carro estala.
+832	«Disparos atrás da Agência
+833	. Homem caído no beco.»
+834	Mercer
+835	Alguém está a limpar o que ficou para trás.
+836	seen:L
+837	Telefonema anónimo
+838	Um telefone toca na esquadra. Pedem por ti.
+839	Voz anónima
+840	«Se quer saber quem tirou fotografias a mais, pergunte ao
+841	porque é que queimou papéis no beco ontem à noite.»
+842	O Quarto
+843	Sr. e Sra. Jones
+844	O Flash na Janela
+845	Uma Noite no
+846	. O letreiro de néon pisca a cada três segundos.
+847	No quarto
+848	, alguém bate à porta.
+849	abre com um sorriso, à espera de outra pessoa.
+850	Do outro lado da rua, uma lâmpada de flash rebenta na escuridão.
+851	Num quarto de motel há sempre três pessoas, mesmo quando só lá estão duas: os amantes, e quem eles estão a enganar.
+852	no quarto
+853	. Registad
+854	como «Sr
+855	Jones».
+856	Num motel destes ninguém vê nada e toda a gente sabe tudo.
+857	O cônjuge é sempre o primeiro suspeito. Por alguma razão.
+858	Quanto é que alguém pagaria para não aparecer numa fotografia destas?
+859	Três pessoas sabiam daquele quarto. Qual delas lá voltou?
+860	confessa ao amanhecer.
+861	O júri não se convence.
+862	sai do tribunal pelo braço de um advogado caro e não olha para trás.
+863	é absolvid
+864	por falta de provas. No corredor,
+865	cruza-se contigo e baixa os olhos.
+866	é condenad
+867	. Meses depois, uma fotografia anónima chega à tua secretária:
+868	à porta do quarto
+869	O processo do quarto
+870	vai para o arquivo. O motel muda de nome no ano seguinte.
+871	Crime do
+872	Fotografias de um detetive privado no centro do caso.
+873	confessou a morte de
+874	. O Detetive Eli Mercer reconstituiu a noite a partir de negativos fotográficos e do livro de registos do motel.
+875	pelo crime do motel
+876	Defesa promete recorrer.
+877	O júri considerou
+878	da morte de
+879	. A defesa fala em «processo montado à pressa».
+880	Caso do motel sem culpado.
+881	Por falta de provas,
+882	saiu em liberdade. O caso do quarto
+883	continua por resolver.
+884	Júri absolve
+885	Polícia sob críticas.
+886	foi absolvid
+887	. O advogado chamou à investigação «uma fotografia desfocada».
+888	Caso do motel arquivado
+889	Família da vítima indignada.
+890	A polícia arquivou a investigação à morte de
+891	As fotografias não mentiam. As pessoas é que mentiam a olhar para elas.
+892	Há noites em que revejo os negativos. Já não sei de quem é a cara que lá vejo.
+893	O motel apagou o letreiro. Eu continuo a ver a luz a piscar.
+894	Dr
+895	Estúdios Paragon
+896	Monarch Pictures
+897	Estúdios Silverlake
+898	«Beijo de Cinza»
+899	«A Última Rua»
+900	«Noite Sem Lua»
+901	«O Preço do Silêncio»
+902	um lenço de seda ao pescoço
+903	uma estola de raposa branca
+904	um boné de lã enfiado na cabeça
+905	Realizador de
+906	· usa sempre
+907	Atriz secundária · rival de
+908	· nunca larga
+909	Eletricista do plateau · traz sempre
+910	do portão dos
+911	, plateau
+912	Queda do passadiço
+913	caiu de nove metros, do passadiço das luzes. O pescoço partido. Ainda tem o vestido da cena final.
+914	Corrimão solto
+915	O corrimão do passadiço tem dois parafusos a menos. As roscas estão limpas e brilhantes: foram tirados há pouco, com uma chave.
+916	Passadiço
+917	Folha de serviço do dia
+918	Plano das filmagens: «
+919	— ensaio de luzes (
+920	— pausa,
+921	no camarim.
+922	sobe ao passadiço para a cena do terraço.»
+923	Folha de serviço
+924	Bilhete no camarim
+925	Encontrado no espelho do camarim de
+926	: «Sobe ao passadiço antes da cena. Temos de falar. Ninguém pode saber.» Sem assinatura.
+927	Camarim
+928	Foi a queda?
+929	A queda partiu-lhe o pescoço, sim. Mas tem uma nódoa negra no esterno, do tamanho de uma mão aberta. Foi empurrada.
+930	Nódoa no peito
+931	Uma marca do tamanho de uma mão no esterno: foi empurrada.
+932	Morreu na hora da queda. O relógio dela parou às
+933	O relógio de
+934	parou às
+935	Estava grávida de dois meses. Não me pergunte de quem. Mas aposto que alguém naquele estúdio sabia.
+936	Tinha pelos brancos, finos, presos às lantejoulas do vestido. Pele de animal, de boa qualidade.
+937	Tinha pó preto de grafite nos ombros. Do género que os eletricistas usam nos contactos.
+938	Estava grávida de dois meses.
+939	Pelos brancos de pele de animal presos ao vestido.
+940	Pó de grafite nos ombros do vestido.
+941	Fotograma do take das
+942	Ao fundo do plano, no passadiço, por trás de
+943	: uma figura com
+944	Ensaio de luzes.
+945	no alto da escada, de boné, a apontar um projetor.
+946	atravessa o plateau a fumar, de estola branca, e sai pela porta lateral.
+947	Take 4 da cena do terraço.
+948	no passadiço. Ao fundo, meio escondida pela luz, uma figura com
+949	A câmara continua a rodar. Gritos. Alguém corre para a escada. Imagem tremida.
+950	, sala de projeção
+951	Copiões do dia
+952	O projecionista mostra-te os copiões filmados no plateau à hora da queda. Podes pedir a ampliação de um fotograma.
+953	flag:open_proj
+954	flag:open_E
+955	Bungalow de
+956	«Ou dizes à tua mulher, ou digo eu. Tens até ao fim das filmagens.»
+957	Agenda do realizador
+958	À hora da queda,
+959	estava numa reunião com o produtor no edifício da administração. A secretária confirma.
+960	A reunião com o produtor foi cancelada às
+961	ficou com a tarde livre.
+962	Chave de bocas
+963	Na gaveta da secretária de um realizador: uma chave de bocas e dois parafusos do tamanho dos do corrimão.
+964	Camarim de
+965	Contrato riscado
+966	O papel principal de
+967	estava prometido a
+968	. O nome foi riscado e substituído por «
+969	Recibo do bar do estúdio
+970	pagou dois cafés no bar do estúdio às
+971	e às
+972	. O empregado lembra-se dela.
+973	pagou um café no bar às
+974	. Depois disso, ninguém a viu até aos gritos.
+975	Estola com pó de grafite
+976	A estola de raposa branca tem manchas pretas de pó de grafite na ponta. Pó do passadiço.
+977	Oficina de adereços
+978	Assinada pela produção a pedido de
+979	: «Comportamento inadequado no plateau.» Efeito no fim do mês.
+980	Livro de ponto da oficina
+981	estava na oficina a soldar cabos entre as
+982	. Dois colegas assinam por baixo.
+983	picou a saída da oficina às
+984	e só voltou às
+985	Parafusos do corrimão
+986	Numa lata de café, na bancada: dois parafusos com as roscas brilhantes. Iguais aos que faltam no corrimão.
+987	Ninguém passa no meu portão sem eu saber, detetive. Quase ninguém.
+988	Quem entrou
+989	Quem estava no plateau à hora da queda?
+990	A equipa toda, menos os que estavam em pausa.
+991	saiu para fumar.
+992	andava às voltas com os cabos.
+993	Os copiões
+994	Filmaram a cena da queda?
+995	A câmara estava a rodar. Os copiões estão na sala de projeção. Ainda ninguém os viu.
+996	Como era
+997	Simpática com o pessoal do portão. Não era assim com toda a gente lá dentro.
+998	Discutia muito com
+999	, o realizador. Uma vez ouvi-a dizer: «Ou contas tu, ou conto eu.»
+1000	Como se dava com
+1001	Às
+1002	Estive no plateau. Subi para falar com ela. Só falar. Quando desci, ela estava bem.
+1003	O bilhete
+1004	Alguém deixou um bilhete a
+1005	: «Sobe ao passadiço». Foi você?
+1006	Não fui eu.
+1007	Fui eu. Queria falar com ela longe de toda a gente. Mas não a empurrei!
+1008	Detetive, tenho um filme parado e quarenta pessoas pagas para não fazer nada. Seja breve.
+1009	Era a minha atriz principal. Discutíamos como toda a gente discute num plateau.
+1010	Uma relação estritamente profissional.
+1011	Tínhamos um caso. Ela queria que eu deixasse a minha mulher. Estava grávida. Mas eu não...
+1012	Numa reunião com o produtor, no edifício da administração.
+1013	Querido, se vem pelo autógrafo, chegou no dia errado.
+1014	Odiava-a. Toda a gente sabe. O papel era meu até ela aparecer. Mas odiar não mata ninguém.
+1015	Éramos colegas. Muito amigas, até.
+1016	Ela roubou-me o papel. Sorriu-me na cara quando o soube. Mas não fui eu, juro.
+1017	No bar do estúdio, a tomar café.
+1018	Eu só mexo nos fios, chefe. Não sei de nada.
+1019	Fez-me despedir. Disse que eu olhava demais. Eu só fazia o meu trabalho.
+1020	Nem falava com ela. Gente como ela não fala com gente como eu.
+1021	Ela fez-me despedir. Nove anos naquele estúdio, por causa de um capricho.
+1022	Na oficina, a soldar cabos.
+1023	visits:3
+1024	Coluna de mexericos
+1025	A edição da tarde chega à esquadra. A coluna de Lola Prentiss ocupa meia página.
+1026	Lola Prentiss
+1027	«Que realizador casado andava a jantar às escondidas com a estrela falecida? Esta coluna sabe, e em breve todos saberão.»
+1028	«Uma certa atriz de estola branca foi vista a sair do plateau
+1029	pela escada das luzes. Coincidência?»
+1030	«O estúdio despediu um eletricista por queixa da estrela. Dizem que ele jurou que ela se ia arrepender.»
+1031	Os mexericos desta cidade correm mais depressa do que qualquer carro-patrulha. Às vezes chegam primeiro.
+1032	Estrela Caída
+1033	O Último Take
+1034	Plateau
+1035	Corta!
+1036	. «Silêncio, vamos rodar!»
+1037	Nove metros acima do chão,
+1038	espera pela deixa no passadiço das luzes. Ouve passos atrás de si.
+1039	A claquete bate. Ninguém repara no corrimão.
+1040	Em Hollywood fabricam-se sonhos à hora. Os pesadelos saem de graça.
+1041	, a estrela de
+1042	, caiu do passadiço do plateau
+1043	. O estúdio diz que foi um acidente.
+1044	Este estúdio tem mais advogados do que atores.
+1045	Em Hollywood, toda a gente é suspeita de alguma coisa.
+1046	Se o filme estrear, vai ser um sucesso. Nada vende tanto como uma morte.
+1047	O estúdio quer um acidente. Tu queres um nome. Convence-me.
+1048	confessa no gabinete do advogado do estúdio.
+1049	O filme estreia três meses depois, com outra atriz.
+1050	Os advogados do estúdio desfazem o processo em dois dias.
+1051	volta ao trabalho na segunda-feira seguinte.
+1052	. O estúdio publica um comunicado sobre «uma tragédia acidental» e o caso morre ali.
+1053	. Na estreia do filme,
+1054	sorri para os fotógrafos.
+1055	O estúdio fica com o seu acidente. O processo vai para o arquivo.
+1056	Morte no plateau:
+1057	em choque.
+1058	confessou ter provocado a queda de
+1059	. O Detetive Eli Mercer descobriu a verdade num fotograma dos copiões do dia.
+1060	pela morte da estrela
+1061	Estúdio recusa comentar.
+1062	Advogados do estúdio vencem em tribunal.
+1063	O caso da morte de
+1064	termina sem condenação.
+1065	Estúdio fala em acidente.
+1066	. O estúdio mantém a versão do acidente.
+1067	: foi um acidente
+1068	Polícia arquiva o caso.
+1069	A morte de
+1070	foi oficialmente considerada um acidente de trabalho.
+1071	O filme estreou. Fui ver. Na cena do terraço cortaram tudo o que vinha depois do take 3.
+1072	Ainda vejo os copiões quando fecho os olhos. Ao fundo do plano há sempre alguém que eu não quis ver.
+1073	O estúdio deu-lhe um funeral com orquestra. Ninguém lá chorou de verdade.
+1074	Onde estava
+1075	Está bem, menti sobre isso. Mas não fiz o que pensa.
+1076	Dc
+1077	Mansão
+1078	no vinho do Porto
+1079	O cálice de Porto de
+1080	. No fundo, um resíduo esbranquiçado. Cheira a amêndoas amargas.
+1081	no café
+1082	A chávena de café de
+1083	, meio cheia. O café tem um travo amargo que não é de café.
+1084	· herdeir
+1085	Segunda mulher de
+1086	· ex-corista
+1087	Médico da família
+1088	Mordomo da
+1089	magnata do petróleo
+1090	dono de uma cadeia de cinemas
+1091	No salão, com todos
+1092	No terraço, a fumar
+1093	À mesa
+1094	Ao piano, no salão
+1095	No escritório, ao telefone
+1096	A servir o aperitivo
+1097	A servir o
+1098	Junto ao aparador
+1099	Tinha fechado a porta do terraço à chave às oito, por causa da chuva.
+1100	Contradição às
+1101	diz que estava «
+1102	» às
+1103	. É impossível:
+1104	. Onde estava, então, quando o veneno foi posto no copo?
+1105	, sala de jantar
+1106	Mesa das declarações
+1107	Cruza o que cada pessoa disse sobre onde estava. Uma das declarações é impossível. Clica nela.
+1108	(mordomo)
+1109	caiu da cadeira à cabeceira da mesa às
+1110	, a agarrar o peito. O guardanapo ainda tem marcas de unhas.
+1111	Cálice de Porto
+1112	Chávena de café
+1113	Copo
+1114	Cartões de lugar
+1115	À direita de
+1116	. À esquerda:
+1117	. Em frente:
+1118	. Todos ao alcance do copo.
+1119	Cartões
+1120	, biblioteca
+1121	Rascunho de um novo testamento
+1122	Por assinar, com data de amanhã:
+1123	é deserdad
+1124	«pelo jogo e pelas dívidas».
+1125	deixa de herdar. Anexo, um pedido de divórcio.
+1126	Por assinar: a parte destinada ao
+1127	é anulada. Uma nota: «Receitas falsas. Falar com o colégio de médicos.»
+1128	Livro de cheques
+1129	Cheques recentes: 2 000 $ a
+1130	(«última vez»), 500 $ a
+1131	(«vestidos»), 300 $ ao
+1132	(«consultas»).
+1133	Envenenamento por
+1134	Veneno
+1135	, administrado
+1136	Quando foi envenenado?
+1137	Pela dose e pelo efeito, o veneno entrou no copo pouco antes das
+1138	. Quem lá pôs o veneno estava perto do copo por volta das
+1139	Hora do envenenamento
+1140	O veneno foi posto por volta das
+1141	era de qualidade farmacêutica. Puro. Não se compra na drogaria da esquina.
+1142	Tinha um recibo de uma casa de penhores no bolso do colete: um relógio de ouro empenhado por alguém da família.
+1143	Tinha um bilhete no bolso: «Sei o que fazes às quintas. Amanhã falo com o advogado.»
+1144	Veneno de qualidade farmacêutica.
+1145	Recibo de penhores de um relógio de família.
+1146	Bilhete: «Sei o que fazes às quintas.»
+1147	em Westwood
+1148	Talões perdedores do hipódromo de Santa Anita: mais de 8 000 $ desde o verão.
+1149	Fotografia do terraço
+1150	Uma fotografia tirada pelo fotógrafo da festa às
+1151	no terraço, de cigarro na mão.
+1152	O fotógrafo da festa tirou fotografias no terraço às
+1153	não aparece em nenhuma.
+1154	Frasco escondido
+1155	No fundo de uma caixa de charutos: um frasco pequeno, vazio, que cheira a
+1156	Suite de
+1157	no Hotel Ambassador
+1158	Chave do quarto 7 do Motel Palm Court. Um bilhete: «Até quinta. — R.»
+1159	Partitura com dedicatória
+1160	Uma partitura assinada pelos convidados: «A
+1161	, que tocou para nós às
+1162	Partitura por abrir
+1163	A partitura que
+1164	diz ter tocado às
+1165	ainda tem as páginas por cortar.
+1166	Pó num frasco de perfume
+1167	Um frasco de perfume vazio, lavado à pressa. No fundo, um resíduo branco que não é perfume.
+1168	Farmácia e consultório
+1169	Receitas em branco assinadas
+1170	Um maço de receitas de morfina já assinadas, com os nomes dos doentes em branco.
+1171	Registo da telefonista
+1172	A telefonista confirma: chamada do escritório da mansão para o hospital às
+1173	, oito minutos.
+1174	Nenhuma chamada saiu da mansão entre as
+1175	Livro de venenos
+1176	No armário dos venenos falta um frasco de
+1177	. A saída não está no registo.
+1178	Trinta anos ao serviço desta casa, detetive. Nunca vi nada assim.
+1179	O jantar
+1180	Conte-me o jantar desde o princípio.
+1181	Aperitivo no salão às
+1182	. Às
+1183	servi o
+1184	o patrão caiu.
+1185	Quem tocou no copo
+1186	Alguém se aproximou do copo do patrão?
+1187	Não reparei, detetive. Estava ocupado.
+1188	estava junto ao aparador quando eu voltei da copa. Sozinh
+1189	. Não quis acreditar no que isso podia querer dizer.
+1190	A família
+1191	Como era a família com o patrão?
+1192	O patrão ia mudar o testamento amanhã. Toda a gente sabia, menos quem não queria saber.
+1193	às
+1194	, quando o
+1195	foi servido
+1196	Não estou de luto, se é o que quer saber. Mas também não o matei.
+1197	Era meu pai. Detestava-me. Eu devia-lhe dinheiro e ele fazia questão que eu nunca o esquecesse.
+1198	Dávamo-nos bem. Era um pai exigente, só isso.
+1199	Ia deserdar-me amanhã. Tudo por causa de umas dívidas de jogo. Mas eu não...
+1200	No terraço, a fumar.
+1201	Dívidas
+1202	Tem dívidas, não tem?
+1203	Nenhumas que lhe digam respeito.
+1204	Oito mil dólares em Santa Anita. O meu pai ia pagar. Depois mudou de ideias.
+1205	Detetive. Toda a gente pensa que casei com ele pelo dinheiro. Não é crime.
+1206	Era meu marido. Não havia amor, mas havia respeito. Ele sabia o que eu era quando casou comigo.
+1207	Amávamo-nos muito.
+1208	Ia pedir o divórcio. Descobriu as minhas quintas-feiras. Ficaria sem nada.
+1209	Ao piano, no salão. Toquei para os convidados.
+1210	As quintas-feiras
+1211	Em casa, com o meu marido.
+1212	Tenho uma pessoa. Um pianista. É a única coisa bonita que tenho nesta casa.
+1213	Fiz tudo o que pude para o salvar, detetive. Era tarde demais.
+1214	Médico dele há quinze anos. Um homem difícil, mas pagava bem.
+1215	Era meu doente e meu amigo.
+1216	Descobriu as receitas. Ia falar com o colégio de médicos. Perdia a licença, tudo.
+1217	No escritório, ao telefone com o hospital.
+1218	Venenos
+1219	Tem
+1220	no consultório?
+1221	Como qualquer médico. Bem guardado e registado.
+1222	Falta um frasco. Não sei quando desapareceu. Juro que não sei.
+1223	O advogado da família
+1224	O advogado da família, um homem pequeno de óculos redondos, espera-te no carro.
+1225	Advogado
+1226	«O meu cliente tinha marcado comigo para amanhã às nove. Ia mudar o testamento. Não me disse a favor de quem, mas disse contra quem.»
+1227	«Disse: "Há uma pessoa nesta casa que me quer morto, e tem razão para isso."»
+1228	Um Jantar na
+1229	O Último Brinde
+1230	Amêndoas Amargas
+1231	O Testamento de Amanhã
+1232	, Hancock Park.
+1233	. O mordomo enche os copos com a mão firme de trinta anos de serviço.
+1234	Alguém sorri a
+1235	do outro lado da mesa. Alguém diz «à sua saúde».
+1236	, a cadeira à cabeceira cai para trás.
+1237	Nas famílias ricas ninguém se mata por dinheiro. Mata-se por aquilo que o dinheiro deixa de comprar.
+1238	, morreu à mesa do jantar na própria mansão, diante da família. O médico assinou ataque cardíaco. O laboratório diz veneno.
+1239	Casas destas têm mais segredos do que quartos.
+1240	O mordomo viu tudo. Os mordomos veem sempre tudo.
+1241	Imagina crescer numa casa onde o teu pai mede o amor em cheques.
+1242	Quatro pessoas à mesa, uma delas mentiu sobre onde estava. Quem?
+1243	confessa diante do advogado da família.
+1244	Os advogados da família compram o melhor júri que o dinheiro pode pagar.
+1245	herda o que tinha a herdar.
+1246	. A família fecha-se sobre si mesma e o caso morre à porta da mansão.
+1247	. No funeral,
+1248	recebe os pêsames com uma dignidade impecável.
+1249	O certificado de óbito fica como estava: ataque cardíaco.
+1250	Veneno na
+1251	Morte do magnata foi homicídio.
+1252	confessou ter envenenado
+1253	durante o jantar de família. O Detetive Eli Mercer desmontou as declarações dos convivas.
+1254	pelo envenenamento
+1255	Família recusa comentar.
+1256	Caso da mansão sem culpado.
+1257	Polícia volta à estaca zero.
+1258	no caso da
+1259	morreu de ataque cardíaco
+1260	Polícia encerra investigação.
+1261	foi encerrado.
+1262	No dia seguinte, a família reuniu-se para ler o testamento antigo. Ninguém brindou.
+1263	Às vezes ainda sinto o cheiro a amêndoas. Lembra-me que nem todos os venenos estão nos copos.
+1264	A mansão foi vendida no ano seguinte. Os novos donos mudaram a mesa de sítio.
+1265	Biblioteca Central
+1266	Rua 5, Downtown
+1267	Entre mil vozes que não falam\ndormem as palavras de quem partiu.\nAmanhã juntarei mais uma\nà estante do silêncio.
+1268	Union Station
+1269	Alameda St., Downtown
+1270	Onde os relógios mandam e ninguém fica,\nonde se chega e se parte sem nome,\no último comboio da noite\nlevará mais um passageiro.
+1271	Igreja da Praça Velha
+1272	Main St., Downtown
+1273	Os sinos contam as horas a quem reza,\nmas não contam os pecados de quem ouve.\nSob a torre mais velha da cidade\nalguém se confessa pela última vez.
+1274	Cinema Orpheum
+1275	Broadway, Downtown
+1276	Sentados no escuro, todos sonham acordados\ncom rostos maiores do que a vida.\nQuando a luz voltar à sala,\num dos sonhadores não acorda.
+1277	Cais de Santa Monica
+1278	Onde a cidade acaba e o mar começa,\nas luzes da roda giram sem parar.\nEntre as tábuas e a água negra\nespera-me o próximo verso.
+1279	Pf
+1280	Lv
+1281	Jn
+1282	professora de piano
+1283	bibliotecária
+1284	jurada de um prémio de poesia
+1285	Professor de literatura
+1286	· edita poesia
+1287	Jornalista do crime · recebe as cartas do Poeta
+1288	do parque
+1289	foi estrangulada com um cordão fino. Tem as mãos cruzadas sobre o peito, arrumadas por alguém com tempo e cuidado.
+1290	O poema
+1291	Dobrado entre as mãos da vítima, escrito à máquina: «
+1292	» Assinado: «O Poeta».
+1293	Papel
+1294	Defeito da máquina de escrever
+1295	No poema, a letra «e» sai sempre meio milímetro acima das outras. Uma máquina de escrever com um tipo torto. Isso identifica-a.
+1296	Lupa
+1297	Lista do júri de 1946
+1298	Na mala da vítima: a lista do júri do Prémio de Poesia de Los Angeles de 1946.
+1299	estava nela. Riscados a lápis, dois nomes de jurados que morreram este ano.
+1300	Estrangulamento com um cordão de seda, puxado por trás. O assassino é paciente: esperou que ela deixasse de lutar e depois arrumou-a.
+1301	Cordão de seda
+1302	Estrangulada com um cordão de seda, por trás.
+1303	Por volta das
+1304	É o mesmo assassino?
+1305	As duas mortes deste ano têm o mesmo nó no cordão. Um nó de marinheiro. Ou de alguém que aprendeu com um.
+1306	O nó
+1307	O mesmo nó de marinheiro nas três mortes.
+1308	Sala de mapas da esquadra
+1309	O próximo verso
+1310	O Poeta anuncia sempre o sítio seguinte. Lê o poema e escolhe onde mandar as patrulhas esta noite. Só tens uma oportunidade.
+1311	flag:open_next1
+1312	Luva com fio de seda
+1313	Caiu na fuga: uma luva de lã com um pedaço de cordão de seda enrolado nos dedos.
+1314	Cordão de seda abandonado
+1315	Caído junto à porta: um cordão de seda com o mesmo nó de marinheiro. Desta vez ninguém morreu.
+1316	flag:open_next2
+1317	Segunda vítima
+1318	Chegaste tarde. Outra jurada do prémio de 1946, estrangulada com o mesmo nó. Tem um poema novo entre as mãos.
+1319	Testemunha da rua
+1320	Um ardina viu
+1321	afastar-se a pé às
+1322	, com
+1323	Amostra da máquina de escrever
+1324	Uma folha batida na máquina daqui. A letra «e» sai meio milímetro acima das outras. É a máquina do poema.
+1325	Uma folha batida na máquina daqui. Todas as letras estão alinhadas. Não é a máquina do poema.
+1326	Gabinete de
+1327	, universidade
+1328	flag:open_Pf
+1329	Manuscrito recusado
+1330	Um livro de poemas de
+1331	, recusado pelo júri de 1946. Na margem, a letra de
+1332	: «Pretensioso e vazio.»
+1333	Livro de presenças
+1334	deu uma aula noturna até às
+1335	. Trinta alunos assinaram.
+1336	A aula noturna de
+1337	foi cancelada nessa noite «por doença».
+1338	Livraria
+1339	flag:open_Lv
+1340	Livro de vendas
+1341	Desde que os jornais falam do Poeta, as vendas de poesia triplicaram. Na montra, um cartaz: «Leia o que o Poeta lê!»
+1342	Recibo do jantar
+1343	jantou com a editora no Musso's até às
+1344	. Há recibo.
+1345	O jantar com a editora acabou às
+1346	pagou e saiu.
+1347	Redação do Los Angeles Crónica
+1348	Recortes de primeira página
+1349	Seis primeiras páginas sobre o Poeta, todas assinadas por
+1350	. Um aumento de ordenado agrafado à última.
+1351	Registo da redação
+1352	fechou a edição da noite às
+1353	. O chefe de redação confirma.
+1354	saiu da redação às
+1355	, «para seguir uma pista».
+1356	A máquina de escrever
+1357	Que máquina de escrever usa?
+1358	Uma Underwood como toda a gente. Porquê?
+1359	Está bem. A letra «e» está torta há anos. Mas qualquer pessoa podia usar a minha máquina!
+1360	Uma Underwood. Pode experimentá-la, se quiser.
+1361	ontem às
+1362	Fui eu que a encontrei, detetive. Arrumadinha, como se estivesse a dormir.
+1363	O que viu
+1364	Viu alguém no parque esta noite?
+1365	Só o costume. Namorados, bêbedos. Ninguém de especial.
+1366	Vi alguém a sentar-se no banco junto ao lago, muito direito, a escrever num caderno. Pensei que era um poeta. Riu-me sozinho.
+1367	A vítima
+1368	Conhecia a senhora?
+1369	Vinha dar de comer aos patos aos domingos. Senhora educada.
+1370	Leu o poema? É mau, detetive. Métrica coxa. Se eu fosse assassino, escrevia melhor.
+1371	Fazia parte do júri que me recusou o livro. Disse coisas cruéis. Mas eu não mato críticos, ignoro-os.
+1372	Mal a conhecia.
+1373	Chamou-me pretensioso diante de toda a gente. Dez anos de trabalho, deitados ao lixo por três pessoas.
+1374	A dar uma aula noturna.
+1375	Sabe dar um nó de marinheiro?
+1376	Fui oficial da Marinha na guerra, como metade desta cidade.
+1377	Vendo livros, detetive. Às vezes vendo os maus também, que remédio.
+1378	Comprava cá livros. Era do júri do prémio. Uma senhora exigente.
+1379	Nunca a vi na vida.
+1380	Ela recusou os livros que eu editava, ano após ano. Arruinou-me uma colecção inteira.
+1381	A jantar com uma editora.
+1382	O Poeta
+1383	Quem lucra com o Poeta?
+1384	Os jornais, sobretudo.
+1385	vive disso. E eu, confesso. Nunca vendi tanta poesia.
+1386	Mercer! Finalmente. Dá-me uma frase para a primeira página?
+1387	Entrevistei-a uma vez, sobre o prémio. Depois disso, só a vi morta.
+1388	Nunca falei com ela.
+1389	Entrevistei-a. Ela riu-se dos meus versos. Sim, também escrevo. Escrevia.
+1390	Na redação, a fechar a edição.
+1391	As cartas
+1392	O Poeta escreve-lhe a si. Porquê?
+1393	Porque sou o melhor repórter da cidade.
+1394	As cartas chegavam sempre antes de os corpos aparecerem. Eu sabia sempre primeiro. Não percebe? Eu fazia a notícia.
+1395	Recebi uma carta ontem. Ainda não a publiquei. Diz que o próximo é «onde menos esperam». Fale com
+1396	: o estilo é dele, pretensioso.
+1397	Versos para os Mortos
+1398	A Estante do Silêncio
+1399	O Próximo Verso
+1400	Echo Park,
+1401	. A água do lago está parada como vidro preto.
+1402	Num banco, alguém escreve num caderno com uma caligrafia cuidada. Pára. Risca uma palavra. Escreve outra.
+1403	Depois levanta-se, alisa o casaco, e caminha na direção de uma senhora que dá de comer aos patos.
+1404	Os poetas dizem que escrevem para não morrer. Este escreve para que os outros morram.
+1405	Terceira mulher este ano, Mercer. Sempre com um poema. Os jornais chamam-lhe «o Poeta», e a cidade tem medo de sair à noite.
+1406	Odeio poesia desde o liceu. Agora tenho uma razão.
+1407	Quem escreve tão bem para matar tem de querer que alguém o leia.
+1408	O jornalista vai adorar isto. É sempre bom para as vendas.
+1409	A cidade quer um nome antes de sair o próximo poema. Quem é o Poeta?
+1410	pede papel e uma caneta na cela. Escreve um último poema e entrega-o ao guarda. É sobre ti.
+1411	O júri acha as provas «literárias demais».
+1412	sai em liberdade. Um mês depois, chega um poema à tua secretária.
+1413	. Nessa mesma noite, aparece outro poema.
+1414	. Os poemas param durante um ano. Depois recomeçam.
+1415	O processo do Poeta fica aberto em cima de uma secretária que ninguém quer.
+1416	Apanhado o «Poeta»
+1417	de três mortes.
+1418	O Detetive Eli Mercer identificou o assassino que deixava poemas junto das vítimas. A prova decisiva: uma letra «e» torta numa máquina de escrever.
+1419	como «o Poeta»
+1420	Cidade respira de alívio.
+1421	das mortes do Poeta.
+1422	«O Poeta» continua à solta?
+1423	A acusação não convenceu o júri.
+1424	Medo regressa às ruas.
+1425	O Poeta continua à solta
+1426	Polícia sem suspeitos.
+1427	A investigação aos crimes do Poeta continua sem resultados.
+1428	Guardei o último poema numa gaveta. Não o li. Há palavras que não merecem leitor.
+1429	Os poemas voltaram. Leio-os todos. Procuro a letra «e».
+1430	A cidade esqueceu o Poeta depressa. Eu não.
+1431	Gd
+1432	Dp
+1433	Pacific Blindados
+1434	Transportes Fortaleza
+1435	Western Valores
+1436	Guarda da carrinha · ferido no assalto
+1437	Motorista da carrinha
+1438	Ex-presidiário · especialista em carrinhas
+1439	Obras da Temple St.
+1440	lama vermelha
+1441	martelos pneumáticos
+1442	Passagem de nível de Taylor Yard
+1443	cinza de carvão
+1444	apito de comboio
+1445	Docas de San Pedro
+1446	cheiro a peixe
+1447	sirenes de nevoeiro
+1448	Figueroa com a Rua 9
+1449	Porta traseira aberta à chave
+1450	A porta traseira da carrinha não foi forçada. Foi aberta com a chave, por fora. Só três pessoas tinham essa chave.
+1451	Porta
+1452	Rádio desligado
+1453	O interruptor do rádio da carrinha está na posição «desligado». Alguém lá dentro o desligou dois minutos antes do assalto: a central perdeu o contacto às
+1454	Cabine
+1455	Rasto do carro de fuga
+1456	Marcas de pneus na berma, cheias de
+1457	. O carro de fuga veio de um sítio com
+1458	Berma
+1459	Hospital Geral, quarto 214
+1460	Contas do hospital da mulher
+1461	A mulher de
+1462	está internada há meses. Uma conta de 3 400 $ por pagar, com «último aviso» carimbado.
+1463	Relatório do ferimento
+1464	A bala entrou pelas costas, de cima para baixo. Ninguém dispara assim contra um cúmplice.
+1465	A bala atravessou-lhe o ombro de raspão, de frente, à queima-roupa. Um tiro de quem não quer matar.
+1466	Casa de
+1467	Talões do hipódromo de Hollywood Park: 6 000 $ perdidos num mês. Um bilhete: «Paga até sábado ou pagas de outra maneira.»
+1468	Relatório médico
+1469	tem um galo do tamanho de um ovo na nuca. O médico diz que esteve inconsciente pelo menos dez minutos.
+1470	O «golpe na cabeça» de
+1471	é um arranhão. O médico não encontrou sinais de que tenha perdido os sentidos.
+1472	Escritório da
+1473	Rua 7, Downtown
+1474	flag:open_Dp
+1475	ia despedir
+1476	no fim do mês. «Reestruturação.» Depois de onze anos.
+1477	Registo de rotas
+1478	A rota da carrinha foi alterada às 8h pelo chefe de turno, não por
+1479	só a passou à equipa.
+1480	A rota da carrinha foi alterada às 8h05 pela própria
+1481	, «por causa de obras». Não havia obras.
+1482	Recibo de um chaveiro
+1483	No porta-luvas do carro de fuga: «Cópia de chave de segurança — encomendada por
+1484	.» Pago em dinheiro.
+1485	flag:open_car
+1486	Confissão de
+1487	Algemado,
+1488	fala: «A chave e a rota vieram de dentro. De
+1489	. Eu só puxei o gatilho.»
+1490	Saco de lona
+1491	Um saco da
+1492	, rasgado. Lá dentro, 2 000 $ em notas que os assaltantes deixaram cair na pressa.
+1493	Central da
+1494	Mapa da fuga
+1495	O carro de fuga foi trocado por outro algures. Os sinais:
+1496	nos pneus e, segundo uma testemunha,
+1497	ao fundo. Onde foi?
+1498	flag:open_scene2
+1499	a carrinha
+1500	, durante o assalto
+1501	Como andam as suas finanças?
+1502	Não queria que soubesse.
+1503	Ainda me dói tudo, detetive. Pergunte depressa.
+1504	A minha mulher está doente. As contas do hospital estão a comer-me vivo. Mas nunca roubei um tostão.
+1505	Vamos indo. Como toda a gente.
+1506	As contas do hospital... Eles prometeram que ninguém se magoava a sério.
+1507	O tiro
+1508	Como foi ferido?
+1509	Saí da carrinha, um deles disparou. Caí e fiquei quieto.
+1510	Foi combinado. Um tiro de raspão, para parecer verdade. Eu não sabia que eram tão nervosos.
+1511	A chave
+1512	Quem tinha a chave da porta traseira?
+1513	Eu, o
+1514	e a central. Ninguém mais.
+1515	Levei uma pancada na cabeça, chefe. Não vi nada.
+1516	Devo dinheiro nas corridas. Não é segredo. Mas não sou ladrão.
+1517	As minhas contas estão em ordem.
+1518	Seis mil dólares nas corridas. Os tipos a quem devo não esperam.
+1519	O golpe
+1520	O que aconteceu na cabine?
+1521	Abriram-me a porta e levei com uma coronha. Acordei no chão.
+1522	Não desmaiei. Fingi. Disseram-me para fingir.
+1523	O rádio
+1524	Porque estava o rádio desligado?
+1525	Desligado? Não sei. Talvez com a pancada.
+1526	Desliguei-o eu. Dois minutos antes. Era o sinal.
+1527	Onze anos nesta empresa e é assim que me tratam? Com um interrogatório?
+1528	Vou ser despedid
+1529	no fim do mês. Toda a gente sabe. Estou furios
+1530	, mas não sou criminos
+1531	Está tudo bem com o meu emprego.
+1532	Onze anos e iam pôr-me na rua. Achei que me deviam alguma coisa.
+1533	A rota
+1534	Quem mudou a rota da carrinha esta manhã?
+1535	O chefe de turno. Eu só passei a mensagem.
+1536	Fui eu. Disseram-me que ninguém se magoava. Que a seguradora pagava tudo.
+1537	Ex-presidiários
+1538	Conhece um homem chamado
+1539	Toda a gente no ramo o conhece. Fez três carrinhas antes da guerra. Dizem que foi visto perto de
+1540	Notas marcadas
+1541	Um banco de Boyle Heights telefona para a esquadra.
+1542	Gerente do banco
+1543	«Um cliente depositou notas da
+1544	. As séries batem certo com as do assalto. Deixou uma morada perto de
+1545	O Golpe da Figueroa
+1546	Dólares
+1547	Ajuda de Dentro
+1548	Figueroa com a Rua 9,
+1549	. Dentro da cabine da carrinha, alguém olha para o relógio e desliga o rádio.
+1550	Dois minutos depois, um sedan preto atravessa-se na estrada.
+1551	Três tiros.
+1552	dólares em sacos de lona. Quarenta segundos ao todo.
+1553	Ninguém assalta uma carrinha blindada sem saber onde ela vai estar. O assalto começou dentro da empresa, muito antes dos tiros.
+1554	Assaltaram uma carrinha da
+1555	na Figueroa.
+1556	dólares. O guarda levou um tiro.
+1557	Quarenta segundos para levar oitenta mil dólares. Isto foi ensaiado.
+1558	Ninguém conhece a rota de uma carrinha a não ser quem lá trabalha.
+1559	Se eu tivesse oitenta mil dólares, estava em Havana amanhã.
+1560	Três pessoas tinham a chave e a rota. Quem vendeu a carrinha?
+1561	assina a confissão. Recebeu dez mil dólares pela chave e pela rota. O resto do dinheiro nunca aparece.
+1562	O advogado de
+1563	chama ao processo «um palpite». O júri concorda.
+1564	na mesma.
+1565	muda-se para San Diego um mês depois e compra uma casa a pronto.
+1566	O assalto da Figueroa fica sem culpado. A seguradora paga e esquece.
+1567	Assalto à
+1568	: o homem de dentro
+1569	confessa ter vendido a rota.
+1570	O Detetive Eli Mercer descobriu que o assalto de
+1571	dólares foi planeado dentro da própria empresa.
+1572	pelo assalto
+1573	Dinheiro continua desaparecido.
+1574	de cumplicidade no assalto à
+1575	Assalto sem culpados.
+1576	O júri considerou as provas insuficientes.
+1577	Polícia sem pistas.
+1578	no caso do assalto.
+1579	Assalto da Figueroa por resolver
+1580	dólares desaparecidos.
+1581	A polícia arquivou o processo.
+1582	O dinheiro nunca apareceu. Às vezes penso em quem estará a gastá-lo, e onde.
+1583	Prendi a pessoa errada. O dinheiro continua lá fora, a comprar silêncio.
+1584	A seguradora pagou. Nesta cidade, até o crime tem seguro.
+1585	Ow
+1586	Ex
+1587	Mb
+1588	Armazém Halvorsen & Filhos
+1589	Fábrica de Móveis Calloway
+1590	Armazém de Tecidos Delgado
+1591	temporizador de cigarro e fósforos
+1592	Os restos de um cigarro atado a um maço de fósforos. Um temporizador: dá meia hora para estar longe dali, com álibi.
+1593	O chão está queimado em forma de rio: querosene derramado de propósito, de uma lata das que se usam nas lâmpadas da oficina.
+1594	cocktail de gasolina
+1595	Vidro grosso de uma garrafa de whisky, com um pedaço de pano queimado no gargalo. Alguém atirou uma garrafa com gasolina pela janela.
+1596	Dono do
+1597	Ex-capataz · despedido há um mês
+1598	Cobrador de «proteção» do bairro
+1599	Chefe dos bombeiros
+1600	Bancada da oficina
+1601	Escritório
+1602	Janela das traseiras
+1603	Origem do fogo
+1604	O fogo começou em «
+1605	Rua Mission, Boyle Heights
+1606	Padrão do fogo
+1607	O chefe dos bombeiros mostra-te as marcas em V nas paredes. Todas apontam para um sítio. Onde começou o fogo?
+1608	O guarda-noturno,
+1609	, morreu junto à porta das traseiras. Tentou sair.
+1610	Cadeado por fora
+1611	A porta das traseiras estava fechada com um cadeado novo, pelo lado de fora. O guarda não tinha por onde sair.
+1612	Relógio de ponto do guarda
+1613	A última ronda do guarda foi marcada às
+1614	. O alarme de incêndio tocou às
+1615	Relógio
+1616	Apólice de seguro reforçada
+1617	Há um mês, o seguro contra incêndios do armazém passou de 40 000 $ para 120 000 $. A fábrica estava falida.
+1618	Fotografia do jantar
+1619	num jantar de beneficência no Biltmore, à 1h45. Ficou até às 3h.
+1620	Recibo do Biltmore
+1621	pagou a conta do jantar à 1h15 e saiu. Chegou a casa às 3h, segundo o porteiro do prédio.
+1622	Numa gaveta da secretária: maços de fósforos com cigarros atados por elásticos. Prontos a usar.
+1623	Quarto alugado de
+1624	flag:open_Ex
+1625	«Dispensado por embriaguez no local de trabalho.» Assinada por
+1626	trabalhou lá doze anos.
+1627	Registo da esquadra
+1628	passou a noite na cela de Hollenbeck, por embriaguez. Entrou à meia-noite, saiu às 7h.
+1629	Registo do bar
+1630	O dono do bar da esquina expulsou
+1631	à 1h30 «a falar sozinho do patrão».
+1632	Lata de querosene vazia
+1633	Debaixo da cama: uma lata de querosene das lâmpadas da oficina, vazia, com o carimbo do armazém.
+1634	Bar Trevo
+1635	flag:open_Mb
+1636	Livro da «proteção»
+1637	Um caderno com nomes de lojas e quantias semanais. «
+1638	— recusou pagar — 3 avisos.»
+1639	Lista de póquer
+1640	jogou póquer nas traseiras do bar até às 4h. Cinco jogadores confirmam.
+1641	saiu do jogo de póquer à 1h40 «para tratar de um assunto» e voltou às 2h50.
+1642	Garrafas e panos
+1643	Nas traseiras do bar: garrafas de whisky vazias e uma pilha de panos cortados à medida do gargalo. Cheiram a gasolina.
+1644	Trinta anos a apagar fogos, detetive. Este não começou sozinho.
+1645	O fogo
+1646	Foi fogo posto?
+1647	Sem dúvida. As marcas em V não mentem. Mostro-lhe onde começou, se quiser.
+1648	O cadeado
+1649	Quem pôs o cadeado na porta?
+1650	Um cadeado novo, comprado esta semana. O guarda não tinha a chave. Quem o pôs queria que ninguém saísse.
+1651	A vizinhança
+1652	Ouviu falar de ameaças?
+1653	Não me meto nisso.
+1654	Os comerciantes da rua pagam «proteção» a um tipo do Bar Trevo,
+1655	. Quem não paga, arde. Não fui eu que lhe disse.
+1656	o armazém
+1657	entre a 1h30 e as 2h30 desta madrugada
+1658	Perdi tudo esta noite, detetive. Trinta anos de trabalho.
+1659	A fábrica estava a afundar, é verdade. Reforcei o seguro porque tinha medo de perder tudo. Isso é prudência.
+1660	Os negócios iam bem.
+1661	Estava falido. O seguro era a única saída. O guarda não devia estar lá dentro!
+1662	Num jantar de beneficência no Biltmore.
+1663	O guarda
+1664	Porque é que
+1665	estava de serviço esta noite?
+1666	É o trabalho dele. Todas as noites.
+1667	Disse-lhe para ir para casa mais cedo. Ele não foi. Ele nunca ia.
+1668	Sei o que pensa. O bêbedo despedido. É fácil, não é?
+1669	Fui despedido por beber no trabalho. Merecia, talvez. Mas doze anos...
+1670	Saí a bem. Queria mudar de vida.
+1671	Ele pôs-me na rua como um cão. Fui lá dizer-lhe isso. Com uma lata de querosene, sim. Mas não sabia do guarda!
+1672	Preso, na cela de Hollenbeck, por embriaguez.
+1673	A chave do armazém
+1674	Ainda tem chaves do armazém?
+1675	Devolvi-as quando saí.
+1676	Fiquei com uma cópia. Toda a gente sabia.
+1677	nunca mudou as fechaduras.
+1678	Sou comerciante, detetive. Vendo tranquilidade.
+1679	O dono não quis pagar a proteção. Mandei-lhe uns avisos. É o negócio.
+1680	Nunca ouvi falar desse armazém.
+1681	Recusou três vezes. Na rua toda a gente olha. Se um não paga, nenhum paga.
+1682	A jogar póquer nas traseiras do bar.
+1683	Concorrência
+1684	Quem mais queria ver aquilo arder?
+1685	Pergunte ao dono. Ouvi dizer que reforçou o seguro há um mês. Engraçado, não é?
+1686	O contabilista
+1687	O contabilista do
+1688	aparece na esquadra com uma pasta debaixo do braço e ar de quem não dormiu.
+1689	Contabilista
+1690	«A fábrica estava falida há seis meses.
+1691	sabia. Pediu-me para não dizer nada à seguradora.»
+1692	Cinzas na Rua Mission
+1693	O Último Turno de
+1694	Cadeado por Fora
+1695	Fogo às
+1696	. O guarda
+1697	marca a ronda no relógio de ponto e acende o cachimbo.
+1698	Lá fora, alguém fecha um cadeado novo na porta das traseiras. O clique perde-se no barulho dos comboios.
+1699	, o céu de Boyle Heights fica cor de laranja.
+1700	O fogo apaga tudo, dizem. Mentira. O fogo escreve. Basta saber ler as paredes.
+1701	Ardeu o
+1702	, em Boyle Heights. O guarda-noturno,
+1703	, morreu lá dentro.
+1704	Um seguro triplicado e um incêndio no mês seguinte. Coincidências destas não existem.
+1705	O guarda tinha mulher e quatro filhos. Alguém vai pagar isto.
+1706	Nesta rua, quem não paga ao Trevo acaba sem montra. Ou sem loja.
+1707	O guarda morreu porque alguém fechou aquela porta. Quem?
+1708	Sem provas sólidas,
+1709	sai em liberdade. A viúva do guarda está na última fila do tribunal.
+1710	. A seguradora recusa pagar e o caso morre ali.
+1711	. No mês seguinte, outro armazém arde na mesma rua.
+1712	O fogo do armazém é arquivado como «causa indeterminada».
+1713	Fogo da Rua Mission:
+1714	Morte do guarda
+1715	foi homicídio.
+1716	confessou ter ateado o fogo que destruiu o
+1717	. O Detetive Eli Mercer seguiu as marcas do fogo até à origem.
+1718	pelo fogo
+1719	Viúva do guarda diz que «a justiça foi feita».
+1720	foi condenad
+1721	pelo incêndio do
+1722	Incêndio fica sem culpado.
+1723	Fogo da Rua Mission por resolver.
+1724	Fogo do armazém: causa indeterminada
+1725	Família do guarda sem respostas.
+1726	A investigação foi arquivada.
+1727	Fui ao funeral de
+1728	. Os quatro filhos estavam em fila, do mais alto ao mais baixo.
+1729	Há cheiros que não saem da roupa. O fumo é um deles. A culpa é outro.
+1730	Construíram um parque de estacionamento onde era o armazém. Ninguém lá estaciona à noite.
+1731	Ch
+1732	Sn
+1733	empregada de mesa
+1734	bordô
+1735	Packard
+1736	Cadillac
+1737	Lincoln
+1738	baixo e corpulento
+1739	muito alto, quase dois metros
+1740	magro e de estatura média
+1741	pequena e franzina
+1742	Industrial · dono de um
+1743	Motorista de
+1744	Mecânico de bairro
+1745	da esquina
+1746	Wilshire com a Western
+1747	, atropelad
+1748	na passadeira às
+1749	. O carro não travou.
+1750	Lasca de tinta
+1751	Uma lasca de tinta
+1752	, de boa qualidade, presa ao casaco da vítima. Tinta de carro de luxo.
+1753	Casaco
+1754	Vidro do farol direito
+1755	Pedaços de vidro de um farol, do lado direito. O vidro tem gravada a marca
+1756	Asfalto
+1757	Nem uma marca de pneus antes da passadeira. Quem conduzia não viu, ou não quis ver.
+1758	Impacto a uns cinquenta quilómetros por hora, do lado direito do carro. Morreu na hora, ou quase.
+1759	Impacto
+1760	Atingid
+1761	pelo lado direito do carro, a cerca de 50 km/h.
+1762	Altura do carro
+1763	O para-choques atingiu-
+1764	abaixo do joelho. É um carro alto e pesado. Um
+1765	, aposto.
+1766	Altura do para-choques
+1767	Carro alto e pesado, compatível com um
+1768	farol direito novo, ainda com a etiqueta da oficina
+1769	Dr. Harold Fenwick
+1770	Buick
+1771	para-choques intacto, farol original
+1772	Sra. Edith Ashby
+1773	risco antigo na porta, faróis intactos
+1774	Clube Atlético
+1775	farol esquerdo partido, ferrugem velha
+1776	: farol direito trocado ontem, tinta retocada no guarda-lamas. É o carro do atropelamento.
+1777	Oficina
+1778	Vermont Ave., Wilshire
+1779	flag:open_garage
+1780	Carros na oficina
+1781	Quatro carros entraram na oficina hoje de manhã. Um deles atropelou
+1782	. Qual?
+1783	Recibo da reparação
+1784	«Farol direito e retoque de tinta —
+1785	. Pago em dinheiro.» Quem trouxe o carro assinou só com uma inicial: «
+1786	Posição do banco do condutor
+1787	No
+1788	, o banco do condutor está
+1789	. O motorista oficial deixa-o sempre atrás.
+1790	flag:open_Ow
+1791	Carta do clube de campo
+1792	está nomeado para presidente do clube de campo. Um escândalo agora acabava com tudo.
+1793	Convite do clube
+1794	jantou no clube de campo até à meia-noite. Doze pessoas confirmam.
+1795	Recibo do clube
+1796	saiu do clube de campo às
+1797	, a conduzir
+1798	próprio, sem o motorista.
+1799	Quarto do motorista
+1800	flag:open_Ch
+1801	Carta de aviso
+1802	«Mais um atraso e está despedido.» Assinada por
+1803	tem três filhos.
+1804	Livro da garagem
+1805	entregou as chaves do
+1806	às 18h e passou a noite num casamento em Pasadena.
+1807	assinou a saída do
+1808	. Não há registo de entrega das chaves.
+1809	Clube de jazz Moonglow
+1810	flag:open_Sn
+1811	Multas por excesso de velocidade
+1812	Três multas em seis meses, todas pagas pelo pai. A última com a nota: «Mais uma e tiro-te o carro.»
+1813	Fotografia do clube
+1814	no Moonglow às
+1815	, ao balcão.
+1816	O fotógrafo do Moonglow só tirou fotografias até às
+1817	saiu pouco depois.
+1818	Vi tudo, detetive. Bem, quase tudo.
+1819	O carro
+1820	Que carro era?
+1821	Grande,
+1822	, com faróis redondos. Um carro de rico. Não parou.
+1823	Quem conduzia
+1824	Viu quem conduzia?
+1825	Estava escuro. Não vi a cara.
+1826	Vi a silhueta.
+1827	Para onde foi
+1828	Para onde foi o carro?
+1829	Virou para Hancock Park. Para onde vivem os ricos.
+1830	O meu advogado está a caminho, detetive. Tem cinco minutos.
+1831	Não conhecia a vítima. Lamento, claro. Mas o meu carro estava na garagem.
+1832	Não tenho nada a ver com isso.
+1833	Ia ser presidente do clube. Um acidente estúpido, e acabava tudo. Mandei arranjar o carro. Foi o que fiz.
+1834	No clube de campo, a jantar.
+1835	Quem conduz o carro
+1836	Quem conduz o
+1837	O meu motorista,
+1838	. E às vezes
+1839	, quando não devia.
+1840	Às vezes conduzo eu. Ontem conduzi eu.
+1841	Eu só conduzo, patrão. Não faço perguntas e não respondo a elas.
+1842	Não a conhecia. Eu só conduzo o carro do patrão quando ele manda.
+1843	Não sei nada disso.
+1844	Ia ser despedido. Peguei no carro para ir ver a minha namorada. Ela apareceu do nada na passadeira.
+1845	Num casamento em Pasadena. Entreguei as chaves às seis.
+1846	A oficina
+1847	Quem levou o carro à oficina?
+1848	Fui eu. Pensei que ninguém ia reparar num farol.
+1849	O patrão mandou-me levá-lo às sete da manhã. Disse para pagar em dinheiro e não dizer nada a ninguém.
+1850	O meu pai vai tratar disto. Ele trata sempre.
+1851	Nunca a vi. Juro.
+1852	Não sei de nada.
+1853	Tinha bebido. A música estava alta. Senti o barulho e entrei em pânico. O meu pai disse que tratava de tudo.
+1854	No Moonglow, com amigos.
+1855	Multas
+1856	Costuma conduzir depressa?
+1857	Nunca. Conduzo devagar.
+1858	Tenho umas multas, pronto. O meu pai paga-as. É para isso que serve um pai rico.
+1859	Um telefonema da Câmara
+1860	Quando voltas ao carro, o rádio pede-te para ligar ao capitão. Imediatamente.
+1861	«Mercer, liga-me um vereador a perguntar porque andas a incomodar
+1862	. Diz que é amigo do Presidente da Câmara.»
+1863	«Não te estou a mandar parar. Estou a dizer-te que, se avançares, é bom que tenhas razão.»
+1864	Um envelope espera-te no banco do carro, com o cartão de
+1865	: «Para as despesas do seu departamento. Esqueça este acidente.»
+1866	Um Farol a Menos
+1867	Sem Travar
+1868	Wilshire com a Western,
+1869	sai do turno e atravessa a passadeira com o casaco a apertar o pescoço.
+1870	Faróis redondos. Um motor grande. Música alta dentro do carro.
+1871	O carro não trava. Nem antes, nem depois.
+1872	Na Divisão de Trânsito aprende-se depressa: os carros não matam ninguém. Quem mata é quem foge.
+1873	, foi atropelad
+1874	na Wilshire com a Western. O carro fugiu.
+1875	Um carro de luxo, um farol partido e um advogado a caminho. Conheço esta história.
+1876	Os ricos não atropelam ninguém. Têm motoristas para isso.
+1877	Ela só queria chegar a casa depois do turno.
+1878	Sabemos de quem é o carro. Agora quero saber quem o conduzia.
+1879	desfaz o processo em meia hora.
+1880	sai pelo braço da família.
+1881	. A família
+1882	paga o funeral da vítima, por caridade, diz o jornal.
+1883	continua a passear por Hancock Park.
+1884	O processo é arquivado. O carro volta à garagem com um farol novo.
+1885	Atropelamento da Wilshire:
+1886	da família
+1887	O Detetive Eli Mercer, da Divisão de Trânsito, identificou o carro numa oficina de Vermont Avenue e o condutor pela posição do banco.
+1888	pelo atropelamento
+1889	Família da vítima pede mais.
+1890	pela morte de
+1891	Advogados vencem.
+1892	O tribunal absolveu
+1893	no caso do atropelamento de
+1894	Atropelamento sem culpado.
+1895	Atropelamento por resolver
+1896	continua sem responsável.
+1897	Passo todos os dias por aquela passadeira. Puseram lá um semáforo. Chegou tarde.
+1898	O dinheiro compra muita coisa nesta cidade. Hoje comprou-me a mim, ou quase.
+1899	Na esquina da Wilshire, o ardina ainda grita as manchetes. Nenhuma fala dela.
+1900	empregado de limpeza
+1901	empregada de limpeza
+1902	vizinho do lado
+1903	vizinha do lado
+1904	empregado de mesa
+1905	Armazém da Alameda
+1906	Hotel Rosslyn, quarto 30
+1907	Doca 9, San Pedro
+1908	Ferro-velho da Rua Mission
+1909	Penhores Ouro Fino
+1910	Envelope com 50 $
+1911	Escondido junto às coisas de
+1912	: um envelope com cinquenta dólares em notas novas. Quem dá dinheiro a uma testemunha?
+1913	Candeeiro fundido
+1914	Nota da patrulha: o candeeiro desta rua está fundido há uma semana. De noite, daqui não se vê nada a mais de dois metros.
+1915	Fotografia de
+1916	Caiu da carteira de
+1917	: uma fotografia de um casamento. Ao lado de
+1918	está
+1919	. São família.
+1920	Ainda bem.
+1921	Pois.
+1922	É como lhe digo.
+1923	Mais alguma coisa, detetive?
+1924	Fico contente por nos entendermos.
+1925	Já lhe disse o que sei.
+1926	Não tenho mais nada a dizer sobre isso.
+1927	Isto é um insulto.
+1928	Pense o que quiser. É a verdade.
+1929	Isso não prova nada, detetive.
+1930	E o que é que isso tem a ver comigo?
+1931	Está a agarrar-se a palhas.
+1932	Isso? Isso não quer dizer nada.
+1933	Agente de Patrulha
+1934	Detetive
+1935	Detetive de 1.ª Classe
+1936	Sargento-Detetive
+1937	Tenente
+1938	Infiltrado
+1939	Sr.
+1940	Sra.
+1941	Agenda de
+1942	Quase todas as páginas foram arrancadas. Na que resta: «
+1943	». Mais nada.
+1944	Cartão de
+1945	Um cartão de
+1946	. No verso, a lápis: «
+1947	— falar com
+1948	«Ainda te vais arrepender do que me fizeste.» Assinada por
+1949	. Datada de há duas semanas.
+1950	Cartão
+1951	flag:open_d
+1952	Tentativa de suborno de
+1953	tentou comprar-te com
+1954	$ para esqueceres o nome dele
+1955	. Apreendido como prova.
+1956	Papéis
+1957	Gaveta
+1958	flag:open_s
+1959	Noite de
+1960	Onde estava na
+1961	à noite, por volta das
+1962	Vida pessoal
+1963	Há alguma coisa em sua casa que eu não deva encontrar?
+1964	Nada. Pode procurar à vontade, detetive.
+1965	Isso... isso não é o que parece. Quero falar com um advogado.
+1966	Outras pessoas
+1967	Quem mais tinha contas a ajustar com
+1968	Fale com
+1969	, em
+1970	não se davam nada bem.
+1971	Não sei. Não me meto na vida dos outros.
+1972	Se quer um nome, vá falar com
+1973	. Pergunte-lhe pela vida que leva.
+1974	Escrevi-lhe uma carta há duas semanas, de que me arrependo. Foi só raiva.
+1975	Não lhe disse logo porque sabia bem como ia parecer.
+1976	Não estive onde disse. Estive no Motel Palm Court, com uma pessoa. O gerente pode confirmar. Seja discreto, por favor.
+1977	Não estive onde disse, pronto.
+1978	Era isso que eu estava a fazer nessa noite.
+1979	Não. Nunca vi isso.
+1980	...Já vi uma coisa assim. Nas mãos de
+1981	. Não queria meter ninguém em sarilhos.
+1982	Ninguém que eu saiba. Não me meta nisso.
+1983	Está bem. Fale com
+1984	. Mas não fui eu que lhe disse.
+1985	Ele
+1986	Ela
+1987	· testemunha
+1988	O que viu ontem à noite?
+1989	Vi
+1990	sair daqui a correr, por volta das
+1991	. Conheço-
+1992	de vista: é
+1993	Conhecia
+1994	De vista. Cumprimentávamo-nos.
+1995	Viu mais alguém por aqui nesse dia?
+1996	Ao fim da tarde,
+1997	esteve aqui a discutir com
+1998	. Gritaram os dois.
+1999	Está bem... Um homem deu-me cinquenta dólares para dizer isso. Mas eu vi quem saiu daqui:
+2000	Não vi nada, pronto. Está escuro como breu. Queria a recompensa. Mas ouvi alguém gritar um nome:
+2001	. E vi o carro: é de
+2002	É família.
+2003	. Eu só queria que
+2004	deixassem em paz...
+2005	sair a correr por volta das
+2006	. Meteu-se num carro e disse ao motorista para ir para
+2007	. Tenho a certeza.
+2008	Não. Ninguém. Já lhe disse tudo o que vi.
+2009	Antes de vocês chegarem apareceu um homem a perguntar se eu tinha visto alguma coisa. Deu-me um envelope. Mais nada digo.
+2010	A verdade é que estava a dormir na cadeira. Ouvi barulho, mais nada.
+2011	Tenho família metida nisto. Não me peça mais, detetive.
+2012	Fui eu que chamei a polícia, detetive.
+2013	Que noite, detetive. Que noite.
+2014	Ainda estou a tremer. Pergunte o que quiser.
+2015	(2.ª versão)
+2016	confessa às
+2017	. Testemunha,
+2018	Processo n.º
+2019	Há uma testemunha no local:
+2020	Muito bem, Mercer. Quem é que assina a acusação?
+2021	Pensa bem. Depois de assinares, não há volta.
+2022	Eu tenho uma ideia. Mas o caso é teu.
+2023	O procurador gosta de
+2024	. Há aquela carta.
+2025	A acusação cai sobre
+2026	. O júri delibera durante quarenta minutos. Semanas depois,
+2027	sai da cidade num comboio para Chicago, e ninguém
+2028	manda parar.
+2029	O júri delibera durante seis horas. Sem provas sólidas,
+2030	sai do tribunal em liberdade e sorri para os fotógrafos à porta.
+2031	O júri absolve
+2032	ao fim de uma hora: o processo não se aguentava de pé. O verdadeiro culpado continua lá fora, e o capitão deixa de te cumprimentar no corredor.
+2033	O processo
+2034	desce para o arquivo, na cave da esquadra.
+2035	continua a passear pela cidade.
+2036	Apanhad
+2037	Incendiári
+2038	atrás das grades
+2039	, confessa.
+2040	foi acusad
+2041	na sequência da investigação do Detetive Eli Mercer.
+2042	Segundo a polícia, a prova decisiva foi
+2043	A defesa fala em «erro judicial». Procurador confiante.
+2044	pelo caso de
+2045	Fontes próximas da investigação dizem que nem todos na esquadra estão convencidos.
+2046	Júri considera as provas insuficientes. Polícia sob críticas.
+2047	, saiu ontem em liberdade do tribunal.
+2048	O advogado de defesa chamou à investigação «um castelo de cartas». A família de
+2049	abandonou a sala em lágrimas.
+2050	Caso de
+2051	volta à estaca zero.
+2052	por falta de provas.
+2053	Na esquadra, ninguém quer comentar quem fez o quê.
+2054	continua sem culpado
+2055	Polícia de Los Angeles arquiva a investigação.
+2056	Sem acusação e sem suspeitos detidos, o caso foi arquivado. A família de
+2057	promete contratar um detetive privado.
+2058	morfina roubada dos hospitais do exército
+2059	as caixas de morfina
+2060	armas roubadas de um depósito militar
+2061	os caixotes de carabinas
+2062	notas falsas de vinte dólares
+2063	as malas de notas falsas
+2064	uma rede de apostas ilegais
+2065	o cofre das apostas
+2066	carros roubados enviados para o México
+2067	os carros roubados
+2068	o Holandês
+2069	o Padre
+2070	o Professor
+2071	o Sr. Lua
+2072	o Alfaiate
+2073	a Viúva
+2074	a Duquesa
+2075	a Senhora
+2076	a Professora
+2077	mecânica
+2078	empregada de bar
+2079	Doca 9 de San Pedro
+2080	Pátio de mercadorias de Taylor Yard
+2081	Hangar abandonado em Burbank
+2082	Cais de pesca de Santa Monica
+2083	terça
+2084	Elogiar
+2085	Gostas do fato? Feito por medida em Nova Iorque. Não é qualquer um que veste isto.
+2086	Já reparaste como toda a gente aqui me ouve? Há uma razão para isso.
+2087	Finalmente alguém com olho para a qualidade. Gosto de ti, Doyle.
+2088	Tu percebes as coisas. Senta-te.
+2089	Estás a gozar comigo?
+2090	Guarda a conversa para quem precisa.
+2091	Conversar
+2092	Senta-te, senta-te! Já te contei da vez em que fugi de Tijuana num camião de melões?
+2093	Que noite, hã? Bebes alguma coisa? Eu falo, tu ouves.
+2094	Gosto de quem sabe ouvir. Isso é raro.
+2095	És dos bons, Doyle. Dos que ouvem.
+2096	Hoje não estou para conversas.
+2097	Fala menos e trabalha mais, novato.
+2098	Fazer-se de duro
+2099	Que é que estás a olhar, novato?
+2100	Aqui ninguém gosta de caras novas. Lembra-te disso.
+2101	Tens tomates. Isso conta.
+2102	Está bem, está bem. Não és nenhum menino.
+2103	Ameaças-me? A mim?
+2104	Mais uma dessas e sais daqui de maca.
+2105	usa óculos
+2106	Junto à carta, um recibo de uma ótica da Broadway: lentes novas, graduação forte.
+2107	tem bigode
+2108	Junto à carta, uma lata de cera para bigode, meio gasta.
+2109	usa laço em vez de gravata
+2110	Junto à carta, uma caixa de laços de seda, um deles por estrear.
+2111	tem o cabelo grisalho
+2112	Junto à carta, um frasco de loção para cabelo grisalho.
+2113	usa um colar de pérolas
+2114	Junto à carta, a fatura de um fio de pérolas de uma joalharia da Rua 7.
+2115	quer que partas a montra de um alfaiate que não pagou a «proteção».
+2116	Fazer
+2117	Fingir e avisar o alfaiate
+2118	Recusar
+2119	Pedem-te para conduzires um carro até Long Beach. O porta-bagagens vai fechado e é melhor não perguntares.
+2120	Conduzir
+2121	Conduzir e avisar a esquadra
+2122	Um miúdo novo no grupo foi apanhado a roubar a caixa. Querem que lhe dês uma lição no beco.
+2123	Dar-lhe a lição
+2124	Fingir a sova
+2125	Querem que entregues um envelope a um polícia da Divisão de Hollenbeck. Um dos teus.
+2126	Entregar
+2127	Entregar e fixar o nome
+2128	A carga vai sair por
+2129	. Ouvi
+2130	a dizê-lo ao telefone.
+2131	É na
+2132	à noite, às duas da manhã. Por isso andam todos nervosos.
+2133	Dizem que
+2134	. E que anda aqui no meio de nós, sem ninguém saber.
+2135	Livro de cargas
+2136	Entrada a lápis: «Entrega —
+2137	, 2h da manhã. Tudo pago.»
+2138	Mapa com um círculo
+2139	Um mapa da cidade com um círculo a vermelho à volta de
+2140	Carta assinada «
+2141	Ordens escritas à máquina, assinadas à mão: «
+2142	Jack Doyle
+2143	motorista despedido em Chicago
+2144	Tommy Shaw
+2145	ex-pugilista de Detroit
+2146	Mickey Rourke
+2147	jogador de cartas de Reno
+2148	Al Bennett
+2149	marinheiro desembarcado em San Pedro
+2150	Tenente Ruskin
+2151	Tenente Sorensen
+2152	Infiltrado no
+2153	A Sombra
+2154	Debaixo da Pele no
+2155	O Gangue
+2156	Semana de
+2157	Divisão de Costumes. Processo n.º
+2158	. Uma sala sem janelas e um café que ninguém bebe.
+2159	Alguém está a mover
+2160	a partir do
+2161	. Chamam ao chefe «
+2162	». Ninguém sabe quem é.
+2163	Vais entrar como
+2164	. Tens cinco noites. Descobre onde e quando é a entrega, e quem é
+2165	. Depois chamas a rusga.
+2166	Se desconfiarem de ti, sais de lá num caixote. E lembra-te: lá dentro mente toda a gente. Até os que gostam de ti.
+2167	O básico: caderno, intuição e bom olho.
+2168	Podes mostrar 3 pistas por interrogatório, em vez de 2.
+2169	As pessoas aguentam mais uma acusação antes de se calarem.
+2170	Laboratório: compara duas pistas e descobre se coincidem.
+2171	Mais uma hora de prazo em cada processo.
+2172	Novo local no mapa:
+2173	(prefers-reduced-motion: reduce)
+2174	Noite
+2175	/5 · Suspeita
+2176	· prazo
+2177	[data-i]
+2178	.dialog,.brief
+2179	Los Angeles · Departamento de Polícia · 1947
+2180	Sombras
+2181	Cada processo é diferente. As testemunhas mentem, os suspeitos oferecem envelopes e ninguém te diz se acertaste. Só o júri, e às vezes nem esse.
+2182	Secretária do detetive
+2183	Processos fechados
+2184	Acusações certas
+2185	Dinheiro no bolso
+2186	Desconfiança dos Assuntos Internos
+2187	justify-content:space-between
+2188	Vantagens da patente
+2189	XP
+2190	Novo processo
+2191	Cada episódio é uma história própria: um quarto de motel com fotografias comprometedoras, uma estrela que cai de um passadiço, um jantar envenenado, um assassino que deixa poemas, um assalto com ajuda de dentro, um fogo posto, um atropelamento de um carro de luxo, ou uma noite infiltrado num gangue. O culpado, os nomes, as pistas e as reviravoltas mudam sempre. O código permite repetir um episódio.
+2192	Divisão
+2193	Qualquer
+2194	Costumes · infiltrado
+2195	Dificuldade
+2196	Fácil
+2197	Normal
+2198	Difícil · caras discretas
+2199	Pegar no processo
+2200	Código do processo
+2201	Abrir pelo código
+2202	Ninguém te diz se uma resposta era verdade. Cada pessoa tem o seu feitio: um nervoso mexe-se mesmo quando é sincero, um frio quase não se trai. Aprende como cada um é antes de o acusar.
+2203	Largar o processo atual?
+2204	Tens um processo em curso. Se pegares noutro, perdes o progresso dele.
+2205	Pegar neste
+2206	Cancelar
+2207	Código inválido. O formato é a letra da divisão (H, R, F ou U), a dificuldade (1 a 3), um hífen e um número. Por exemplo: H2-483920.
+2208	Enter
+2209	OCEANO PACÍFICO
+2210	SUNSET BLVD
+2211	WILSHIRE BLVD
+2212	RIO L.A.
+2213	Limelight,serif
+2214	«Unidade 14, há um acidente na Figueroa com a Rua 7. Alguém disponível?»
+2215	«A todas as unidades: procura-se um Packard verde, matrícula da Califórnia 2K-4417.»
+2216	«Desordem num bar da Rua 3. Unidades próximas, respondam.»
+2217	«Central: o laboratório pede as amostras até às seis.»
+2218	[data-l]
+2219	: «Liga a sirene ou vamos a passear?»
+2220	: «Esta cidade cresce mais depressa do que a gente a consegue prender.»
+2221	: «Sabes o que dizem de ti lá em baixo? Que és certinho demais.»
+2222	: «Confias naquela testemunha? Eu não confio em ninguém.»
+2223	São
+2224	Acabou o prazo. O capitão quer um nome agora. Vais acusar com o que tens.
+2225	Ir ao gabinete
+2226	Já falaste com
+2227	Interrogar
+2228	· 30 min
+2229	Voltar ao carro
+2230	Algo aqui…
+2231	Escutar a cena · 10 min
+2232	Examinar uma pista nova gasta 5 minutos. A nota de piano indica uma pista por perto.
+2233	Silêncio. Já não há nada aqui.
+2234	✓ Cena concluída.
+2235	Não há mais nada de relevante aqui.
+2236	Pistas encontradas aqui:
+2237	Começar o interrogatório?
+2238	Ainda pode haver pistas por encontrar aqui. Só tens uma oportunidade de interrogar cada pessoa, e as perguntas dependem das pistas que tiveres.
+2239	Interrogar já
+2240	Continuar a procurar
+2241	Escritório das traseiras
+2242	[data-o="
+2243	Investigação desta cena concluída
+2244	Emboscada!
+2245	Mal sais do carro em
+2246	, alguém abre fogo de dentro do edifício. A pista era uma armadilha.
+2247	Proteger-me e responder
+2248	O capanga fala
+2249	Encostado à parede, com uma bala na perna, o capanga cospe um nome: quem lhe pagou para vos esperar foi quem a testemunha estava a proteger.
+2250	Anotar
+2251	Silêncio
+2252	Os capangas não dizem nada. Gente contratada à hora, sem nomes. Perdeste tempo.
+2253	Foste atingido
+2254	Acordas no Hospital Geral com um ombro ligado. Perdeste duas horas.
+2255	Voltar à rua
+2256	Não sei nada disso, detetive.
+2257	Nunca vi isso.
+2258	Eu só vi o que lhe contei.
+2259	Nunca vi isso na vida.
+2260	Isso não é meu. Alguém o pôs lá.
+2261	Não sei do que está a falar, detetive.
+2262	Sim, é meu. Não escondo que tínhamos problemas.
+2263	É meu. Toda a gente sabia disso.
+2264	Onde é que arranjou isso? Isso é privado.
+2265	Isso... isso não tem nada a ver com o caso.
+2266	Andou a mexer nas minhas coisas?
+2267	É meu, sim. E depois?
+2268	Isso é meu. Não tenho nada a esconder.
+2269	Sim, é meu. Não vejo o problema.
+2270	Nunca vi isso. Qualquer pessoa podia ter deixado isso lá.
+2271	Não me diz nada. Nada mesmo.
+2272	Não faço ideia de quem seja isso.
+2273	Isso não é meu, detetive. Nunca vi.
+2274	Mentiras. Tudo mentiras.
+2275	Quem lhe disse isso está a mentir.
+2276	Isso foi um momento de raiva. Mais nada.
+2277	Não é o que parece.
+2278	Isso não me diz nada.
+2279	Porque é que me está a mostrar isso?
+2280	Interrogatório ·
+2281	Observa a cara
+2282	Mostrar uma pista
+2283	#fb svg
+2284	Paciência
+2285	· acusar sem razão gasta-a
+2286	· 10 min
+2287	button:not(:disabled)
+2288	Terminar interrogatório
+2289	Interrogatório
+2290	Declaração registada no caderno.
+2291	Verdade
+2292	Acreditar
+2293	Dúvida
+2294	Pressionar
+2295	Mentira
+2296	Provar com pista
+2297	Ver a cara outra vez
+2298	Usar intuição (
+2299	Está bem. Acredito em si.
+2300	Muito bem. Fica registado.
+2301	Certo.
+2302	Acho que me está a esconder alguma coisa.
+2303	Não me convence. Tente outra vez.
+2304	Isso não bate certo.
+2305	Está a mentir-me. E isto prova-o:
+2306	· depois de pressionad
+2307	Nova declaração registada no caderno.
+2308	Acabou. Não digo mais nada sem o meu advogado.
+2309	Chega. Se quer mais alguma coisa, prenda-me.
+2310	Esta conversa terminou, detetive.
+2311	Olhe para isto.
+2312	Reação a:
+2313	Um envelope em cima da mesa
+2314	empurra um envelope na tua direção. «
+2315	$, detetive. Para se esquecer de que esteve aqui hoje.»
+2316	Aceitar o envelope
+2317	Recusar e apreender como prova
+2318	Guardas o envelope no casaco.
+2319	Tentativa de suborno registada no caderno.
+2320	Interrogatório terminado.
+2321	Encontrada em:
+2322	Ainda sem pistas.
+2323	O laboratório compara duas pistas e diz se coincidem. Cada análise demora uma hora. Restam
+2324	de 2 neste processo.
+2325	Analisar · 60 min
+2326	Ainda não ouviste ninguém.
+2327	Ainda ninguém.
+2328	· noite
+2329	Ainda ninguém te contou nada.
+2330	Rumores
+2331	Pistas
+2332	Pessoas
+2333	Declarações
+2334	Locais
+2335	Laboratório
+2336	[data-t]
+2337	[data-e]
+2338	Escolhe duas pistas diferentes.
+2339	Resultado: coincidem. O relatório foi para o caderno.
+2340	Resultado: «
+2341	» não têm ligação.
+2342	Coincidem.
+2343	Sem ligação.
+2344	Gabinete do capitão ·
+2345	Acusação
+2346	Ver suspeitos
+2347	btn ghost
+2348	flag:x
+2349	Decisão final · não há volta atrás
+2350	Quem acusas?
+2351	Escolhe o suspeito e monta o processo com as pistas do teu caderno. O júri só condena com motivo, oportunidade e prova material que se aguentem.
+2352	Arquivar sem acusação
+2353	.suspect svg
+2354	[data-s]
+2355	Arquivar o processo?
+2356	Ninguém é acusado. O culpado, seja quem for, continua lá fora.
+2357	Arquivar
+2358	Pensar melhor
+2359	Motivo
+2360	Porque é que o fez?
+2361	Oportunidade
+2362	O que prova que esteve lá, ou que mentiu sobre onde estava?
+2363	Prova material
+2364	O que liga esta pessoa à cena do crime?
+2365	Processo contra
+2366	Escolher outro suspeito
+2367	Sem prova.
+2368	Trocar pista
+2369	Escolher pista
+2370	Tirar
+2371	Entregar ao procurador
+2372	.casebuild svg
+2373	[data-pick]
+2374	[data-clear]
+2375	Acusar
+2376	Há
+2377	sem prova.
+2378	Depois de entregares o processo ao procurador, não há volta atrás.
+2379	Rever o processo
+2380	O procurador fecha a pasta: «Isto chega para um júri.»
+2381	O procurador torce o nariz: «É pouco, Mercer. Mas vou tentar.»
+2382	O procurador atira a pasta para a mesa: «Não há aqui nada. Vou a julgamento porque o capitão manda.»
+2383	Em tribunal,
+2384	conta ao juiz que te pagou
+2385	$. O envelope desaparece num cofre dos Assuntos Internos, e o teu nome fica numa lista.
+2386	nunca é acusad
+2387	. Os
+2388	$ do envelope ficam contigo.
+2389	Veredicto: culpado
+2390	Veredicto: absolvição
+2391	Processo arquivado
+2392	Rusga bem-sucedida
+2393	A rusga falhou
+2394	Disfarce descoberto
+2395	Processo fechado
+2396	Relatório do capitão
+2397	Tiroteio
+2398	Toca nos atiradores antes que disparem. Recarrega com R ou com o botão.
+2399	Saúde
+2400	Recarregar
+2401	a recarregar…
+2402	Atiradores:
+2403	Sem balas! Recarrega (R)
+2404	Na sexta-feira, às duas da manhã,
+2405	saem da cidade sem ninguém as parar.
+2406	nunca chega a ter cara. O teu disfarce é retirado sem honras.
+2407	Ouves no rádio do clube: «a carga já saiu». A entrega foi ontem à noite e ninguém a parou.
+2408	sorri algures na cidade.
+2409	· teste de lealdade
+2410	Fizeste o que te pediram. Agora confiam mais em ti.
+2411	Ninguém reparou no truque.
+2412	Alguém reparou que fingiste.
+2413	Recusaste. Os olhares ficam mais pesados.
+2414	A tua parte
+2415	Um envelope aparece no teu cacifo, com um bilhete: «Pelo bom trabalho. —
+2416	». Lá dentro estão
+2417	Ficar com o dinheiro
+2418	Devolver
+2419	Devolver dinheiro é coisa de polícia, diz alguém ao balcão.
+2420	· noite de
+2421	· disfarce:
+2422	ações
+2423	ação
+2424	Chamar a rusga
+2425	Suspeita do gangue
+2426	Fechado à chave. Se te apanharem lá dentro, acabou.
+2427	<button class="btn ghost" id="uSearch"
+2428	>Revistar · 1 ação · muito arriscado
+2429	.member .facebox svg
+2430	[data-m]
+2431	Voltar ao balcão
+2432	Já te disse o que sei. O resto não é contigo.
+2433	Não sei mais nada, Doyle. A sério.
+2434	">Perguntar pelo negócio
+2435	[data-a]
+2436	Doyle
+2437	Toda a gente diz que és tu quem manda nisto.
+2438	Esse fato vale mais do que o meu carro.
+2439	Conta-me lá essa história.
+2440	Que noite. Bebes mais um?
+2441	Não me olhes assim.
+2442	Não tenho medo de ti nem de ninguém.
+2443	Então e o grande negócio? Quando é que eu entro?
+2444	· escritório das traseiras
+2445	Às escuras, com uma lanterna
+2446	Sair antes que te vejam
+2447	Ouves passos no corredor. Não demores.
+2448	Telefone público, duas ruas abaixo do clube
+2449	atende ao terceiro toque. «Diz-me onde, quando e quem. Só tens uma oportunidade.»
+2450	Onde é a entrega
+2451	Que noite
+2452	(esta noite)
+2453	Quem é
+2454	Dar a ordem
+2455	Ainda não
+2456	Dar a ordem?
+2457	Rusga em
+2458	às duas da manhã. Vais dizer que
+2459	Às duas da manhã,
+2460	enche-se de luzes. Apreendem
+2461	deixa cair a máscara: é
+2462	Mas
+2463	é só um peão.
+2464	, não estava lá e desaparece da cidade.
+2465	Na confusão do tiroteio, metade do gangue foge.
+2466	A rusga chega a
+2467	na noite de
+2468	e não encontra nada.
+2469	O sítio era o certo. A noite não.
+2470	A noite era a certa. O sítio não.
+2471	Nem o sítio nem a noite estavam certos.
+2472	saem da cidade sem problemas.
+2473	Descobriram-te
+2474	Alguém encontrou o teu distintivo.
+2475	manda fechar as portas do
+2476	Fugir a tiro
+2477	Sais pela porta das traseiras com o casaco furado. O disfarce de
+2478	morreu esta noite, e o processo morreu com ele.
+2479	Acordas num hospital de San Pedro, três dias depois. Ninguém sabe dizer quem te deixou à porta. O processo foi encerrado.
+2480	Local da entrega
+2481	Certo
+2482	Errado
+2483	Noite da entrega
+2484	Certa
+2485	Errada
+2486	Sim
+2487	Não
+2488	Suspeita final
+2489	Pistas encontradas
+2490	Pessoas bem lidas
+2491	Hora de fecho
+2492	Veredicto
+2493	Culpado condenado
+2494	Inocente condenado
+2495	Culpado absolvido
+2496	Inocente absolvido
+2497	Arquivado
+2498	Episódio
+2499	Assuntos Internos
+2500	Dois homens de fato cinzento revistam a tua secretária e a tua casa. Confiscam
+2501	$ e uma nota fica no teu processo: −80 XP.
+2502	Relatório do capitão ·
+2503	Dinheiro de subornos
+2504	Experiência
+2505	Patente
+2506	Ler o jornal
+2507	Rusga apanha
+2508	Polícia desmantela rede de
+2509	Uma operação da Divisão de Costumes terminou com detenções e a apreensão de
+2510	. Um agente infiltrado passou cinco noites no
+2511	. A polícia não revela o nome dele.
+2512	Carga apreendida, mas o chefe continua a monte.
+2513	A polícia apreendeu
+2514	numa operação noturna. Fontes da esquadra admitem que «
+2515	» não estava entre os detidos.
+2516	Silêncio na Divisão de Costumes
+2517	Rede de
+2518	continua ativa, dizem vizinhos.
+2519	Moradores queixam-se de movimento estranho de camiões de madrugada. A polícia recusa comentar qualquer operação em curso.
+2520	Los Angeles Crónica
+2521	Edição da tarde
+2522	Processo
+2523	Próximo episódio
+2524	Médico-legista do condado
+2525	Ato III — A verdade
+2526	Ato II — A teia
+2527	Ato I — O crime
+2528	int:
+2529	seen:
+2530	visits:
+2531	Continuar
+2532	Reviravolta ·
+2533	Um envelope no banco do carro
+2534	Ficar com o envelope
+2535	Devolvê-lo
+2536	Apreender como prova
+2537	Envelope de
+2538	tentou comprar o teu silêncio com
+2539	· Processo
+2540	Entrar no
+2541	Sombras de 1947 · Episódio
+2542	Para o carro
+2543	Novo
+2544	Visitado
+2545	ao volante
+2546	Para onde, Mercer?
+2547	fecha o caso
+2548	Cada viagem gasta tempo. Às
+2549	o capitão exige uma acusação com o que tiveres.
+2550	Está a fugir!
+2551	Mal
+2552	te vê entrar,
+2553	sai a correr pela porta das traseiras
+2554	Atrás dele
+2555	Perseguição
+2556	Encostas
+2557	contra uma parede. Na luta, cai-lhe uma coisa do casaco.
+2558	Algemar e voltar
+2559	Fugiu
+2560	desaparece no meio do trânsito. Não vais conseguir interrogá-l
+2561	hoje, mas podes revistar o local.
+2562	Voltar ao local
+2563	Falar com o
+2564	.scene-head .row
+2565	· feito
+2566	Voltar
+2567	Nova pista no caderno:
+2568	Morgue
+2569	limpa os óculos à bata. Cada pergunta demora uns dez minutos de explicações.
+2570	Detetive. Os mortos falam, se soubermos ouvir. Pergunte.
+2571	Ampliações disponíveis:
+2572	Ampliado
+2573	Ampliar
+2574	[data-f]
+2575	[data-c]
+2576	Encontraste a contradição. Está no caderno.
+2577	Essa declaração bate certo com as outras. Tentativas:
+2578	Não encontraste a contradição. Terás de chegar lá de outra maneira.
+2579	st part
+2580	[data-o]
+2581	Uma patrulha confirma: há um carro abandonado em
+2582	. Já está no mapa.
+2583	A patrulha vai a
+2584	e não encontra nada. Perdeste 45 minutos.
+2585	[data-car]
+2586	É este carro. O dono já está no mapa.
+2587	O mecânico abana a cabeça: esse carro não tem nada a ver. Perdeste 20 minutos.
+2588	Oswald,sans-serif
+2589	O chefe dos bombeiros acena: «É aqui. Olhe para o chão.»
+2590	O chefe perde a paciência e mostra-te: «Foi em
+2591	.» Perdeste tempo.
+2592	«Não, aí o fogo chegou depois.»
+2593	— O Poeta
+2594	Esta noite
+2595	A tempo
+2596	Tarde demais
+2597	, onze da noite. As patrulhas chegam em silêncio.
+2598	Alguém corre na escuridão. Uma porta bate. No chão fica um cordão de seda com um nó de marinheiro.
+2599	Desta vez ninguém morreu. Desta vez.
+2600	Mandaste as patrulhas para
+2601	«Central para Mercer: corpo de mulher em
+2602	. Tem um poema nas mãos.»
+2603	Li mal o poema. Alguém pagou por isso.
+2604	Um elétrico atravessa-se no cruzamento
+2605	Travar
+2606	A rua estreita à esquerda está livre
+2607	Virar à esquerda
+2608	Um camião de leite bloqueia a faixa
+2609	Virar à direita
+2610	O semáforo fica vermelho e há crianças na passadeira
+2611	Ele corta para um beco à direita
+2612	Obras na faixa da direita
+2613	Um caixote de fruta no meio do beco
+2614	Saltar
+2615	Um estendal de roupa à altura da cabeça
+2616	Baixar-se
+2617	Uma carroça de gelo atravessa-se
+2618	Desviar
+2619	Uma vedação baixa de madeira
+2620	Uma escada de incêndio com um degrau partido
+2621	Um grupo de marinheiros à saída de um bar
+2622	Apanha
+2623	Escolhe a ação certa antes que a barra acabe. Teclas 1, 2 e 3.
+2624	Distância:
+2625	· obstáculo
+2626	de 10
+2627	ms linear
+2628	Sair do interrogatório?
+2629	As perguntas por fazer ficam perdidas.
+2630	Sair
+2631	Ficar
+2632	input,textarea,select
+2633	Escape
+2634	.overlay #nbX

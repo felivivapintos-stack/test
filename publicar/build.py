@@ -23,7 +23,7 @@ PLATFORMS = {
     # Ranked by potential on GameMonetize (see GUIA.md).
     'gamemonetize': ['ragdoll-dunk', 'penalty-nations', 'gobble-royale', 'splat-stack', 'neon-horde',
                      'nations-free-kick', 'borough-89', 'frontline-zero', 'no-refunds',
-                     'pinta-e-esconde', 'farol', 'sombras-1947', 'afiado', 'backline'],
+                     'pinta-e-esconde', 'farol', 'sombras-1947', 'afiado', 'backline', 'motel'],
     'itch': ['no-refunds', 'sombras-1947', 'motel'],
     'codigo': ['nations-free-kick', 'splat-stack', 'neon-horde'],
 }
@@ -40,6 +40,7 @@ GM_BREAKS = {
     'backline': ['startShow'],
     'pinta-e-esconde': ['huntLevel', 'partyRound'],
     'farol': ['start', 'nextNight'],
+    'motel': ['startGame', 'nextDay'],
 }
 # Text that only makes sense on claude.ai (the Steam pitch under Farol, Afiado and Backline)
 # is removed for the portal.

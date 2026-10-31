@@ -1,0 +1,396 @@
+1	DAY 1/7
+2	SUSPICION
+4	Drag the mouse to turn the camera · wheel to zoom · Esc pause
+7	Desert Rose Motel, Route 66, New Mexico. By day: fresh sheets and burnt coffee. By night: the escort ring in room 13, poker at the front desk, the smuggling truck, calls from the Family and an alligator named Bubba who eats whatever you throw him.
+8	Goal: reach
+9	in 7 days before the sheriff's suspicion hits 100%.
+10	Open the motel
+11	Continue
+12	Space
+13	to open ·
+15	in game opens the pause menu with the controls
+16	Pause
+17	Controls
+18	arrows +
+20	Gamepad
+21	left stick +
+22	, right stick turns the camera,
+24	Camera
+25	drag the mouse to turn, the wheel zooms
+26	Action
+27	press to use, hold to clean or take care of business
+28	Graphics
+29	The front
+30	Front desk:
+31	check guests in before they run out of patience.
+32	Dirty rooms:
+33	hold the action at the door.
+34	Room 13:
+35	at night the men in hats arrive. They pay well, but the sheriff notices.
+36	The ring (at night)
+38	at 19:00 the escorts arrive and wait on the bench next to the rooms.
+39	Man in a hat:
+40	check him in and a free escort goes with him to 13 or to an empty room.
+41	Trouble:
+42	if a room flashes red, hold the action at the door and throw the client out.
+43	Morale:
+44	every job wears them out. Tip them in the lounge or they go home.
+45	Cleaning:
+46	at the end of the day you can hire cleaners, who clean dirty rooms on their own but run from crime scenes and may tell the sheriff what they saw, or Mr. Wolf, pricey, who cleans everything, blood included, and never talks. Wages are paid at the end of the day.
+47	House customer:
+48	at the lounge jukebox you can pay and go to a room with whoever is free. You're out of play for a few seconds and come back relaxed (faster). But you risk being reported: blackmail or an anonymous call to the sheriff. The risk goes up with low morale, with the sheriff nearby and with every visit on the same day.
+49	Other business
+50	24h Laundromat:
+51	money from the ring, the contracts, the smuggling and the poker is dirty. Hold the action at the laundromat to wash it (10% fee). Whatever is left unwashed at the end of the day makes the taxman suspicious.
+52	Smuggling:
+53	from day 2, at night, a "fruit and veg" truck drops crates in the parking lot. Carry them one by one to the storeroom next to the dumpster. Crates left outside get seized by the sheriff or lost by morning.
+54	Back-room poker:
+55	around 20:00 the players sit at the front desk table and the pot grows. Collect it, and hide the cards when the sheriff comes near, or he seizes the pot.
+56	The real business
+57	Phone:
+58	answer it and a mark in a grey suit with a briefcase shows up.
+59	Mark's door:
+60	hold the action. Out comes a rug with shoes.
+61	Swamp or dumpster:
+62	Blood:
+63	mop in the closet.
+64	Sheriff:
+65	Tasks:
+66	the list in the corner and the arrows in the world show what's most urgent.
+67	Graphics: high
+68	Sound: on
+69	Quit to menu
+70	End of day 1
+71	Official books (for the taxman)
+72	Real books (for the Family)
+73	Open day 2
+74	Hire
+75	Hire a cleaner
+76	Hire Mr. Wolf
+77	Busted
+78	Play again
+79	Opening the motel…
+102	Arrows + Enter
+120	Opening day
+121	The sheriff only shows up in the afternoon. Learn the way between the front desk, the rooms and the swamp.
+122	Tour bus
+123	A full bus arrives late in the morning. Rooms pay 50% more.
+124	Health inspection
+125	The sheriff brings the inspector: every dirty room he sees raises suspicion.
+126	Full moon
+127	Twice as many men in hats tonight, and the ring pays 25% more.
+128	Sheriffs' convention
+129	More patrols and bribes cost double.
+130	Sandstorm
+131	Nobody can see five metres ahead. Not even the sheriff.
+132	Last night
+133	The Family pays double for contracts. It's now or never.
+134	House customer
+135	Stevedore
+136	Laundry wizard
+138	Rug hand
+139	Night security
+140	Front-desk smile
+141	Bleach king
+142	Diplomat
+143	Family hotline
+144	Check-out specialist
+145	Patron of the arts
+146	SUSPICION +
+147	No free room for the ring. Clean 13.
+148	No free escort in the lounge.
+149	No free rooms. Clean the dirty ones.
+150	Back in a sec, honey.
+151	Another cowboy...
+152	? Again?
+153	Five stars, I promise.
+154	goes with the client to
+155	. She keeps
+156	activity in 13
+157	the neighbour in
+158	complained about the thin walls
+159	the ring in room
+160	The mark stayed in room
+161	. Nobody's going to wake him.
+167	left room
+168	in tears and won't be back tonight.
+169	a neighbour called 911
+170	Out!
+171	My pants!
+172	This isn't over!
+173	I know the sheriff!
+174	says thanks. The client hit the street without his pants.
+175	Client thrown out.
+176	The ring has reached the lounge. The men in hats won't be long.
+177	went home. She's had enough of tonight.
+178	The Family charges
+179	Is this going to take long?
+180	Anyone there?
+181	I'm going to the motel next door!
+182	I've got a car cooling down...
+183	The mark got tired of waiting.
+184	HELP!
+185	Trouble in room
+186	! The client went too far. Throw him out.
+187	The mark checked out alive.
+188	Feed Bubba
+189	Throw in the dumpster
+190	Hide in the ice
+191	Extra ice in room 1... no, don't order ice.
+192	Drop the rug
+193	Bribe (
+194	Bribe: short by
+195	I was never here.
+196	Pleasure doing business, friend.
+197	Such a clean motel.
+198	"I was never here." The sheriff pockets the envelope.
+199	Put in the storeroom
+200	Drop the crate
+201	Scrub the blood
+202	Put the mop away
+203	Pick up the crate
+204	Pick up the rug
+205	Take out of the ice
+206	Answer
+207	Grab the mop
+208	Launder money (
+209	Back to the game
+210	Who's dealing?
+211	Collect the pot (
+212	Hide the cards
+213	We're just reading the paper.
+214	Go to room
+215	· risk
+216	Not even the owner gets credit here. Short by
+217	No free room
+218	Nobody free in the lounge
+219	Tip
+220	Tip: short by
+221	You're a sweetheart.
+222	That's more like it.
+223	One more hour, come on.
+225	Take care of business
+226	Throw the client out
+227	Clean room
+228	Clean the scene
+229	"Grey suit. Briefcase. He doesn't leave alive."
+230	The Family: "A gentleman in a grey suit with a briefcase will ask for a room. Don't let him leave."
+232	Done. Now there's a rug with shoes outside
+233	Dumpster. The garbage truck only comes in the morning.
+235	Bubba says thanks.
+237	The swamp asks no questions.
+238	Mrs. Graça
+239	Mrs. Fátima
+240	Mr. Armando
+241	Mr. Wolf
+242	Mr
+243	I'm Mr. Wolf. I solve problems.
+244	Nobody touches anything.
+245	Bleach, bags and silence.
+246	Mrs.
+247	Mr.
+248	from the cleaning crew told the sheriff what they saw
+249	I don't get paid for this. I'm telling.
+250	I didn't see anything. I didn't see anything.
+251	Not my business.
+252	Oh, Holy Mother...
+253	No discount for the boss.
+254	The boss? What an honour.
+255	This stays between us... right?
+256	went to room
+257	. The others can hold down the motel.
+258	Your secret costs
+259	Blackmail:
+261	to keep quiet
+262	. Paid.
+263	no money for the blackmail, the story reached the sheriff
+264	Not paying? Then I talk.
+265	anonymous call: the motel owner uses the ring
+266	Who called the sheriff?!
+267	Nobody saw a thing. P
+268	goes back to work relaxed (faster for a few seconds).
+269	Poker night at the front desk. The house takes a cut of every hand.
+270	The players left, leaving
+271	in the pot.
+272	The "fruit and veg" truck is here. Unload before the sheriff sees.
+273	Six crates. Don't ask.
+274	Sheriff Dwayne just parked. Stay out of his line of sight.
+275	Evening. Just a quick round.
+276	Routine, routine...
+277	Something smells fishy.
+278	Anyone seen a gentleman in a grey suit?
+279	What was that noise?
+280	the sheriff opened the dumpster
+281	This trash... has SHOES.
+282	Hey! YOU! Stop right there!
+283	"What are those crates?"
+284	What are those crates?
+285	Huh? Crates?
+286	Huh?
+287	Hm. Must be the heat.
+288	I swear I saw something.
+289	Hey! Stop right there!
+290	"What's this rug? It has shoes!"
+291	This has SHOES.
+292	"Goods without a receipt."
+293	Goods without a receipt. Seized.
+294	"That's not ketchup."
+295	That's not ketchup.
+296	"I swear I saw a rug..."
+297	It's gone?!
+298	"Lost sight of him."
+299	Lost sight of him...
+300	"Caught with a rug with shoes!"
+301	That has SHOES!
+302	illegal poker at the front desk
+303	Poker? In MY county? The pot's mine.
+304	"So many sequins at this hour..."
+305	strange noise in
+306	What a racket in
+307	inspection: room
+308	Room
+309	: failed.
+310	Tour bus!
+311	Five guests at once. Everyone to the front desk.
+312	Night falls
+313	The ring is arriving at the lounge. The neon is on.
+314	The FBI has heard of the Desert Rose. One more slip and it's over.
+315	The front desk phone is ringing.
+316	Missed call. The Family doesn't like waiting.
+317	Graphics:
+322	CLEANING
+324	TRASH
+325	SWAMP · DO NOT FEED THE ALLIGATOR
+327	24H LAUNDROMAT
+328	COINS ONLY
+329	STOREROOM
+334	FRAGILE
+335	FRUIT & VEG
+337	MARK
+338	DIRTY
+339	!! SCENE
+340	TROUBLE
+341	RING
+342	in the trash
+343	in the ice
+347	Pot
+348	cards hidden
+349	· DO NOT DISTURB
+350	· relaxed
+351	: throw the client out (
+352	The sheriff saw the rug! Get out of his sight or bribe him
+353	Answer the phone (
+354	Take the rug to the swamp (or the dumpster)
+355	Rug on the floor
+356	with the sheriff here!
+357	rug(s) in the ice still to dispose of
+358	Take care of business in room
+359	Check in the gentleman in the grey suit
+360	Check-in:
+361	in line
+362	Blood on the floor: mop in the closet
+363	(the cleaners are on it)
+364	is feeling low: tip in the lounge
+365	Hide the cards: the sheriff is coming!
+366	The sheriff left: back to the poker
+367	Collect the poker pot (
+368	is busy in room
+369	Take the crate to the storeroom
+370	crate(s) for the storeroom
+371	Launder dirty money (
+372	All quiet. Watch the lounge and the phone.
+373	All quiet. Wait for guests at the front desk.
+374	DAY
+376	RING:
+377	in the lounge ·
+378	working
+379	CONTRACT: gentleman in a grey suit with a briefcase ·
+380	Rugs to dispose of:
+381	. You only get paid at the swamp or the dumpster.
+382	Continue day
+383	Touch screen
+384	Tap Open
+385	to start
+386	Good morning. The coffee's burnt and room 13 is ready. Esc to pause.
+387	Day
+388	Back to day
+389	. The safe holds
+390	The day is over and the mark is still alive.
+391	End of day
+392	APPROVED
+393	Rooms (
+394	Self-service laundry
+395	Industrial bleach
+396	Cleaning wages
+397	Declared profit
+398	LAUNDERED
+399	Ring (
+400	jobs)
+401	Escorts' share
+402	Tips
+403	Owner's personal expenses (
+404	Bought silence
+405	Cleaning wages (
+406	Contracts (
+407	Smuggling (
+408	crate)
+409	crates)
+410	Poker (house cut)
+411	Laundromat fee
+412	Envelopes to the sheriff
+413	Family fines
+414	Day's profit
+415	In the safe
+416	guests gave up waiting in line.
+417	You still have
+418	rug(s) to dispose of.
+419	client(s) thrown out.
+420	walkout(s) before the end of the night.
+421	The cleaners took care of
+422	room(s) or stain(s).
+423	A cleaner went to the sheriff
+424	time(s).
+425	The owner was reported
+426	The owner's visits stayed secret.
+427	crate(s) of contraband were left outside and vanished.
+428	The sheriff seized
+429	crate(s).
+430	There's
+431	left unwashed: tomorrow the taxman asks questions (+
+432	% suspicion).
+433	All the money is clean.
+434	Short by
+435	of the million.
+436	You've passed the million.
+437	The garbage truck takes the dumpster at dawn.
+438	Tomorrow:
+439	Open day
+440	for the ring (
+442	Employee of the day
+443	Intern
+444	client thrown out
+445	clients thrown out
+446	lounge visit
+447	lounge visits
+448	. The garbage truck already came.
+449	The taxman called:
+450	unexplained. Suspicion +
+451	Busted on day
+452	Sheriff Dwayne called the FBI. The Desert Rose Motel closes with
+453	in the safe, which is now evidence. Bubba goes without dinner.
+454	Millionaires
+455	Seven days,
+456	and no questions asked. Good artists copy, great artists buy a second motel.
+457	Survived, but broke
+458	Seven days and
+459	. Short by
+460	of the million. The Family recommends more contracts and less cleaning.
+461	for cleaning (
+462	/day)
+463	Hire Mr. Wolf: cleans up crimes, never talks (
+464	starts tomorrow at 08:00. Wages are paid at the end of the day.
+465	to hire
+466	joins the ring tomorrow night.
+468	Sound:
+469	(automatic). G to change.
+473	Error:
