@@ -1,0 +1,515 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Farol</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Figtree:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: o jogo ocupa a moldura larga no topo; o pitch do estúdio vem abaixo numa coluna estreita de leitura */
+:root{
+  --ink:#061019; --deep:#0b1f2b; --line:#1e3b49; --foam:#d6e6e8; --muted:#86a0a8; --lamp:#f2c66d; --ember:#e2643f;
+  --display:"IM Fell English SC", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ink);color:var(--foam)}
+body{font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 72px}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,8vw,76px);line-height:1;margin:0;letter-spacing:.04em;color:var(--lamp)}
+.tag{margin:0;color:var(--muted);max-width:46ch;text-wrap:balance}
+.frame{position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--deep)}
+canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;background:rgba(4,10,16,.62);backdrop-filter:blur(2px)}
+.ov h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,46px);margin:0;color:var(--lamp);text-wrap:balance;line-height:1.1}
+.ov p{margin:0;max-width:52ch;color:var(--foam)}
+.ov .small{font-size:14px;color:var(--muted)}
+.btn{font:600 15px var(--body);background:var(--lamp);color:#1a1205;border:0;border-radius:4px;padding:11px 22px;cursor:pointer;letter-spacing:.02em}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.card:focus-visible,.ghost:focus-visible{outline:2px solid var(--foam);outline-offset:3px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;max-width:720px}
+.card{background:#0e2533;border:1px solid var(--line);border-radius:6px;padding:16px 14px;text-align:left;color:var(--foam);cursor:pointer;font:inherit;display:flex;flex-direction:column;gap:6px}
+.card:hover{border-color:var(--lamp)}
+.card b{font-family:var(--display);font-weight:400;font-size:21px;color:var(--lamp);line-height:1.15}
+.card span{font-size:14px;color:var(--muted);line-height:1.45}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;font-size:14px;color:var(--muted)}
+.ghost{font:600 14px var(--body);background:transparent;color:var(--lamp);border:1px solid var(--lamp);border-radius:4px;padding:8px 16px;cursor:pointer}
+kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:3px;padding:1px 6px;color:var(--foam)}
+article{max-width:68ch;display:flex;flex-direction:column;gap:28px}
+section{display:flex;flex-direction:column;gap:10px}
+h3{font-family:var(--display);font-weight:400;font-size:28px;margin:0;color:var(--lamp);text-wrap:balance;line-height:1.15}
+article p,article li{margin:0;color:var(--foam)}
+article ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.lede{font-size:19px;line-height:1.55}
+.muted{color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+td,th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+td.n{font-family:var(--mono);font-size:14px;white-space:nowrap;color:var(--lamp)}
+@media (max-width:640px){.cards{grid-template-columns:1fr}.ov{gap:10px;padding:16px}.card{padding:12px}}
+@media (prefers-reduced-motion:reduce){.ov{backdrop-filter:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Farol</h1>
+    <p class="tag">Uma ilha no Atlântico, um feixe de luz e uma regra: tudo o que fica no escuro é problema teu.</p>
+  </header>
+
+  <div class="frame" id="frame">
+    <canvas id="game" aria-label="Jogo Farol: aponta o feixe de luz com o rato ou o dedo"></canvas>
+
+    <div class="ov" id="ovTitle">
+      <h2>Acende o farol antes que a noite chegue à ilha</h2>
+      <p>Os navios só encontram o porto na luz. As criaturas do fundo só morrem nela. O teu feixe não chega para os dois.</p>
+      <p class="small">Aponta com o rato ou o dedo · <kbd>Espaço</kbd> sirene de nevoeiro · cada navio que atraca traz óleo</p>
+      <button class="btn" id="startBtn">Acender o farol</button>
+    </div>
+
+    <div class="ov" id="ovUp" hidden>
+      <h2 id="upTitle">Amanhecer</h2>
+      <p class="small" id="upSub">Escolhe uma melhoria para a próxima noite.</p>
+      <div class="cards" id="cards"></div>
+    </div>
+
+    <div class="ov" id="ovOver" hidden>
+      <h2>O farol apagou-se</h2>
+      <p id="overStats"></p>
+      <button class="btn" id="againBtn">Reacender</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <span>Protótipo jogável · a versão Steam teria 30 noites, 4 ilhas e um faroleiro com história.</span>
+    <button class="ghost" id="hornBtn">Sirene de nevoeiro</button>
+  </div>
+
+  <article>
+    <section>
+      <h3>O pitch</h3>
+      <p class="lede">És o último faroleiro de uma ilha perdida ao largo dos Açores. Cada noite, navios perdidos procuram o porto e coisas antigas sobem do fundo do mar. Tens um só feixe de luz. Iluminas o navio ou a criatura?</p>
+      <p>É um roguelite de defesa de uma só mecânica: rodar a luz. Aprende-se em cinco segundos e cada noite obriga a escolhas que doem.</p>
+    </section>
+
+    <section>
+      <h3>Porque é que isto pode vender sem orçamento</h3>
+      <ul>
+        <li><b>A escuridão é o orçamento de arte.</b> 90% do ecrã está às escuras. Formas simples, olhos a brilhar e um cone de luz parecem um estilo, não falta de dinheiro.</li>
+        <li><b>Uma mecânica, mil decisões.</b> A mesma receita de Vampire Survivors, Brotato ou Balatro: regras simples, sinergias que viciam e partidas de 20 minutos.</li>
+        <li><b>Feito para clips.</b> O navio salvo no último segundo, o kraken que surge do escuro. Momentos de 15 segundos que funcionam no TikTok e em streams.</li>
+        <li><b>Preço de impulso.</b> 6,99 €, compatível com Steam Deck e com rato. Ninguém pensa duas vezes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Loop de jogo</h3>
+      <ul>
+        <li><b>Noite (60–90 s):</b> aponta o feixe, queima criaturas, guia navios por entre os recifes. O óleo gasta-se; só os navios que atracam o repõem.</li>
+        <li><b>Amanhecer:</b> escolhe 1 de 3 melhorias (lentes, mechas, segundo feixe, sirene).</li>
+        <li><b>Entre partidas:</b> pérolas desbloqueiam novos faróis, faroleiros e páginas do diário que contam o que se esconde no fundo.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Orçamento: quase zero</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Rubrica</th><th>Solução</th><th>Custo</th></tr></thead>
+          <tbody>
+            <tr><td>Motor</td><td>Godot 4, código aberto, exporta para Windows, Linux e Steam Deck</td><td class="n">0 €</td></tr>
+            <tr><td>Arte</td><td>Formas vetoriais e iluminação; a luz faz o trabalho todo</td><td class="n">0 €</td></tr>
+            <tr><td>Som</td><td>Mar e vento gravados no telemóvel, efeitos CC0, música de um amigo com quota de receitas</td><td class="n">0–300 €</td></tr>
+            <tr><td>Steam Direct</td><td>Taxa por jogo, recuperada aos 1000 $ de receita</td><td class="n">~95 €</td></tr>
+            <tr><td>Marketing</td><td>Clips diários, demo no Steam Next Fest, chaves para streamers</td><td class="n">0 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">As contas do milhão: a 6,99 €, depois da parte da Steam, IVA e reembolsos ficam cerca de 3,5 € por cópia. São precisas perto de 285 000 cópias. É ambicioso, mas o género já o fez várias vezes com equipas de uma pessoa.</p>
+    </section>
+
+    <section>
+      <h3>Plano até ao lançamento</h3>
+      <ul>
+        <li><b>Mês 1:</b> este protótipo. Testar com 20 pessoas: voltam a jogar sem lhes pedir?</li>
+        <li><b>Meses 2–3:</b> página na Steam, trailer de 30 s, um clip por dia. Objetivo: 5000 wishlists.</li>
+        <li><b>Mês 5:</b> demo gratuita no Steam Next Fest. Objetivo: 20 000 wishlists.</li>
+        <li><b>Mês 8:</b> lançamento em acesso antecipado, com tradução para 8 línguas feita pela comunidade.</li>
+        <li><b>Depois:</b> atualizações mensais grátis, modo diário com tabela de pontuações e um DLC de ilhas.</li>
+      </ul>
+    </section>
+  </article>
+</div>
+
+<script>
+(() => {
+const TAU = Math.PI * 2;
+const cv = document.getElementById('game'), ctx = cv.getContext('2d');
+const dark = document.createElement('canvas'), dctx = dark.getContext('2d');
+const $ = id => document.getElementById(id);
+let W = 800, H = 500, DPR = 1, cx = 400, cy = 250;
+
+function resize() {
+  const r = cv.parentElement.getBoundingClientRect();
+  W = r.width;
+  H = Math.max(420, Math.min(W * 0.62, window.innerHeight * 0.74));
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  for (const c of [cv, dark]) { c.width = Math.round(W * DPR); c.height = Math.round(H * DPR); }
+  cv.style.height = H + 'px';
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  dctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  cx = W / 2; cy = H / 2;
+}
+window.addEventListener('resize', resize);
+resize();
+
+const S = {};
+function reset() {
+  Object.assign(S, {
+    mode: S.mode || 'title', night: 1, t: 0, nightLen: 60,
+    oil: 100, oilMax: 100, hp: 100, hpMax: 100, pearls: 0, saved: 0, lost: 0, kills: 0,
+    aim: -Math.PI / 2, width: 0.44, rangeK: 0.5, dps: 34, drain: 3.2,
+    twin: false, hornCd: 0, hornMax: 14, shipDrift: 1, shipBonus: 0,
+    monsters: [], ships: [], rocks: [], parts: [], rings: [],
+    spawnM: 1.5, spawnS: 2, taken: {}
+  });
+  makeRocks();
+}
+const R = () => S.rangeK * Math.hypot(W, H) / 2;
+const edgeD = () => Math.hypot(W, H) / 2 + 24;
+const ad = (a, b) => { let d = (a - b) % TAU; if (d > Math.PI) d -= TAU; if (d < -Math.PI) d += TAU; return d; };
+let curBeams = [];
+
+function makeRocks() {
+  S.rocks = [];
+  const n = Math.min(16, 4 + Math.round(S.night * 1.5));
+  let guard = 0;
+  while (S.rocks.length < n && guard++ < 400) {
+    const a = Math.random() * TAU, d = 85 + Math.random() * (Math.min(W, H) / 2 - 95);
+    const r = 8 + Math.random() * 12;
+    const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d;
+    if (S.rocks.every(k => Math.hypot(k.x - x, k.y - y) > k.r + r + 30)) S.rocks.push({ x, y, r, seed: Math.random() * 9 });
+  }
+}
+
+function lit(x, y) {
+  const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy);
+  if (d < 58) return true;
+  if (d > R()) return false;
+  const a = Math.atan2(dy, dx);
+  for (const b of curBeams) if (Math.abs(ad(a, b)) < S.width / 2) return true;
+  return false;
+}
+
+function spawnMonster() {
+  const n = S.night;
+  const kraken = n >= 3 && Math.random() < 0.12 + n * 0.02;
+  const eel = !kraken && n >= 2 && Math.random() < 0.35;
+  const type = kraken ? 'kraken' : eel ? 'eel' : 'grunt';
+  const base = { grunt: { hp: 40, sp: 30, r: 11, dmg: 12 }, eel: { hp: 22, sp: 50, r: 8, dmg: 8 }, kraken: { hp: 170, sp: 16, r: 21, dmg: 30 } }[type];
+  const k = 1 + (n - 1) * 0.2, a = Math.random() * TAU, d = edgeD();
+  S.monsters.push({ type, x: cx + Math.cos(a) * d, y: cy + Math.sin(a) * d, hp: base.hp * k, maxhp: base.hp * k,
+    sp: base.sp * (1 + (n - 1) * 0.05), r: base.r, dmg: base.dmg, stun: 0, ph: Math.random() * 9 });
+}
+function spawnShip() {
+  const a = Math.random() * TAU, d = edgeD() - 10;
+  const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d;
+  S.ships.push({ x, y, h: Math.atan2(cy - y, cx - x) + (Math.random() - 0.5) * 0.7, sp: 24 + Math.random() * 8, wob: 0 });
+}
+function burst(x, y, col, n, sp) {
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * TAU, v = sp * (0.3 + Math.random());
+    S.parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, life: 0.5 + Math.random() * 0.6, col, s: 1.5 + Math.random() * 2 });
+  }
+}
+
+function horn() {
+  if (S.mode !== 'play' || S.hornCd > 0) return;
+  S.hornCd = S.hornMax;
+  S.rings.push({ r: 30, life: 0.7 });
+  for (const m of S.monsters) {
+    const dx = m.x - cx, dy = m.y - cy, d = Math.hypot(dx, dy);
+    if (d < 210) { m.x += dx / d * 110; m.y += dy / d * 110; m.stun = 1.6; }
+  }
+}
+
+function update(dt) {
+  if (S.mode === 'title') { S.aim += dt * 0.5; curBeams = [S.aim]; return; }
+  if (S.mode !== 'play') return;
+  S.t += dt;
+  S.hornCd = Math.max(0, S.hornCd - dt);
+  const beamOn = S.oil > 0;
+  curBeams = beamOn ? (S.twin ? [S.aim, S.aim + Math.PI] : [S.aim]) : [];
+  if (beamOn) S.oil = Math.max(0, S.oil - S.drain * (S.width / 0.44) * (S.twin ? 1.6 : 1) * dt);
+
+  if (S.t < S.nightLen) {
+    S.spawnM -= dt;
+    if (S.spawnM <= 0) { spawnMonster(); S.spawnM = Math.max(0.45, 2.3 - S.night * 0.22) * (0.6 + Math.random() * 0.8); }
+    S.spawnS -= dt;
+    if (S.spawnS <= 0) { spawnShip(); S.spawnS = 5.5 + Math.random() * 4; }
+  }
+
+  for (const m of S.monsters) {
+    m.ph += dt * 4;
+    let tx = cx, ty = cy;
+    if (m.type === 'eel') {
+      let best = 200;
+      for (const s of S.ships) { const d = Math.hypot(s.x - m.x, s.y - m.y); if (d < best) { best = d; tx = s.x; ty = s.y; } }
+    }
+    const inL = lit(m.x, m.y);
+    if (inL) { m.hp -= S.dps * dt; if (Math.random() < dt * 8) burst(m.x, m.y, '#f2c66d', 1, 30); }
+    if (m.stun > 0) { m.stun -= dt; continue; }
+    const a = Math.atan2(ty - m.y, tx - m.x), sp = m.sp * (inL ? 0.45 : 1);
+    m.x += Math.cos(a) * sp * dt; m.y += Math.sin(a) * sp * dt;
+    if (Math.hypot(m.x - cx, m.y - cy) < 38) { S.hp -= m.dmg; m.hp = -1; m.hit = true; burst(m.x, m.y, '#e2643f', 14, 70); }
+    for (const s of S.ships) if (!s.dead && Math.hypot(s.x - m.x, s.y - m.y) < m.r + 7) { s.dead = 'monster'; }
+  }
+  S.monsters = S.monsters.filter(m => {
+    if (m.hp > 0) return true;
+    if (!m.hit) { S.kills++; S.pearls += m.type === 'kraken' ? 6 : 1; burst(m.x, m.y, '#7fd4c8', 18, 60); }
+    return false;
+  });
+
+  for (const s of S.ships) {
+    const target = Math.atan2(cy - s.y, cx - s.x);
+    if (lit(s.x, s.y)) s.h += ad(target, s.h) * Math.min(1, dt * 2.5);
+    else { s.wob += (Math.random() - 0.5) * dt * 4; s.wob *= 0.985; s.h += s.wob * dt * S.shipDrift + ad(target, s.h) * dt * 0.12; }
+    s.x += Math.cos(s.h) * s.sp * dt; s.y += Math.sin(s.h) * s.sp * dt;
+    for (const k of S.rocks) if (Math.hypot(k.x - s.x, k.y - s.y) < k.r + 6) s.dead = 'rock';
+    const d = Math.hypot(s.x - cx, s.y - cy);
+    if (d < 44) s.docked = true;
+    else if (d > edgeD() + 60) s.dead = 'lost';
+  }
+  S.ships = S.ships.filter(s => {
+    if (s.docked) { S.saved++; S.oil = Math.min(S.oilMax, S.oil + 24); S.pearls += 3 + S.shipBonus; burst(s.x, s.y, '#f2c66d', 16, 50); return false; }
+    if (s.dead) { S.lost++; burst(s.x, s.y, '#d6e6e8', 20, 55); return false; }
+    return true;
+  });
+
+  for (const p of S.parts) { p.x += p.vx * dt; p.y += p.vy * dt; p.vx *= 0.94; p.vy *= 0.94; p.life -= dt; }
+  S.parts = S.parts.filter(p => p.life > 0);
+  for (const r of S.rings) { r.r += 380 * dt; r.life -= dt; }
+  S.rings = S.rings.filter(r => r.life > 0);
+
+  if (S.hp <= 0) { S.hp = 0; gameOver(); return; }
+  if (S.t >= S.nightLen && S.monsters.length === 0 && S.ships.length === 0) dawn();
+  if (S.t >= S.nightLen + 25) { S.monsters = []; S.ships = []; dawn(); }
+}
+
+const UPGRADES = [
+  { id: 'fresnel', n: 'Lente de Fresnel', d: 'Feixe 18% mais largo. Gasta mais óleo.', f: () => S.width *= 1.18 },
+  { id: 'mecha', n: 'Mecha de Baleia', d: 'A luz queima 30% mais depressa.', f: () => S.dps *= 1.3 },
+  { id: 'espelho', n: 'Espelho Parabólico', d: 'Alcance do feixe +15%.', f: () => S.rangeK *= 1.15 },
+  { id: 'deposito', n: 'Depósito Maior', d: '+30 de óleo máximo.', f: () => S.oilMax += 30 },
+  { id: 'pavio', n: 'Pavio Lento', d: 'O feixe gasta 20% menos óleo.', f: () => S.drain *= 0.8 },
+  { id: 'pedreiro', n: 'Pedreiro da Vila', d: 'Torre +20 de resistência e reparação total.', f: () => { S.hpMax += 20; S.hp = S.hpMax; } },
+  { id: 'twin', n: 'Segundo Feixe', d: 'Um feixe nas costas do primeiro. Gasta 60% mais óleo.', once: true, f: () => S.twin = true },
+  { id: 'sirene', n: 'Sirene a Vapor', d: 'Sirene de nevoeiro recarrega 30% mais depressa.', f: () => S.hornMax *= 0.7 },
+  { id: 'sinaleiro', n: 'Sinaleiro', d: 'Navios perdem-se menos no escuro e trazem +2 pérolas.', f: () => { S.shipDrift *= 0.6; S.shipBonus += 2; } }
+];
+
+function dawn() {
+  S.mode = 'upgrade';
+  $('upTitle').textContent = `Amanhecer da noite ${S.night}`;
+  $('upSub').textContent = `${S.saved} navios salvos até agora · escolhe uma melhoria para a próxima noite.`;
+  const pool = UPGRADES.filter(u => !(u.once && S.taken[u.id])).sort(() => Math.random() - 0.5).slice(0, 3);
+  const box = $('cards'); box.innerHTML = '';
+  pool.forEach(u => {
+    const b = document.createElement('button');
+    b.className = 'card';
+    b.innerHTML = `<b>${u.n}</b><span>${u.d}</span>`;
+    b.onclick = () => { u.f(); S.taken[u.id] = true; nextNight(); };
+    box.appendChild(b);
+  });
+  $('ovUp').hidden = false;
+  box.firstChild && box.firstChild.focus({ preventScroll: true });
+}
+function nextNight() {
+  $('ovUp').hidden = true;
+  S.night++; S.t = 0; S.nightLen = Math.min(90, 60 + (S.night - 1) * 5);
+  S.oil = S.oilMax; S.hp = Math.min(S.hpMax, S.hp + 15); S.spawnM = 1.5; S.spawnS = 2; S.hornCd = 0;
+  makeRocks();
+  S.mode = 'play';
+}
+function gameOver() {
+  S.mode = 'over';
+  $('overStats').textContent = `Aguentaste ${S.night - 1} ${S.night - 1 === 1 ? 'noite' : 'noites'} inteiras. Salvaste ${S.saved} navios, perdeste ${S.lost} e queimaste ${S.kills} criaturas. ${S.pearls} pérolas.`;
+  $('ovOver').hidden = false;
+}
+function start() {
+  S.mode = 'play'; reset(); S.mode = 'play';
+  $('ovTitle').hidden = true; $('ovOver').hidden = true; $('ovUp').hidden = true;
+}
+
+function aimAt(e) {
+  const r = cv.getBoundingClientRect();
+  if (S.mode === 'play') S.aim = Math.atan2(e.clientY - r.top - cy, e.clientX - r.left - cx);
+}
+cv.addEventListener('pointermove', aimAt);
+cv.addEventListener('pointerdown', aimAt);
+window.addEventListener('keydown', e => {
+  if (e.code === 'Space' && S.mode === 'play') { e.preventDefault(); horn(); }
+});
+$('hornBtn').onclick = horn;
+$('startBtn').onclick = start;
+$('againBtn').onclick = start;
+
+function draw(time) {
+  const T = time / 1000;
+  const g = ctx.createRadialGradient(cx, cy, 20, cx, cy, Math.hypot(W, H) / 2);
+  g.addColorStop(0, '#103040'); g.addColorStop(1, '#040b12');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+  ctx.strokeStyle = 'rgba(140,190,205,0.07)'; ctx.lineWidth = 1;
+  for (let y = 12; y < H; y += 22) {
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 16) ctx.lineTo(x, y + Math.sin(x * 0.03 + T * 1.2 + y) * 3);
+    ctx.stroke();
+  }
+
+  for (const k of S.rocks) {
+    ctx.fillStyle = 'rgba(214,230,232,0.18)';
+    ctx.beginPath(); ctx.arc(k.x, k.y, k.r + 4 + Math.sin(T * 2 + k.seed) * 1.5, 0, TAU); ctx.fill();
+    ctx.fillStyle = '#2b3438';
+    ctx.beginPath();
+    for (let i = 0; i < 7; i++) { const a = i / 7 * TAU, rr = k.r * (0.75 + 0.25 * Math.sin(k.seed * 3 + i * 2.1)); ctx.lineTo(k.x + Math.cos(a) * rr, k.y + Math.sin(a) * rr); }
+    ctx.closePath(); ctx.fill();
+  }
+
+  for (const s of S.ships) {
+    ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.h);
+    ctx.fillStyle = 'rgba(214,230,232,0.15)'; ctx.fillRect(-16, -1, 8, 2);
+    ctx.fillStyle = '#9a7650';
+    ctx.beginPath(); ctx.moveTo(11, 0); ctx.lineTo(-8, -5); ctx.lineTo(-8, 5); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#e8e1cf'; ctx.fillRect(-3, -1, 5, 2);
+    ctx.restore();
+  }
+
+  for (const m of S.monsters) {
+    ctx.save(); ctx.translate(m.x, m.y);
+    const a = Math.atan2(cy - m.y, cx - m.x);
+    ctx.strokeStyle = '#2f6b68'; ctx.lineWidth = m.r > 15 ? 3 : 2;
+    const legs = m.type === 'eel' ? 2 : m.type === 'kraken' ? 8 : 5;
+    for (let i = 0; i < legs; i++) {
+      const la = a + Math.PI + (i - (legs - 1) / 2) * 0.35;
+      ctx.beginPath(); ctx.moveTo(0, 0);
+      const L = m.r * (m.type === 'eel' ? 2.6 : 1.8);
+      ctx.quadraticCurveTo(Math.cos(la) * L * 0.6 + Math.sin(m.ph + i) * 4, Math.sin(la) * L * 0.6 + Math.cos(m.ph + i) * 4, Math.cos(la) * L, Math.sin(la) * L);
+      ctx.stroke();
+    }
+    ctx.fillStyle = m.type === 'kraken' ? '#3b2a44' : '#17403f';
+    ctx.beginPath(); ctx.arc(0, 0, m.r, 0, TAU); ctx.fill();
+    ctx.restore();
+    if (m.hp < m.maxhp) {
+      ctx.fillStyle = 'rgba(0,0,0,.5)'; ctx.fillRect(m.x - m.r, m.y - m.r - 7, m.r * 2, 3);
+      ctx.fillStyle = '#7fd4c8'; ctx.fillRect(m.x - m.r, m.y - m.r - 7, m.r * 2 * Math.max(0, m.hp / m.maxhp), 3);
+    }
+  }
+
+  ctx.fillStyle = '#3a3a2c'; ctx.beginPath(); ctx.arc(cx, cy, 40, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#1d2c24'; ctx.beginPath(); ctx.arc(cx, cy, 33, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#ddd6c6'; ctx.beginPath(); ctx.arc(cx, cy, 14, 0, TAU); ctx.fill();
+  ctx.strokeStyle = '#b8402c'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(cx, cy, 10, 0, TAU); ctx.stroke();
+
+  for (const p of S.parts) { ctx.globalAlpha = Math.min(1, p.life * 2); ctx.fillStyle = p.col; ctx.fillRect(p.x, p.y, p.s, p.s); }
+  ctx.globalAlpha = 1;
+
+  // escuridão: um véu com buracos onde há luz
+  const rr = R();
+  dctx.globalCompositeOperation = 'source-over';
+  dctx.clearRect(0, 0, W, H);
+  dctx.fillStyle = 'rgba(2,5,10,0.9)'; dctx.fillRect(0, 0, W, H);
+  dctx.globalCompositeOperation = 'destination-out';
+  const flick = S.mode === 'play' && S.oil < 12 && S.oil > 0 ? 0.6 + Math.random() * 0.4 : 1;
+  for (const b of curBeams) {
+    const bg = dctx.createRadialGradient(cx, cy, 0, cx, cy, rr);
+    bg.addColorStop(0, `rgba(0,0,0,${flick})`); bg.addColorStop(0.75, `rgba(0,0,0,${0.85 * flick})`); bg.addColorStop(1, 'rgba(0,0,0,0)');
+    dctx.fillStyle = bg;
+    dctx.beginPath(); dctx.moveTo(cx, cy); dctx.arc(cx, cy, rr, b - S.width / 2, b + S.width / 2); dctx.closePath(); dctx.fill();
+  }
+  const ig = dctx.createRadialGradient(cx, cy, 0, cx, cy, 72);
+  ig.addColorStop(0, 'rgba(0,0,0,1)'); ig.addColorStop(1, 'rgba(0,0,0,0)');
+  dctx.fillStyle = ig; dctx.beginPath(); dctx.arc(cx, cy, 72, 0, TAU); dctx.fill();
+  for (const s of S.ships) {
+    const sg = dctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, 22);
+    sg.addColorStop(0, 'rgba(0,0,0,.7)'); sg.addColorStop(1, 'rgba(0,0,0,0)');
+    dctx.fillStyle = sg; dctx.beginPath(); dctx.arc(s.x, s.y, 22, 0, TAU); dctx.fill();
+  }
+  ctx.drawImage(dark, 0, 0, W, H);
+
+  ctx.globalCompositeOperation = 'lighter';
+  for (const b of curBeams) {
+    const hg = ctx.createRadialGradient(cx, cy, 0, cx, cy, rr);
+    hg.addColorStop(0, `rgba(242,198,109,${0.3 * flick})`); hg.addColorStop(1, 'rgba(242,198,109,0)');
+    ctx.fillStyle = hg;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, rr, b - S.width / 2, b + S.width / 2); ctx.closePath(); ctx.fill();
+  }
+  ctx.fillStyle = S.oil > 0 ? '#ffe2a0' : '#5a4a30';
+  ctx.beginPath(); ctx.arc(cx, cy, 5, 0, TAU); ctx.fill();
+  ctx.globalCompositeOperation = 'source-over';
+
+  // olhos: sempre visíveis, mesmo no escuro
+  for (const m of S.monsters) {
+    const a = Math.atan2(cy - m.y, cx - m.x), e = m.r * 0.45, o = m.r * 0.4;
+    ctx.fillStyle = m.stun > 0 ? '#7fd4c8' : '#ff7a4a';
+    ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = 8;
+    for (const sgn of [-1, 1]) {
+      ctx.beginPath();
+      ctx.arc(m.x + Math.cos(a) * o + Math.cos(a + Math.PI / 2) * e * sgn * 0.6, m.y + Math.sin(a) * o + Math.sin(a + Math.PI / 2) * e * sgn * 0.6, m.r > 15 ? 2.6 : 1.7, 0, TAU);
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+  }
+  for (const s of S.ships) {
+    ctx.fillStyle = '#ffd98a'; ctx.shadowColor = '#ffd98a'; ctx.shadowBlur = 6;
+    ctx.beginPath(); ctx.arc(s.x, s.y, 1.8, 0, TAU); ctx.fill(); ctx.shadowBlur = 0;
+  }
+  for (const r of S.rings) {
+    ctx.strokeStyle = `rgba(214,230,232,${r.life})`; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(cx, cy, r.r, 0, TAU); ctx.stroke();
+  }
+
+  if (S.mode === 'play' || S.mode === 'upgrade') hud();
+}
+
+function bar(x, y, w, v, max, col, label) {
+  ctx.fillStyle = 'rgba(214,230,232,0.12)'; ctx.fillRect(x, y, w, 6);
+  ctx.fillStyle = col; ctx.fillRect(x, y, w * Math.max(0, v / max), 6);
+  ctx.fillStyle = '#86a0a8'; ctx.fillText(label, x, y - 5);
+}
+function hud() {
+  ctx.font = '500 11px "JetBrains Mono", ui-monospace, monospace';
+  ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+  const left = Math.max(0, S.nightLen - S.t);
+  const mm = String(Math.floor(left / 60)).padStart(2, '0'), ss = String(Math.floor(left % 60)).padStart(2, '0');
+  ctx.fillStyle = '#d6e6e8'; ctx.font = '500 13px "JetBrains Mono", ui-monospace, monospace';
+  ctx.fillText(`NOITE ${S.night}  ${left > 0 ? mm + ':' + ss : 'ÚLTIMOS NAVIOS'}`, 14, 22);
+  ctx.font = '500 11px "JetBrains Mono", ui-monospace, monospace';
+  bar(14, 46, 140, S.oil, S.oilMax, S.oil < 20 ? '#e2643f' : '#f2c66d', `ÓLEO ${Math.ceil(S.oil)}`);
+  bar(14, 72, 140, S.hp, S.hpMax, '#d6e6e8', `TORRE ${Math.ceil(S.hp)}`);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#d6e6e8'; ctx.font = '500 13px "JetBrains Mono", ui-monospace, monospace';
+  ctx.fillText(`◆ ${S.pearls}`, W - 14, 22);
+  ctx.font = '500 11px "JetBrains Mono", ui-monospace, monospace';
+  ctx.fillStyle = '#86a0a8';
+  ctx.fillText(`NAVIOS ${S.saved} SALVOS · ${S.lost} PERDIDOS`, W - 14, 40);
+  ctx.fillText(S.hornCd > 0 ? `SIRENE ${Math.ceil(S.hornCd)}s` : 'SIRENE PRONTA [ESPAÇO]', W - 14, 56);
+  ctx.textAlign = 'left';
+}
+
+let last = performance.now();
+function loop(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  update(dt); draw(now);
+  requestAnimationFrame(loop);
+}
+reset();
+for (let i = 0; i < 3; i++) spawnShip();
+for (const s of S.ships) { s.x = cx + (s.x - cx) * 0.55; s.y = cy + (s.y - cy) * 0.55; }
+for (let i = 0; i < 4; i++) { spawnMonster(); const m = S.monsters[i]; m.x = cx + (m.x - cx) * 0.7; m.y = cy + (m.y - cy) * 0.7; }
+requestAnimationFrame(loop);
+})();
+</script>
+
+</body></html>

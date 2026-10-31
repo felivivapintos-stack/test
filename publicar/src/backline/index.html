@@ -1,0 +1,592 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Backline: Roadie Rush</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Archivo:wght@400;600;800&family=IBM+Plex+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: o palco 3D é o herói em largura total; HUD por cima dele; o pitch curto fica por baixo numa coluna */
+:root{
+  --case:#0e0d12; --panel:#18161f; --line:#2e2a38; --tape:#d8d6de; --muted:#9a94a8; --amber:#ffb43d; --magenta:#ff3d8b; --ok:#57e0a0;
+  --display:"Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --body:"Archivo", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--case);color:var(--tape)}
+body{font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:22px 64px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:6px 28px}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(44px,8vw,92px);line-height:.85;margin:0;letter-spacing:.01em;text-transform:uppercase}
+h1 span{color:var(--amber)}
+.tag{margin:0;color:var(--muted);max-width:48ch;text-wrap:balance}
+.frame{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#000;user-select:none;-webkit-user-select:none}
+#gl{display:block;width:100%;height:100%}
+.hud{position:absolute;inset:0;pointer-events:none;font-family:var(--mono);font-size:13px}
+.tl{position:absolute;left:14px;top:12px;display:flex;flex-direction:column;gap:6px;min-width:200px}
+.city{font-family:var(--display);font-weight:900;font-size:26px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.meter{height:8px;width:220px;max-width:40vw;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.meter i{display:block;height:100%;width:60%;background:var(--magenta);transition:width .25s}
+.lbl{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.tr{position:absolute;right:14px;top:12px;text-align:right;font-family:var(--display);font-weight:900;font-size:30px;line-height:1;color:var(--amber)}
+#reqs{position:absolute;right:14px;top:52px;display:flex;flex-direction:column;gap:8px;width:250px;max-width:42%}
+.req{background:rgba(14,13,18,.84);border-left:3px solid var(--amber);padding:7px 9px;display:flex;flex-direction:column;gap:3px}
+.req b{font-family:var(--body);font-weight:800;font-size:13px;color:var(--tape)}
+.req span{color:var(--muted);font-size:11.5px;line-height:1.35}
+.req .bar{height:3px;background:rgba(255,255,255,.12)}
+.req .bar i{display:block;height:100%;background:var(--amber)}
+.req.hot{border-left-color:var(--magenta)} .req.hot .bar i{background:var(--magenta)}
+#cross{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 0 0 2px rgba(0,0,0,.4)}
+#prompt{position:absolute;left:50%;top:calc(50% + 26px);transform:translateX(-50%);background:rgba(14,13,18,.84);padding:6px 10px;border-radius:3px;white-space:nowrap;font-size:13px}
+#prompt kbd{font:700 12px var(--mono);background:var(--amber);color:#1b1204;padding:1px 6px;border-radius:2px;margin-right:6px}
+#carry{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(14,13,18,.84);padding:6px 12px;border-radius:3px;white-space:nowrap}
+#ring{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;
+  background:conic-gradient(var(--amber) calc(var(--p,0)*1turn),rgba(255,255,255,.15) 0);
+  -webkit-mask:radial-gradient(circle,transparent 21px,#000 22px);mask:radial-gradient(circle,transparent 21px,#000 22px)}
+#mini{position:absolute;left:50%;top:62%;transform:translateX(-50%);width:min(360px,70%);display:flex;flex-direction:column;gap:6px;align-items:center;background:rgba(14,13,18,.9);padding:12px 14px;border-radius:4px}
+#mini .track{position:relative;width:100%;height:16px;background:rgba(255,255,255,.12)}
+#mini .zone{position:absolute;top:0;bottom:0;background:var(--ok);opacity:.7}
+#mini .mark{position:absolute;top:-4px;bottom:-4px;width:4px;margin-left:-2px;background:var(--tape)}
+#toast{position:absolute;left:50%;top:22%;transform:translateX(-50%);font-family:var(--display);font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:.02em;text-shadow:0 2px 12px rgba(0,0,0,.7);white-space:nowrap}
+.ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,7,11,.55)}
+.ov[hidden],.hud [hidden]{display:none!important}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px 24px;max-width:520px;width:100%;display:flex;flex-direction:column;gap:12px;max-height:100%;overflow:auto}
+.box h2{font-family:var(--display);font-weight:900;font-size:clamp(28px,4vw,42px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+.box p{margin:0;color:var(--muted)}
+.keys{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px;color:var(--muted)}
+.keys kbd{font:700 12px var(--mono);color:var(--tape);border:1px solid var(--line);border-radius:3px;padding:1px 6px;justify-self:start}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font:800 15px var(--body);background:var(--amber);color:#1b1204;border:0;border-radius:4px;padding:11px 20px;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.btn.alt{background:transparent;color:var(--tape);border:1px solid var(--line)}
+.btn:focus-visible{outline:2px solid var(--tape);outline-offset:3px}
+.stars{font-size:28px;color:var(--amber);letter-spacing:4px}
+article{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px;margin-top:8px}
+article h3{font-family:var(--display);font-weight:900;font-size:24px;text-transform:uppercase;margin:0 0 6px;color:var(--amber);line-height:1}
+article p{margin:0;color:var(--tape);font-size:15px}
+@media (max-width:760px){article{grid-template-columns:1fr}.hud{font-size:11px}#reqs{width:190px}.city{font-size:20px}.tr{font-size:22px}#toast{font-size:24px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Back<span>line</span></h1>
+    <p class="tag">You are the roadie of a touring band. The crowd only sees the show. You see broken strings, torn drumheads, dead batteries and a thirsty singer.</p>
+  </header>
+
+  <div class="frame" id="frame">
+    <canvas id="gl"></canvas>
+    <div class="hud" id="hud" hidden>
+      <div class="tl">
+        <div class="city" id="city">Lisboa</div>
+        <div class="lbl" id="song">Song 1 of 6</div>
+        <div class="lbl">Crowd</div>
+        <div class="meter"><i id="hype"></i></div>
+      </div>
+      <div class="tr" id="money">0 €</div>
+      <div id="reqs"></div>
+      <div id="cross"></div>
+      <div id="ring" hidden></div>
+      <div id="prompt" hidden></div>
+      <div id="carry" hidden></div>
+      <div id="mini" hidden>
+        <div class="lbl">Test the cable: press <b>E</b> in the green zone (<span id="miniHits">0</span>/3)</div>
+        <div class="track"><div class="zone" id="miniZone"></div><div class="mark" id="miniMark"></div></div>
+      </div>
+      <div id="toast" hidden></div>
+    </div>
+
+    <div class="ov" id="ov">
+      <div class="box">
+        <h2 id="ovT">Show night</h2>
+        <p id="ovP">Black Tide hits the stage in seconds. When something breaks, that musician goes silent and the crowd cools off. Run backstage, fix it and hand it back before time runs out.</p>
+        <div class="keys" id="ovKeys">
+          <kbd>WASD</kbd><span>walk (Shift to run)</span>
+          <kbd>Mouse</kbd><span>look (click the stage to lock the cursor)</span>
+          <kbd>E</kbd><span>pick up, use, hand over (hold at the workbenches)</span>
+          <kbd>Q</kbd><span>drop what you’re holding</span>
+        </div>
+        <div class="btns" id="ovB"><button class="btn" id="startBtn">Open the doors</button></div>
+        <p style="font-size:13px">Needs keyboard and mouse. Turn the sound on.</p>
+      </div>
+    </div>
+  </div>
+
+  <article>
+    <div><h3>A fórmula do Kitman</h3><p>Um trabalho invisível num evento ao vivo. Tarefas manuais satisfatórias, correria entre salas e cooperativo para 1 a 4 amigos. Muda o futebol para a música, que toda a gente percebe em qualquer país.</p></div>
+    <div><h3>O gancho para clips</h3><p>Quando um instrumento avaria, essa parte da música cala-se mesmo. O solo de guitarra que desaparece e o público que vaia dão clips de 10 segundos que se explicam sozinhos.</p></div>
+    <div><h3>O que falta para a Steam</h3><p>Cooperativo online, digressão com cidades e palcos novos, gestão da setlist entre concertos, e o caos de um festival com três palcos. Feito em Godot por uma ou duas pessoas.</p></div>
+  </article>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const frame = $('frame'), canvas = $('gl');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x07060b);
+scene.fog = new THREE.Fog(0x07060b, 16, 48);
+const camera = new THREE.PerspectiveCamera(72, 16 / 9, 0.05, 120);
+scene.add(camera);
+function resize() { const w = frame.clientWidth, h = frame.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+window.addEventListener('resize', resize); resize();
+
+// ---------- construção ----------
+const solids = [];
+const mat = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.85, metalness: 0.05 }, o));
+function box(w, h, d, m, x, y, z, parent = scene) { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), typeof m === 'number' ? mat(m) : m); b.position.set(x, y, z); parent.add(b); return b; }
+function wall(x1, z1, x2, z2, h = 4.2, c = 0x2a2830) {
+  const w = Math.max(0.3, Math.abs(x2 - x1)), d = Math.max(0.3, Math.abs(z2 - z1));
+  box(w, h, d, c, (x1 + x2) / 2, h / 2, (z1 + z2) / 2);
+  solids.push({ x1: Math.min(x1, x2) - (w === 0.3 ? 0.15 : 0), x2: Math.max(x1, x2) + (w === 0.3 ? 0.15 : 0), z1: Math.min(z1, z2) - (d === 0.3 ? 0.15 : 0), z2: Math.max(z1, z2) + (d === 0.3 ? 0.15 : 0) });
+}
+function textSprite(lines, bg = 'rgba(14,13,18,.88)', fg = '#d8d6de', w = 512, h = 160, accent = '#ffb43d') {
+  const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d');
+  g.fillStyle = bg; g.fillRect(0, 0, w, h); g.fillStyle = accent; g.fillRect(0, 0, 10, h);
+  g.fillStyle = fg; g.textBaseline = 'middle';
+  lines.forEach((t, i) => { g.font = i === 0 ? '900 64px "Big Shoulders Display", Impact, sans-serif' : '500 34px "IBM Plex Mono", monospace'; g.fillText(t, 30, h / (lines.length + 1) * (i + 1)); });
+  const tex = new THREE.CanvasTexture(c);
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: true, transparent: true }));
+  s.scale.set(w / h * 0.42, 0.42, 1); return s;
+}
+
+scene.add(new THREE.AmbientLight(0x8a80a0, 0.6));
+scene.add(new THREE.HemisphereLight(0x8090c0, 0x2a2018, 0.55));
+
+// palco e bastidores
+box(20, 0.2, 6, mat(0x26201c, { roughness: 0.7 }), 0, -0.1, 3);
+box(20, 0.2, 12, mat(0x3a3a40, { roughness: 0.95 }), 0, -0.1, 12);
+box(44, 0.2, 34, 0x0d0c11, 0, -1.3, -17);
+box(20, 1.2, 0.2, 0x111014, 0, -0.6, 0);
+box(18, 1, 0.12, mat(0x8a8a94, { metalness: 0.6, roughness: 0.4 }), 0, -0.75, -1.4);
+box(20, 0.1, 12, 0x15141a, 0, 4.25, 12);
+// tecto do palco: truss
+for (const z of [0.6, 5.2]) box(20, 0.25, 0.25, mat(0x55555e, { metalness: 0.7, roughness: 0.4 }), 0, 6.6, z);
+// paredes
+wall(-6, 6, 6, 6, 6.6, 0x121116);
+wall(-10, 0, -10, 18); wall(10, 0, 10, 18); wall(-10, 18, 10, 18);
+solids.push({ x1: -10, x2: 10, z1: -0.4, z2: 0.15 });
+wall(-10, 9, -3.5, 9); wall(-3.5, 9, -3.5, 11); wall(-3.5, 13, -3.5, 18);
+wall(3.5, 9, 10, 9); wall(3.5, 9, 3.5, 11); wall(3.5, 13, 3.5, 18);
+// ecrã LED com o nome da banda
+{
+  const c = document.createElement('canvas'); c.width = 1024; c.height = 384; const g = c.getContext('2d');
+  const gr = g.createLinearGradient(0, 0, 1024, 384); gr.addColorStop(0, '#2a0b3a'); gr.addColorStop(1, '#0b1f3a'); g.fillStyle = gr; g.fillRect(0, 0, 1024, 384);
+  g.fillStyle = '#ff3d8b'; g.font = '900 170px "Big Shoulders Display", Impact, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillText('BLACK TIDE', 512, 170); g.fillStyle = '#ffb43d'; g.font = '500 44px "IBM Plex Mono", monospace'; g.fillText('TOUR 2026', 512, 300);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(10, 3.75), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c) }));
+  m.position.set(0, 3.6, 5.82); m.rotation.y = Math.PI; scene.add(m);
+}
+// equipamento de palco
+const ampMat = mat(0x18171c), grill = mat(0x2c2b33, { roughness: 1 });
+for (const x of [-4.6, 4.6]) { box(1.4, 1.6, 0.8, ampMat, x, 0.8, 4.4); box(1.25, 1.2, 0.05, grill, x, 0.75, 3.99); box(1.4, 0.5, 0.8, ampMat, x, 1.85, 4.4); }
+for (const x of [-3.6, 0, 3.6]) { const w = box(0.9, 0.4, 0.6, ampMat, x, 0.2, 1.1); w.rotation.x = 0.4; }
+box(3.2, 0.5, 2.2, mat(0x221d24), 0, 0.25, 4.9);
+solids.push({ x1: -1.7, x2: 1.7, z1: 3.75, z2: 6 });
+for (const x of [-4.6, 4.6]) solids.push({ x1: x - 0.75, x2: x + 0.75, z1: 3.95, z2: 4.85 });
+
+// público (instanciado)
+const CROWD = 380;
+const bodyI = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.2, 0.26, 1.1, 6), mat(0x1a1922), CROWD);
+const headI = new THREE.InstancedMesh(new THREE.SphereGeometry(0.14, 8, 6), mat(0x2b2733), CROWD);
+const crowd = [];
+for (let i = 0; i < CROWD; i++) crowd.push({ x: (Math.random() - 0.5) * 30, z: -2.2 - Math.random() * 22, p: Math.random() * 6.28 });
+scene.add(bodyI, headI);
+const dummy = new THREE.Object3D();
+
+// luzes
+const spots = [];
+[[0xff3d8b, -6], [0xffb43d, -2], [0x3dc8ff, 2], [0xffffff, 6]].forEach(([c, x], i) => {
+  const s = new THREE.SpotLight(c, 2.4, 26, 0.38, 0.55, 1.2); s.position.set(x, 6.5, 0.6);
+  s.target.position.set(x * 0.5, 0, 3); scene.add(s, s.target); spots.push(s);
+  box(0.3, 0.4, 0.3, mat(0x222228, { emissive: c, emissiveIntensity: 0.6 }), x, 6.3, 0.6);
+});
+const crowdSpots = [0xff3d8b, 0x3dc8ff].map((c, i) => { const s = new THREE.SpotLight(c, 1.8, 40, 0.5, 0.6, 1); s.position.set(i ? 7 : -7, 6.5, 0.6); s.target.position.set(0, -1, -10); scene.add(s, s.target); return s; });
+const wash = new THREE.PointLight(0xffe0c0, 1.1, 18); wash.position.set(0, 4, 2.5); scene.add(wash);
+for (const [x, z] of [[-6.8, 13.5], [6.8, 13.5], [0, 12]]) { const p = new THREE.PointLight(0xffd8a0, 1.6, 15, 1.2); p.position.set(x, 3.6, z); scene.add(p); box(0.8, 0.06, 0.2, mat(0xfff2d0, { emissive: 0xfff2d0, emissiveIntensity: 1 }), x, 4.15, z); }
+
+// músicos
+const ROLE = {
+  vocal: { name: 'Rita', inst: 'microphone', art: 'the', x: 0, z: 2.1, c: 0xd94f70, y: 0 },
+  guitar: { name: 'Zé', inst: 'guitar', art: 'the', x: -3.6, z: 3, c: 0x3fa7d6, y: 0 },
+  bass: { name: 'Nuno', inst: 'bass', art: 'the', x: 3.6, z: 3, c: 0xf2b134, y: 0 },
+  drums: { name: 'Inês', inst: 'snare', art: 'the', x: 0, z: 5.3, c: 0x7bd389, y: 0.2 }
+};
+const skin = mat(0xc89a7a), jeans = mat(0x1f2433), black = mat(0x141318);
+const musicians = Object.entries(ROLE).map(([role, R]) => {
+  const g = new THREE.Group(); g.position.set(R.x, R.y, R.z); scene.add(g);
+  const seated = role === 'drums';
+  if (!seated) box(0.36, 0.9, 0.22, jeans, 0, 0.45, 0, g);
+  const torso = new THREE.Group(); torso.position.y = seated ? 0.75 : 0.9; g.add(torso);
+  box(0.5, 0.62, 0.28, mat(R.c), 0, 0.31, 0, torso);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.16, 14, 10), skin); head.position.y = 0.8; torso.add(head);
+  box(0.36, 0.12, 0.34, black, 0, 0.92, 0.02, torso);
+  let inst;
+  if (role === 'guitar' || role === 'bass') {
+    inst = new THREE.Group();
+    box(0.46, 0.34, 0.08, mat(role === 'guitar' ? 0xb22222 : 0x222222, { roughness: 0.4 }), 0, 0, 0, inst);
+    box(0.08, 0.06, role === 'bass' ? 0.95 : 0.8, mat(0x6b4a2b), 0.42, 0.1, 0, inst).rotation.y = Math.PI / 2;
+    inst.position.set(0, 0.2, -0.2); inst.rotation.z = 0.35; torso.add(inst);
+  } else if (role === 'vocal') {
+    box(0.03, 1.5, 0.03, black, 0, 0.75, -0.42, g);
+    inst = box(0.05, 0.05, 0.16, mat(0x888890, { metalness: 0.8, roughness: 0.3 }), 0, 1.52, -0.36, g);
+  } else {
+    box(0.4, 0.5, 0.4, black, 0, 0.25, 0.1, g);
+    const kick = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.45, 18), mat(0x2b5f9e)); kick.rotation.x = Math.PI / 2; kick.position.set(0, 0.42, -0.9); g.add(kick);
+    for (const [x, y, z, r] of [[-0.75, 1.3, -0.5, 0.36], [0.75, 1.35, -0.55, 0.4]]) { const cy = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.01, 18), mat(0xc9a43a, { metalness: 0.9, roughness: 0.3 })); cy.position.set(x, y, z); g.add(cy); }
+    inst = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.14, 16), mat(0xdedede)); inst.position.set(-0.35, 0.72, -0.45); g.add(inst);
+  }
+  solids.push({ circle: true, x: R.x, z: R.z, r: 0.45 });
+  const m = { role, R, g, torso, inst, req: null, sprite: null, name: `${R.name} (${({ vocal: 'vocals', guitar: 'guitar', bass: 'bass', drums: 'drums' })[role]})` };
+  return m;
+});
+
+// estações
+const STATIONS = [
+  { id: 'strings', name: 'String bench', sub: 'oficina', x: -8.6, z: 10.4, c: 0x6b4a2b, kind: 'hold', dur: 2.6 },
+  { id: 'drum', name: 'Drum bench', sub: 'oficina', x: -8.6, z: 14.2, c: 0x4a4a55, kind: 'hold', dur: 3.2 },
+  { id: 'tester', name: 'Cable tester', sub: 'oficina', x: -6.2, z: 17.1, c: 0x2f3b4a, kind: 'game' },
+  { id: 'fridge', name: 'Fridge', sub: 'cold water', x: 9.1, z: 10.4, c: 0xd8d8de, kind: 'source', h: 1.9 },
+  { id: 'batteries', name: 'Battery box', sub: '9V e AA', x: 9.1, z: 13.4, c: 0xffb43d, kind: 'source' },
+  { id: 'cables', name: 'New cables', sub: 'jack 6,3 mm', x: 9.1, z: 16.3, c: 0x22222a, kind: 'source' }
+];
+STATIONS.forEach(s => {
+  const h = s.h || 0.95, w = s.id === 'tester' ? 1.6 : 1, d = s.id === 'tester' ? 0.9 : 1.6;
+  box(w, h, d, mat(s.c), s.x, h / 2, s.z);
+  if (s.kind === 'hold') box(w * 0.9, 0.05, d * 0.5, mat(0x9a7a50), s.x, h + 0.03, s.z);
+  if (s.id === 'tester') box(0.5, 0.25, 0.3, mat(0x111111, { emissive: 0x57e0a0, emissiveIntensity: 0.5 }), s.x, h + 0.13, s.z);
+  solids.push({ x1: s.x - w / 2 - 0.05, x2: s.x + w / 2 + 0.05, z1: s.z - d / 2 - 0.05, z2: s.z + d / 2 + 0.05 });
+  const sp = textSprite([s.name.toUpperCase(), s.sub]); sp.position.set(s.x, h + 0.75, s.z); scene.add(sp);
+});
+// adereços dos bastidores
+for (let i = 0; i < 5; i++) box(1.1, 0.7, 0.7, mat(0x1b1a20, { roughness: 0.5 }), -1.5 + (i % 3) * 1.2, 0.35 + Math.floor(i / 3) * 0.7, 17.4);
+solids.push({ x1: -2.2, x2: 1.9, z1: 16.9, z2: 18 });
+{ const s = textSprite(['BASTIDORES', 'workshop ← · → storeroom']); s.position.set(0, 2.6, 9.2); scene.add(s); }
+
+// objeto nas mãos
+const hand = new THREE.Group(); hand.position.set(0.32, -0.3, -0.55); camera.add(hand);
+const handMesh = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.14, 0.32), mat(0xffb43d)); hand.add(handMesh); hand.visible = false;
+
+// ---------- pedidos ----------
+const TYPES = {
+  string: { label: 'Broken string', who: ['guitar', 'bass'], steps: ['pickup', 'strings', 'deliver'], mute: 1 },
+  skin: { label: 'Torn snare head', who: ['drums'], steps: ['pickup', 'drum', 'deliver'], mute: 1 },
+  water: { label: 'Thirsty', who: ['vocal', 'guitar', 'bass', 'drums'], steps: ['fridge', 'deliver'], mute: 0 },
+  battery: { label: 'Wireless out of battery', who: ['vocal', 'guitar', 'bass'], steps: ['batteries', 'deliver'], mute: 1 },
+  cable: { label: 'Noisy cable', who: ['guitar', 'bass'], steps: ['cables', 'tester', 'deliver'], mute: 1 }
+};
+const HINT = {
+  pickup: r => `Get ${r.m.R.name}'s ${r.m.R.inst}`,
+  strings: () => 'Take it to the string bench (workshop)', drum: () => 'Take it to the drum bench (workshop)',
+  fridge: () => 'Water from the fridge (storeroom)', batteries: () => 'Battery from the box in the storeroom',
+  cables: () => 'New cable from the storeroom', tester: () => 'Test the cable in the workshop', deliver: r => `Hand it to ${r.m.R.name}`
+};
+const ITEM = {
+  pickup: r => r.m.R.inst, strings: () => 'guitar with new strings', drum: () => 'snare with a new head',
+  fridge: () => 'bottle of water', batteries: () => 'pilha 9V', cables: () => 'untested cable', tester: () => 'tested cable'
+};
+const CITIES = ['Lisbon · Coliseu', 'Porto · Super Bock Arena', 'Madrid · La Riviera', 'Paris · Olympia', 'London · Brixton', 'Berlin · Tempodrom'];
+const SHOW_LEN = 150, SONGS = 6;
+const G = { mode: 'title', show: 0, t: 0, hype: 60, money: 0, reqs: [], carry: null, nextReq: 6, hold: { s: null, p: 0 }, mini: null, fixed: 0, failed: 0, hypeSum: 0, hypeN: 0, toastT: 0 };
+const P = { x: -7.5, z: 7.5, yaw: 0, pitch: 0 };
+const keys = {};
+
+function setReqSprite(m) {
+  if (m.sprite) { scene.remove(m.sprite); m.sprite.material.map.dispose(); m.sprite = null; }
+  if (!m.req) return;
+  const s = textSprite(['!  ' + TYPES[m.req.type].label.toUpperCase()], 'rgba(255,61,139,.92)', '#ffffff', 640, 110, '#ffffff');
+  s.position.set(m.R.x, m.R.y + 2.45, m.R.z); scene.add(s); m.sprite = s;
+}
+function spawnReq() {
+  const free = musicians.filter(m => !m.req);
+  if (!free.length) return;
+  const m = free[Math.floor(Math.random() * free.length)];
+  const opts = Object.keys(TYPES).filter(k => TYPES[k].who.includes(m.role));
+  const type = opts[Math.floor(Math.random() * opts.length)];
+  const tMax = Math.max(22, 42 - G.show * 4);
+  m.req = { type, m, step: 0, t: tMax, tMax, id: Math.random() };
+  G.reqs.push(m.req); setReqSprite(m);
+  audio.sfx('alert');
+}
+function stepOf(r) { return TYPES[r.type].steps[r.step]; }
+function finishReq(r, ok) {
+  r.m.req = null; setReqSprite(r.m); G.reqs = G.reqs.filter(x => x !== r);
+  if (r.m.inst) r.m.inst.visible = true;
+  if (G.carry && G.carry.req === r) { G.carry = null; hand.visible = false; }
+  if (ok) { const tip = 10 + Math.round(r.t / r.tMax * 25); G.money += tip; G.hype = Math.min(100, G.hype + 12); G.fixed++; toast(`+${tip} € · ${r.m.R.name} says thanks`); audio.sfx('cheer'); }
+  else { G.hype = Math.max(0, G.hype - 18); G.failed++; toast(`${r.m.R.name} gave up · the crowd boos`, true); audio.sfx('boo'); }
+}
+function carryItem(r, label, color) { G.carry = { req: r, label }; hand.visible = true; handMesh.material.color.setHex(color || 0xffb43d); }
+function dropCarry() {
+  if (!G.carry) return;
+  const r = G.carry.req; const steps = TYPES[r.type].steps;
+  r.step = steps[0] === 'pickup' ? 0 : 0; if (r.m.inst) r.m.inst.visible = true;
+  G.carry = null; hand.visible = false; toast('Dropped. That request starts over.');
+}
+
+// ---------- interação ----------
+function targets() {
+  const fx = -Math.sin(P.yaw), fz = -Math.cos(P.yaw);
+  let best = null, bd = 9;
+  const consider = (obj, x, z, reach) => {
+    const dx = x - P.x, dz = z - P.z, d = Math.hypot(dx, dz);
+    if (d > reach) return; if ((dx * fx + dz * fz) / (d || 1) < 0.55 && d > 0.9) return;
+    if (d < bd) { bd = d; best = obj; }
+  };
+  musicians.forEach(m => consider({ m }, m.R.x, m.R.z, m.role === 'drums' ? 2.6 : 2.2));
+  STATIONS.forEach(s => consider({ s }, s.x, s.z, 2.1));
+  return best;
+}
+function info(t) {
+  if (!t) return null;
+  if (t.m) {
+    const m = t.m, r = m.req;
+    if (!r) return { text: `${m.name} is playing` };
+    const st = stepOf(r);
+    if (st === 'pickup') { if (G.carry) return { text: 'Your hands are full (Q to drop)' }; return { kind: 'tap', text: `Take ${m.R.name}'s ${m.R.inst}`, act: () => { r.step++; if (m.inst) m.inst.visible = false; carryItem(r, ITEM.pickup(r), m.role === 'drums' ? 0xdedede : 0xb22222); } }; }
+    if (st === 'deliver' && G.carry && G.carry.req === r) return { kind: 'tap', text: `Hand to ${m.R.name}`, act: () => finishReq(r, true) };
+    return { text: `${m.R.name}: ${TYPES[r.type].label.toLowerCase()}` };
+  }
+  const s = t.s;
+  if (s.kind === 'source') {
+    if (G.carry) return { text: `${s.name} · hands full` };
+    const r = G.reqs.filter(r => stepOf(r) === s.id).sort((a, b) => a.t - b.t)[0];
+    if (!r) return { text: `${s.name} · nobody needs this right now` };
+    return { kind: 'tap', text: `Grab ${ITEM[s.id]()} for ${r.m.R.name}`, act: () => { r.step++; carryItem(r, ITEM[s.id](), s.id === 'fridge' ? 0x6fc3ff : s.id === 'batteries' ? 0xffb43d : 0x222222); } };
+  }
+  if (!G.carry || stepOf(G.carry.req) !== s.id) return { text: `${s.name} · nothing to do here` };
+  const r = G.carry.req;
+  if (s.kind === 'hold') return { kind: 'hold', dur: s.dur, text: `Hold E: ${s.id === 'strings' ? 'restring' : 'replace the head'}`, act: () => { r.step++; G.carry.label = ITEM[s.id](); audio.sfx('done'); } };
+  return { kind: 'game', text: 'Test the cable', act: () => { G.mini = { r, hits: 0, x: 0, v: 0.9, zone: newZone() }; } };
+}
+const newZone = () => { const a = 0.15 + Math.random() * 0.6; return [a, a + 0.16]; };
+function miniPress() {
+  const m = G.mini, inZone = m.x >= m.zone[0] && m.x <= m.zone[1];
+  if (inZone) { m.hits++; m.zone = newZone(); m.v *= 1.15; audio.sfx('tick'); } else { m.hits = Math.max(0, m.hits - 1); audio.sfx('buzz'); }
+  if (m.hits >= 3) { m.r.step++; G.carry.label = ITEM.tester(); G.mini = null; audio.sfx('done'); }
+}
+
+// ---------- controlos ----------
+let usedLock = false, dragging = false;
+canvas.addEventListener('mousedown', () => {
+  if (G.mode !== 'play') return;
+  if (document.pointerLockElement !== canvas) { try { const p = canvas.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) {} dragging = true; }
+});
+window.addEventListener('mouseup', () => { dragging = false; });
+document.addEventListener('pointerlockchange', () => {
+  if (document.pointerLockElement === canvas) usedLock = true;
+  else if (usedLock && G.mode === 'play') pause();
+});
+window.addEventListener('mousemove', e => {
+  if (G.mode !== 'play') return;
+  if (document.pointerLockElement === canvas || dragging) {
+    P.yaw -= e.movementX * 0.0024; P.pitch = Math.max(-1.2, Math.min(1.2, P.pitch - e.movementY * 0.0024));
+  }
+});
+window.addEventListener('keydown', e => {
+  if (G.mode !== 'play') return;
+  const k = e.key.toLowerCase();
+  if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'e', 'q', 'shift'].includes(k)) e.preventDefault();
+  if (keys[k]) return; keys[k] = true;
+  if (k === 'e') {
+    if (G.mini) return miniPress();
+    const i = info(targets());
+    if (i && (i.kind === 'tap' || i.kind === 'game')) i.act();
+  }
+  if (k === 'q') { if (G.mini) G.mini = null; else dropCarry(); }
+});
+window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+window.addEventListener('blur', () => { for (const k in keys) keys[k] = false; });
+
+function collide() {
+  const r = 0.32;
+  for (const s of solids) {
+    if (s.circle) { const dx = P.x - s.x, dz = P.z - s.z, d = Math.hypot(dx, dz), m = s.r + r; if (d < m && d > 0) { P.x = s.x + dx / d * m; P.z = s.z + dz / d * m; } continue; }
+    const nx = Math.max(s.x1, Math.min(P.x, s.x2)), nz = Math.max(s.z1, Math.min(P.z, s.z2));
+    const dx = P.x - nx, dz = P.z - nz, d = Math.hypot(dx, dz);
+    if (d < r) {
+      if (d > 0.0001) { P.x = nx + dx / d * r; P.z = nz + dz / d * r; }
+      else { const opts = [[s.x1 - r, P.z, P.x - s.x1], [s.x2 + r, P.z, s.x2 - P.x], [P.x, s.z1 - r, P.z - s.z1], [P.x, s.z2 + r, s.z2 - P.z]].sort((a, b) => Math.abs(a[2]) - Math.abs(b[2])); P.x = opts[0][0]; P.z = opts[0][1]; }
+    }
+  }
+}
+
+// ---------- áudio: a banda toca a sério, e cada avaria cala uma parte ----------
+const audio = (() => {
+  let ac = null, layers = {}, filt, master, crowdG, noise, next = 0, step = 0, timer = null;
+  const mtof = m => 440 * Math.pow(2, (m - 69) / 12), BPM = 124, S16 = 60 / BPM / 4;
+  const ROOTS = [45, 41, 48, 43], MEL = [[69, 72, 69, 67], [65, 69, 72, 69], [67, 64, 67, 72], [67, 71, 74, 71]];
+  function env(g, t, a, peak, dec) { g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + a + dec); }
+  function osc(type, f, t, dur, peak, dest, filterF) {
+    const o = ac.createOscillator(), g = ac.createGain(); o.type = type; o.frequency.setValueAtTime(f, t);
+    let n = o; if (filterF) { const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = filterF; o.connect(lp); n = lp; }
+    n.connect(g); g.connect(dest); env(g, t, 0.01, peak, dur); o.start(t); o.stop(t + dur + 0.05); return o;
+  }
+  function nz(t, dur, peak, type, f, dest) {
+    const s = ac.createBufferSource(), b = ac.createBiquadFilter(), g = ac.createGain(); s.buffer = noise; b.type = type; b.frequency.value = f;
+    s.connect(b); b.connect(g); g.connect(dest); env(g, t, 0.005, peak, dur); s.start(t, Math.random()); s.stop(t + dur + 0.05);
+  }
+  function tick16(t) {
+    const bar = Math.floor(step / 16) % 4, s = step % 16, root = ROOTS[bar];
+    if (s % 4 === 0 || s === 10) { const o = osc('sine', 150, t, 0.22, 0.9, layers.drums.k); o.frequency.exponentialRampToValueAtTime(42, t + 0.12); }
+    if (s === 4 || s === 12) { nz(t, 0.16, 0.5, 'highpass', 1400, layers.drums.g); osc('triangle', 210, t, 0.08, 0.25, layers.drums.g); }
+    if (s % 2 === 0) nz(t, 0.035, 0.14, 'highpass', 7500, layers.drums.g);
+    if (s % 2 === 0) osc('sawtooth', mtof(root - 12 + (s % 4 === 2 ? 12 : 0)), t, S16 * 1.7, 0.32, layers.bass, 520);
+    if (s % 2 === 0) for (const iv of [12, 19, 24]) osc('sawtooth', mtof(root + iv) * (1 + (Math.random() - 0.5) * 0.004), t, S16 * 1.8, 0.07, layers.guitar, 1900);
+    if (s % 4 === 0) { const o = osc('triangle', mtof(MEL[bar][s / 4] + 12 - 12), t, S16 * 3.6, 0.2, layers.vocal); const l = ac.createOscillator(), lg = ac.createGain(); l.frequency.value = 5.5; lg.gain.value = 4; l.connect(lg); lg.connect(o.frequency); l.start(t); l.stop(t + S16 * 4); }
+    step++;
+  }
+  return {
+    start() {
+      if (ac) { ac.resume(); return; }
+      ac = new (window.AudioContext || window.webkitAudioContext)();
+      noise = ac.createBuffer(1, ac.sampleRate * 2, ac.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      master = ac.createGain(); master.gain.value = 0.55; filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 12000;
+      filt.connect(master); master.connect(ac.destination);
+      const mk = v => { const g = ac.createGain(); g.gain.value = v; g.connect(filt); return g; };
+      layers = { drums: { g: mk(1), k: null }, bass: mk(1), guitar: mk(1), vocal: mk(1) }; layers.drums.k = mk(1);
+      crowdG = ac.createGain(); crowdG.gain.value = 0.05; const cs = ac.createBufferSource(); cs.buffer = noise; cs.loop = true;
+      const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 900; bp.Q.value = 0.6; cs.connect(bp); bp.connect(crowdG); crowdG.connect(filt); cs.start();
+      next = ac.currentTime + 0.1;
+      timer = setInterval(() => { while (next < ac.currentTime + 0.12) { tick16(next); next += S16; } }, 25);
+    },
+    mix(muted, backstage, hype, playing) {
+      if (!ac) return; const t = ac.currentTime;
+      layers.drums.g.gain.setTargetAtTime(playing && !muted.drums ? 1 : 0, t, 0.05);
+      layers.drums.k.gain.setTargetAtTime(playing ? 1 : 0, t, 0.05);
+      for (const r of ['bass', 'guitar', 'vocal']) layers[r].gain.setTargetAtTime(playing && !muted[r] ? (r === 'vocal' && muted.thirsty ? 0.45 : 1) : 0, t, 0.05);
+      filt.frequency.setTargetAtTime(backstage ? 650 : 12000, t, 0.25);
+      master.gain.setTargetAtTime(backstage ? 0.4 : 0.55, t, 0.25);
+      crowdG.gain.setTargetAtTime(0.02 + hype / 100 * 0.1, t, 0.3);
+    },
+    sfx(kind) {
+      if (!ac) return; const t = ac.currentTime + 0.01, out = master;
+      if (kind === 'cheer') { nz(t, 1.4, 0.5, 'bandpass', 1300, out); nz(t + 0.1, 1.1, 0.3, 'bandpass', 2400, out); }
+      if (kind === 'boo') { nz(t, 1.2, 0.45, 'lowpass', 380, out); const o = osc('sawtooth', 140, t, 1, 0.12, out, 400); o.frequency.exponentialRampToValueAtTime(90, t + 1); }
+      if (kind === 'alert') { osc('square', 880, t, 0.08, 0.08, out); osc('square', 660, t + 0.1, 0.1, 0.08, out); }
+      if (kind === 'done') { osc('triangle', 660, t, 0.1, 0.15, out); osc('triangle', 990, t + 0.08, 0.16, 0.15, out); }
+      if (kind === 'tick') osc('square', 1200, t, 0.05, 0.08, out);
+      if (kind === 'buzz') osc('sawtooth', 110, t, 0.18, 0.15, out, 800);
+    },
+    stopBand() { if (ac) this.mix({ drums: 1, bass: 1, guitar: 1, vocal: 1 }, false, 0, false); }
+  };
+})();
+
+// ---------- fluxo ----------
+function overlay(t, p, btns, keysVisible) {
+  $('ovT').textContent = t; $('ovP').innerHTML = p; $('ovKeys').hidden = !keysVisible;
+  const b = $('ovB'); b.innerHTML = '';
+  btns.forEach(([label, fn, alt]) => { const e = document.createElement('button'); e.className = 'btn' + (alt ? ' alt' : ''); e.textContent = label; e.onclick = fn; b.appendChild(e); });
+  $('ov').hidden = false; b.firstChild && b.firstChild.focus({ preventScroll: true });
+}
+function startShow() {
+  audio.start();
+  musicians.forEach(m => { m.req = null; setReqSprite(m); if (m.inst) m.inst.visible = true; });
+  Object.assign(G, { mode: 'play', t: 0, hype: 60, reqs: [], carry: null, nextReq: 5, mini: null, fixed: 0, failed: 0, hypeSum: 0, hypeN: 0 });
+  Object.assign(P, { x: -7.5, z: 7.6, yaw: -0.52, pitch: -0.08 });
+  hand.visible = false; $('ov').hidden = true; $('hud').hidden = false;
+  $('city').textContent = CITIES[G.show % CITIES.length];
+  try { const p = canvas.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) {}
+}
+function pause() {
+  G.mode = 'paused'; for (const k in keys) keys[k] = false;
+  overlay('Paused', 'The band keeps playing. Hurry up.', [['Back to work', () => { G.mode = 'play'; $('ov').hidden = true; try { const p = canvas.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) {} }]], true);
+}
+function endShow(won) {
+  G.mode = 'end'; audio.stopBand(); if (document.pointerLockElement) document.exitPointerLock();
+  const avg = G.hypeN ? G.hypeSum / G.hypeN : 0, stars = won ? Math.max(1, Math.min(5, Math.round(avg / 20))) : 0;
+  const city = CITIES[G.show % CITIES.length];
+  const p = won
+    ? `<span class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</span><br>${G.fixed} repairs, ${G.failed} failed. You’ve earned ${G.money} € on this tour. The next city is tougher: requests come in faster.`
+    : `The crowd walked out in ${city}. You fixed ${G.fixed} things, but ${G.failed} were left undone.`;
+  overlay(won ? `${city.split(' · ')[0]}: show’s over` : 'Show ruined', p,
+    won ? [['Next city', () => { G.show++; startShow(); }], ['Replay', startShow, true]] : [['Try again', startShow]], false);
+}
+$('startBtn').onclick = startShow;
+function toast(t, bad) { const e = $('toast'); e.textContent = t; e.style.color = bad ? '#ff3d8b' : '#57e0a0'; e.hidden = false; G.toastT = 1.8; }
+
+// ---------- ciclo ----------
+let last = performance.now(), beat = 0;
+function frameLoop(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  beat += dt * 124 / 60;
+  const bp = beat % 1, bounce = Math.pow(1 - bp, 3);
+
+  if (G.mode === 'play') {
+    G.t += dt;
+    if (!G.mini) {
+      const sp = keys.shift ? 6.2 : 3.8; let mx = 0, mz = 0;
+      if (keys.w || keys.arrowup) mz -= 1; if (keys.s || keys.arrowdown) mz += 1; if (keys.a || keys.arrowleft) mx -= 1; if (keys.d || keys.arrowright) mx += 1;
+      const l = Math.hypot(mx, mz) || 1, sn = Math.sin(P.yaw), cs = Math.cos(P.yaw);
+      P.x += (mx * cs + mz * sn) / l * sp * dt; P.z += (-mx * sn + mz * cs) / l * sp * dt;
+      collide();
+    } else {
+      const m = G.mini; m.x += m.v * dt; if (m.x > 1) { m.x = 1; m.v *= -1; } if (m.x < 0) { m.x = 0; m.v *= -1; }
+      if (!G.carry || G.carry.req !== m.r) G.mini = null;
+    }
+    G.nextReq -= dt;
+    if (G.nextReq <= 0 && G.t < SHOW_LEN - 12) { spawnReq(); G.nextReq = Math.max(5, 13 - G.show * 1.5) * (0.7 + Math.random() * 0.6); }
+    for (const r of [...G.reqs]) { r.t -= dt; if (r.t <= 0) finishReq(r, false); }
+    G.hype = Math.max(0, G.hype - dt * (0.15 + G.reqs.filter(r => TYPES[r.type].mute).length * 0.45));
+    G.hypeSum += G.hype * dt; G.hypeN += dt;
+    // segurar nas bancadas
+    const tg = targets(), inf = info(tg);
+    if (keys.e && inf && inf.kind === 'hold' && !G.mini) {
+      if (G.hold.s !== tg.s) G.hold = { s: tg.s, p: 0 };
+      G.hold.p += dt / inf.dur; if (G.hold.p >= 1) { inf.act(); G.hold = { s: null, p: 0 }; }
+    } else if (!inf || inf.kind !== 'hold' || (tg && tg.s !== G.hold.s)) G.hold = { s: null, p: 0 };
+    // HUD
+    $('prompt').hidden = !inf || !!G.mini;
+    if (inf) $('prompt').innerHTML = inf.kind ? `<kbd>E</kbd>${inf.text}` : inf.text;
+    $('ring').hidden = !(G.hold.p > 0); $('ring').style.setProperty('--p', G.hold.p.toFixed(3));
+    $('carry').hidden = !G.carry; if (G.carry) $('carry').textContent = `Holding: ${G.carry.label} · Q to drop`;
+    $('mini').hidden = !G.mini;
+    if (G.mini) { $('miniHits').textContent = G.mini.hits; $('miniZone').style.left = G.mini.zone[0] * 100 + '%'; $('miniZone').style.width = (G.mini.zone[1] - G.mini.zone[0]) * 100 + '%'; $('miniMark').style.left = G.mini.x * 100 + '%'; }
+    $('hype').style.width = G.hype + '%'; $('hype').style.background = G.hype < 25 ? '#ff3d8b' : G.hype < 55 ? '#ffb43d' : '#57e0a0';
+    $('money').textContent = G.money + ' €';
+    $('song').textContent = `Song ${Math.min(SONGS, Math.floor(G.t / (SHOW_LEN / SONGS)) + 1)} of ${SONGS} · ${Math.max(0, Math.ceil(SHOW_LEN - G.t))} s`;
+    $('reqs').innerHTML = G.reqs.slice().sort((a, b) => a.t - b.t).map(r => `<div class="req${r.t < 10 ? ' hot' : ''}"><b>${r.m.R.name}: ${TYPES[r.type].label}</b><span>${HINT[stepOf(r)](r)}</span><div class="bar"><i style="width:${r.t / r.tMax * 100}%"></i></div></div>`).join('');
+    if (G.hype <= 0) endShow(false);
+    else if (G.t >= SHOW_LEN && !G.reqs.length) endShow(true);
+    else if (G.t >= SHOW_LEN + 15) { [...G.reqs].forEach(r => finishReq(r, false)); endShow(G.hype > 0); }
+  } else if (G.mode === 'title') {
+    const a = now / 9000; P.x = Math.sin(a) * 3; P.z = -1.2; P.yaw = Math.PI + Math.sin(a) * 0.2; P.pitch = 0.05;
+  }
+  if (G.toastT > 0) { G.toastT -= dt; if (G.toastT <= 0) $('toast').hidden = true; }
+
+  // banda
+  const muted = { thirsty: false };
+  musicians.forEach(m => {
+    const r = m.req, mute = r && TYPES[r.type].mute;
+    if (mute) muted[m.role] = true; if (r && r.type === 'water' && m.role === 'vocal') muted.thirsty = true;
+    const playing = G.mode !== 'end' && !mute;
+    m.torso.position.y = (m.role === 'drums' ? 0.75 : 0.9) + (playing ? bounce * 0.06 : 0);
+    m.torso.rotation.z = playing ? Math.sin(beat * Math.PI) * 0.05 : 0;
+    m.g.rotation.y = r ? Math.atan2(P.x - m.R.x, P.z - m.R.z) + Math.PI : 0;
+    if (m.sprite) m.sprite.position.y = m.R.y + 2.45 + Math.sin(now / 180) * 0.05;
+  });
+  const backstage = P.z > 6.2;
+  audio.mix(muted, backstage, G.hype, G.mode === 'play' || G.mode === 'paused');
+
+  // luzes e público
+  spots.forEach((s, i) => { s.target.position.x = Math.sin(now / 1400 + i * 1.7) * 4; s.target.position.z = 2.6 + Math.cos(now / 1700 + i) * 1.4; s.intensity = 1.6 + bounce * 1.4; });
+  crowdSpots.forEach((s, i) => { s.target.position.x = Math.sin(now / 2100 + i * 3) * 10; s.target.position.z = -10 + Math.cos(now / 1900 + i) * 6; });
+  const energy = (G.mode === 'title' ? 70 : G.hype) / 100;
+  crowd.forEach((c, i) => {
+    const jump = Math.max(0, Math.sin(beat * Math.PI * 2 + c.p)) * 0.22 * energy;
+    dummy.position.set(c.x, -1.2 + 0.55 + jump, c.z); dummy.updateMatrix(); bodyI.setMatrixAt(i, dummy.matrix);
+    dummy.position.y = -1.2 + 1.25 + jump; dummy.updateMatrix(); headI.setMatrixAt(i, dummy.matrix);
+  });
+  bodyI.instanceMatrix.needsUpdate = headI.instanceMatrix.needsUpdate = true;
+
+  camera.position.set(P.x, 1.65 + (G.mode === 'play' && (keys.w || keys.s || keys.a || keys.d) ? Math.sin(now / 90) * 0.025 : 0), P.z);
+  camera.rotation.order = 'YXZ'; camera.rotation.set(P.pitch, P.yaw, 0);
+  renderer.render(scene, camera);
+  requestAnimationFrame(frameLoop);
+}
+requestAnimationFrame(frameLoop);
+})();
+</script>
+
+</body></html>

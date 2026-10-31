@@ -1,3 +1,4 @@
 build/
 pacotes-para-publicar.zip
 dist/
+.test/

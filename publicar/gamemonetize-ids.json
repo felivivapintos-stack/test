@@ -1,5 +1,16 @@
 {
   "ragdoll-dunk": "COLA_AQUI_O_GAME_ID",
+  "penalty-nations": "COLA_AQUI_O_GAME_ID",
+  "gobble-royale": "COLA_AQUI_O_GAME_ID",
   "splat-stack": "COLA_AQUI_O_GAME_ID",
-  "penalty-nations": "COLA_AQUI_O_GAME_ID"
+  "neon-horde": "COLA_AQUI_O_GAME_ID",
+  "nations-free-kick": "COLA_AQUI_O_GAME_ID",
+  "borough-89": "COLA_AQUI_O_GAME_ID",
+  "frontline-zero": "COLA_AQUI_O_GAME_ID",
+  "no-refunds": "COLA_AQUI_O_GAME_ID",
+  "pinta-e-esconde": "COLA_AQUI_O_GAME_ID",
+  "farol": "COLA_AQUI_O_GAME_ID",
+  "sombras-1947": "COLA_AQUI_O_GAME_ID",
+  "afiado": "COLA_AQUI_O_GAME_ID",
+  "backline": "COLA_AQUI_O_GAME_ID"
 }

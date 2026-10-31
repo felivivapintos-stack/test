@@ -1,0 +1,478 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Paint and Hide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;600;800&family=Space+Mono:wght@700&display=swap">
+<style>
+/* Layout: barra de estado, palco do jogo e barra de ferramentas empilhados numa coluna; o jogo é o herói */
+:root{
+  --bg:#17121f; --panel:#231b30; --line:#3b2f4c; --fg:#f4eff8; --muted:#a99bb9; --coral:#ff6b57; --mint:#5fe0b7;
+  --display:"Dela Gothic One", "Arial Black", Impact, sans-serif;
+  --body:"Manrope", system-ui, -apple-system, sans-serif;
+  --mono:"Space Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;margin-bottom:6px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6.4vw,62px);line-height:.95;margin:0;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--coral)}
+.tag{margin:0;color:var(--muted);max-width:44ch;text-wrap:balance}
+.bar{display:flex;gap:10px 20px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+#phase{font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:12px;color:var(--mint)}
+#info{color:var(--muted);flex:1;min-width:0}
+#timer{font:700 20px var(--mono);font-variant-numeric:tabular-nums;color:var(--fg)}
+#timer.low{color:var(--coral)}
+.frame{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:8/5;max-width:100%}
+canvas{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair}
+.ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px}
+.ov.solid{background:var(--bg)}
+.ov[hidden],.tools[hidden]{display:none}
+.ov .box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;max-width:460px;width:100%;display:flex;flex-direction:column;gap:12px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.ov h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3.4vw,30px);line-height:1.1;margin:0;text-wrap:balance}
+.ov p{margin:0;color:var(--muted)}
+.ov .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.btn{font:800 15px var(--body);background:var(--coral);color:#22100c;border:0;border-radius:6px;padding:11px 18px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn:hover{filter:brightness(1.08)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.group{display:flex;gap:4px;flex-wrap:wrap}
+.tool{font:600 14px var(--body);background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:7px 11px;cursor:pointer}
+.tool[aria-pressed="true"]{background:var(--mint);color:#08251c;border-color:var(--mint)}
+.tool kbd{font:700 11px var(--mono);opacity:.6;margin-left:4px}
+.sz{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.sz input{width:110px;accent-color:var(--mint)}
+.swatch{width:32px;height:32px;border-radius:50%;border:2px solid var(--fg);flex:none}
+.tools .btn{margin-left:auto}
+.note{margin:4px 0 0;color:var(--muted);font-size:14px;max-width:70ch}
+@media (max-width:640px){.tools .btn{margin-left:0;width:100%}.ov .box{padding:16px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Paint and <em>Hide</em></h1>
+    <p class="tag">Paint your white figure with the colours of the room and stand still. The other player has 20 seconds and 3 shots to find you.</p>
+  </header>
+
+  <div class="bar" aria-live="polite">
+    <span id="phase">Menu</span>
+    <span id="info">Choose a mode.</span>
+    <span id="timer"></span>
+  </div>
+
+  <div class="frame">
+    <canvas id="c" aria-label="Game room"></canvas>
+    <div class="ov" id="ov">
+      <div class="box">
+        <h2 id="ovT"></h2>
+        <p id="ovP"></p>
+        <div class="btns" id="ovB"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tools" id="tools" hidden>
+    <div class="group" role="group" aria-label="Tool">
+      <button class="tool" data-tool="move" aria-pressed="true">Move<kbd>1</kbd></button>
+      <button class="tool" data-tool="pick" aria-pressed="false">Eyedropper<kbd>2</kbd></button>
+      <button class="tool" data-tool="brush" aria-pressed="false">Brush<kbd>3</kbd></button>
+    </div>
+    <span class="swatch" id="swatch" title="Current colour"></span>
+    <label class="sz" for="size">Size <input type="range" id="size" min="3" max="44" value="14"></label>
+    <div class="group" id="poses" role="group" aria-label="Pose"></div>
+    <button class="btn" id="doneBtn">Done, I’m hidden</button>
+  </div>
+
+  <p class="note">Tip: with the Brush selected, right-click or Alt+click picks the colour under the cursor without switching tools. Poses change your silhouette, so pick one before you paint.</p>
+</div>
+
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const TAU = Math.PI * 2, LW = 960, LH = 600, FW = 120, FH = 240, FOOT = 234;
+const cv = $('c'); cv.width = LW; cv.height = LH;
+const ctx = cv.getContext('2d');
+const mk = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+const scene = mk(LW, LH), sctx = scene.getContext('2d', { willReadFrequently: true });
+const tmp = mk(FW, FH), tctx = tmp.getContext('2d');
+let sceneData = null, FLOOR = 384;
+
+function rng(seed) { let s = (seed >>> 0) || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }
+function shade(hex, amt) {
+  const n = parseInt(hex.slice(1), 16), cl = v => Math.max(0, Math.min(255, v));
+  return `rgb(${cl((n >> 16) + amt)},${cl(((n >> 8) & 255) + amt)},${cl((n & 255) + amt)})`;
+}
+
+// ---------- a sala ----------
+const PALS = [
+  { wall: ['#c9d8c5', '#b6c9b0'], floor: ['#8a5a3b', '#7a4e33', '#966644'], acc: ['#d9534f', '#f0ad4e', '#5bc0de', '#3d6b8f', '#e8d5a3', '#6a4c93'] },
+  { wall: ['#e8c4b8', '#ddb2a4'], floor: ['#6b4a3a', '#5c3f31', '#7a5644'], acc: ['#2a9d8f', '#e9c46a', '#f4a261', '#264653', '#e76f51', '#a8dadc'] },
+  { wall: ['#33586e', '#3b6680'], floor: ['#a68a64', '#937a57', '#b69b72'], acc: ['#f6ae2d', '#f26419', '#86bbd8', '#e0e0e0', '#9b5de5', '#55dde0'] },
+  { wall: ['#f2e394', '#e8d67e'], floor: ['#5b6c5d', '#4f5f51', '#677a69'], acc: ['#d62246', '#4b1d3f', '#17bebb', '#fafafa', '#ff9f1c', '#2ec4b6'] },
+  { wall: ['#d9d4e8', '#cbc4de'], floor: ['#3e3a4a', '#47425a', '#363244'], acc: ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c', '#f8f4e3'] }
+];
+function genScene(seed) {
+  const r = rng(seed), P = PALS[Math.floor(r() * PALS.length)], pick = a => a[Math.floor(r() * a.length)];
+  const c = sctx;
+  FLOOR = Math.round(LH * 0.64);
+  c.globalAlpha = 1;
+  c.fillStyle = P.wall[0]; c.fillRect(0, 0, LW, FLOOR);
+  c.fillStyle = P.wall[1];
+  const pat = Math.floor(r() * 3);
+  if (pat === 0) for (let x = 0; x < LW; x += 56) c.fillRect(x, 0, 28, FLOOR);
+  else if (pat === 1) for (let y = 20, row = 0; y < FLOOR; y += 40, row++) for (let x = (row % 2) * 30; x < LW + 20; x += 60) { c.beginPath(); c.moveTo(x, y - 14); c.lineTo(x + 12, y); c.lineTo(x, y + 14); c.lineTo(x - 12, y); c.fill(); }
+  else for (let y = 18, row = 0; y < FLOOR; y += 36, row++) for (let x = (row % 2) * 24; x < LW + 10; x += 48) { c.beginPath(); c.arc(x, y, 7, 0, TAU); c.fill(); }
+  if (r() < 0.5) {
+    c.fillStyle = shade(P.wall[0], -26); c.fillRect(0, FLOOR - 110, LW, 110);
+    c.strokeStyle = shade(P.wall[0], -46); c.lineWidth = 3;
+    for (let x = 16; x < LW - 60; x += 120) { c.beginPath(); c.roundRect(x, FLOOR - 92, 96, 76, 4); c.stroke(); }
+    c.fillStyle = shade(P.wall[0], 20); c.fillRect(0, FLOOR - 116, LW, 8);
+  }
+
+  const wallSlots = [40, 360, 680].sort(() => r() - 0.5);
+  ['window', 'painting', 'shelf'].forEach((kind, i) => {
+    const x = wallSlots[i] + Math.floor(r() * 30);
+    if (kind === 'window') {
+      c.fillStyle = '#f3f1ea'; c.fillRect(x, 46, 210, 178);
+      const g = c.createLinearGradient(0, 56, 0, 214); g.addColorStop(0, '#8ccbef'); g.addColorStop(1, '#e6f3fb');
+      c.fillStyle = g; c.fillRect(x + 10, 56, 190, 158);
+      c.fillStyle = '#ffffff';
+      for (let k = 0; k < 3; k++) { const ex = x + 30 + r() * 140, ey = 80 + r() * 90; c.beginPath(); c.ellipse(ex, ey, 26, 10, 0, 0, TAU); c.ellipse(ex + 18, ey - 6, 18, 9, 0, 0, TAU); c.fill(); }
+      c.fillStyle = '#f3f1ea'; c.fillRect(x + 101, 56, 8, 158); c.fillRect(x + 10, 131, 190, 8);
+      c.fillStyle = pick(P.acc); c.fillRect(x - 14, 40, 26, 196); c.fillRect(x + 198, 40, 26, 196);
+    } else if (kind === 'painting') {
+      c.fillStyle = shade(pick(P.acc), -60); c.fillRect(x + 10, 60, 200, 150);
+      c.fillStyle = pick(P.acc); c.fillRect(x + 22, 72, 176, 126);
+      for (let k = 0; k < 5; k++) {
+        c.fillStyle = pick(P.acc);
+        if (r() < 0.5) { c.beginPath(); c.arc(x + 40 + r() * 140, 90 + r() * 90, 10 + r() * 26, 0, TAU); c.fill(); }
+        else c.fillRect(x + 26 + r() * 120, 76 + r() * 80, 20 + r() * 50, 14 + r() * 40);
+      }
+    } else {
+      const sw = 250, wood = shade(P.floor[0], 20);
+      for (const sy of [118, 230]) {
+        let bx = x;
+        while (bx < x + sw - 26) {
+          const bw = 12 + Math.floor(r() * 14), bh = 52 + Math.floor(r() * 36);
+          if (r() < 0.12) { c.fillStyle = pick(P.acc); c.beginPath(); c.ellipse(bx + 14, sy - 18, 14, 18, 0, 0, TAU); c.fill(); bx += 32; continue; }
+          c.fillStyle = pick(P.acc); c.fillRect(bx, sy - bh, bw, bh);
+          c.fillStyle = 'rgba(255,255,255,.35)'; c.fillRect(bx + 2, sy - bh + 10, bw - 4, 3);
+          bx += bw + 1;
+        }
+        c.fillStyle = wood; c.fillRect(x - 6, sy, sw + 12, 12);
+        c.fillStyle = 'rgba(0,0,0,.18)'; c.fillRect(x - 6, sy + 12, sw + 12, 6);
+      }
+    }
+  });
+
+  for (let y = FLOOR, row = 0; y < LH; y += 24, row++) {
+    let x = -Math.floor(r() * 120);
+    while (x < LW) {
+      const len = 120 + Math.floor(r() * 160);
+      c.fillStyle = pick(P.floor); c.fillRect(x, y, len, 24);
+      c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(x, y, 2, 24);
+      x += len;
+    }
+    c.fillStyle = 'rgba(0,0,0,.22)'; c.fillRect(0, y, LW, 2);
+  }
+  c.fillStyle = '#efeae0'; c.fillRect(0, FLOOR - 8, LW, 14);
+  c.fillStyle = 'rgba(0,0,0,.15)'; c.fillRect(0, FLOOR + 6, LW, 4);
+
+  const rx = 120 + r() * 420, ry = FLOOR + 70, rugA = pick(P.acc), rugB = pick(P.acc);
+  c.save(); c.beginPath(); c.ellipse(rx + 170, ry + 60, 190, 62, 0, 0, TAU); c.clip();
+  c.fillStyle = rugA; c.fillRect(rx - 30, ry - 10, 400, 140);
+  c.fillStyle = rugB; for (let k = 0; k < 6; k++) c.fillRect(rx - 30 + k * 70, ry - 10, 30, 140);
+  c.restore();
+
+  const floorSlots = [30, 350, 670].sort(() => r() - 0.5);
+  ['sofa', 'plant', 'lamp'].forEach((kind, i) => {
+    const x = floorSlots[i] + Math.floor(r() * 30);
+    if (kind === 'sofa') {
+      const A = pick(P.acc);
+      c.fillStyle = 'rgba(0,0,0,.2)'; c.beginPath(); c.ellipse(x + 140, FLOOR + 84, 160, 14, 0, 0, TAU); c.fill();
+      c.fillStyle = A; c.beginPath(); c.roundRect(x, FLOOR - 80, 280, 110, 16); c.fill();
+      c.fillStyle = shade(A, -22); c.beginPath(); c.roundRect(x - 14, FLOOR + 6, 308, 60, 12); c.fill();
+      c.fillStyle = shade(A, -36); c.beginPath(); c.roundRect(x - 22, FLOOR - 30, 40, 96, 12); c.fill(); c.beginPath(); c.roundRect(x + 262, FLOOR - 30, 40, 96, 12); c.fill();
+      c.fillStyle = pick(P.acc); c.beginPath(); c.roundRect(x + 40, FLOOR - 50, 80, 64, 12); c.fill();
+      c.fillStyle = pick(P.acc); c.beginPath(); c.roundRect(x + 160, FLOOR - 50, 80, 64, 12); c.fill();
+      c.fillStyle = '#2b2219'; c.fillRect(x, FLOOR + 66, 10, 14); c.fillRect(x + 270, FLOOR + 66, 10, 14);
+    } else if (kind === 'plant') {
+      const px = x + 120, base = FLOOR + 120;
+      const greens = ['#3f7d3a', '#5a9e4b', '#2e5e2b', '#77b255'];
+      for (let k = 0; k < 16; k++) {
+        const a = -Math.PI / 2 + (r() - 0.5) * 2.4, len = 60 + r() * 110;
+        c.save(); c.translate(px + Math.cos(a) * len * 0.5, base - 70 + Math.sin(a) * len * 0.6); c.rotate(a + Math.PI / 2);
+        c.fillStyle = greens[k % 4]; c.beginPath(); c.ellipse(0, 0, 14, 40, 0, 0, TAU); c.fill(); c.restore();
+      }
+      c.fillStyle = pick(P.acc); c.beginPath(); c.moveTo(px - 46, base - 80); c.lineTo(px + 46, base - 80); c.lineTo(px + 34, base); c.lineTo(px - 34, base); c.closePath(); c.fill();
+      c.fillStyle = 'rgba(0,0,0,.18)'; c.fillRect(px - 46, base - 80, 92, 10);
+    } else {
+      const lx = x + 140, base = FLOOR + 100;
+      c.fillStyle = '#2b2a30'; c.fillRect(lx - 3, FLOOR - 170, 6, base - FLOOR + 170);
+      c.beginPath(); c.ellipse(lx, base, 34, 9, 0, 0, TAU); c.fill();
+      c.fillStyle = pick(P.acc); c.beginPath(); c.moveTo(lx - 34, FLOOR - 170); c.lineTo(lx + 34, FLOOR - 170); c.lineTo(lx + 54, FLOOR - 230 + 120); c.lineTo(lx - 54, FLOOR - 110); c.closePath(); c.fill();
+      c.fillStyle = 'rgba(255,240,200,.25)'; c.beginPath(); c.moveTo(lx - 54, FLOOR - 110); c.lineTo(lx + 54, FLOOR - 110); c.lineTo(lx + 120, base); c.lineTo(lx - 120, base); c.closePath(); c.fill();
+    }
+  });
+
+  const img = c.getImageData(0, 0, LW, LH), d = img.data;
+  for (let i = 0; i < d.length; i += 4) { const n = (Math.random() - 0.5) * 16; d[i] += n; d[i + 1] += n; d[i + 2] += n; }
+  c.putImageData(img, 0, 0);
+  sceneData = d;
+}
+
+// ---------- o boneco ----------
+const POSES = [
+  { n: 'Standing', h: [60, 30, 19], s: [[36, [60, 58], [60, 128]], [13, [44, 64], [36, 132]], [13, [76, 64], [84, 132]], [17, [51, 132], [48, 226]], [17, [69, 132], [72, 226]]] },
+  { n: 'Arms out', h: [60, 30, 19], s: [[36, [60, 58], [60, 128]], [13, [44, 64], [7, 76]], [13, [76, 64], [113, 76]], [17, [51, 132], [42, 226]], [17, [69, 132], [78, 226]]] },
+  { n: 'Crouching', h: [60, 96, 19], s: [[38, [60, 122], [60, 170]], [13, [44, 128], [28, 170], [42, 192]], [13, [76, 128], [92, 170], [78, 192]], [17, [50, 172], [30, 200], [42, 226]], [17, [70, 172], [90, 200], [78, 226]]] },
+  { n: 'Waving', h: [60, 30, 19], s: [[36, [60, 58], [60, 128]], [13, [44, 64], [36, 132]], [13, [76, 64], [100, 40], [104, 8]], [17, [51, 132], [48, 226]], [17, [69, 132], [72, 226]]] }
+];
+const MASKS = POSES.map(p => {
+  const c = mk(FW, FH), m = c.getContext('2d');
+  m.fillStyle = m.strokeStyle = '#fff'; m.lineCap = m.lineJoin = 'round';
+  m.beginPath(); m.arc(p.h[0], p.h[1], p.h[2], 0, TAU); m.fill();
+  for (const [w, ...pts] of p.s) { m.lineWidth = w; m.beginPath(); m.moveTo(...pts[0]); for (const q of pts.slice(1)) m.lineTo(...q); m.stroke(); }
+  const d = m.getImageData(0, 0, FW, FH).data, a = new Uint8Array(FW * FH);
+  for (let i = 0; i < a.length; i++) a[i] = d[i * 4 + 3];
+  return { c, a };
+});
+const scaleFor = feet => Math.max(0.42, Math.min(1.05, 0.5 + (feet - FLOOR) / (LH - FLOOR) * 0.55));
+function newFig(pose) {
+  const paint = mk(FW, FH), p = paint.getContext('2d');
+  p.fillStyle = '#f6f6f4'; p.fillRect(0, 0, FW, FH);
+  return { pose, paint, x: 0, y: 0, s: 1, found: false };
+}
+function setFeet(f, cx, feet) {
+  cx = Math.max(10, Math.min(LW - 10, cx)); feet = Math.max(70, Math.min(LH + 4, feet));
+  f.s = scaleFor(feet); f.x = cx - FW * f.s / 2; f.y = feet - FOOT * f.s;
+}
+const figCenter = f => [f.x + FW * f.s / 2, f.y + FOOT * f.s];
+function figTex(f) {
+  tctx.globalCompositeOperation = 'source-over'; tctx.clearRect(0, 0, FW, FH);
+  tctx.drawImage(f.paint, 0, 0);
+  const g = tctx.createLinearGradient(0, 0, FW, 0); g.addColorStop(0, 'rgba(255,255,255,0.04)'); g.addColorStop(1, 'rgba(0,0,0,0.07)');
+  tctx.fillStyle = g; tctx.fillRect(0, 0, FW, FH);
+  tctx.globalCompositeOperation = 'destination-in'; tctx.drawImage(MASKS[f.pose].c, 0, 0);
+  tctx.globalCompositeOperation = 'source-over';
+}
+function drawFig(f, hl) {
+  figTex(f);
+  ctx.drawImage(tmp, f.x, f.y, FW * f.s, FH * f.s);
+  if (hl) {
+    tctx.globalCompositeOperation = 'source-in'; tctx.fillStyle = hl; tctx.fillRect(0, 0, FW, FH); tctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.55 + Math.sin(performance.now() / 160) * 0.2;
+    ctx.drawImage(tmp, f.x, f.y, FW * f.s, FH * f.s);
+    ctx.globalAlpha = 1;
+  }
+}
+function hit(f, px, py) {
+  const tol = 4 / f.s;
+  for (const [ox, oy] of [[0, 0], [tol, 0], [-tol, 0], [0, tol], [0, -tol]]) {
+    const lx = Math.floor((px - f.x) / f.s + ox), ly = Math.floor((py - f.y) / f.s + oy);
+    if (lx >= 0 && ly >= 0 && lx < FW && ly < FH && MASKS[f.pose].a[ly * FW + lx] > 0) return true;
+  }
+  return false;
+}
+// o "bot" esconde-se: copia a sala por baixo dele em blocos; quanto maior o nível, mais finos e certeiros
+function aiPaint(f, level) {
+  const p = f.paint.getContext('2d'), d = sceneData;
+  const block = Math.max(2.5, 19 - level * 3), err = Math.max(3, 26 - level * 4), bl = block / f.s;
+  for (let by = 0; by < FH; by += bl) for (let bx = 0; bx < FW; bx += bl) {
+    const wx = Math.max(0, Math.min(LW - 1, Math.round(f.x + (bx + bl / 2) * f.s)));
+    const wy = Math.max(0, Math.min(LH - 1, Math.round(f.y + (by + bl / 2) * f.s)));
+    const i = (wy * LW + wx) * 4, e = () => Math.round((Math.random() - 0.5) * 2 * err);
+    p.fillStyle = `rgb(${d[i] + e()},${d[i + 1] + e()},${d[i + 2] + e()})`;
+    p.fillRect(bx, by, bl + 0.6, bl + 0.6);
+  }
+}
+function aiFig(level, others) {
+  for (let t = 0; t < 80; t++) {
+    const feet = FLOOR + 14 + Math.random() * (LH - FLOOR - 20), s = scaleFor(feet), cx = 50 + Math.random() * (LW - 100);
+    if (others.every(o => Math.abs(figCenter(o)[0] - cx) > FW * (o.s + s) / 2 + 6)) {
+      const f = newFig(Math.floor(Math.random() * POSES.length)); setFeet(f, cx, feet); aiPaint(f, level); return f;
+    }
+  }
+  return null;
+}
+
+// ---------- estado e interface ----------
+const G = { mode: 'menu', tool: 'move', color: '#f6f6f4', size: 14, timer: 0, shots: 0, figs: [], fig: null, misses: [],
+  level: 1, score: 0, scores: [0, 0], round: 0, rounds: 4, ptr: null, drag: null, last: null, painting: false, foundAt: 0 };
+const PL = i => `Player ${i + 1}`;
+const hiderOf = r => r % 2, seekerOf = r => 1 - (r % 2);
+
+function overlay(t, p, btns, solid) {
+  $('ovT').textContent = t; $('ovP').textContent = p;
+  const b = $('ovB'); b.innerHTML = '';
+  btns.forEach(([label, fn, alt]) => { const e = document.createElement('button'); e.className = 'btn' + (alt ? ' alt' : ''); e.textContent = label; e.onclick = fn; b.appendChild(e); });
+  $('ov').classList.toggle('solid', !!solid); $('ov').hidden = false;
+  b.firstChild && b.firstChild.focus({ preventScroll: true });
+}
+const closeOv = () => { $('ov').hidden = true; };
+function status(phase, info) { $('phase').textContent = phase; $('info').textContent = info; }
+
+function menu() {
+  G.mode = 'menu'; $('tools').hidden = true;
+  genScene((Math.random() * 1e9) | 0);
+  G.figs = []; const f = aiFig(3, []); if (f) G.figs.push(f);
+  status('Menu', 'There’s a figure hidden in this room. Can you spot it?');
+  overlay('Choose a mode', 'Hunt: the computer hides figures and you find them, level by level. Party: two players on the same screen take turns, one hides and the other seeks.',
+    [['Hunt (1 player)', startHunt], ['Party (2 players)', startParty, true]]);
+}
+
+// Caçada
+function startHunt() { G.level = 1; G.score = 0; huntLevel(); }
+function huntLevel() {
+  closeOv(); genScene((Math.random() * 1e9) | 0);
+  const n = Math.min(5, 1 + Math.ceil(G.level / 1.5));
+  G.figs = []; for (let i = 0; i < n; i++) { const f = aiFig(G.level, G.figs); if (f) G.figs.push(f); }
+  G.timer = 35; G.shots = G.figs.length + 3; G.misses = []; G.mode = 'hunt';
+}
+function huntClick(px, py) {
+  const f = G.figs.find(o => !o.found && hit(o, px, py));
+  if (f) { f.found = true; G.score += 100 + Math.round(G.timer * 5); }
+  else { G.shots--; G.misses.push([px, py]); }
+  if (G.figs.every(o => o.found)) {
+    G.mode = 'huntWin';
+    overlay(`Room cleared! Level ${G.level}`, `You found all ${G.figs.length} with ${Math.ceil(G.timer)} s to spare. Score: ${G.score}. On the next level they paint themselves better.`, [['Next level', () => { G.level++; huntLevel(); }]]);
+  } else if (G.shots <= 0) huntOver('Out of shots.');
+}
+function huntOver(why) {
+  G.mode = 'huntLost';
+  const left = G.figs.filter(o => !o.found).length;
+  overlay(why, `You reached level ${G.level} with ${G.score} points. ${left} left to find (flashing red).`, [['Try again', startHunt], ['Menu', menu, true]]);
+  $('ov').querySelector('.box').style.marginTop = '0';
+}
+
+// Festa
+function startParty() { G.scores = [0, 0]; G.round = 0; partyRound(); }
+function partyRound() {
+  if (G.round >= G.rounds) return partyEnd();
+  genScene((Math.random() * 1e9) | 0);
+  G.fig = newFig(0); setFeet(G.fig, LW / 2, FLOOR + 90); G.figs = [G.fig]; G.misses = [];
+  G.mode = 'pass1'; G.color = '#f6f6f4'; setTool('move');
+  overlay(`Round ${G.round + 1} of ${G.rounds}: ${PL(hiderOf(G.round))} hides`, `${PL(seekerOf(G.round))}, look away. You have 60 seconds: drag the figure, pick a pose, grab colours with the eyedropper and paint.`,
+    [['Start painting', () => { closeOv(); G.mode = 'hide'; G.timer = 60; $('tools').hidden = false; }]]);
+}
+function endHide() {
+  if (G.mode !== 'hide') return;
+  $('tools').hidden = true; G.mode = 'pass2'; G.painting = false;
+  overlay(`${PL(seekerOf(G.round))}, your turn`, 'There’s a painted figure somewhere in the room. You have 20 seconds and 3 shots. Click it.',
+    [['Seek', () => { closeOv(); G.mode = 'seek'; G.timer = 20; G.shots = 3; }]], true);
+}
+function seekClick(px, py) {
+  if (hit(G.fig, px, py)) return seekEnd(true);
+  G.shots--; G.misses.push([px, py]);
+  if (G.shots <= 0) seekEnd(false);
+}
+function seekEnd(found) {
+  G.mode = 'result'; G.fig.found = found;
+  const h = hiderOf(G.round), s = seekerOf(G.round), took = (20 - G.timer).toFixed(1).replace('.', ',');
+  if (found) { const pts = 100 + Math.round(G.timer * 10); G.scores[s] += pts; overlay(`Caught in ${took} s!`, `${PL(s)} scores ${pts} points. Score: ${G.scores[0]} to ${G.scores[1]}.`, [['Next round', () => { G.round++; partyRound(); }]]); }
+  else { G.scores[h] += 300; overlay(`${PL(h)} stayed invisible!`, `+300 points for the hider. Score: ${G.scores[0]} to ${G.scores[1]}. The figure is flashing.`, [['Next round', () => { G.round++; partyRound(); }]]); }
+}
+function partyEnd() {
+  G.mode = 'end';
+  const [a, b] = G.scores, t = a === b ? 'Empate!' : `${PL(a > b ? 0 : 1)} wins!`;
+  overlay(t, `Final score: ${a} to ${b}.`, [['Play again', startParty], ['Menu', menu, true]]);
+}
+
+// ferramentas
+function setTool(t) {
+  G.tool = t;
+  document.querySelectorAll('.tool').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tool === t)));
+  cv.style.cursor = t === 'move' ? 'grab' : 'crosshair';
+}
+document.querySelectorAll('.tool').forEach(b => b.onclick = () => setTool(b.dataset.tool));
+POSES.forEach((p, i) => {
+  const b = document.createElement('button'); b.className = 'tool'; b.textContent = p.n; b.dataset.pose = i;
+  b.onclick = () => { if (G.fig) { const [cx, feet] = figCenter(G.fig); G.fig.pose = i; setFeet(G.fig, cx, feet); } syncPoses(); };
+  $('poses').appendChild(b);
+});
+function syncPoses() { document.querySelectorAll('[data-pose]').forEach(b => b.setAttribute('aria-pressed', String(G.fig && +b.dataset.pose === G.fig.pose))); }
+$('size').oninput = e => G.size = +e.target.value;
+$('doneBtn').onclick = endHide;
+window.addEventListener('keydown', e => {
+  if (G.mode !== 'hide' || e.target.tagName === 'INPUT') return;
+  if (e.key === '1') setTool('move'); if (e.key === '2') setTool('pick'); if (e.key === '3') setTool('brush');
+});
+
+function pickColor(px, py) {
+  const i = ((Math.round(py) * LW) + Math.round(px)) * 4, d = sceneData;
+  G.color = '#' + [d[i], d[i + 1], d[i + 2]].map(v => v.toString(16).padStart(2, '0')).join('');
+}
+function stroke(px, py) {
+  const f = G.fig, p = f.paint.getContext('2d');
+  const lx = (px - f.x) / f.s, ly = (py - f.y) / f.s, w = G.size / f.s;
+  p.strokeStyle = p.fillStyle = G.color; p.lineWidth = w; p.lineCap = 'round';
+  if (G.last) { p.beginPath(); p.moveTo(G.last[0], G.last[1]); p.lineTo(lx, ly); p.stroke(); }
+  else { p.beginPath(); p.arc(lx, ly, w / 2, 0, TAU); p.fill(); }
+  G.last = [lx, ly];
+}
+function toLocal(e) { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * LW / r.width, (e.clientY - r.top) * LH / r.height]; }
+cv.addEventListener('contextmenu', e => e.preventDefault());
+cv.addEventListener('pointerdown', e => {
+  const [px, py] = toLocal(e); G.ptr = [px, py];
+  if (G.mode === 'hunt') return huntClick(px, py);
+  if (G.mode === 'seek') return seekClick(px, py);
+  if (G.mode !== 'hide') return;
+  cv.setPointerCapture(e.pointerId);
+  if (G.tool === 'pick' || e.button === 2 || e.altKey) { pickColor(px, py); if (G.tool === 'pick') setTool('brush'); return; }
+  if (G.tool === 'move') {
+    const [cx, feet] = figCenter(G.fig);
+    G.drag = hit(G.fig, px, py) ? [px - cx, py - feet] : [0, 0];
+    setFeet(G.fig, px - G.drag[0], py - G.drag[1]); cv.style.cursor = 'grabbing'; return;
+  }
+  G.painting = true; G.last = null; stroke(px, py);
+});
+cv.addEventListener('pointermove', e => {
+  const [px, py] = toLocal(e); G.ptr = [px, py];
+  if (G.mode !== 'hide') return;
+  if (G.drag) setFeet(G.fig, px - G.drag[0], py - G.drag[1]);
+  else if (G.painting) stroke(px, py);
+});
+const up = () => { G.drag = null; G.painting = false; G.last = null; if (G.tool === 'move') cv.style.cursor = 'grab'; };
+cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+cv.addEventListener('pointerleave', () => { G.ptr = null; });
+
+// ---------- ciclo ----------
+function update(dt) {
+  if (['hide', 'seek', 'hunt'].includes(G.mode)) {
+    G.timer -= dt;
+    if (G.timer <= 0) { G.timer = 0; if (G.mode === 'hide') endHide(); else if (G.mode === 'seek') seekEnd(false); else huntOver('Time’s up.'); }
+  }
+  const tEl = $('timer');
+  if (['hide', 'seek', 'hunt'].includes(G.mode)) { tEl.textContent = G.timer.toFixed(1).replace('.', ',') + ' s'; tEl.classList.toggle('low', G.timer < 6); }
+  else tEl.textContent = '';
+  if (G.mode === 'hunt') status(`Hunt · level ${G.level}`, `Found ${G.figs.filter(f => f.found).length} of ${G.figs.length} · shots ${G.shots} · ${G.score} points`);
+  else if (G.mode === 'hide') status(`Round ${G.round + 1} · ${PL(hiderOf(G.round))} hides`, 'Move, eyedropper, brush. Blend in with whatever is behind you.');
+  else if (G.mode === 'seek') status(`Round ${G.round + 1} · ${PL(seekerOf(G.round))} seeks`, `Shots: ${'●'.repeat(G.shots)}${'○'.repeat(3 - G.shots)} · score ${G.scores[0]} to ${G.scores[1]}`);
+  $('swatch').style.background = G.color;
+}
+function draw() {
+  ctx.drawImage(scene, 0, 0);
+  const reveal = ['huntLost', 'result'].includes(G.mode);
+  for (const f of G.figs) {
+    if (G.mode === 'menu' || G.mode === 'hide' || G.mode === 'seek' || G.mode === 'pass1' || !f.found) drawFig(f, reveal && !f.found ? '#ff3b30' : null);
+    else drawFig(f, '#5fe0b7');
+  }
+  ctx.lineWidth = 3; ctx.strokeStyle = '#ff6b57';
+  for (const [x, y] of G.misses) { ctx.beginPath(); ctx.moveTo(x - 8, y - 8); ctx.lineTo(x + 8, y + 8); ctx.moveTo(x + 8, y - 8); ctx.lineTo(x - 8, y + 8); ctx.stroke(); }
+  if (G.mode === 'hide' && G.ptr && G.tool !== 'move') {
+    ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(0,0,0,.6)';
+    ctx.beginPath(); ctx.arc(G.ptr[0], G.ptr[1], G.tool === 'brush' ? G.size / 2 : 6, 0, TAU); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.beginPath(); ctx.arc(G.ptr[0], G.ptr[1], (G.tool === 'brush' ? G.size / 2 : 6) + 1.5, 0, TAU); ctx.stroke();
+  }
+}
+let last = performance.now();
+function loop(now) { const dt = Math.min(0.05, (now - last) / 1000); last = now; update(dt); if (G.mode === 'hide') syncPoses(); draw(); requestAnimationFrame(loop); }
+menu();
+requestAnimationFrame(loop);
+})();
+</script>
+
+</body></html>

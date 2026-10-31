@@ -5,7 +5,8 @@ Para os gerar de novo depois de mudar um jogo: `python3 build.py`.
 
 Regra base: **cada jogo vai para um só portal de anúncios** (CrazyGames *ou* GameMonetize).
 Os portais não gostam de ver o mesmo jogo noutros sítios, e assim não competes contigo próprio.
-O itch.io e a venda de código podem coexistir com tudo.
+O itch.io e a venda de código podem coexistir com tudo. Se puseres tudo no GameMonetize (secção
+1), os jogos da lista da CrazyGames deixam de ser opção lá.
 
 ---
 
@@ -23,16 +24,40 @@ Querem jogos acabados, com boa primeira impressão e sessões longas.
 | 5 | Gobble Royale | Bom .io-like, mas tiraste-o do repositório, por isso deixei-o de fora. |
 | 6 | Pibe del Cerro | Ambicioso, mas pesado (cerca de 20 MB de mapas e texturas) e só em espanhol. |
 
-### GameMonetize (entra fácil, paga pouco por jogada, vive de volume)
-Querem jogos curtos, que se percebem em 5 segundos e funcionam bem no telemóvel.
+### GameMonetize: todos os jogos, por potencial
+Entra fácil, paga pouco por jogada e vive de volume, por isso compensa pôr lá tudo o que for
+aceitável. O que mais conta: perceber-se em 5 segundos, funcionar no telemóvel e estar em inglês.
+Os 14 pacotes estão em `dist/gamemonetize/`, por esta ordem de prioridade.
 
-| # | Jogo | Porquê |
-|---|---|---|
-| **1** | **Ragdoll Dunk** | Física engraçada, partidas rápidas, 1 ou 2 jogadores. Tem anúncio recompensado para duplicar moedas. |
-| **2** | **Splat Stack** | Puzzle-platformer com 24 níveis e controlos táteis. Tem "saltar nível" com anúncio, o formato ideal. |
-| **3** | **Penalty Nations** | Futebol e penáltis vendem sempre. Tem 96 seleções, com anúncio de "segunda oportunidade". |
-| 4 | Nations Free Kick | Ótimo, mas é o mesmo motor do Penalty. Fica para a venda de código. |
-| 5 | Farol | Bom conceito, mas é um protótipo curto. |
+| # | Jogo | Potencial | Porquê |
+|---|---|---|---|
+| **1** | **Ragdoll Dunk** | Alto | Física engraçada, partidas curtas, 1 ou 2 jogadores, tátil. Anúncio recompensado para duplicar moedas. |
+| **2** | **Penalty Nations** | Alto | Futebol vende sempre. 96 seleções, "segunda oportunidade" com anúncio. |
+| **3** | **Gobble Royale** | Alto | .io de comer e crescer: o género mais jogado nestes portais. Rondas de 3 minutos. |
+| **4** | **Splat Stack** | Alto | Puzzle-platformer com 24 níveis e "saltar nível" com anúncio. |
+| **5** | **Neon Horde** | Médio-alto | Survivor-like viciante. Joga-se com o dedo. |
+| **6** | **Nations Free Kick** | Médio-alto | Irmão do Penalty Nations. Os dois juntos apanham mais pesquisas de futebol. |
+| **7** | **Borough '89** | Médio | Carros e polícia atraem muito, mas pede teclado ou comando. |
+| **8** | **Frontline Zero** | Médio | FPS é procurado, mas quase só em computador. |
+| **9** | **NO REFUNDS** | Médio-baixo | Original e com humor, mas tem muito texto e sessões longas. |
+| **10** | **Pinta e Esconde** (Paint and Hide) | Médio | Ideia simples e divertida, com modo para 2 jogadores. Já traduzido para inglês. |
+| **11** | **Farol** | Médio-baixo | Bonito e rápido de perceber, mas curto. Já traduzido para inglês. |
+| **12** | **Sombras de 1947** | Baixo | Muito texto e ainda em português. Rende mais no itch.io. |
+| **13** | **Afiado** | Baixo | 3D, só teclado e rato. Já traduzido para inglês. |
+| **14** | **Backline** | Baixo | Igual ao Afiado, com tema de concerto. Já traduzido para inglês. |
+
+**Não preparados para o GameMonetize:**
+- **Run a Motel** e **Em Cena**: têm temas adultos (acompanhantes, conteúdo sexual), que os
+  portais de anúncios recusam. Ficam para o itch.io marcados como 18+.
+- **GAFFER** e **GAFFER Rebuild**: usam nomes reais de clubes e da Premier League. Primeiro é
+  preciso trocá-los por nomes inventados.
+- **Pibe del Cerro**: cerca de 20 MB, só teclado e só em espanhol. Dá mais trabalho a preparar do
+  que é provável que renda lá.
+- **ONE**, **ONE Admin** e **Plano do crime**: não são jogos.
+
+Traduções: o Pinta e Esconde, o Farol, o Afiado e o Backline já foram passados para inglês
+(`python3 translate.py <jogo>` aplica `traducoes/<jogo>.json` ao original em `originais-pt/`).
+Faltam o Sombras de 1947 e o Run a Motel.
 
 ### itch.io (venda direta ou "paga o que quiseres", aceita temas adultos e jogos de nicho)
 O público do itch.io gosta de jogos com personalidade, narrativa e humor.
@@ -65,8 +90,12 @@ demo). O risco é aparecerem clones, por isso não vendas o código dos jogos qu
 - **CrazyGames:** adicionado o script do SDK v3. Os jogos já tinham o código para o usar
   (início/pausa de jogo, anúncios, gravação na nuvem).
 - **GameMonetize:** adicionado `gamemonetize-shim.js`, um adaptador que faz o SDK do
-  GameMonetize parecer o da CrazyGames para o jogo, sem mexer no código. Testei os casos
-  "anúncio visto", "sem anúncio disponível" e "erro". Em todos o jogo continua.
+  GameMonetize parecer o da CrazyGames para o jogo, sem mexer no código. Também corta o som
+  durante os anúncios, como o GameMonetize exige. Nos 6 jogos que não tinham anúncios (NO REFUNDS,
+  Sombras, Afiado, Backline, Pinta e Esconde, Farol), o build põe um anúncio antes de cada novo
+  dia, caso, jogo, nível ou noite, no máximo um a cada 2 minutos. No Farol, Afiado e Backline
+  esconde o texto do pitch para a Steam, que não faz sentido num portal. Testei com um SDK
+  simulado: o anúncio aparece e o jogo continua a seguir.
 - **itch.io:** o jogo tal como está, num zip pronto a carregar.
 - **Código:** fonte completa com `README.md` (em inglês, para compradores) e `LICENSE.txt`
   (licença comercial: podem usar e publicar, mas não revender o código).
@@ -188,3 +217,59 @@ oportunidade e prova material.
 queimado. De noite: o poker na receção, o camião do contrabando, os telefonemas da Família e um
 jacaré chamado Bubba que come o que lhe atirarem. Gestão com humor negro em 3D.
 **Género:** Simulação. **Tags:** management, dark-humor, 3d, adulto
+
+### Gobble Royale (GameMonetize)
+**Title:** Gobble Royale
+**Description:** Eat smaller monsters, run from bigger ones and pick a new power every level.
+Three-minute rounds against 11 rivals: grow to the top of the food chain before the clock runs out.
+**Controls:** Mouse or finger to move, Space or click to dash.
+**Category:** .io. **Tags:** io, eat and grow, arcade, monsters
+
+### Nations Free Kick (GameMonetize)
+**Title:** Nations Free Kick
+**Description:** 96 nations, one wall in your way. Bend it round the wall or lift it over, then
+swap roles and save the CPU's shot. A full tournament from the groups to the final.
+**Controls:** Mouse or touch to aim, set the curl and hold for power; tap to save. Keyboard:
+arrows aim, Q/E curl, hold Space to shoot.
+**Category:** Sports. **Tags:** football, soccer, free kick, world cup
+
+### Neon Horde, Borough '89, Frontline Zero, NO REFUNDS (GameMonetize)
+Usa os textos das secções da CrazyGames e do itch.io acima.
+
+### Paint and Hide / Pinta e Esconde (GameMonetize)
+**Title:** Paint and Hide
+**Description:** Paint your white figure with the colours of the room and stand still. The seeker
+has 20 seconds and 3 shots to find you. Hunt mode against the computer, or Party mode for two
+players on the same screen.
+**Category:** Puzzle. **Tags:** hide and seek, painting, 2 player, casual
+
+### Farol (GameMonetize)
+**Title:** Farol (Lighthouse)
+**Description:** One island, one beam of light. Guide ships to the harbour and burn the creatures
+of the deep, but your beam cannot do both at once. Pick an upgrade every dawn and survive the
+nights.
+**Controls:** Mouse or finger to aim the beam, Space for the foghorn.
+**Category:** Arcade. **Tags:** lighthouse, defense, roguelite, survival
+
+### Sombras de 1947 (GameMonetize)
+**Title:** Sombras de 1947 (Shadows of 1947)
+**Description:** Noir detective episodes in 1947 Los Angeles. Examine clues, question witnesses
+who lie and build the case for the jury. (Game text in Portuguese.)
+**Category:** Puzzle. **Tags:** detective, mystery, noir, story
+
+### Afiado (GameMonetize)
+**Title:** Afiado: Hockey Kit Manager
+**Description:** You are the equipment manager of the weakest hockey team in the league. Sticks
+break, skates go blunt, helmets come loose: fix the gear on the bench before your team plays a
+man down.
+**Controls:** WASD walk, mouse look, E pick up/use.
+**Category:** Sports. **Tags:** hockey, 3d, first person, repair
+
+### Backline (GameMonetize)
+**Title:** Backline: Roadie Rush
+**Description:** You are the roadie of a touring band. Strings snap, drumheads tear, batteries
+die: run backstage, fix the gear and get it back on stage before the crowd cools down.
+
+**Controls:** WASD walk, mouse look, E pick up/use.
+**Category:** Simulation. **Tags:** music, concert, 3d, first person, repair
+

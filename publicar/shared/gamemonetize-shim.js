@@ -10,8 +10,33 @@
   var pending = null; // callbacks of the ad currently on screen
   var startTimer = 0;
 
+  // GameMonetize requires the game to be silent while an ad plays. Not every game mutes itself
+  // on adStarted, so every AudioContext and media element is paused here and only the ones
+  // that were playing are resumed afterwards.
+  var contexts = [], silenced = [];
+  ['AudioContext', 'webkitAudioContext'].forEach(function (name) {
+    var Native = window[name];
+    if (!Native) return;
+    var Tracked = function () {
+      var ctx = new (Function.prototype.bind.apply(Native, [null].concat([].slice.call(arguments))))();
+      contexts.push(ctx);
+      return ctx;
+    };
+    Tracked.prototype = Native.prototype;
+    window[name] = Tracked;
+  });
+  function silence() {
+    contexts.forEach(function (c) { if (c.state === 'running') { silenced.push(c); c.suspend(); } });
+    [].forEach.call(document.querySelectorAll('audio,video'), function (m) { if (!m.paused) { silenced.push(m); m.pause(); } });
+  }
+  function unsilence() {
+    silenced.forEach(function (x) { try { x.resume ? x.resume() : x.play(); } catch (e) {} });
+    silenced = [];
+  }
+
   function finish(ok) {
     clearTimeout(startTimer);
+    unsilence();
     var cb = pending;
     pending = null;
     if (!cb) return;
@@ -26,6 +51,7 @@
           clearTimeout(startTimer);
           if (pending && !pending.started) {
             pending.started = true;
+            silence();
             try { pending.adStarted && pending.adStarted(); } catch (e) {}
           }
           break;
@@ -85,5 +111,19 @@
       removeItem: function (k) { store(function () { localStorage.removeItem(k); }); },
       clear: function () { store(function () { localStorage.clear(); }); }
     }
+  };
+
+  // Ad breaks for games that have no ad calls of their own. build.py inserts
+  //   if (window.portalBreak && window.portalBreak(() => fn.apply(this, arguments))) return;
+  // at the top of each natural break (new round, new day, new case). The first call shows an
+  // ad and replays the function when it ends; the replay passes straight through.
+  var BREAK_GAP = 120000, lastBreak = -Infinity, passing = false;
+  window.portalBreak = function (resume) {
+    if (passing) return false;
+    if (Date.now() - lastBreak < BREAK_GAP) return false;
+    lastBreak = Date.now();
+    var go = function () { passing = true; try { resume(); } finally { passing = false; } };
+    window.CrazyGames.SDK.ad.requestAd('midgame', { adFinished: go, adError: go });
+    return true;
   };
 })();
