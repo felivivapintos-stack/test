@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Treinador da Italiana</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: sala de torneio. Tabuleiro à esquerda como objeto principal, caderno do treinador à direita. */
+:root {
+  --bg: #eef0ec;
+  --surface: #fbfcfa;
+  --ink: #1d2420;
+  --muted: #5d6a63;
+  --line: #d3d9d3;
+  --accent: #9a6b1f;        /* latão do relógio de torneio */
+  --accent-ink: #fffaf0;
+  --sq-light: #e4e7da;
+  --sq-dark: #7d9a7f;
+  --sq-hl: rgba(214, 170, 60, .55);
+  --sq-sel: rgba(214, 170, 60, .85);
+  --dot: rgba(29, 36, 32, .28);
+  --threat: rgba(176, 52, 52, .38);
+  --ok: #2f7a4b;
+  --book: #3a6aa0;
+  --inacc: #b08a12;
+  --mistake: #c4651c;
+  --blunder: #b03434;
+  --best: #1f7f72;
+  --shadow: 0 1px 2px rgba(20, 30, 25, .08), 0 6px 24px rgba(20, 30, 25, .08);
+  --f-display: 'Gloock', 'Georgia', serif;
+  --f-body: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141917; --surface: #1c2320; --ink: #e6ebe7; --muted: #9aa8a0; --line: #2e3833;
+    --accent: #d6a548; --accent-ink: #1a1408; --sq-light: #c9cdbd; --sq-dark: #5f7d62;
+    --dot: rgba(10, 14, 12, .35); --ok: #5cbf80; --book: #7aa7dc; --inacc: #d9b53c; --mistake: #e88a45;
+    --blunder: #e46464; --best: #4cc0ad; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141917; --surface: #1c2320; --ink: #e6ebe7; --muted: #9aa8a0; --line: #2e3833;
+  --accent: #d6a548; --accent-ink: #1a1408; --sq-light: #c9cdbd; --sq-dark: #5f7d62;
+  --dot: rgba(10, 14, 12, .35); --ok: #5cbf80; --book: #7aa7dc; --inacc: #d9b53c; --mistake: #e88a45;
+  --blunder: #e46464; --best: #4cc0ad; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px 32px;
+}
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.label { font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+header.top { max-width: 1180px; margin: 0 auto 14px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+header.top h1 { font-size: clamp(24px, 4vw, 34px); }
+header.top h1 span { color: var(--accent); }
+.engine-status { font-size: 13px; color: var(--muted); }
+
+main.app { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 20px; align-items: start; }
+@media (max-width: 900px) { main.app { grid-template-columns: minmax(0, 1fr); } }
+
+.board-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.player-bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 14px; }
+.player-bar .who { font-weight: 700; }
+.board-wrap { position: relative; width: min(100%, 640px, calc(100vh - 180px)); min-width: 280px; max-width: 100%; aspect-ratio: 1; margin: 0 auto; }
+.board { width: 100%; height: 100%; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr);
+  border-radius: 4px; overflow: hidden; box-shadow: var(--shadow); user-select: none; touch-action: none; container-type: inline-size; }
+.sq { position: relative; display: flex; align-items: center; justify-content: center; }
+.sq.l { background: var(--sq-light); } .sq.d { background: var(--sq-dark); }
+.sq.last::before { content: ""; position: absolute; inset: 0; background: var(--sq-hl); }
+.sq.sel::before { content: ""; position: absolute; inset: 0; background: var(--sq-sel); }
+.sq.check::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(220,40,40,.85) 0%, rgba(220,40,40,0) 70%); }
+.sq.att::after { content: ""; position: absolute; inset: 0; background: var(--threat); pointer-events: none; }
+.sq.target::after { content: ""; position: absolute; width: 28%; height: 28%; border-radius: 50%; background: var(--dot); pointer-events: none; }
+.sq.target.has::after { width: 86%; height: 86%; background: transparent; border: 5px solid var(--dot); }
+.coord { position: absolute; font-size: clamp(8px, 1.6cqw, 12px); font-weight: 700; pointer-events: none; opacity: .75; }
+.coord.f { right: 3px; bottom: 1px; } .coord.r { left: 3px; top: 1px; }
+.sq.l .coord { color: var(--sq-dark); } .sq.d .coord { color: var(--sq-light); }
+.pc { position: relative; z-index: 1; font-size: 9.6cqw; line-height: 1; pointer-events: none; font-family: 'Segoe UI Symbol', 'DejaVu Sans', 'Noto Sans Symbols 2', serif; }
+.pc.w { color: #fbfaf5; -webkit-text-stroke: 1.2px #1b1b1b; paint-order: stroke fill; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+.pc.b { color: #161616; -webkit-text-stroke: .6px #000; text-shadow: 0 1px 1px rgba(255,255,255,.18); }
+.seen { position: absolute; top: 4%; right: 4%; width: 15%; height: 15%; border-radius: 50%; z-index: 2; pointer-events: none;
+  background: var(--ok); box-shadow: 0 0 0 2px rgba(255,255,255,.75); }
+.sq.missing .pc { animation: pulse .55s ease-in-out 3; }
+.sq.missing::after { content: ""; position: absolute; inset: 6%; border: 3px solid var(--blunder); border-radius: 50%; pointer-events: none; }
+@keyframes pulse { 50% { transform: scale(1.18); } }
+@media (prefers-reduced-motion: reduce) { .sq.missing .pc { animation: none; } }
+.ghost { position: fixed; pointer-events: none; z-index: 50; transform: translate(-50%, -50%); line-height: 1; }
+
+.lock { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: rgba(20, 25, 22, .78); color: #fff; text-align: center; padding: 16px; border-radius: 4px; }
+.lock b { font-family: var(--f-display); font-weight: 400; font-size: clamp(28px, 7cqw, 54px); }
+
+.scanbar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.meter { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.meter.full i { background: var(--ok); }
+.piece-info { min-height: 44px; font-size: 13.5px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 8px 12px; }
+.piece-info b { color: var(--ink); }
+
+.side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.card h2 { font-size: 20px; margin-bottom: 6px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { display: flex; flex-direction: column; gap: 2px; }
+.stat .v { font-family: var(--f-mono); font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat .v.bad { color: var(--blunder); }
+.opening-name { font-family: var(--f-display); font-size: 19px; line-height: 1.25; }
+.status-line { margin-top: 4px; font-size: 14px; color: var(--muted); }
+
+.feedback { display: flex; flex-direction: column; gap: 10px; }
+.fb { border-left: 4px solid var(--line); padding: 2px 0 2px 12px; }
+.fb .head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.fb .san { font-family: var(--f-mono); font-weight: 600; font-size: 16px; }
+.pill { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; color: var(--surface); background: var(--muted); }
+.fb.book { border-color: var(--book); } .pill.book { background: var(--book); }
+.fb.best { border-color: var(--best); } .pill.best { background: var(--best); }
+.fb.good { border-color: var(--ok); } .pill.good { background: var(--ok); }
+.fb.inacc { border-color: var(--inacc); } .pill.inacc { background: var(--inacc); }
+.fb.mistake { border-color: var(--mistake); } .pill.mistake { background: var(--mistake); }
+.fb.blunder { border-color: var(--blunder); } .pill.blunder { background: var(--blunder); }
+.fb ul { margin: 6px 0 0; padding-left: 18px; } .fb li { margin: 3px 0; }
+.fb.warn { border-color: var(--blunder); background: color-mix(in srgb, var(--blunder) 8%, transparent); padding: 8px 12px; border-radius: 0 6px 6px 0; }
+.masters { font-size: 14px; }
+.masters .cand { display: flex; gap: 8px; align-items: baseline; }
+.masters .cand .bar { flex: 0 0 60px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; align-self: center; }
+.masters .cand .bar i { display: block; height: 100%; background: var(--book); }
+
+.moves { display: grid; grid-template-columns: 34px 1fr 1fr; gap: 2px 6px; font-family: var(--f-mono); font-size: 14px; max-height: 240px; overflow-y: auto; }
+.moves .n { color: var(--muted); text-align: right; }
+.moves button { text-align: left; background: none; border: 0; padding: 1px 4px; border-radius: 4px; color: var(--ink); font-family: var(--f-mono); }
+.moves button:hover { background: var(--line); }
+.moves .c-inacc { color: var(--inacc); } .moves .c-mistake { color: var(--mistake); } .moves .c-blunder { color: var(--blunder); font-weight: 600; } .moves .c-book { color: var(--book); }
+
+.controls { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 8px 14px; border-radius: 8px; font-weight: 600; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.rule { font-size: 13px; color: var(--muted); }
+
+/* Diálogos */
+.overlay { position: fixed; inset: 0; z-index: 40; background: rgba(15, 20, 17, .55); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto;
+  padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.dialog { background: var(--surface); color: var(--ink); border-radius: 12px; box-shadow: var(--shadow); width: min(100%, 560px); padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 14px; }
+.dialog.wide { width: min(100%, 860px); }
+.dialog h2 { font-size: 28px; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field select, .field input[type=range] { font: inherit; padding: 7px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.seg label { border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg input:checked + span { color: var(--accent); font-weight: 700; }
+.seg label:has(input:checked) { border-color: var(--accent); }
+.rules { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+
+.report section { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--line); padding-top: 14px; }
+.report h3 { font-size: 20px; }
+.report .big { display: flex; gap: 20px; flex-wrap: wrap; align-items: baseline; }
+.report .big .acc { font-family: var(--f-display); font-size: 56px; line-height: 1; color: var(--accent); }
+.report .verdict { font-size: 17px; line-height: 1.55; max-width: 68ch; }
+.report .counts { display: flex; gap: 8px; flex-wrap: wrap; }
+.report table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.report td, .report th { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.report th { font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.report .tablewrap { overflow-x: auto; }
+.report .moment { border-left: 4px solid var(--blunder); padding-left: 12px; }
+.report .moment.mistake { border-color: var(--mistake); } .report .moment.inacc { border-color: var(--inacc); }
+.report ol, .report ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.toast { position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 60; background: var(--ink); color: var(--bg);
+  padding: 10px 16px; border-radius: 8px; max-width: min(92vw, 520px); font-size: 14px; box-shadow: var(--shadow); }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Treinador da <span>Italiana</span></h1>
+  <div class="engine-status" id="engineStatus">A preparar o motor…</div>
+</header>
+
+<main class="app">
+  <div class="board-col">
+    <div class="player-bar"><span class="who" id="topName">Adversário</span><span class="mono" id="topInfo"></span></div>
+    <div class="board-wrap">
+      <div class="board" id="board" aria-label="Tabuleiro de xadrez"></div>
+      <div class="lock" id="lock" hidden><span>Penalização: tabuleiro bloqueado</span><b id="lockSecs">5</b><span>Usa este tempo para olhar para TODAS as peças.</span></div>
+    </div>
+    <div class="player-bar"><span class="who" id="botName">Tu</span><span class="mono" id="botInfo"></span></div>
+    <div class="scanbar">
+      <span class="label">Scan</span>
+      <div class="meter" id="meter"><i></i></div>
+      <span class="mono" id="scanCount">0/32</span>
+    </div>
+    <div class="piece-info" id="pieceInfo">Passa o rato (ou toca) em cada peça para a inspecionar. Só podes jogar depois de olhares para todas.</div>
+  </div>
+
+  <aside class="side">
+    <div class="card">
+      <div class="label">Abertura</div>
+      <div class="opening-name" id="openingName">Abertura Italiana</div>
+      <div class="status-line" id="statusLine">Configura a partida para começar.</div>
+    </div>
+    <div class="card">
+      <div class="stats">
+        <div class="stat"><span class="label">Avisos</span><span class="v" id="warnCount">0</span></div>
+        <div class="stat"><span class="label">Disciplina</span><span class="v" id="discipline">100</span></div>
+        <div class="stat"><span class="label">Erros</span><span class="v" id="errCount">0</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Último lance</h2>
+      <div class="feedback" id="feedback"><p class="rule">Aqui aparece a análise de cada lance teu. Não há volta atrás: cada erro fica no tabuleiro e tens de viver com ele.</p></div>
+    </div>
+    <div class="card">
+      <h2>O que joga a elite</h2>
+      <div class="masters" id="masters"><p class="rule">Comentários de teoria aparecem enquanto a partida estiver no livro.</p></div>
+    </div>
+    <div class="card">
+      <h2>Lances</h2>
+      <div class="moves" id="moves"></div>
+    </div>
+    <div class="controls">
+      <button class="btn" id="resignBtn" disabled>Desistir</button>
+      <button class="btn" id="newBtn">Nova partida</button>
+      <button class="btn" id="pgnBtn" disabled>Copiar PGN</button>
+    </div>
+    <p class="rule">Sem botão de voltar atrás, de propósito.</p>
+  </aside>
+</main>
+
+<div class="overlay" id="setup">
+  <form class="dialog" id="setupForm">
+    <h2>Nova partida</h2>
+    <ol class="rules">
+      <li>Treinas a <b>Abertura Italiana</b> (1.e4 e5 2.Nf3 Nc6 3.Bc4). O adversário responde como os jogadores de topo, com as frequências da elite.</li>
+      <li><b>Não há volta atrás.</b> Cada erro fica no tabuleiro.</li>
+      <li>Antes de cada lance tens de <b>olhar para todas as peças</b> (as tuas e as do adversário). Se tentares jogar sem o fazer, levas um aviso e perdes pontos de disciplina. A partir do 3.º aviso, o tabuleiro bloqueia.</li>
+      <li>No fim, o treinador faz a análise completa da partida.</li>
+    </ol>
+    <div class="field">
+      <span class="label">Jogas com</span>
+      <div class="seg">
+        <label><input type="radio" name="color" value="w" checked><span>Brancas (jogas a Italiana)</span></label>
+        <label><input type="radio" name="color" value="b"><span>Pretas (defendes contra a Italiana)</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label" for="level">Força do adversário depois da teoria</label>
+      <select id="level">
+        <option value="2">Iniciante</option>
+        <option value="6">Clube</option>
+        <option value="11" selected>Forte</option>
+        <option value="16">Mestre</option>
+        <option value="20">Campeão (máximo)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="label" for="atime">Profundidade da análise: <span id="atimeVal">1.0</span> s por lance</label>
+      <input type="range" id="atime" min="0.4" max="3" step="0.2" value="1">
+    </div>
+    <div class="field">
+      <label class="label" for="dwell">Tempo mínimo a olhar para cada peça: <span id="dwellVal">250</span> ms</label>
+      <input type="range" id="dwell" min="100" max="800" step="50" value="250">
+    </div>
+    <div class="controls"><button class="btn primary" type="submit" id="startBtn">Começar</button></div>
+  </form>
+</div>
+
+<div class="overlay" id="reportOverlay" hidden>
+  <div class="dialog wide report" id="report"></div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="vendor/chess.min.js"></script>
+<script src="js/book.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/coach.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
