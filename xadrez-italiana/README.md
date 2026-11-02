@@ -15,10 +15,12 @@ Software de treino de xadrez focado na **Abertura Italiana** (1.e4 e5 2.Nf3 Nc6 
   peças penduradas, garfos, oportunidades perdidas, princípios de abertura violados e o que a
   elite joga quando sais do livro.
 - **Sem voltar atrás.** Não existe botão para anular lances. Vives com as consequências.
-- **Scan obrigatório.** Antes de cada lance tens de olhar para **todas** as peças (passar o rato
-  durante um tempo mínimo, ou tocar no ecrã). Ao olhar para uma peça vês o que ataca, quem a
-  defende e quem a ataca. Se tentares jogar sem o scan completo: aviso, −10 pontos de
-  disciplina e, a partir do 3.º aviso, o tabuleiro bloqueia (5 s, 10 s, … até 30 s).
+- **Scan obrigatório.** Antes de cada lance tens de fazer um scan (botão «Fazer scan» ou tecla S).
+  O scan percorre todas as peças, primeiro as do adversário e depois as tuas, e mostra as tuas
+  peças em perigo, os alvos no adversário e os xeques que ele tem disponíveis. Passar o rato
+  numa peça mostra o que ela ataca, quem a defende e quem a ataca. Se tentares jogar sem o
+  scan: aviso, −10 pontos de disciplina e, a partir do 3.º aviso, o tabuleiro bloqueia
+  (5 s, 10 s, … até 30 s).
 - **Relatório do treinador no fim.** Precisão, veredicto, análise da abertura, momentos
   críticos, precisão por fase, disciplina de scan, padrões de erro, plano de treino
   personalizado e evolução face às partidas anteriores (guardadas no navegador).

@@ -12,7 +12,8 @@
   });
 
   const S = {
-    game: new Chess(), userColor: 'w', level: 11, movetime: 1000, dwell: 250,
+    game: new Chess(), userColor: 'w', level: 11, movetime: 1000,
+    scanned: false, scanning: false, scanCursor: null, scanFlags: { danger: [], prey: [] },
     records: [], inspected: new Set(), warnings: 0, discipline: 100, lockUntil: 0,
     busy: false, over: true, selected: null, targets: [], turnStart: 0, turnWarnings: 0,
     pre: null, lastPost: null, openingName: '', result: null, hoverSq: null, dwellTimer: null,
@@ -62,26 +63,31 @@
       if (S.targets.includes(sq)) cls.push('target', p ? 'has' : '');
       if (attacked.includes(sq)) cls.push('att');
       if (S.missingFlash && S.missingFlash.includes(sq)) cls.push('missing');
+      if (S.scanned && S.scanFlags.danger.includes(sq)) cls.push('danger');
+      if (S.scanned && S.scanFlags.prey.includes(sq)) cls.push('prey');
+      if (S.scanCursor === sq) cls.push('scanning');
       const row = Math.floor(i / 8), col = i % 8;
       let inner = '';
       if (col === 0) inner += `<span class="coord r">${sq[1]}</span>`;
       if (row === 7) inner += `<span class="coord f">${sq[0]}</span>`;
       if (p) inner += `<span class="pc ${p.color}">${GLYPH[p.type]}${VS}</span>`;
-      if (p && S.inspected.has(sq) && isUserTurn()) inner += '<span class="seen"></span>';
+      if (p && S.inspected.has(sq) && isUserTurn() && !S.scanned) inner += '<span class="seen"></span>';
       return `<div class="${cls.join(' ')}" data-sq="${sq}">${inner}</div>`;
     }).join('');
     renderScan();
   }
   function isUserTurn() { return !S.over && !S.busy && S.game.turn() === S.userColor; }
   function allPieceSquares() { return Geo.pieces(S.game).map(p => p.sq); }
-  function missingSquares() { return allPieceSquares().filter(sq => !S.inspected.has(sq)); }
   function renderScan() {
     const all = allPieceSquares();
     const seen = isUserTurn() ? all.filter(sq => S.inspected.has(sq)).length : 0;
     $('scanCount').textContent = `${seen}/${all.length}`;
     const m = $('meter');
     m.firstElementChild.style.width = (all.length ? (100 * seen) / all.length : 0) + '%';
-    m.classList.toggle('full', seen === all.length && isUserTurn());
+    m.classList.toggle('full', S.scanned && isUserTurn());
+    const btn = $('scanBtn');
+    btn.disabled = !isUserTurn() || S.scanning || S.scanned;
+    btn.textContent = S.scanned && isUserTurn() ? 'Scan feito ✓' : S.scanning ? 'A fazer scan…' : 'Fazer scan';
   }
   function squareFromEvent(e) {
     const r = boardEl.getBoundingClientRect();
@@ -112,20 +118,54 @@
   function inspect(sq) {
     if (!S.game.get(sq)) return;
     $('pieceInfo').innerHTML = describePiece(sq);
-    if (isUserTurn() && !S.inspected.has(sq)) {
-      S.inspected.add(sq);
-      if (S.missingFlash) S.missingFlash = S.missingFlash.filter(s => s !== sq);
-      render();
-      if (missingSquares().length === 0) setStatus('Scan completo. Agora sim: pensa e joga.');
-    }
   }
 
-  function penalize(missing) {
+  /* Um único scan por lance: percorre todas as peças e resume o perigo. */
+  async function doScan() {
+    if (!isUserTurn() || S.scanning || S.scanned) return;
+    S.scanning = true;
+    S.missingFlash = null;
+    const me = S.userColor, opp = me === 'w' ? 'b' : 'w';
+    // ordem: primeiro as peças do adversário (ameaças), depois as tuas
+    const order = Geo.pieces(S.game, opp).concat(Geo.pieces(S.game, me)).map(p => p.sq);
+    const step = Math.max(25, Math.round(1200 / order.length));
+    for (const sq of order) {
+      if (!S.scanning) return;
+      S.scanCursor = sq;
+      S.inspected.add(sq);
+      render();
+      await sleep(step);
+    }
+    S.scanCursor = null;
+    S.scanning = false;
+    S.scanned = true;
+    const g = S.game;
+    const danger = Geo.hanging(g, me);
+    const prey = Geo.hanging(g, opp);
+    S.scanFlags = { danger: danger.map(p => p.sq), prey: prey.map(p => p.sq) };
+    const list = (arr, who) => arr.map(p => `${PIECE_NAME[p.type]} ${p.sq} (atacad${art(p.type)} por ${p.att.map(a => PIECE_NAME[a.type] + ' ' + a.sq).join(', ')}${p.def.length ? '' : ', sem defesa'})`).join('; ');
+    const inCheck = g.in_check();
+    const checks = (() => { // xeques que o adversário teria se fosse a vez dele
+      const parts = g.fen().split(' '); parts[1] = opp; parts[3] = '-';
+      const t = new Chess(parts.join(' '));
+      return t.moves({ verbose: true }).filter(m => m.san.includes('+')).map(m => m.san);
+    })();
+    let html = '<b>Resultado do scan</b><br>';
+    html += inCheck ? '<b style="color:var(--blunder)">Estás em xeque.</b><br>' : '';
+    html += danger.length ? `<span style="color:var(--blunder)">⚠ Tuas peças em perigo:</span> ${list(danger)}<br>` : 'Nenhuma peça tua em perigo imediato.<br>';
+    html += prey.length ? `<span style="color:var(--ok)">◎ Alvos no adversário:</span> ${list(prey)}<br>` : 'Nenhuma peça do adversário pendurada.<br>';
+    html += checks.length ? `Xeques que o adversário tem disponíveis: ${checks.slice(0, 6).join(', ')}. Pensa se o teu lance os torna perigosos.` : 'O adversário não tem xeques disponíveis.';
+    $('pieceInfo').innerHTML = html;
+    setStatus('Scan feito. Agora pensa e joga. O scan não vê tudo: verifica também o que o teu lance muda.');
+    render();
+  }
+
+  function penalize() {
     S.warnings++; S.turnWarnings++;
     S.discipline = Math.max(0, S.discipline - 10);
-    S.missingFlash = missing.slice();
-    const names = missing.slice(0, 6).map(sq => { const p = S.game.get(sq); return PIECE_NAME[p.type] + ' ' + sq; }).join(', ');
-    let msg = `Aviso n.º ${S.warnings}: faltam ${missing.length} peça(s) por ver (${names}${missing.length > 6 ? '…' : ''}). Um campeão olha para todas antes de tocar numa. −10 de disciplina.`;
+    S.missingFlash = allPieceSquares();
+    setTimeout(() => { S.missingFlash = null; render(); }, 1800);
+    let msg = `Aviso n.º ${S.warnings}: tentaste jogar sem fazer o scan. Um campeão olha para o tabuleiro inteiro antes de tocar numa peça. −10 de disciplina.`;
     if (S.warnings >= 3) {
       const secs = Math.min(30, 5 * (S.warnings - 2));
       S.lockUntil = Date.now() + secs * 1000;
@@ -165,7 +205,7 @@
     render();
     if (S.hoverSq) {
       const target = S.hoverSq;
-      S.dwellTimer = setTimeout(() => { if (S.hoverSq === target) inspect(target); }, S.dwell);
+      S.dwellTimer = setTimeout(() => { if (S.hoverSq === target) inspect(target); }, 120);
     }
   }
   boardEl.addEventListener('pointerdown', e => {
@@ -176,7 +216,6 @@
     if (!isUserTurn()) return;
     if (S.selected && S.targets.includes(sq)) { attemptMove(S.selected, sq); return; }
     if (p && p.color === S.userColor) {
-      inspect(sq);
       select(sq);
       drag = { from: sq, x: e.clientX, y: e.clientY, ghost: null };
       boardEl.setPointerCapture(e.pointerId);
@@ -230,7 +269,7 @@
 
   function startGame(opts) {
     Object.assign(S, {
-      game: new Chess(), userColor: opts.color, level: opts.level, movetime: opts.movetime, dwell: opts.dwell,
+      game: new Chess(), userColor: opts.color, level: opts.level, movetime: opts.movetime,
       records: [], inspected: new Set(), warnings: 0, discipline: 100, lockUntil: 0, busy: false, over: false,
       selected: null, targets: [], pre: null, lastPost: null, openingName: '', result: null, missingFlash: null,
     });
@@ -248,21 +287,23 @@
     S.busy = false;
     S.inspected = new Set();
     S.missingFlash = null;
+    S.scanned = false; S.scanning = false; S.scanCursor = null;
+    S.scanFlags = { danger: [], prey: [] };
+    $('pieceInfo').textContent = 'Carrega em «Fazer scan» (ou tecla S) antes de jogar. Passa o rato numa peça para ver os detalhes dela.';
     S.turnStart = Date.now();
     S.turnWarnings = 0;
     const fen = S.game.fen();
     S.pre = analyzeW(fen);
     const prevOpp = S.records[S.records.length - 1];
     if (prevOpp && prevOpp.color !== S.userColor) S.pre.then(pre => finishOppRecord(prevOpp, pre));
-    setStatus(`A tua vez. Faz o scan: olha para as ${allPieceSquares().length} peças antes de jogar.`);
+    setStatus('A tua vez. Primeiro o scan, depois o lance.');
     render();
   }
 
   function attemptMove(from, to) {
     if (!isUserTurn()) return;
-    if (Date.now() < S.lockUntil) { toast('Ainda estás penalizado. Aproveita para olhar para as peças.'); return; }
-    const missing = missingSquares();
-    if (missing.length) { select(null); penalize(missing); return; }
+    if (Date.now() < S.lockUntil) { toast('Ainda estás penalizado. Aproveita para fazer o scan e pensar.'); return; }
+    if (!S.scanned) { select(null); penalize(); return; }
     const fenBefore = S.game.fen();
     const keyBefore = Book.keyOf(S.game.history());
     const m = S.game.move({ from, to, promotion: 'q' });
@@ -279,6 +320,7 @@
 
   async function afterUserMove(m, fenBefore, keyBefore) {
     S.busy = true;
+    S.scanned = false;
     S.hoverSq = null;
     render();
     setStatus('O treinador está a analisar o teu lance…');
@@ -468,14 +510,17 @@
   }
 
   /* ---------------- Controlos ---------------- */
-  const atime = $('atime'), dwell = $('dwell');
+  const atime = $('atime');
   atime.oninput = () => { $('atimeVal').textContent = (+atime.value).toFixed(1); };
-  dwell.oninput = () => { $('dwellVal').textContent = dwell.value; };
+  $('scanBtn').onclick = doScan;
+  document.addEventListener('keydown', e => {
+    if ((e.key === 's' || e.key === 'S') && !e.ctrlKey && !e.metaKey && !e.altKey && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) doScan();
+  });
   $('setupForm').addEventListener('submit', e => {
     e.preventDefault();
     const color = document.querySelector('input[name=color]:checked').value;
     $('setup').hidden = true;
-    startGame({ color, level: +$('level').value, movetime: Math.round(+atime.value * 1000), dwell: +dwell.value });
+    startGame({ color, level: +$('level').value, movetime: Math.round(+atime.value * 1000) });
   });
   $('newBtn').onclick = () => {
     if (!S.over && S.records.length) { toast('Termina ou desiste da partida atual primeiro.'); return; }
