@@ -287,9 +287,7 @@ class Builder:
     def list_rows(self, it):
         rows = []
         for item in it["items"]:
-            size = 50
-            while size > 40 and len(wrap(item, size, 700)) > 1:
-                size -= 2
+            size = 48
             n = len(wrap(item, size, 700))
             rows.append((item, size, n, max(96, n * size * 1.15 + 26)))
         return rows
@@ -310,7 +308,8 @@ class Builder:
                  "line_height": 1.0, "fill_color": "#0B0A1F", "text": str(i + 1),
                  "opacity": [{"time": 0, "value": 0}, {"time": 0.2, "value": 1}]},
                 {"type": "text", "layer": self.L(), "time": tt, "duration": "end", "x": 256,
-                 "y": round(cy - n * size * 1.15 / 2), "width": 714, "font_family": FONT, "font_weight": 800,
+                 "y": round(cy - n * size * 1.15 / 2), "width": round(min(714, balanced_width(item, size, 0, 700))),
+                 "font_family": FONT, "font_weight": 800,
                  "font_size": size, "line_height": 1.15, "fill_color": th["head"], "text": item,
                  "keyframe_animations": [
                      {"property": "x", "keyframes": [{"time": 0, "value": 296}, {"time": 0.45, "value": 256, "easing": SPRING(0.3)}]}],
