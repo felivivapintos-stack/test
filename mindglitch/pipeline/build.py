@@ -206,8 +206,14 @@ class Builder:
             el.update(y=round(y + h / 2), y_anchor="50%",
                       scale=[{"time": 0, "value": 0.35}, {"time": 0.42, "value": 1, "easing": SPRING(0.55)}],
                       opacity=[{"time": 0, "value": 0}, {"time": 0.12, "value": base_op}])
+            if "gradient" in el:  # renderer only wraps gradient text laid out per unit
+                el["keyframe_animations"] = [{"property": "opacity", "stagger": {"each": 0.03}, "keyframes": [
+                    {"time": 0, "value": 0}, {"time": 0.12, "value": 1}]}]
         elif anim == "fade":
             el.update(y=round(y), opacity=[{"time": 0, "value": 0}, {"time": 0.4, "value": base_op}])
+            if "gradient" in el:
+                el["keyframe_animations"] = [{"property": "opacity", "stagger": {"each": 0.03}, "keyframes": [
+                    {"time": 0, "value": 0}, {"time": 0.12, "value": 1}]}]
         else:
             letters = anim == "letters"
             each = 0.035 if letters else 0.06
